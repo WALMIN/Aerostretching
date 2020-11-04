@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PersonalTrainingsActivity">
+
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Personal trainings"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="28dp" />
+
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ansök individuell träningspass"
+        tools:layout_editor_absoluteX="110dp"
+        tools:layout_editor_absoluteY="69dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName4"
+        android:layout_width="258dp"
+        android:layout_height="217dp"
+        android:ems="10"
+        android:hint="Skriv här kort vilken typ av träning du vill ha, hur många personer vi är och beräknad tid, vi svarar dig så snart som möjligt!"
+        android:inputType="textLongMessage|textMultiLine"
+        android:textAlignment="viewStart"
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="130dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="send"
+        tools:layout_editor_absoluteX="155dp"
+        tools:layout_editor_absoluteY="425dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
