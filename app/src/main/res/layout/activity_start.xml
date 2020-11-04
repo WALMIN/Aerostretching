@@ -7,12 +7,12 @@
     tools:context=".StartActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageViewStart"
         android:layout_width="411dp"
         android:layout_height="262dp"
         app:srcCompat="@drawable/mainpic"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="133dp" />
+        tools:layout_editor_absoluteY="82dp" />
 
     <TextView
         android:id="@+id/textView3"
@@ -20,70 +20,78 @@
         android:layout_height="wrap_content"
         android:text="Trainings which you can join soon:"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="412dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="All trainings"
-        tools:layout_editor_absoluteX="293dp"
-        tools:layout_editor_absoluteY="412dp" />
+        tools:layout_editor_absoluteY="373dp" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="aerostretching"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="481dp" />
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="454dp" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="aerostretching"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="608dp" />
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="569dp" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="aeroyoga"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="528dp" />
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="490dp" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="aeroyoga"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="642dp" />
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="606dp" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="suspension training"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="678dp" />
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="642dp" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Today:"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="453dp" />
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="416dp" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tomorrow:"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="569dp" />
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="530dp" />
+
+    <TextView
+        android:id="@+id/textViewStartAeroStudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#AeroStudioStockholm"
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="29dp" />
+
+    <Button
+        android:id="@+id/buttonAllTrainings"
+        android:layout_width="119dp"
+        android:layout_height="83dp"
+        android:text="all trainings"
+        tools:layout_editor_absoluteX="278dp"
+        tools:layout_editor_absoluteY="352dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

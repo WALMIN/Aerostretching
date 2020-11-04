@@ -7,7 +7,7 @@
     tools:context=".ContactsActivity">
 
     <TextView
-        android:id="@+id/textView50"
+        android:id="@+id/textViewContacts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contacts"
@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="32dp" />
 
     <TextView
-        android:id="@+id/textView51"
+        android:id="@+id/textViewContactsPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="070-491-31-05"
@@ -23,7 +23,7 @@
         tools:layout_editor_absoluteY="92dp" />
 
     <TextView
-        android:id="@+id/textView52"
+        android:id="@+id/textViewContactsEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="info@aerostretching.se"
@@ -31,7 +31,7 @@
         tools:layout_editor_absoluteY="146dp" />
 
     <TextView
-        android:id="@+id/textView53"
+        android:id="@+id/textViewContactsPlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Odenplan, Stockholm"
@@ -39,7 +39,7 @@
         tools:layout_editor_absoluteY="205dp" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageViewMap"
         android:layout_width="363dp"
         android:layout_height="212dp"
         app:srcCompat="@drawable/map"

@@ -7,7 +7,7 @@
     tools:context=".BookTrainingActivity">
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/textViewBookTrainingName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aerostretching"
@@ -16,7 +16,7 @@
         tools:layout_editor_absoluteY="44dp" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/textViewBookTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="start: 10:00 (55 min)"
@@ -25,7 +25,7 @@
         tools:layout_editor_absoluteY="89dp" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/textViewBookPlaces"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Available places: 8"
@@ -34,7 +34,7 @@
         tools:layout_editor_absoluteY="140dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/buttonBook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Book"
@@ -43,7 +43,7 @@
         tools:layout_editor_absoluteY="210dp" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/textViewBookTrainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Trainer: Anastasia Dobrova"
@@ -52,7 +52,7 @@
         tools:layout_editor_absoluteY="284dp" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/textViewBookDescription"
         android:layout_width="297dp"
         android:layout_height="337dp"
         android:text="trainings description"

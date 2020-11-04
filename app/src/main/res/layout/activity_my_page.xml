@@ -7,7 +7,7 @@
     tools:context=".MyPageActivity">
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/imageButtonGoToProfile"
         android:layout_width="33dp"
         android:layout_height="33dp"
         app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="95dp" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/imageButtonGoToMessages"
         android:layout_width="33dp"
         android:layout_height="33dp"
         app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
@@ -23,7 +23,7 @@
         tools:layout_editor_absoluteY="237dp" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/imageButtonGoToHistory"
         android:layout_width="33dp"
         android:layout_height="33dp"
         app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
@@ -31,7 +31,7 @@
         tools:layout_editor_absoluteY="189dp" />
 
     <ImageButton
-        android:id="@+id/imageButton8"
+        android:id="@+id/imageButtonGoToUpcomingTrainings"
         android:layout_width="33dp"
         android:layout_height="33dp"
         app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
@@ -39,7 +39,7 @@
         tools:layout_editor_absoluteY="140dp" />
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/textViewPageUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Viktoria Olsson"
@@ -47,15 +47,15 @@
         tools:layout_editor_absoluteY="95dp" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/textViewPageUpcomingTrainings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upcoming events"
+        android:text="Upcoming trainings"
         tools:layout_editor_absoluteX="81dp"
         tools:layout_editor_absoluteY="140dp" />
 
     <TextView
-        android:id="@+id/textView22"
+        android:id="@+id/textViewPageHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="History"
@@ -63,7 +63,7 @@
         tools:layout_editor_absoluteY="189dp" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/textViewPageMessages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Messages"
@@ -71,7 +71,7 @@
         tools:layout_editor_absoluteY="237dp" />
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/textViewMyPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My page"

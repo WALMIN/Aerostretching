@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/textViewTrainerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Anastasia"
@@ -23,6 +23,7 @@
         tools:layout_editor_absoluteY="695dp" />
 
     <TextView
+        android:id="@+id/textViewTrainerDescription"
         android:layout_width="179dp"
         android:layout_height="204dp"
         android:text="description"

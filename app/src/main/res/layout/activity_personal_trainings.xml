@@ -7,7 +7,7 @@
     tools:context=".PersonalTrainingsActivity">
 
     <TextView
-        android:id="@+id/textView48"
+        android:id="@+id/textViewPersonalTrainings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Personal trainings"
@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="28dp" />
 
     <TextView
-        android:id="@+id/textView49"
+        android:id="@+id/textViewApply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ansök individuell träningspass"
@@ -23,7 +23,7 @@
         tools:layout_editor_absoluteY="69dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/editTextApply"
         android:layout_width="258dp"
         android:layout_height="217dp"
         android:ems="10"
@@ -34,7 +34,7 @@
         tools:layout_editor_absoluteY="130dp" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/buttonApplyPersonalTrainig"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="send"
