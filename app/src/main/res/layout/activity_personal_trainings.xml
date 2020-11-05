@@ -45,16 +45,17 @@
         android:background="@drawable/apply_edittext_bg"
         app:layout_constrainedHeight="true"
         app:layout_constraintTop_toBottomOf="@id/separator"
-        app:layout_constraintBottom_toTopOf="@id/buttonApplyPersonalTrainig"
+        app:layout_constraintBottom_toTopOf="@id/buttonApplyPersonalTraining"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"  />
 
     <Button
-        android:id="@+id/buttonApplyPersonalTrainig"
+        android:id="@+id/buttonApplyPersonalTraining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="Skicka"
+        android:onClick="applyPersonalTraining"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
