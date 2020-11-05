@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactsActivity">
+
+    <TextView
+        android:id="@+id/textViewContacts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contacts"
+        tools:layout_editor_absoluteX="177dp"
+        tools:layout_editor_absoluteY="32dp" />
+
+    <TextView
+        android:id="@+id/textViewContactsPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="070-491-31-05"
+        tools:layout_editor_absoluteX="171dp"
+        tools:layout_editor_absoluteY="92dp" />
+
+    <TextView
+        android:id="@+id/textViewContactsEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="info@aerostretching.se"
+        tools:layout_editor_absoluteX="173dp"
+        tools:layout_editor_absoluteY="146dp" />
+
+    <TextView
+        android:id="@+id/textViewContactsPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Odenplan, Stockholm"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="205dp" />
+
+    <ImageView
+        android:id="@+id/imageViewMap"
+        android:layout_width="363dp"
+        android:layout_height="212dp"
+        app:srcCompat="@drawable/map"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="280dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

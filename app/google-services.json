@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "912968015846",
+    "firebase_url": "https://aerostretching-a152f.firebaseio.com",
+    "project_id": "aerostretching-a152f",
+    "storage_bucket": "aerostretching-a152f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912968015846:android:64f790b13e643a347a8027",
+        "android_client_info": {
+          "package_name": "se.aerostretching.booking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912968015846-0gomh46j3eip83ouap9ommth8ch4o3es.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz2Q1YrVjFAiN2LZU07-UhGe4GJhtn-_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912968015846-0gomh46j3eip83ouap9ommth8ch4o3es.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

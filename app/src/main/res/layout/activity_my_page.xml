@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyPageActivity">
+
+    <ImageButton
+        android:id="@+id/imageButtonGoToProfile"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
+        tools:layout_editor_absoluteX="328dp"
+        tools:layout_editor_absoluteY="95dp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonGoToMessages"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
+        tools:layout_editor_absoluteX="328dp"
+        tools:layout_editor_absoluteY="237dp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonGoToHistory"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
+        tools:layout_editor_absoluteX="328dp"
+        tools:layout_editor_absoluteY="189dp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonGoToUpcomingTrainings"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24"
+        tools:layout_editor_absoluteX="328dp"
+        tools:layout_editor_absoluteY="140dp" />
+
+    <TextView
+        android:id="@+id/textViewPageUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Viktoria Olsson"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="95dp" />
+
+    <TextView
+        android:id="@+id/textViewPageUpcomingTrainings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upcoming trainings"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="140dp" />
+
+    <TextView
+        android:id="@+id/textViewPageHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="History"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="189dp" />
+
+    <TextView
+        android:id="@+id/textViewPageMessages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Messages"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="237dp" />
+
+    <TextView
+        android:id="@+id/textViewMyPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My page"
+        tools:layout_editor_absoluteX="168dp"
+        tools:layout_editor_absoluteY="36dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
