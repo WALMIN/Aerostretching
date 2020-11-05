@@ -1,48 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".ContactsActivity">
 
+    <!--
     <TextView
         android:id="@+id/textViewContacts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contacts"
-        tools:layout_editor_absoluteX="177dp"
-        tools:layout_editor_absoluteY="32dp" />
+        android:textColor="#000000"
+        android:textSize="22sp" />
+    -->
 
-    <TextView
-        android:id="@+id/textViewContactsPhone"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="070-491-31-05"
-        tools:layout_editor_absoluteX="171dp"
-        tools:layout_editor_absoluteY="92dp" />
+        android:gravity="center"
+        android:onClick="contactsPhone">
 
-    <TextView
-        android:id="@+id/textViewContactsEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="info@aerostretching.se"
-        tools:layout_editor_absoluteX="173dp"
-        tools:layout_editor_absoluteY="146dp" />
+        <ImageView
+            android:layout_width="32dp"
+            android:minWidth="32dp"
+            android:maxWidth="32dp"
+            android:layout_height="32dp"
+            android:minHeight="32dp"
+            android:maxHeight="32dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/phone"/>
 
-    <TextView
-        android:id="@+id/textViewContactsPlace"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Odenplan, Stockholm"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="205dp" />
+        <TextView
+            android:id="@+id/textViewContactsPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="070-491 31 05"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+    </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageViewMap"
-        android:layout_width="363dp"
-        android:layout_height="212dp"
-        app:srcCompat="@drawable/map"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="280dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@color/text" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:onClick="contactsEmail">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:minWidth="32dp"
+            android:maxWidth="32dp"
+            android:layout_height="32dp"
+            android:minHeight="32dp"
+            android:maxHeight="32dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/email"/>
+
+        <TextView
+            android:id="@+id/textViewContactsEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="info@aerostretching.se"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@color/text" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:onClick="contactsPlace">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:minWidth="32dp"
+            android:maxWidth="32dp"
+            android:layout_height="32dp"
+            android:minHeight="32dp"
+            android:maxHeight="32dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/place"/>
+
+        <TextView
+            android:id="@+id/textViewContactsPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Engelbrektsgatan 17, Stockholm"
+            android:textColor="@color/text"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/mapView"
+        android:layout_width="320dp"
+        android:minWidth="320dp"
+        android:maxWidth="320dp"
+        android:layout_height="256dp"
+        android:minHeight="256dp"
+        android:maxHeight="256dp"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>
