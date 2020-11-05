@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         db = FirebaseFirestore.getInstance()
-        db.collection("users").add(Item("Briggan", "Martinez"))
+       // db.collection("users").add(Item("Briggan", "Martinez"))
 
     }
 
