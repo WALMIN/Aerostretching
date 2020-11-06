@@ -5,7 +5,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebView
+import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 
 class ContactsActivity : AppCompatActivity() {
@@ -18,8 +20,29 @@ class ContactsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contacts)
-
+        customActionBar()
         initialize()
+
+    }
+
+    fun customActionBar(){
+        supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar!!.setDisplayShowCustomEnabled(true)
+        supportActionBar!!.setCustomView(R.layout.action_bar)
+        val view = supportActionBar!!.customView
+
+        // Title
+        val titleView = view.findViewById<View>(R.id.title) as TextView
+        titleView.text = "Contacts"
+
+        // Start button
+        val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
+        startBtn.visibility = View.VISIBLE
+        startBtn.setImageResource(R.drawable.menu)
+        startBtn.setOnClickListener {
+
+
+        }
 
     }
 
@@ -37,8 +60,6 @@ class ContactsActivity : AppCompatActivity() {
         mapView.loadData("<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2034.5934916998403!2d18.06755401615737!3d59.339740417229805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9d42e9ea3a9d%3A0x70c6e34f6b0879e9!2sEngelbrektsgatan%2017%2C%20114%2032%20Stockholm!5e0!3m2!1sen!2sse!4v1604575997430!5m2!1sen!2sse\" width=\"100%\" height=\"100%\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\" aria-hidden=\"false\" tabindex=\"0\"></iframe>",
             "text/html",
             "utf-8")
-
-        // <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2034.5934916998403!2d18.06755401615737!3d59.339740417229805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9d42e9ea3a9d%3A0x70c6e34f6b0879e9!2sEngelbrektsgatan%2017%2C%20114%2032%20Stockholm!5e0!3m2!1sen!2sse!4v1604575997430!5m2!1sen!2sse" width="800" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
     }
 
