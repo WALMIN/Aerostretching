@@ -6,29 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
-    <TextView
-        android:id="@+id/textViewProfile"
+
+
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        tools:layout_editor_absoluteX="171dp"
-        tools:layout_editor_absoluteY="35dp" />
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/face"
+            tools:layout_editor_absoluteX="40dp"
+            tools:layout_editor_absoluteY="85dp" />
+
+        <TextView
+            android:id="@+id/textViewProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Viktoria"
+            tools:layout_editor_absoluteX="88dp"
+            tools:layout_editor_absoluteY="102dp" />
 
 
-    <ImageView
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:src="@drawable/face"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="85dp" />
 
-    <TextView
-        android:id="@+id/textViewProfileName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Viktoria"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="102dp" />
+
+
+
 
     <ImageView
         android:layout_width="36dp"
@@ -37,6 +38,14 @@
         android:src="@drawable/mail"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="201dp" />
+    <TextView
+        android:id="@+id/textViewProfileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="vikroria@gmail.com"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="201dp" />
+
 
 
     <TextView
@@ -77,13 +86,6 @@
         tools:layout_editor_absoluteX="40dp"
         tools:layout_editor_absoluteY="238dp" />
 
-    <TextView
-        android:id="@+id/textViewProfileEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="vikroria@gmail.com"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="201dp" />
 
     <ImageView
         android:layout_width="36dp"
