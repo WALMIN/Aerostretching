@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    app:cardBackgroundColor="#000000"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="2dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:paddingEnd="8dp"
+    android:paddingStart="8dp"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:id="@+id/leftLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/trainingTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="13:00"
+            android:textStyle="bold"
+            android:textColor="@color/text"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/trainingLength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="55 min"
+            android:textColor="@color/text"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/middleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constrainedWidth="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/leftLayout"
+        app:layout_constraintEnd_toStartOf="@id/openBtn">
+
+        <TextView
+            android:id="@+id/trainingTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Aerostretching"
+            android:textStyle="bold"
+            android:textColor="@color/text"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/trainingPlace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Odenplan, Stockholm"
+            android:textColor="@color/text"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/trainingTrainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Anastasia Dobrova"
+            android:textColor="@color/text"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/openBtn"
+        android:layout_width="48dp"
+        android:minWidth="48dp"
+        android:maxWidth="48dp"
+        android:layout_height="48dp"
+        android:minHeight="48dp"
+        android:maxHeight="48dp"
+        android:gravity="center"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+        app:tint="@color/colorAccent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
