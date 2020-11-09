@@ -6,29 +6,55 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
-    <TextView
-        android:id="@+id/textViewProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profile"
-        tools:layout_editor_absoluteX="171dp"
-        tools:layout_editor_absoluteY="35dp" />
 
+
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/face"
+            tools:layout_editor_absoluteX="40dp"
+            tools:layout_editor_absoluteY="85dp" />
+
+        <TextView
+            android:id="@+id/textViewProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Viktoria"
+            tools:layout_editor_absoluteX="88dp"
+            tools:layout_editor_absoluteY="102dp" />
+
+
+
+
+
+
+
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36"
+        android:layout_marginStart="40dp"
+        android:src="@drawable/mail"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="201dp" />
     <TextView
-        android:id="@+id/textViewProfileName"
+        android:id="@+id/textViewProfileEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Viktoria "
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="102dp" />
+        android:text="vikroria@gmail.com"
+        tools:layout_editor_absoluteX="87dp"
+        tools:layout_editor_absoluteY="201dp" />
+
+
 
     <TextView
         android:id="@+id/textViewProfileSurname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Olsson"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="142dp" />
+        tools:layout_editor_absoluteX="150dp"
+        tools:layout_editor_absoluteY="102dp" />
 
     <TextView
         android:id="@+id/textViewProfileBirth"
@@ -36,7 +62,14 @@
         android:layout_height="wrap_content"
         android:text="25.10.1987"
         tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="177dp" />
+        tools:layout_editor_absoluteY="146dp" />
+
+    <ImageView
+        android:layout_width="36"
+        android:layout_height="36"
+        android:src="@drawable/calendar"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="146dp" />
 
     <TextView
         android:id="@+id/textViewProfilePhone"
@@ -44,21 +77,28 @@
         android:layout_height="wrap_content"
         android:text="+46704254387"
         tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="255dp" />
+        tools:layout_editor_absoluteY="248dp" />
 
-    <TextView
-        android:id="@+id/textViewProfileEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="vikroria@gmail.com"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="218dp" />
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/phone"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="238dp" />
+
+
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/key"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="294dp" />
 
     <TextView
         android:id="@+id/textViewProfilePassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="*********"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="294dp" />
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="303dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
