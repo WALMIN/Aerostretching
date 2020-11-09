@@ -36,7 +36,7 @@ class RegisterActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
 
         r_email = findViewById(R.id.editTextRegisterEmail)
-        r_password_1 =findViewById(R.id.editTextRegisterPassword)
+        r_password_1 = findViewById(R.id.editTextRegisterPassword)
 
         r_surname = findViewById(R.id.editTextRegisterSurname)
         r_name = findViewById(R.id.editTextRegisterName)
@@ -46,7 +46,6 @@ class RegisterActivity : AppCompatActivity() {
 
         register_btn = findViewById(R.id.buttonRegister)
         register_btn.setOnClickListener {
-
             createLogin()
         }
 
@@ -57,13 +56,13 @@ class RegisterActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun createLogin () {
+    fun createLogin() {
 
         val email = r_email.text.toString()
         val password = r_password_1.text.toString()
         val password2 = r_password_2.text.toString()
 
-        if ( email.isEmpty() || password.isEmpty() || password != password2 ){
+        if (email.isEmpty() || password.isEmpty() || password != password2) {
             Toast.makeText(this, "Please enter text and try again", Toast.LENGTH_SHORT).show()
             return
         }
@@ -71,38 +70,38 @@ class RegisterActivity : AppCompatActivity() {
 
 
         auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Log.d("!!!", "Success")
-                    saveUserToDb()
-                    goToMainActivity()
-                } else {
-                    Log.d("!!!", "User not created ${task.exception}")
-                    Toast.makeText(this, "User not created", Toast.LENGTH_SHORT).show()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d("!!!", "Success")
+                        saveUserToDb()
+                        goToMainActivity()
+                    } else {
+                        Log.d("!!!", "User not created ${task.exception}")
+                        Toast.makeText(this, "User not created", Toast.LENGTH_SHORT).show()
+                    }
                 }
-        }
     }
-    private fun saveUserToDb(){
+
+    private fun saveUserToDb() {
         //val uid = FirebaseAuth.getInstance().uid?:""
         val uid = auth.currentUser?.uid
 
         val user = User(r_email.text.toString(), r_name.text.toString(), r_surname.text.toString(), r_phone.text.toString(),
-             r_birthDate.text.toString() )
+                r_birthDate.text.toString())
 
         db.collection("users").document(uid.toString()).collection("info").add(user)
-            .addOnCompleteListener{
-                    task ->
-                if(task.isSuccessful) {
-                    Log.d("!!!", "Success")
-                }
-                else{
-                    Log.d("!!!", "User not created ${task.exception}")
-                }
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d("!!!", "Success")
+                    } else {
+                        Log.d("!!!", "User not created ${task.exception}")
+                    }
 
-            }
+                }
 
     }
-    fun customActionBar(){
+
+    fun customActionBar() {
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -122,5 +121,6 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 }
+
 
 class User(val email: String, val name : String, val surname : String, val phone : String, val birth : String)
