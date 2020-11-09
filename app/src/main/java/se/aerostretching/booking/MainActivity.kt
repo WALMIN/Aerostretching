@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
             Log.d("!!!", "Current user: ${auth.currentUser?.email}")
         }
 
-
     }
 
     fun goToRegisterActivity() {
