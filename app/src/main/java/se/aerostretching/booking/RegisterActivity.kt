@@ -82,7 +82,7 @@ class RegisterActivity : AppCompatActivity() {
     }
     private fun saveUserToDb(){
         //val uid = FirebaseAuth.getInstance().uid?:""
-        val uid = auth.currentUser
+        val uid = auth.currentUser?.uid
 
         val user = User(r_email.text.toString(), r_name.text.toString(), r_surname.text.toString(), r_phone.text.toString(),
              r_birthDate.text.toString() )
@@ -90,7 +90,12 @@ class RegisterActivity : AppCompatActivity() {
         db.collection("users").document(uid.toString()).collection("info").add(user)
             .addOnCompleteListener{
                     task ->
-                Log.d("!!!", "")
+                if(task.isSuccessful) {
+                    Log.d("!!!", "Success")
+                }
+                else{
+                    Log.d("!!!", "User not created ${task.exception}")
+                }
 
             }
 
