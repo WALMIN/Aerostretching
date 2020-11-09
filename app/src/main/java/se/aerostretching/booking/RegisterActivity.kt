@@ -4,9 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.view.View
+import android.widget.*
+import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.DocumentId
@@ -30,6 +30,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        customActionBar()
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -68,6 +69,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
 
+
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -98,6 +100,25 @@ class RegisterActivity : AppCompatActivity() {
                 }
 
             }
+
+    }
+    fun customActionBar(){
+        supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar!!.setDisplayShowCustomEnabled(true)
+        supportActionBar!!.setCustomView(R.layout.action_bar)
+        val view = supportActionBar!!.customView
+
+        // Title
+        val titleView = view.findViewById<View>(R.id.title) as TextView
+        titleView.text = "Register"
+
+        // Start button
+        val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
+        startBtn.visibility = View.VISIBLE
+        startBtn.setImageResource(R.drawable.back)
+        startBtn.setOnClickListener {
+            goToMainActivity()
+        }
 
     }
 }
