@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
             Log.d("!!!", "Current user: ${auth.currentUser?.email}")
         }
 
-
     }
 
     fun goToRegisterActivity() {
@@ -58,15 +57,15 @@ class MainActivity : AppCompatActivity() {
             return
 
         auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d("!!!", "Login success ${auth.currentUser?.email}")
-                        goToStartActivity()
-                    } else {
-                        Log.d("!!!", "USer not loged in ${task.exception}")
-                    }
-
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("!!!", "Login success ${auth.currentUser?.email}")
+                    goToStartActivity()
+                } else {
+                    Log.d("!!!", "USer not loged in ${task.exception}")
                 }
+
+            }
     }
-  
+
 }

@@ -2,42 +2,62 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PersonalTrainingsActivity">
 
     <TextView
-        android:id="@+id/textViewPersonalTrainings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Personal trainings"
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="28dp" />
-
-    <TextView
         android:id="@+id/textViewApply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ansök individuell träningspass"
-        tools:layout_editor_absoluteX="110dp"
-        tools:layout_editor_absoluteY="69dp" />
+        android:layout_marginTop="16dp"
+        android:text="Ansök om individuellt träningspass"
+        android:textColor="@color/text"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:src="@color/text"
+        app:layout_constraintTop_toBottomOf="@id/textViewApply"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/editTextApply"
-        android:layout_width="258dp"
-        android:layout_height="217dp"
-        android:ems="10"
-        android:hint="Skriv här kort vilken typ av träning du vill ha, hur många personer vi är och beräknad tid, vi svarar dig så snart som möjligt!"
+        android:layout_width="320dp"
+        android:minWidth="320dp"
+        android:maxWidth="320dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:hint="Skriv kort vilken typ av träning du vill ha, hur många personer ni är och beräknad tid.\n\nVi svarar dig så snart som möjligt!"
         android:inputType="textLongMessage|textMultiLine"
-        android:textAlignment="viewStart"
-        tools:layout_editor_absoluteX="97dp"
-        tools:layout_editor_absoluteY="130dp" />
+        android:gravity="start"
+        android:textColor="@color/text"
+        android:background="@drawable/apply_edittext_bg"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintTop_toBottomOf="@id/separator"
+        app:layout_constraintBottom_toTopOf="@id/buttonApplyPersonalTraining"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"  />
 
     <Button
-        android:id="@+id/buttonApplyPersonalTrainig"
+        android:id="@+id/buttonApplyPersonalTraining"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="send"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="425dp" />
+        android:layout_marginBottom="16dp"
+        android:text="Skicka"
+        android:onClick="applyPersonalTraining"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
