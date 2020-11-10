@@ -9,34 +9,25 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:orientation="vertical"
         android:weightSum="7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textViewMainAeroStudio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:layout_weight="1"
-            android:text="#AeroStudioStockholm" />
-
         <ImageView
-            android:id="@+id/imageViewMain"
-            android:layout_width="412dp"
-            android:layout_height="234dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="32dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/mainpic" />
+            android:id="@+id/imageViewStart"
+            android:layout_width="match_parent"
+            android:layout_height="256dp"
+            android:minHeight="256dp"
+            android:maxHeight="256dp"
+            android:src="@drawable/mainpic"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <EditText
             android:id="@+id/editTextMainEmail"
@@ -62,12 +53,18 @@
 
         <Button
             android:id="@+id/buttonMainLogin"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Dialog.Flush"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:text="login" />
+            android:layout_weight="0.5"
+            android:width="160dip"
+            android:text="login"
+            android:textStyle="bold"
+            app:rippleColor="#FFFFFF"
+            app:strokeColor="@color/colorAccent"
+            app:strokeWidth="2dp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -75,8 +72,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:text="or" />
+            android:layout_weight="0.1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="or"
+            android:textStyle="italic" />
 
         <Button
             android:id="@+id/buttonMainRegister"
@@ -84,8 +83,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            android:text="register" />
+            android:layout_weight="0.5"
+            android:width="160dip"
+            android:hapticFeedbackEnabled="false"
+            android:text="register"
+            android:backgroundTint="@color/colorAccent"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
