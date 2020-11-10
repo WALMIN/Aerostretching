@@ -30,7 +30,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        customActionBar()
+
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -48,6 +48,7 @@ class RegisterActivity : AppCompatActivity() {
         register_btn.setOnClickListener {
             createLogin()
         }
+        customActionBar()
 
     }
 
@@ -118,7 +119,6 @@ class RegisterActivity : AppCompatActivity() {
         startBtn.setOnClickListener {
             goToMainActivity()
         }
-
     }
 }
 

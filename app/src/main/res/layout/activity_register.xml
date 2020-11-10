@@ -9,12 +9,20 @@
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_marginTop="32dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            >
+
 
 
     <EditText
@@ -27,7 +35,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRegister" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextRegisterPassword"
@@ -35,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="password"
+        android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="password"
+        android:hint="Confirm password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="email"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="birth date"
+        android:hint="Date of birth"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="phone"
+        android:hint="Phone"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,31 +103,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Surname"
+        android:hint="Last name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextRegisterName" />
 
-    <TextView
-        android:id="@+id/textViewRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Register"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/scrollView3" />
 
     <Button
         android:id="@+id/buttonRegister"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_gravity="center"
         android:text="Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextRegisterPassword2" />
-
+        </LinearLayout>
     </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
