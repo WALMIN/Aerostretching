@@ -32,7 +32,12 @@
 
         >
 
-
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/face"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="85dp" />
 
         <ImageView
             android:id="@+id/face"
@@ -60,14 +65,8 @@
             android:layout_marginVertical="15dp"
             />
 
-
-
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
     <ImageView
-
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="4dp"
@@ -110,25 +109,14 @@
             android:textColor="#302F2F"
             android:layout_marginVertical="15dp"/>
 
-
-
-
-
-
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+  
     <ImageView
-
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:src="#000000"/>
-
-
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout3"

@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
-    </ScrollView>
+
 
     <EditText
         android:id="@+id/editTextRegisterName"
@@ -119,8 +119,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Register"
-        app:iconTint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextRegisterPassword2" />
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

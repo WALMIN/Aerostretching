@@ -10,19 +10,19 @@
     <ImageButton
         android:id="@+id/startBtn"
         android:layout_width="32dp"
-        android:minWidth="32dp"
-        android:maxWidth="32dp"
         android:layout_height="32dp"
-        android:minHeight="32dp"
-        android:maxHeight="32dp"
-        android:scaleType="fitXY"
         android:background="@null"
-        android:visibility="invisible"
         android:contentDescription="@null"
-        app:tint="#ffffff"
+        android:maxWidth="32dp"
+        android:maxHeight="32dp"
+        android:minWidth="32dp"
+        android:minHeight="32dp"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#ffffff" />
 
     <TextView
         android:id="@+id/title"

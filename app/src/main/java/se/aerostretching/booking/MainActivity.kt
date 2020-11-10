@@ -3,8 +3,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.TextView
+import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -17,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        customActionBar()
 
         auth = FirebaseAuth.getInstance()
 
@@ -68,4 +74,15 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    fun customActionBar(){
+        supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar!!.setDisplayShowCustomEnabled(true)
+        supportActionBar!!.setCustomView(R.layout.action_bar)
+        val view = supportActionBar!!.customView
+
+        // Title
+        val titleView = view.findViewById<View>(R.id.title) as TextView
+        titleView.text = "AnastasiaAeroStudio"
+
+    }
 }
