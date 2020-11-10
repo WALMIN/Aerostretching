@@ -10,25 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ContactsActivity"></activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".MessagesActivity" />
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".UpcomingTrainingsActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".MyPageActivity" />
-        <activity android:name=".TrainerActivity" />
-        <activity android:name=".BookTrainingActivity" />
-        <activity android:name=".ScheduleBookingActivity" />
-        <activity android:name=".StartActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".PersonalTrainingsActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".MessagesActivity" />
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".UpcomingTrainingsActivity" />
+        <activity android:name=".ContactsActivity" />
+        <activity android:name=".MyPageActivity" />
+        <activity android:name=".TrainerActivity" />
+        <activity android:name=".BookTrainingActivity" />
+        <activity android:name=".ScheduleBookingActivity" />
+        <activity android:name=".StartActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".PersonalTrainingsActivity"/>
     </application>
 
 </manifest>
