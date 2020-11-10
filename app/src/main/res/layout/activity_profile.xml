@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    android:orientation="vertical"
+    tools:context=".ProfileActivity"
+    android:paddingTop="80dp">
+
+    <ImageView
+
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:src="#000000"/>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf=""
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+
+        >
 
     <ImageView
         android:layout_width="36dp"
@@ -13,82 +39,238 @@
         tools:layout_editor_absoluteX="40dp"
         tools:layout_editor_absoluteY="85dp" />
 
-    <TextView
-        android:id="@+id/textViewProfileName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Viktoria"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="102dp" />
+        <ImageView
+            android:id="@+id/face"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/face"
+            app:layout_constraintStart_toStartOf="parent"/>
 
+
+        <TextView
+            app:layout_constraintStart_toEndOf="@id/face"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/textViewPageUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Viktoria olssson"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#302F2F"
+            android:layout_marginVertical="15dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <ImageView
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="40dp"
-        android:src="@drawable/mail"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:src="#000000"/>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:gravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="201dp" />
-    <TextView
-        android:id="@+id/textViewProfileEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="vikroria@gmail.com"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="201dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout1"
+        android:id="@+id/layout2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <ImageView
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="10dp"
+            android:id="@+id/calender"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/calendar" />
 
+        <TextView
+            app:layout_constraintStart_toEndOf="@+id/calender"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/dateOfBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="25.10.1987"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="#302F2F"
+            android:layout_marginVertical="15dp"/>
 
-    <TextView
-        android:id="@+id/textViewProfileSurname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Olsson"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="102dp" />
-
-    <TextView
-        android:id="@+id/textViewProfileBirth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="25.10.1987"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="146dp" />
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  
     <ImageView
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:src="@drawable/calendar"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="146dp" />
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:src="#000000"/>
 
-    <TextView
-        android:id="@+id/textViewProfilePhone"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="+46704254387"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="248dp" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout2">
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/mail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/mailAcoount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="viktoria.olsson@gmail.com"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="17sp"
+            android:textColor="#302F2F"
+            android:layout_marginVertical="15dp"
+            />
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <ImageView
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:src="@drawable/phone"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="238dp" />
+
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:src="#000000"/>
 
 
-    <ImageView
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:src="@drawable/key"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="294dp" />
 
-    <TextView
-        android:id="@+id/textViewProfilePassword"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout3"
+        android:id="@+id/layout4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="*********"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="303dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="10dp"
+            android:id="@+id/imageView4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/phone"
+            />
+
+        <TextView
+            android:id="@+id/phoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:text="+46704254387"
+            android:textColor="#302F2F"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginVertical="15dp"/>
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:src="#000000"
+/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout4"
+        android:id="@+id/layout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="10dp"
+            android:id="@+id/imageView5"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/key"
+            />
+
+        <TextView
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="9dp"
+            android:text="**********"
+            android:textColor="#302F2F"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginVertical="15dp"/>
+
+
+        <ImageButton
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/imageButtonEye"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/eye"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:scaleType="fitXY"
+            android:padding="0.1dp"
+
+
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
