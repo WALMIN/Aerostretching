@@ -8,8 +8,12 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 
 class PersonalTrainingsActivity : AppCompatActivity() {
+
+    lateinit var drawerLayout: DrawerLayout
 
     lateinit var editTextApply: EditText
 
@@ -22,6 +26,9 @@ class PersonalTrainingsActivity : AppCompatActivity() {
     }
 
     fun customActionBar(){
+        drawerLayout = findViewById(R.id.drawerLayout)
+        Tools.setMenu(this, drawerLayout)
+
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -36,7 +43,7 @@ class PersonalTrainingsActivity : AppCompatActivity() {
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.menu)
         startBtn.setOnClickListener {
-
+            drawerLayout.openDrawer(GravityCompat.START)
 
         }
 

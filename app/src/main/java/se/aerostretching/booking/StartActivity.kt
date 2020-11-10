@@ -1,16 +1,23 @@
 package se.aerostretching.booking
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.navigation.NavigationView
 
 class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
+
+    lateinit var drawerLayout: DrawerLayout
 
     lateinit var trainingListView: RecyclerView
     lateinit var trainingListAdapter: TrainingListAdapter
@@ -22,9 +29,13 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
         customActionBar()
         initialize()
 
+
     }
 
     fun customActionBar(){
+        drawerLayout = findViewById(R.id.drawerLayout)
+        Tools.setMenu(this, drawerLayout)
+
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -39,7 +50,7 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.menu)
         startBtn.setOnClickListener {
-
+            drawerLayout.openDrawer(GravityCompat.START)
 
         }
 
@@ -48,7 +59,10 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
         endBtn.visibility = View.VISIBLE
         endBtn.setImageResource(R.drawable.phone)
         endBtn.setOnClickListener {
-            startActivity(Intent(this, ContactsActivity::class.java))
+            val phoneIntent = Intent(Intent.ACTION_DIAL)
+            phoneIntent.data = Uri.parse("tel:" + "070-491 31 05")
+
+            startActivity(phoneIntent)
 
         }
 
