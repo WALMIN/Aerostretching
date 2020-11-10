@@ -7,14 +7,17 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 
 class MyPageActivity : AppCompatActivity() {
+
+    lateinit var drawerLayout: DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page)
-
         customActionBar()
-
 
         val imageButton1 = findViewById<ImageButton>(R.id.btn_Profile)
         val imageButton2 = findViewById<ImageButton>(R.id.imageButtonTrainings)
@@ -44,6 +47,9 @@ class MyPageActivity : AppCompatActivity() {
     }
 
     fun customActionBar() {
+        drawerLayout = findViewById(R.id.drawerLayout)
+        Tools.setMenu(this, drawerLayout)
+
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -58,7 +64,7 @@ class MyPageActivity : AppCompatActivity() {
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.menu)
         startBtn.setOnClickListener {
-
+            drawerLayout.openDrawer(GravityCompat.START)
 
         }
 
@@ -71,8 +77,8 @@ class MyPageActivity : AppCompatActivity() {
 
         }
 
-
     }
+
 }
 
 
