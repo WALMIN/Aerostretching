@@ -32,13 +32,6 @@
 
         >
 
-    <ImageView
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:src="@drawable/face"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="85dp" />
-
         <ImageView
             android:id="@+id/face"
             app:layout_constraintBottom_toBottomOf="parent"
