@@ -77,7 +77,17 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
     }
 
     override fun onTrainingItemClick(item: TrainingItem, position: Int) {
-        // TODO - Open training
+        val bookIntent = Intent(this, BookTrainingActivity::class.java)
+
+        bookIntent.putExtra("date", item.date)
+        bookIntent.putExtra("time", item.time)
+        bookIntent.putExtra("length", item.length)
+        bookIntent.putExtra("title", item.title)
+        bookIntent.putExtra("place", item.place)
+        bookIntent.putExtra("trainer", item.trainer)
+        bookIntent.putExtra("spots", item.spots)
+
+        startActivity(bookIntent)
 
     }
 

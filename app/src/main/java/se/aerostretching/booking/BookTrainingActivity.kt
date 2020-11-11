@@ -1,5 +1,6 @@
 package se.aerostretching.booking
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,7 @@ class BookTrainingActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
@@ -29,6 +31,22 @@ class BookTrainingActivity : AppCompatActivity() {
         btn_trainer.setOnClickListener {
             goToTrainerActivity()
         }
+        val nameView : TextView = findViewById<View>(R.id.textViewBookTrainingName) as TextView
+        nameView.text = intent.getStringExtra("title")
+
+        val timeView : TextView = findViewById<View>(R.id.textViewBookTime) as TextView
+        timeView.text = "Start: ${intent.getStringExtra("time")} (${intent.getStringExtra("length")} )"
+
+        val placeView : TextView = findViewById<View>(R.id.textView) as TextView
+        placeView.text = intent.getStringExtra("place")
+
+        val trainerView : TextView = findViewById<View>(R.id.textViewBookTrainer) as TextView
+        trainerView.text = intent.getStringExtra("trainer")
+
+        val spotsView : TextView = findViewById<View>(R.id.textViewBookPlaces) as TextView
+        spotsView.text = intent.getStringExtra("spots")
+
+
     }
 
     fun goToUpcomingTrainingsActivity() {
@@ -50,7 +68,7 @@ class BookTrainingActivity : AppCompatActivity() {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "(date of booking)"
+        titleView.text = intent.getStringExtra("date")
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
