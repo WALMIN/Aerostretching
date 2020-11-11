@@ -73,6 +73,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
         bookIntent.putExtra("title", item.title)
         bookIntent.putExtra("place", item.place)
         bookIntent.putExtra("trainer", item.trainer)
+        bookIntent.putExtra("spots", item.spots)
 
         startActivity(bookIntent)
 

@@ -31,9 +31,8 @@ class TrainerActivity : AppCompatActivity() {
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.back)
-        startBtn.setOnClickListener {
-            startActivity(Intent(this, BookTrainingActivity::class.java))
-
+        startBtn.setOnClickListener  {
+            finish()
         }
 
     }

@@ -24,7 +24,9 @@ object GetData {
                             document.getString("length").toString(),
                             document.getString("title").toString(),
                             document.getString("place").toString(),
-                            document.getString("trainer").toString()))
+                            document.getString("trainer").toString(),
+                            document.getString("spots").toString()
+                    ))
 
                 }
 
