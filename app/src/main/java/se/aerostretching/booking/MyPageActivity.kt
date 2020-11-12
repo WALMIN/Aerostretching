@@ -7,14 +7,19 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class MyPageActivity : AppCompatActivity() {
+
+    lateinit var drawerLayout: DrawerLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page)
-
         customActionBar()
-
 
         val imageButton1 = findViewById<ImageButton>(R.id.btn_Profile)
         val imageButton2 = findViewById<ImageButton>(R.id.imageButtonTrainings)
@@ -27,7 +32,7 @@ class MyPageActivity : AppCompatActivity() {
         }
 
         imageButton2.setOnClickListener {
-            val intent2 = Intent(this, PersonalTrainingsActivity::class.java)
+            val intent2 = Intent(this, UpcomingTrainingsActivity::class.java)
             startActivity(intent2)
         }
 
@@ -44,6 +49,9 @@ class MyPageActivity : AppCompatActivity() {
     }
 
     fun customActionBar() {
+        drawerLayout = findViewById(R.id.drawerLayout)
+        Tools.setMenu(this, drawerLayout)
+
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -58,7 +66,7 @@ class MyPageActivity : AppCompatActivity() {
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.menu)
         startBtn.setOnClickListener {
-
+            drawerLayout.openDrawer(GravityCompat.START)
 
         }
 
@@ -67,12 +75,13 @@ class MyPageActivity : AppCompatActivity() {
         endBtn.visibility = View.VISIBLE
         endBtn.setImageResource(R.drawable.logout)
         endBtn.setOnClickListener {
-
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this, MainActivity::class.java))
 
         }
 
-
     }
+
 }
 
 

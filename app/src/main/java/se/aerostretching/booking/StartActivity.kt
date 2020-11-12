@@ -1,20 +1,23 @@
 package se.aerostretching.booking
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
+    lateinit var drawerLayout: DrawerLayout
+
     lateinit var trainingListView: RecyclerView
-    lateinit var trainingListAdapter: TrainingListAdapter
-    var trainingList = ArrayList<TrainingItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +28,9 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
     }
 
     fun customActionBar(){
+        drawerLayout = findViewById(R.id.drawerLayout)
+        Tools.setMenu(this, drawerLayout)
+
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -39,7 +45,7 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.menu)
         startBtn.setOnClickListener {
-
+            drawerLayout.openDrawer(GravityCompat.START)
 
         }
 
@@ -48,7 +54,10 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
         endBtn.visibility = View.VISIBLE
         endBtn.setImageResource(R.drawable.phone)
         endBtn.setOnClickListener {
-            startActivity(Intent(this, ContactsActivity::class.java))
+            val phoneIntent = Intent(Intent.ACTION_DIAL)
+            phoneIntent.data = Uri.parse("tel:" + "070-491 31 05")
+
+            startActivity(phoneIntent)
 
         }
 
@@ -56,33 +65,29 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
     fun initialize() {
         trainingListView = findViewById(R.id.trainingList)
-        trainingListAdapter = TrainingListAdapter(trainingList, this)
+        GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingList, this)
         trainingListView.layoutManager = LinearLayoutManager(this)
-        trainingListView.adapter = trainingListAdapter
-
-        // TODO - Get data from Firebase
-        var item = TrainingItem("13:00", "55 min", "Aerostretching", "Odenplan, Stockholm", "Anastasia Dobrova")
-        trainingList.add(item)
-        item = TrainingItem("14:00", "55 min", "Aeroyoga", "Odenplan, Stockholm", "Anastasia Dobrova")
-        trainingList.add(item)
-        item = TrainingItem("15:00", "55 min", "Kids Aerostretching", "Odenplan, Stockholm", "Anastasia Dobrova")
-        trainingList.add(item)
-        item = TrainingItem("14:00", "55 min", "Aeroyoga", "Odenplan, Stockholm", "Anastasia Dobrova")
-        trainingList.add(item)
-        item = TrainingItem("15:00", "55 min", "Kids Aerostretching", "Odenplan, Stockholm", "Anastasia Dobrova")
-        trainingList.add(item)
-
-        trainingListAdapter.notifyDataSetChanged()
+        trainingListView.adapter = GetData.trainingListAdapter
 
     }
 
     fun buttonAllTrainings(view: View){
-        // TODO - Show all trainings
+        startActivity(Intent(this, ScheduleBookingActivity::class.java))
 
     }
 
     override fun onTrainingItemClick(item: TrainingItem, position: Int) {
-        // TODO - Open training
+        val bookIntent = Intent(this, BookTrainingActivity::class.java)
+
+        bookIntent.putExtra("date", item.date)
+        bookIntent.putExtra("time", item.time)
+        bookIntent.putExtra("length", item.length)
+        bookIntent.putExtra("title", item.title)
+        bookIntent.putExtra("place", item.place)
+        bookIntent.putExtra("trainer", item.trainer)
+        bookIntent.putExtra("spots", item.spots)
+
+        startActivity(bookIntent)
 
     }
 

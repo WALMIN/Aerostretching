@@ -1,16 +1,15 @@
 package se.aerostretching.booking
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseUser
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,6 +50,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToStartActivity() {
+        GetData.trainings()
+
+
         val intent = Intent(this, StartActivity::class.java)
         startActivity(intent)
     }
@@ -85,4 +87,15 @@ class MainActivity : AppCompatActivity() {
         titleView.text = "AnastasiaAeroStudio"
 
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        if(FirebaseAuth.getInstance().currentUser != null){
+            goToStartActivity()
+
+        }
+
+    }
+
 }

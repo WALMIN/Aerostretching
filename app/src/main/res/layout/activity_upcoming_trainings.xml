@@ -6,71 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".UpcomingTrainingsActivity">
 
-    <TextView
-        android:id="@+id/textView38"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1 November"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="238dp" />
-
-    <TextView
-        android:id="@+id/textViewUpcomingTrainings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Upcoming trainings"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="36dp" />
-
-    <TextView
-        android:id="@+id/textView32"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="30 October"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="85dp" />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="391dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/trainingList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="141dp">
-
-        <TextView
-            android:id="@+id/textView36"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="aerostretching" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="295dp" >
-
-        <TextView
-            android:id="@+id/textView39"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="aerostretching" />
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="362dp" >
-
-        <TextView
-            android:id="@+id/textView40"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="aeroyoga" />
-    </androidx.cardview.widget.CardView>
-
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/training_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>
