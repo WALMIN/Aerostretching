@@ -23,7 +23,6 @@
         android:gravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf=""
         android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,11 +42,11 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
 
-        <TextView
+        <EditText
             app:layout_constraintStart_toEndOf="@id/face"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:id="@+id/textViewPageUserName"
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -88,7 +87,7 @@
             android:layout_height="25dp"
             android:src="@drawable/calendar" />
 
-        <TextView
+        <EditText
             app:layout_constraintStart_toEndOf="@+id/calender"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -131,8 +130,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/mailAcoount"
+        <EditText
+            android:id="@+id/mailAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -183,7 +182,7 @@
             android:src="@drawable/phone"
             />
 
-        <TextView
+        <EditText
             android:id="@+id/phoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -233,7 +232,7 @@
             android:src="@drawable/key"
             />
 
-        <TextView
+        <EditText
             android:id="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
