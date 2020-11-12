@@ -64,7 +64,7 @@ class RegisterActivity : AppCompatActivity() {
         val password2 = r_password_2.text.toString()
 
         if (email.isEmpty() || password.isEmpty() || password != password2) {
-            Toast.makeText(this, "Please enter text and try again", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please enter all fields correctly", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -74,6 +74,7 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d("!!!", "Success")
+                        Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
                         saveUserToDb()
                         goToMainActivity()
                     } else {
