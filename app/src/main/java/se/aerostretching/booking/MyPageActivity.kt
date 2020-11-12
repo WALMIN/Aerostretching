@@ -21,6 +21,9 @@ class MyPageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_my_page)
         customActionBar()
 
+        val nameView = findViewById<TextView>(R.id.textViewPageUserName)
+         nameView.text = GetData.name
+
         val imageButton1 = findViewById<ImageButton>(R.id.btn_Profile)
         val imageButton2 = findViewById<ImageButton>(R.id.imageButtonTrainings)
         val imageButton3 = findViewById<ImageButton>(R.id.imageButtonHistory)

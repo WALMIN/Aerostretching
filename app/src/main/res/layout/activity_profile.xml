@@ -43,18 +43,21 @@
 
 
         <EditText
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/face"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/userName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
             android:text="Viktoria olssson"
             android:textSize="17sp"
             android:textStyle="bold"
             android:textColor="#302F2F"
             android:layout_marginVertical="15dp"
+            app:layout_constrainedWidth="true"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -88,12 +91,15 @@
             android:src="@drawable/calendar" />
 
         <EditText
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
             app:layout_constraintStart_toEndOf="@+id/calender"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
             android:id="@+id/dateOfBirth"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="25.10.1987"
             android:textStyle="bold"
@@ -131,10 +137,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
             android:id="@+id/mailAccount"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
             android:text="viktoria.olsson@gmail.com"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -183,10 +192,13 @@
             />
 
         <EditText
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
             android:id="@+id/phoneNumber"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="9dp"
+            android:layout_marginRight="20dp"
             android:text="+46704254387"
             android:textColor="#302F2F"
             android:textSize="17sp"
@@ -233,10 +245,13 @@
             />
 
         <EditText
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constrainedWidth="true"
             android:id="@+id/password"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="9dp"
+            android:layout_marginRight="50dp"
             android:text="**********"
             android:textColor="#302F2F"
             android:textSize="17sp"
