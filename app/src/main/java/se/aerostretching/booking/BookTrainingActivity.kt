@@ -4,28 +4,50 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class BookTrainingActivity : AppCompatActivity() {
 
+    lateinit var db : FirebaseFirestore
+    lateinit var auth : FirebaseAuth
 
 
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_training)
+
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
         customActionBar()
         val buttonBook = findViewById<Button>(R.id.buttonBook)
         buttonBook.setOnClickListener {
-            goToUpcomingTrainingsActivity()
+            val myTrainingItem = TrainingItem(
+                    intent.getStringExtra("date").toString(),
+                    intent.getStringExtra("time").toString(),
+                    intent.getStringExtra("length").toString(),
+                    intent.getStringExtra("title").toString(),
+                    intent.getStringExtra("place").toString(),
+                    intent.getStringExtra("trainer").toString(),
+                    intent.getStringExtra("spots").toString())
+
+
+            val user = auth.currentUser
+            db.collection("users").document(user!!.uid).collection("myTrainings").add(myTrainingItem)
+                    .addOnCompleteListener { task ->
+                        Log.d("!!!", "Add: ${task.exception}")
+
+                    }
+            finish()
         }
         val btn_trainer = findViewById<ImageButton>(R.id.btn_trainer)
         btn_trainer.setOnClickListener {
@@ -49,10 +71,7 @@ class BookTrainingActivity : AppCompatActivity() {
 
     }
 
-    fun goToUpcomingTrainingsActivity() {
-        val intent = Intent(this, UpcomingTrainingsActivity::class.java)
-        startActivity(intent)
-    }
+
 
     fun goToTrainerActivity() {
         val intent = Intent(this, TrainerActivity::class.java)
