@@ -32,7 +32,7 @@ class MyPageActivity : AppCompatActivity() {
         }
 
         imageButton2.setOnClickListener {
-            val intent2 = Intent(this, PersonalTrainingsActivity::class.java)
+            val intent2 = Intent(this, UpcomingTrainingsActivity::class.java)
             startActivity(intent2)
         }
 
