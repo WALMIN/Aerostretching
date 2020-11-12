@@ -29,38 +29,15 @@ class ProfileActivity : AppCompatActivity() {
         customActionBar()
 
 
-         editTextName = findViewById<EditText>(R.id.userName)
-         editTextBirth = findViewById<EditText>(R.id.dateOfBirth)
-         editTextEmail = findViewById<EditText>(R.id.mailAccount)
-         editTextPhone = findViewById<EditText>(R.id.phoneNumber)
+         editTextName = findViewById(R.id.userName)
+         editTextBirth = findViewById(R.id.dateOfBirth)
+         editTextEmail = findViewById(R.id.mailAccount)
+         editTextPhone = findViewById(R.id.phoneNumber)
 
-        getUserInfo()
-
-
-
-    }
-
-    fun getUserInfo(){
-
-        FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser?.uid.toString()).collection("info")
-                .get()
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        for (document in task.result!!) {
-                            Log.d("!!!", document.id + " => " + document.data)
-
-                            editTextName.setText (document.getString("name").toString())
-                            editTextBirth.setText (document.getString("birth").toString())
-                            editTextEmail.setText (document.getString("email").toString())
-                            editTextPhone.setText (document.getString("phone").toString())
-
-                        }
-                    } else {
-                        Log.w("!!!", "Error getting documents.", task.exception)
-                    }
-                }
-
-
+        editTextName.setText (GetData.name)
+        editTextBirth.setText (GetData.birth)
+        editTextEmail.setText (GetData.email)
+        editTextPhone.setText (GetData.phone)
 
 
 
@@ -68,6 +45,18 @@ class ProfileActivity : AppCompatActivity() {
 
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
     fun customActionBar(){
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
