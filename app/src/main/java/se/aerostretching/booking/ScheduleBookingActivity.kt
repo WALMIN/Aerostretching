@@ -55,8 +55,8 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
     }
 
     fun initialize(){
-        db = FirebaseFirestore.getInstance()
 
+        db = FirebaseFirestore.getInstance()
         trainingListView = findViewById(R.id.trainingList)
         GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingList, this)
         trainingListView.layoutManager = LinearLayoutManager(this)

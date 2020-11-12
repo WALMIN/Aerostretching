@@ -40,13 +40,13 @@ class BookTrainingActivity : AppCompatActivity() {
                     intent.getStringExtra("trainer").toString(),
                     intent.getStringExtra("spots").toString())
 
-
             val user = auth.currentUser
             db.collection("users").document(user!!.uid).collection("myTrainings").add(myTrainingItem)
                     .addOnCompleteListener { task ->
                         Log.d("!!!", "Add: ${task.exception}")
 
                     }
+            GetDataMyTrainings.myTrainings()
             finish()
         }
         val btn_trainer = findViewById<ImageButton>(R.id.btn_trainer)
