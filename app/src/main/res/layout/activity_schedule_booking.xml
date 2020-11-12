@@ -6,19 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ScheduleBookingActivity">
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calender"
-        tools:layout_editor_absoluteX="177dp"
-        tools:layout_editor_absoluteY="55dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/trainingList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/training_item"/>
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="318dp"
-        android:layout_height="535dp"
-        android:text="Trainings"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="108dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

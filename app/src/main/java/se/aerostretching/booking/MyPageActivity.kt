@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class MyPageActivity : AppCompatActivity() {
 
@@ -73,7 +75,8 @@ class MyPageActivity : AppCompatActivity() {
         endBtn.visibility = View.VISIBLE
         endBtn.setImageResource(R.drawable.logout)
         endBtn.setOnClickListener {
-
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this, MainActivity::class.java))
 
         }
 
