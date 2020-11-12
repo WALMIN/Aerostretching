@@ -17,7 +17,6 @@ lateinit var r_password_1 : EditText
 lateinit var register_btn : Button
 
 lateinit var r_name : EditText
-lateinit var r_surname : EditText
 lateinit var r_phone : EditText
 lateinit var r_birthDate : EditText
 lateinit var r_password_2 : EditText
@@ -38,7 +37,7 @@ class RegisterActivity : AppCompatActivity() {
         r_email = findViewById(R.id.editTextRegisterEmail)
         r_password_1 = findViewById(R.id.editTextRegisterPassword)
 
-        r_surname = findViewById(R.id.editTextRegisterSurname)
+
         r_name = findViewById(R.id.editTextRegisterName)
         r_phone = findViewById(R.id.editTextRegisterPhone)
         r_birthDate = findViewById(R.id.editTextRegisterBirth)
@@ -88,7 +87,7 @@ class RegisterActivity : AppCompatActivity() {
         //val uid = FirebaseAuth.getInstance().uid?:""
         val uid = auth.currentUser?.uid
 
-        val user = User(r_email.text.toString(), r_name.text.toString(), r_surname.text.toString(), r_phone.text.toString(),
+        val user = User(r_email.text.toString(), r_name.text.toString(), r_phone.text.toString(),
                 r_birthDate.text.toString())
 
         db.collection("users").document(uid.toString()).collection("info").add(user)
@@ -124,4 +123,4 @@ class RegisterActivity : AppCompatActivity() {
 }
 
 
-class User(val email: String, val name : String, val surname : String, val phone : String, val birth : String)
+class User(val email: String, val name : String,val phone : String, val birth : String)
