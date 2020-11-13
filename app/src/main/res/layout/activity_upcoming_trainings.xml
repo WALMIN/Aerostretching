@@ -6,14 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".UpcomingTrainingsActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/trainingList"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constrainedHeight="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/training_item" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/myTrainingList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/mytraining_item" />
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

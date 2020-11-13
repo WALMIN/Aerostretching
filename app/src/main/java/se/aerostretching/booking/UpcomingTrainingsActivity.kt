@@ -1,17 +1,18 @@
 package se.aerostretching.booking
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FieldValue.delete
 import com.google.firebase.firestore.FirebaseFirestore
 
-class UpcomingTrainingsActivity : AppCompatActivity() , OnTrainingItemClickListener {
+class UpcomingTrainingsActivity : AppCompatActivity() , MyTrainingsListAdapter.OnTrainingItemClickListener {
     lateinit var db : FirebaseFirestore
 
     lateinit var myTrainingListView: RecyclerView
@@ -27,8 +28,11 @@ class UpcomingTrainingsActivity : AppCompatActivity() , OnTrainingItemClickListe
     fun initialize(){
 
         db = FirebaseFirestore.getInstance()
-        myTrainingListView = findViewById(R.id.trainingList)
-        GetDataMyTrainings.myTrainingListAdapter = TrainingListAdapter(GetDataMyTrainings.myTrainingList, this)
+        myTrainingListView = findViewById(R.id.myTrainingList)
+        GetDataMyTrainings.myTrainingListAdapter = MyTrainingsListAdapter(
+            GetDataMyTrainings.myTrainingList,
+            this
+        )
         myTrainingListView.layoutManager = LinearLayoutManager(this)
         myTrainingListView.adapter = GetDataMyTrainings.myTrainingListAdapter
 
@@ -56,17 +60,14 @@ class UpcomingTrainingsActivity : AppCompatActivity() , OnTrainingItemClickListe
     }
 
     override fun onTrainingItemClick(item: TrainingItem, position: Int) {
-        val bookIntent = Intent(this, BookTrainingActivity::class.java)
+        // TO DO: delete function
+        db.collection("myTrainings").document("DC")
+            .delete()
 
-        bookIntent.putExtra("date", item.date)
-        bookIntent.putExtra("time", item.time)
-        bookIntent.putExtra("length", item.length)
-        bookIntent.putExtra("title", item.title)
-        bookIntent.putExtra("place", item.place)
-        bookIntent.putExtra("trainer", item.trainer)
-        bookIntent.putExtra("spots", item.spots)
+        GetDataMyTrainings.myTrainings()
+        finish()
 
-        startActivity(bookIntent)
+
     }
 
     override fun onStart() {
