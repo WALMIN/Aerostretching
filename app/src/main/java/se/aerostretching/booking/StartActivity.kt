@@ -27,7 +27,7 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
     }
 
-    fun customActionBar(){
+    fun customActionBar() {
         drawerLayout = findViewById(R.id.drawerLayout)
         Tools.setMenu(this, drawerLayout)
 
@@ -71,7 +71,7 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
     }
 
-    fun buttonAllTrainings(view: View){
+    fun buttonAllTrainings(view: View) {
         startActivity(Intent(this, ScheduleBookingActivity::class.java))
 
     }

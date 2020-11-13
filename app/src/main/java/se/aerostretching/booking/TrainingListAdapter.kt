@@ -25,12 +25,14 @@ class TrainingListAdapter(var list: ArrayList<TrainingItem>, var onClickListener
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindItems(item: TrainingItem, onClick: OnTrainingItemClickListener) {
+            val dateView = itemView.findViewById<TextView>(R.id.trainingDate)
             val timeView = itemView.findViewById<TextView>(R.id.trainingTime)
             val lengthView = itemView.findViewById<TextView>(R.id.trainingLength)
             val titleView = itemView.findViewById<TextView>(R.id.trainingTitle)
             val placeView = itemView.findViewById<TextView>(R.id.trainingPlace)
             val trainerView = itemView.findViewById<TextView>(R.id.trainingTrainer)
 
+            dateView.text = item.date.replace(" ", "\n")
             timeView.text = item.time
             lengthView.text = item.length
             titleView.text = item.title
@@ -38,7 +40,7 @@ class TrainingListAdapter(var list: ArrayList<TrainingItem>, var onClickListener
             trainerView.text = item.trainer
 
             // OnClick
-            itemView.setOnClickListener{
+            itemView.setOnClickListener {
                 onClick.onTrainingItemClick(item, adapterPosition)
 
             }
@@ -49,7 +51,7 @@ class TrainingListAdapter(var list: ArrayList<TrainingItem>, var onClickListener
 
 }
 
-interface OnTrainingItemClickListener{
+interface OnTrainingItemClickListener {
     fun onTrainingItemClick(item: TrainingItem, position: Int)
 
 }
