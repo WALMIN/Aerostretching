@@ -65,7 +65,7 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
     fun initialize() {
         trainingListView = findViewById(R.id.trainingList)
-        GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingList, this)
+        GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingListStart, this)
         trainingListView.layoutManager = LinearLayoutManager(this)
         trainingListView.adapter = GetData.trainingListAdapter
 
