@@ -19,7 +19,7 @@ object GetData {
 
     fun trainings(){
         FirebaseFirestore.getInstance().collection("trainings").orderBy("date")
-            .whereGreaterThanOrEqualTo("date", SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(Calendar.getInstance().time))
+            .whereGreaterThanOrEqualTo("date", SimpleDateFormat("MMddyyyy", Locale.getDefault()).format(Calendar.getInstance().time))
             .limit(5)
             .addSnapshotListener { snapshot, e ->
                 Log.d("!!!", "READ")
