@@ -10,5 +10,24 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string-array name="titles">
+        <item>Aeroyoga</item>
+        <item>Aerostretching</item>
+        <item>Kids Aero</item>
+        <item>Suspension</item>
+    </string-array>
+
+    <string-array name="places">
+        <item>Odenplan</item>
+        <item>Bromma</item>
+        <item>Solna</item>
+        <item>Malmo</item>
+    </string-array>
+
+    <string-array name="trainer">
+        <item>Anastasia</item>
+        <item>Anna</item>
+        <item>Sofia</item>
+    </string-array>
 
 </resources>

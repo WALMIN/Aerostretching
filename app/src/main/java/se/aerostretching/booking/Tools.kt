@@ -31,6 +31,9 @@ object Tools {
                 R.id.contacts -> {
                     activity.startActivity(Intent(activity, ContactsActivity::class.java))
                 }
+                R.id.admin -> {
+                    activity.startActivity(Intent(activity, AdminActivity::class.java))
+                }
 
             }
             true

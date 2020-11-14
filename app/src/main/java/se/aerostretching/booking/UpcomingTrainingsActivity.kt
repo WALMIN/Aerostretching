@@ -9,8 +9,10 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.FieldValue.arrayRemove
 import com.google.firebase.firestore.FieldValue.delete
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.okhttp.internal.DiskLruCache
 
 class UpcomingTrainingsActivity : AppCompatActivity() , MyTrainingsListAdapter.OnTrainingItemClickListener {
     lateinit var db : FirebaseFirestore
@@ -59,10 +61,8 @@ class UpcomingTrainingsActivity : AppCompatActivity() , MyTrainingsListAdapter.O
 
     }
 
-    override fun onTrainingItemClick(item: TrainingItem, position: Int) {
+    override fun onTrainingItemClick(item: TrainingItem, position: Int)  {
         // TO DO: delete function
-        db.collection("myTrainings").document("DC")
-            .delete()
 
         GetDataMyTrainings.myTrainings()
         finish()
