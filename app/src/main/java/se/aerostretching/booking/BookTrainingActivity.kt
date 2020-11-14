@@ -57,7 +57,7 @@ class BookTrainingActivity : AppCompatActivity() {
         nameView.text = intent.getStringExtra("title")
 
         val timeView : TextView = findViewById<View>(R.id.textViewBookTime) as TextView
-        timeView.text = "Start: ${intent.getStringExtra("time")} (${intent.getStringExtra("length")} )"
+        timeView.text = getString(R.string.trainingTime) + "${intent.getStringExtra("time")} (${intent.getStringExtra("length")})"
 
         val placeView : TextView = findViewById<View>(R.id.textView) as TextView
         placeView.text = intent.getStringExtra("place")
@@ -66,7 +66,7 @@ class BookTrainingActivity : AppCompatActivity() {
         trainerView.text = intent.getStringExtra("trainer")
 
         val spotsView : TextView = findViewById<View>(R.id.textViewBookPlaces) as TextView
-        spotsView.text = intent.getStringExtra("spots")
+        spotsView.text = getString(R.string.trainingSpots) + "${intent.getStringExtra("spots")}"
 
 
     }

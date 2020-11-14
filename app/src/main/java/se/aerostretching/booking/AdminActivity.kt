@@ -17,21 +17,20 @@ import java.util.*
 class AdminActivity : AppCompatActivity() {
     lateinit var drawerLayoutAdmin: DrawerLayout
 
-    lateinit var textDate : TextView
-    lateinit var lengthadmin : EditText
-    lateinit var buttonSave : Button
+    lateinit var textDate: TextView
+    lateinit var lengthadmin: EditText
+    lateinit var buttonSave: Button
 
 
-    lateinit var spotsadmin : EditText
-    lateinit var timeadmin : EditText
+    lateinit var spotsadmin: EditText
+    lateinit var timeadmin: EditText
 
 
+    lateinit var spinnerTitles: Spinner
+    lateinit var spinnerPlaces: Spinner
+    lateinit var spinnerTrainer: Spinner
 
-    lateinit var spinnerTitles : Spinner
-    lateinit var spinnerPlaces : Spinner
-    lateinit var spinnerTrainer : Spinner
-
-    lateinit var calendarView : CalendarView
+    lateinit var calendarView: CalendarView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
@@ -46,7 +45,7 @@ class AdminActivity : AppCompatActivity() {
         // calendar view date change listener
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
             // set the calendar date as calendar view selected date
-            calendar.set(year,month,dayOfMonth)
+            calendar.set(year, month, dayOfMonth)
 
             // set this date as calendar view selected date
             calendarView.date = calendar.timeInMillis
@@ -55,24 +54,24 @@ class AdminActivity : AppCompatActivity() {
             val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
 
 
-        spinnerTitles = findViewById(R.id.spinnerTitles)
-        spinnerPlaces = findViewById(R.id.spinnerPlaces)
-        spinnerTrainer = findViewById(R.id.spinnerTrainer)
+            spinnerTitles = findViewById(R.id.spinnerTitles)
+            spinnerPlaces = findViewById(R.id.spinnerPlaces)
+            spinnerTrainer = findViewById(R.id.spinnerTrainer)
 
 
-        textDate = findViewById(R.id.textDate)
-        timeadmin = findViewById(R.id.editTexttime)
-        lengthadmin = findViewById(R.id.editTextlenght)
+            textDate = findViewById(R.id.textDate)
+            timeadmin = findViewById(R.id.editTexttime)
+            lengthadmin = findViewById(R.id.editTextlenght)
 
-        spotsadmin = findViewById(R.id.editTextspots)
+            spotsadmin = findViewById(R.id.editTextspots)
 
-        buttonSave = findViewById(R.id.buttonSave)
-        buttonSave.setOnClickListener {
-            createTraining()
+            buttonSave = findViewById(R.id.buttonSave)
+            buttonSave.setOnClickListener {
+                createTraining()
+            }
+
+
         }
-
-
-    }
         customActionBar()
     }
 
@@ -82,11 +81,10 @@ class AdminActivity : AppCompatActivity() {
     }
 
 
-
     fun createTraining() {
 
         // get calendar view selected date
-        val selectedDate:Long = calendarView.date
+        val selectedDate: Long = calendarView.date
 
         // set the calendar date as calendar view selected date
         //calendar.timeInMillis = selectedDate
@@ -97,22 +95,22 @@ class AdminActivity : AppCompatActivity() {
 //val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
 
         val trainingItem = TrainingItem(
-            calendarView.toString(),
-            timeadmin.text.toString(), lengthadmin.text.toString(),
-            spinnerTitles.selectedItem.toString(), spinnerPlaces.selectedItem.toString(),
-            spinnerTrainer.selectedItem.toString(), spotsadmin.text.toString())
+                calendarView.toString(),
+                timeadmin.text.toString(), lengthadmin.text.toString(),
+                spinnerTitles.selectedItem.toString(), spinnerPlaces.selectedItem.toString(),
+                spinnerTrainer.selectedItem.toString(), spotsadmin.text.toString())
 
         val user = auth.currentUser
-        if( user == null)
+        if (user == null)
             return
 
 
 
         db.collection("trainings").add(trainingItem)
-            .addOnCompleteListener { task ->
-                Log.d("!!!", "Add: ${task.exception}")
+                .addOnCompleteListener { task ->
+                    Log.d("!!!", "Add: ${task.exception}")
 
-            }
+                }
 
 
     }
@@ -128,7 +126,7 @@ class AdminActivity : AppCompatActivity() {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "Add training"
+        titleView.text = getString(R.string.adminActivity)
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton

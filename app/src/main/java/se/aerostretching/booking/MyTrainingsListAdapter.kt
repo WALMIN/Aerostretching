@@ -5,12 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.collections.ArrayList
 
-class MyTrainingsListAdapter(var list: ArrayList<TrainingItem>, var onClickListener: MyTrainingsListAdapter.OnTrainingItemClickListener) : RecyclerView.Adapter<MyTrainingsListAdapter.ViewHolder>() {
+class MyTrainingsListAdapter(
+    var list: ArrayList<TrainingItem>,
+    var onClickListener: MyTrainingsListAdapter.OnTrainingItemClickListener
+) : RecyclerView.Adapter<MyTrainingsListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.mytraining_item, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.mytraining_item, parent, false)
         return ViewHolder(view)
 
     }
@@ -38,7 +41,7 @@ class MyTrainingsListAdapter(var list: ArrayList<TrainingItem>, var onClickListe
             trainerView.text = item.trainer
 
             // OnClick
-            itemView.setOnClickListener{
+            itemView.setOnClickListener {
                 onClick.onTrainingItemClick(item, adapterPosition)
 
             }
@@ -47,7 +50,7 @@ class MyTrainingsListAdapter(var list: ArrayList<TrainingItem>, var onClickListe
 
     }
 
-    interface OnTrainingItemClickListener{
+    interface OnTrainingItemClickListener {
         fun onTrainingItemClick(item: TrainingItem, position: Int)
 
     }

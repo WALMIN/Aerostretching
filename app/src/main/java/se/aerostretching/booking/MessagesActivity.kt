@@ -17,7 +17,7 @@ class MessagesActivity : AppCompatActivity() {
 
     }
 
-    fun customActionBar(){
+    fun customActionBar() {
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -25,7 +25,7 @@ class MessagesActivity : AppCompatActivity() {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "Messages"
+        titleView.text = getString(R.string.messagesActivity)
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton

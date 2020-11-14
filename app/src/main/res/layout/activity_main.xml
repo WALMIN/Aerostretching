@@ -21,13 +21,13 @@
             android:id="@+id/imageViewStart"
             android:layout_width="match_parent"
             android:layout_height="256dp"
-            android:minHeight="256dp"
             android:maxHeight="256dp"
-            android:src="@drawable/mainpic"
+            android:minHeight="256dp"
             android:scaleType="fitXY"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/mainpic"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/editTextMainEmail"
@@ -37,7 +37,7 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="email"
+            android:hint="@string/emailHint"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -48,7 +48,7 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="password"
+            android:hint="@string/passwordHint"
             android:inputType="textPassword" />
 
         <Button
@@ -60,7 +60,7 @@
             android:layout_marginTop="8dp"
             android:layout_weight="0.5"
             android:width="160dip"
-            android:text="login"
+            android:text="@string/login"
             android:textStyle="bold"
             app:rippleColor="#FFFFFF"
             app:strokeColor="@color/colorAccent"
@@ -74,7 +74,7 @@
             android:layout_marginTop="8dp"
             android:layout_weight="0.1"
             android:gravity="center_horizontal|center_vertical"
-            android:text="or"
+            android:text="@string/or"
             android:textStyle="italic" />
 
         <Button
@@ -85,9 +85,9 @@
             android:layout_marginTop="8dp"
             android:layout_weight="0.5"
             android:width="160dip"
+            android:backgroundTint="@color/colorAccent"
             android:hapticFeedbackEnabled="false"
-            android:text="register"
-            android:backgroundTint="@color/colorAccent"/>
+            android:text="@string/register" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

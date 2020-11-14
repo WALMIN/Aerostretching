@@ -1,4 +1,5 @@
 package se.aerostretching.booking
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,9 +14,9 @@ import com.google.firebase.auth.FirebaseUser
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var textEmail : EditText
-    lateinit var textPassword : EditText
-    lateinit var auth : FirebaseAuth
+    lateinit var textEmail: EditText
+    lateinit var textPassword: EditText
+    lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             goToRegisterActivity()
         }
 
-        if(auth.currentUser != null) {
+        if (auth.currentUser != null) {
             Log.d("!!!", "Current user: ${auth.currentUser?.email}")
         }
 
@@ -61,22 +62,22 @@ class MainActivity : AppCompatActivity() {
         val email = textEmail.text.toString()
         val password = textPassword.text.toString()
 
-        if ( email.isEmpty() || password.isEmpty())
+        if (email.isEmpty() || password.isEmpty())
             return
 
         auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    Log.d("!!!", "Login success ${auth.currentUser?.email}")
-                    goToStartActivity()
-                } else {
-                    Log.d("!!!", "USer not loged in ${task.exception}")
-                }
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d("!!!", "Login success ${auth.currentUser?.email}")
+                        goToStartActivity()
+                    } else {
+                        Log.d("!!!", "USer not loged in ${task.exception}")
+                    }
 
-            }
+                }
     }
 
-    fun customActionBar(){
+    fun customActionBar() {
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -84,14 +85,14 @@ class MainActivity : AppCompatActivity() {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "AnastasiaAeroStudio"
+        titleView.text = getString(R.string.mainActivity)
 
     }
 
     override fun onStart() {
         super.onStart()
 
-        if(FirebaseAuth.getInstance().currentUser != null){
+        if (FirebaseAuth.getInstance().currentUser != null) {
             goToStartActivity()
 
         }

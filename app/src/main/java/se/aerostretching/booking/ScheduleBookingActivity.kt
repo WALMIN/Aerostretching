@@ -13,7 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
-    lateinit var db : FirebaseFirestore
+    lateinit var db: FirebaseFirestore
 
     lateinit var trainingListView: RecyclerView
 
@@ -25,7 +25,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
 
     }
 
-    fun customActionBar(){
+    fun customActionBar() {
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -33,7 +33,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "#" + resources.getString(R.string.app_name)
+        titleView.text = getString(R.string.scheduleBookingActivity)
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
@@ -54,8 +54,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
 
     }
 
-    fun initialize(){
-
+    fun initialize() {
         db = FirebaseFirestore.getInstance()
         trainingListView = findViewById(R.id.trainingList)
         GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingList, this)

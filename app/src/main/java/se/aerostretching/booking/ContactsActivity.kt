@@ -29,7 +29,7 @@ class ContactsActivity : AppCompatActivity() {
 
     }
 
-    fun customActionBar(){
+    fun customActionBar() {
         drawerLayout = findViewById(R.id.drawerLayout)
         Tools.setMenu(this, drawerLayout)
 
@@ -40,7 +40,7 @@ class ContactsActivity : AppCompatActivity() {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "Contacts"
+        titleView.text = getString(R.string.contactsActivity)
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
@@ -53,24 +53,24 @@ class ContactsActivity : AppCompatActivity() {
 
     }
 
-    fun initialize(){
+    fun initialize() {
         textViewContactsPhone = findViewById(R.id.textViewContactsPhone)
         textViewContactsEmail = findViewById(R.id.textViewContactsEmail)
         textViewContactsPlace = findViewById(R.id.textViewContactsPlace)
 
         mapView = findViewById(R.id.mapView)
-            mapView.settings.setSupportZoom(false)
-            mapView.settings.displayZoomControls = false
-            mapView.settings.builtInZoomControls = false
-            mapView.settings.javaScriptEnabled = true
+        mapView.settings.setSupportZoom(false)
+        mapView.settings.displayZoomControls = false
+        mapView.settings.builtInZoomControls = false
+        mapView.settings.javaScriptEnabled = true
 
         mapView.loadData("<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2034.5934916998403!2d18.06755401615737!3d59.339740417229805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9d42e9ea3a9d%3A0x70c6e34f6b0879e9!2sEngelbrektsgatan%2017%2C%20114%2032%20Stockholm!5e0!3m2!1sen!2sse!4v1604575997430!5m2!1sen!2sse\" width=\"100%\" height=\"100%\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\" aria-hidden=\"false\" tabindex=\"0\"></iframe>",
-            "text/html",
-            "utf-8")
+                "text/html",
+                "utf-8")
 
     }
 
-    fun contactsPhone(view: View){
+    fun contactsPhone(view: View) {
         val phoneIntent = Intent(Intent.ACTION_DIAL)
         phoneIntent.data = Uri.parse("tel:" + textViewContactsPhone.text.toString())
 
@@ -78,7 +78,7 @@ class ContactsActivity : AppCompatActivity() {
 
     }
 
-    fun contactsEmail(view: View){
+    fun contactsEmail(view: View) {
         val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", textViewContactsEmail.text.toString(), null))
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, resources.getString(R.string.app_name))
 
@@ -87,7 +87,7 @@ class ContactsActivity : AppCompatActivity() {
     }
 
 
-    fun contactsPlace(view: View){
+    fun contactsPlace(view: View) {
         val gmmIntentUri = Uri.parse("geo:59.3397404,18.067554")
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
 

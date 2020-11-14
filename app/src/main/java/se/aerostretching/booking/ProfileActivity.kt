@@ -29,36 +29,21 @@ class ProfileActivity : AppCompatActivity() {
         customActionBar()
 
 
-         editTextName = findViewById(R.id.userName)
-         editTextBirth = findViewById(R.id.dateOfBirth)
-         editTextEmail = findViewById(R.id.mailAccount)
-         editTextPhone = findViewById(R.id.phoneNumber)
+        editTextName = findViewById(R.id.userName)
+        editTextBirth = findViewById(R.id.dateOfBirth)
+        editTextEmail = findViewById(R.id.mailAccount)
+        editTextPhone = findViewById(R.id.phoneNumber)
 
-        editTextName.setText (GetData.name)
-        editTextBirth.setText (GetData.birth)
-        editTextEmail.setText (GetData.email)
-        editTextPhone.setText (GetData.phone)
-
-
-
-
+        editTextName.setText(GetData.name)
+        editTextBirth.setText(GetData.birth)
+        editTextEmail.setText(GetData.email)
+        editTextPhone.setText(GetData.phone)
 
 
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-    fun customActionBar(){
+    fun customActionBar() {
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -66,7 +51,7 @@ class ProfileActivity : AppCompatActivity() {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "Profile"
+        titleView.text = getString(R.string.profileActivity)
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton

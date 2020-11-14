@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Aerostretching"
+            android:text="@string/trainingTitle"
             android:textAllCaps="true"
             android:textColor="#000000"
             android:textSize="18sp"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="start: 10:00 (55 min)"
+            android:text="@string/trainingTime"
             android:textColor="#000000"
             android:textStyle="bold" />
 
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Stockholm, Odenplan"
+            android:text="@string/trainingPlace"
             android:textStyle="italic" />
 
         <ImageView
@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Available places: 8"
+            android:text="@string/trainingSpots"
             android:textStyle="bold" />
 
         <ImageView
@@ -90,7 +90,7 @@
             android:layout_height="40dp"
             android:layout_weight="1"
             android:backgroundTint="@color/colorAccent"
-            android:text="Book" />
+            android:text="@string/book" />
 
         <ImageView
 
@@ -123,7 +123,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="30"
                 android:gravity="center"
-                android:text="Anastasia Dobrova"
+                android:text=""
                 android:textColor="#000000"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -152,7 +152,7 @@
             android:id="@+id/textViewBookDescription"
             android:layout_width="297dp"
             android:layout_height="337dp"
-            android:text="trainings description" />
+            android:text="@string/trainingDescription" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

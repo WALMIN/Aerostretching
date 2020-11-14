@@ -41,9 +41,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:22.0.0'
 
     implementation 'com.google.firebase:firebase-firestore:22.0.0'
-    implementation 'com.google.firebase:firebase-auth:20.0.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
-
-    implementation 'com.github.jhonnyx2012:horizontal-picker:1.0.6'
 }

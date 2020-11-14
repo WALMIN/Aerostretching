@@ -25,7 +25,7 @@ class PersonalTrainingsActivity : AppCompatActivity() {
 
     }
 
-    fun customActionBar(){
+    fun customActionBar() {
         drawerLayout = findViewById(R.id.drawerLayout)
         Tools.setMenu(this, drawerLayout)
 
@@ -36,7 +36,7 @@ class PersonalTrainingsActivity : AppCompatActivity() {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "Personal trainings"
+        titleView.text = getString(R.string.personalTrainingsActivity)
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
@@ -49,23 +49,23 @@ class PersonalTrainingsActivity : AppCompatActivity() {
 
     }
 
-    fun initialize(){
+    fun initialize() {
         editTextApply = findViewById(R.id.editTextApply)
 
     }
 
-    fun applyPersonalTraining(view: View){
-        if(editTextApply.text.toString().trim().isNotEmpty()){
+    fun applyPersonalTraining(view: View) {
+        if (editTextApply.text.toString().trim().isNotEmpty()) {
             sendPersonalTraining()
 
-        }else{
-            Toast.makeText(this, "Du måste skriva något först.", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(this, getString(R.string.noTrainingText), Toast.LENGTH_LONG).show()
 
         }
 
     }
 
-    fun sendPersonalTraining(){
+    fun sendPersonalTraining() {
         Toast.makeText(this, "(send request)", Toast.LENGTH_LONG).show()
 
     }
