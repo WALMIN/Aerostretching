@@ -24,6 +24,9 @@
             android:id="@+id/contacts"
             android:icon="@drawable/phone"
             android:title="Contacts" />
+        <item
+            android:id="@+id/admin"
+            android:title="admin" />
 
     </group>
 </menu>
