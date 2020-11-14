@@ -1,5 +1,7 @@
 package se.aerostretching.booking
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,12 +14,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.DocumentId
 import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 class AdminActivity : AppCompatActivity() {
     lateinit var drawerLayoutAdmin: DrawerLayout
 
-    lateinit var textDate : TextView
+    lateinit var textDate : EditText
     lateinit var lengthadmin : EditText
     lateinit var buttonSave : Button
 
@@ -27,11 +30,12 @@ class AdminActivity : AppCompatActivity() {
 
 
 
+
     lateinit var spinnerTitles : Spinner
     lateinit var spinnerPlaces : Spinner
     lateinit var spinnerTrainer : Spinner
 
-    lateinit var calendarView : CalendarView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
@@ -39,40 +43,53 @@ class AdminActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        calendarView = findViewById(R.id.calendarView)
-        // get a calendar instance
-        val calendar = Calendar.getInstance()
-
-        // calendar view date change listener
-        calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            // set the calendar date as calendar view selected date
-            calendar.set(year,month,dayOfMonth)
-
-            // set this date as calendar view selected date
-            calendarView.date = calendar.timeInMillis
-
-            // format the calendar view selected date
-            val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
-
-
         spinnerTitles = findViewById(R.id.spinnerTitles)
         spinnerPlaces = findViewById(R.id.spinnerPlaces)
         spinnerTrainer = findViewById(R.id.spinnerTrainer)
 
 
-        textDate = findViewById(R.id.textDate)
+        textDate = findViewById(R.id.editTextdate)
         timeadmin = findViewById(R.id.editTexttime)
         lengthadmin = findViewById(R.id.editTextlenght)
 
         spotsadmin = findViewById(R.id.editTextspots)
 
         buttonSave = findViewById(R.id.buttonSave)
+
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH) +1
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        textDate.setOnClickListener {
+
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                // Display Selected date in TextView
+                textDate.setText("" + month + "" + dayOfMonth + "" + year)
+            }, year, month, day)
+            dpd.show()
+
+        }
+
+        timeadmin.setOnClickListener {
+            val cal = Calendar.getInstance()
+
+            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
+                cal.set(Calendar.HOUR_OF_DAY, hour)
+                cal.set(Calendar.MINUTE, minute)
+                timeadmin.setText(SimpleDateFormat("HH:mm").format(cal.time))
+            }
+            TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+        }
+
+
         buttonSave.setOnClickListener {
+
             createTraining()
         }
 
 
-    }
+
         customActionBar()
     }
 
@@ -85,19 +102,8 @@ class AdminActivity : AppCompatActivity() {
 
     fun createTraining() {
 
-        // get calendar view selected date
-        val selectedDate:Long = calendarView.date
-
-        // set the calendar date as calendar view selected date
-        //calendar.timeInMillis = selectedDate
-
-        // format the calendar view selected date
-        val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
-
-//val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
-
         val trainingItem = TrainingItem(
-            calendarView.toString(),
+            textDate.text.toString(),
             timeadmin.text.toString(), lengthadmin.text.toString(),
             spinnerTitles.selectedItem.toString(), spinnerPlaces.selectedItem.toString(),
             spinnerTrainer.selectedItem.toString(), spotsadmin.text.toString())
