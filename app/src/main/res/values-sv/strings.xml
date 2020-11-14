@@ -50,16 +50,10 @@
     <!-- Book training activity -->
     <string name="trainingTitle">Aeroyoga</string>
     <string name="trainingTime">Start:&#160;</string>
-    <string name="trainingPlace" translatable="false">Stockholm, Odenplan</string>
+    <string name="trainingPlace">Stockholm, Odenplan</string>
     <string name="trainingSpots">Available spots:&#160;</string>
     <string name="book">Book</string>
-    <string name="trainingTrainer" translatable="false">Anastasia Dobrova</string>
     <string name="trainingDescription">Description…</string>
-
-    <!-- Contacts activity -->
-    <string name="phone" translatable="false">070–491 31 05</string>
-    <string name="email" translatable="false">info@aerostretching.se</string>
-    <string name="address" translatable="false">Engelbrektsgatan 17, Stockholm</string>
 
     <!-- Main activity -->
     <string name="emailHint">Email</string>
@@ -69,15 +63,11 @@
     <string name="register">Register</string>
 
     <!-- Personal activity -->
-    <string name="trainingApply">Apply for an individual training session</string>
-    <string name="trainingApplyHint">Write briefly what type of training you want, how many people you are and the estimated time.\n\nnWe will answer you as soon as possible!</string>
-    <string name="sendTraining">Send</string>
+    <string name="trainingApply">Ansök om individuellt träningspass</string>
+    <string name="trainingApplyHint">Skriv kort vilken typ av träning du vill ha, hur många personer ni är och beräknad tid.\n\nVi svarar dig så snart som möjligt!</string>
+    <string name="sendTraining">Skicka</string>
 
-    <string name="noTrainingText">You have to write something</string>
-
-    <!-- Profile -->
-    <string name="birth" translatable="false">010623</string>
-    <string name="password" translatable="false">**********</string>
+    <string name="noTrainingText">Du måste skriva något</string>
 
     <!-- Register -->
     <string name="nameHint">First and last name</string>
@@ -90,16 +80,11 @@
     <string name="seeMore">See more</string>
 
     <!-- Trainer activity -->
-    <string name="trainerDescription">Founder of the studio for aero yoga, stretching, complex training. Includes universal education aimed at improving health. Listens to their students and helps them achieve their goals.</string>
+    <string name="trainerDescription">Grundare av studion för aero yoga, stretching, komplex träning. Omfattar universell utbildning som syftar till att förbättra hälsan. Lyssnar på sina elever och hjälper dem att uppnå sina mål.</string>
 
     <!-- Register -->
     <string name="enterAllFields">Please enter all fields correctly</string>
     <string name="registrationSuccessful">Registration successful</string>
     <string name="userNotCreated">User not created</string>
-
-    <!-- Other -->
-    <string name="trainingItemDate" translatable="false">15\nOct</string>
-    <string name="trainingItemTime" translatable="false">13:00</string>
-    <string name="trainingItemLength" translatable="false">55 min</string>
 
 </resources>

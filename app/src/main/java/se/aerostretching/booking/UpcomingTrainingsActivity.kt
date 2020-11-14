@@ -9,13 +9,10 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.firestore.FieldValue.arrayRemove
-import com.google.firebase.firestore.FieldValue.delete
 import com.google.firebase.firestore.FirebaseFirestore
-import com.squareup.okhttp.internal.DiskLruCache
 
-class UpcomingTrainingsActivity : AppCompatActivity() , MyTrainingsListAdapter.OnTrainingItemClickListener {
-    lateinit var db : FirebaseFirestore
+class UpcomingTrainingsActivity : AppCompatActivity(), MyTrainingsListAdapter.OnTrainingItemClickListener {
+    lateinit var db: FirebaseFirestore
 
     lateinit var myTrainingListView: RecyclerView
 
@@ -27,20 +24,20 @@ class UpcomingTrainingsActivity : AppCompatActivity() , MyTrainingsListAdapter.O
 
     }
 
-    fun initialize(){
+    fun initialize() {
 
         db = FirebaseFirestore.getInstance()
         myTrainingListView = findViewById(R.id.myTrainingList)
         GetDataMyTrainings.myTrainingListAdapter = MyTrainingsListAdapter(
-            GetDataMyTrainings.myTrainingList,
-            this
+                GetDataMyTrainings.myTrainingList,
+                this
         )
         myTrainingListView.layoutManager = LinearLayoutManager(this)
         myTrainingListView.adapter = GetDataMyTrainings.myTrainingListAdapter
 
     }
 
-    fun customActionBar(){
+    fun customActionBar() {
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -48,7 +45,7 @@ class UpcomingTrainingsActivity : AppCompatActivity() , MyTrainingsListAdapter.O
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "Upcoming trainings"
+        titleView.text = getString(R.string.upcomingTrainingsActivity)
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
@@ -61,7 +58,7 @@ class UpcomingTrainingsActivity : AppCompatActivity() , MyTrainingsListAdapter.O
 
     }
 
-    override fun onTrainingItemClick(item: TrainingItem, position: Int)  {
+    override fun onTrainingItemClick(item: TrainingItem, position: Int) {
         // TO DO: delete function
 
         GetDataMyTrainings.myTrainings()

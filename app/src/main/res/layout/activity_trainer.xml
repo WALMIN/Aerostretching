@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="32dp"
-        android:text="Anastasia Dobrova"
+        android:text="@string/trainingTrainer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -23,7 +23,8 @@
         android:layout_height="135dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="100dp"
-        android:text="Grundare av studion för aero yoga, stretching, komplex träning. Omfattar universell utbildning som syftar till att förbättra hälsan. Lyssnar på hans elever och hjälper dem att uppnå sina mål."
+        android:text="@string/trainerDescription"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,7 +38,7 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "#" + resources.getString(R.string.app_name)
+        titleView.text = getString(R.string.startActivity)
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
@@ -55,7 +55,7 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
         endBtn.setImageResource(R.drawable.phone)
         endBtn.setOnClickListener {
             val phoneIntent = Intent(Intent.ACTION_DIAL)
-            phoneIntent.data = Uri.parse("tel:" + "070-491 31 05")
+            phoneIntent.data = Uri.parse("tel:" + getString(R.string.phone))
 
             startActivity(phoneIntent)
 

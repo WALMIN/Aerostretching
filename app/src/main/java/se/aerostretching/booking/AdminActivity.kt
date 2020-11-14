@@ -24,17 +24,17 @@ class AdminActivity : AppCompatActivity() {
     lateinit var lengthadmin : EditText
     lateinit var buttonSave : Button
 
-
-    lateinit var spotsadmin : EditText
-    lateinit var timeadmin : EditText
-
+    lateinit var spotsadmin: EditText
+    lateinit var timeadmin: EditText
 
 
+    lateinit var spinnerTitles: Spinner
+    lateinit var spinnerPlaces: Spinner
+    lateinit var spinnerTrainer: Spinner
 
     lateinit var spinnerTitles : Spinner
     lateinit var spinnerPlaces : Spinner
     lateinit var spinnerTrainer : Spinner
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +52,7 @@ class AdminActivity : AppCompatActivity() {
         timeadmin = findViewById(R.id.editTexttime)
         lengthadmin = findViewById(R.id.editTextlenght)
 
-        spotsadmin = findViewById(R.id.editTextspots)
+            spotsadmin = findViewById(R.id.editTextspots)
 
         buttonSave = findViewById(R.id.buttonSave)
 
@@ -89,7 +89,6 @@ class AdminActivity : AppCompatActivity() {
         }
 
 
-
         customActionBar()
     }
 
@@ -97,7 +96,6 @@ class AdminActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
-
 
 
     fun createTraining() {
@@ -109,16 +107,16 @@ class AdminActivity : AppCompatActivity() {
             spinnerTrainer.selectedItem.toString(), spotsadmin.text.toString())
 
         val user = auth.currentUser
-        if( user == null)
+        if (user == null)
             return
 
 
 
         db.collection("trainings").add(trainingItem)
-            .addOnCompleteListener { task ->
-                Log.d("!!!", "Add: ${task.exception}")
+                .addOnCompleteListener { task ->
+                    Log.d("!!!", "Add: ${task.exception}")
 
-            }
+                }
 
 
     }
@@ -134,7 +132,7 @@ class AdminActivity : AppCompatActivity() {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "Add training"
+        titleView.text = getString(R.string.adminActivity)
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton

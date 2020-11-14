@@ -9,20 +9,18 @@ import android.widget.*
 import androidx.appcompat.app.ActionBar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.DocumentId
 
+lateinit var r_email: EditText
+lateinit var r_password_1: EditText
+lateinit var register_btn: Button
 
-lateinit var r_email : EditText
-lateinit var r_password_1 : EditText
-lateinit var register_btn : Button
+lateinit var r_name: EditText
+lateinit var r_phone: EditText
+lateinit var r_birthDate: EditText
+lateinit var r_password_2: EditText
 
-lateinit var r_name : EditText
-lateinit var r_phone : EditText
-lateinit var r_birthDate : EditText
-lateinit var r_password_2 : EditText
-
-lateinit var auth : FirebaseAuth
-lateinit var db : FirebaseFirestore
+lateinit var auth: FirebaseAuth
+lateinit var db: FirebaseFirestore
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -63,7 +61,8 @@ class RegisterActivity : AppCompatActivity() {
         val password2 = r_password_2.text.toString()
 
         if (email.isEmpty() || password.isEmpty() || password != password2) {
-            Toast.makeText(this, "Please enter all fields correctly", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.enterAllFields), Toast.LENGTH_SHORT).show()
+
             return
         }
 
@@ -73,12 +72,12 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d("!!!", "Success")
-                        Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.registrationSuccessful), Toast.LENGTH_SHORT).show()
                         saveUserToDb()
                         goToMainActivity()
                     } else {
                         Log.d("!!!", "User not created ${task.exception}")
-                        Toast.makeText(this, "User not created", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.userNotCreated), Toast.LENGTH_SHORT).show()
                     }
                 }
     }
@@ -110,7 +109,7 @@ class RegisterActivity : AppCompatActivity() {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "Register"
+        titleView.text = getString(R.string.registerActivity)
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
@@ -123,4 +122,4 @@ class RegisterActivity : AppCompatActivity() {
 }
 
 
-class User(val email: String, val name : String,val phone : String, val birth : String)
+class User(val email: String, val name: String, val phone: String, val birth: String)

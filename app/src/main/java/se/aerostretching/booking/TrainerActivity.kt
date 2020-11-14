@@ -1,6 +1,5 @@
 package se.aerostretching.booking
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,7 +16,7 @@ class TrainerActivity : AppCompatActivity() {
 
     }
 
-    fun customActionBar(){
+    fun customActionBar() {
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -25,13 +24,13 @@ class TrainerActivity : AppCompatActivity() {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "Trainer"
+        titleView.text = getString(R.string.trainerActivity)
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.back)
-        startBtn.setOnClickListener  {
+        startBtn.setOnClickListener {
             finish()
         }
 

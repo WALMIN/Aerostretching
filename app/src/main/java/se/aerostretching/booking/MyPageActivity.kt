@@ -22,7 +22,7 @@ class MyPageActivity : AppCompatActivity() {
         customActionBar()
 
         val nameView = findViewById<TextView>(R.id.textViewPageUserName)
-         nameView.text = GetData.name
+        nameView.text = GetData.name
 
         val imageButton1 = findViewById<ImageButton>(R.id.btn_Profile)
         val imageButton2 = findViewById<ImageButton>(R.id.imageButtonTrainings)
@@ -62,7 +62,7 @@ class MyPageActivity : AppCompatActivity() {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = "My page"
+        titleView.text = getString(R.string.myPageActivity)
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton

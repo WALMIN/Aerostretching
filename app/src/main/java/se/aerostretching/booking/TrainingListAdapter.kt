@@ -5,12 +5,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlin.collections.ArrayList
 
-class TrainingListAdapter(var list: ArrayList<TrainingItem>, var onClickListener: OnTrainingItemClickListener) : RecyclerView.Adapter<TrainingListAdapter.ViewHolder>() {
+class TrainingListAdapter(
+    var list: ArrayList<TrainingItem>,
+    var onClickListener: OnTrainingItemClickListener
+) : RecyclerView.Adapter<TrainingListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.training_item, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.training_item, parent, false)
         return ViewHolder(view)
 
     }
@@ -32,7 +35,8 @@ class TrainingListAdapter(var list: ArrayList<TrainingItem>, var onClickListener
             val placeView = itemView.findViewById<TextView>(R.id.trainingPlace)
             val trainerView = itemView.findViewById<TextView>(R.id.trainingTrainer)
 
-            dateView.text = "${item.date.substring(2, 4)}\n${Tools.getMonth(item.date.substring(0, 2))}"
+            dateView.text =
+                "${item.date.substring(2, 4)}\n${Tools.getMonth(item.date.substring(0, 2))}"
             timeView.text = item.time
             lengthView.text = item.length
             titleView.text = item.title
