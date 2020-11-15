@@ -96,6 +96,8 @@
                     android:layout_marginTop="32dp"
                     android:ems="10"
                     android:hint="@string/dateHint"
+                    android:maxLines="1"
+                    android:inputType="number"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="parent" />
@@ -107,6 +109,8 @@
                     android:layout_marginTop="32dp"
                     android:ems="10"
                     android:hint="@string/timeHint"
+                    android:maxLines="1"
+                    android:inputType="datetime"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="parent" />
@@ -118,6 +122,8 @@
                     android:layout_marginTop="32dp"
                     android:ems="10"
                     android:hint="@string/lengthHint"
+                    android:inputType="number"
+                    android:maxLines="1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="parent" />
@@ -129,6 +135,8 @@
                     android:layout_marginTop="32dp"
                     android:ems="10"
                     android:hint="@string/spotsHint"
+                    android:inputType="number"
+                    android:maxLines="1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="parent" />
