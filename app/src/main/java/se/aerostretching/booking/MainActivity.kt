@@ -51,9 +51,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun goToStartActivity() {
-        GetData.trainings()
-        GetData.profile()
-
         val intent = Intent(this, StartActivity::class.java)
         startActivity(intent)
     }
