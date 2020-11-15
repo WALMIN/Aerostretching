@@ -111,7 +111,7 @@
                                 android:maxHeight="48dp"
                                 android:gravity="center"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+                                android:src="@drawable/forward"
                                 app:tint="@color/colorAccent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"

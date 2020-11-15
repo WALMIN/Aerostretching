@@ -12,8 +12,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.DocumentId
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -26,11 +24,6 @@ class AdminActivity : AppCompatActivity() {
 
     lateinit var spotsadmin: EditText
     lateinit var timeadmin: EditText
-
-
-    lateinit var spinnerTitles: Spinner
-    lateinit var spinnerPlaces: Spinner
-    lateinit var spinnerTrainer: Spinner
 
     lateinit var spinnerTitles : Spinner
     lateinit var spinnerPlaces : Spinner

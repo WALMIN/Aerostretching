@@ -51,13 +51,14 @@
 
             <ImageButton
                 android:id="@+id/btn_Profile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="fitCenter"
                 android:backgroundTint="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
+                app:srcCompat="@drawable/forward" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -97,13 +98,14 @@
 
             <ImageButton
                 android:id="@+id/imageButtonTrainings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFFEFE"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="fitCenter"
+                android:backgroundTint="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
+                app:srcCompat="@drawable/forward" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -144,13 +146,14 @@
 
             <ImageButton
                 android:id="@+id/imageButtonHistory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="fitCenter"
                 android:backgroundTint="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
+                app:srcCompat="@drawable/forward" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -193,13 +196,14 @@
             <ImageButton
 
                 android:id="@+id/imageButtonMessages"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:scaleType="fitCenter"
                 android:backgroundTint="#FFFFFF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
+                app:srcCompat="@drawable/forward" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
