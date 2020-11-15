@@ -136,7 +136,7 @@
                 android:layout_weight="40"
                 android:backgroundTint="#FFFFFF"
                 android:tint="@color/colorAccent"
-                app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
+                app:srcCompat="@drawable/forward" />
         </LinearLayout>
 
         <ImageView
