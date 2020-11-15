@@ -4,29 +4,30 @@
         <item
             android:id="@+id/home"
             android:icon="@drawable/home"
-            android:title="Home" />
+            android:title="@string/home" />
 
         <item
             android:id="@+id/myPage"
             android:icon="@drawable/face"
-            android:title="My page" />
+            android:title="@string/myPageActivity" />
 
         <item
             android:id="@+id/groupTraining"
             android:icon="@drawable/group_training"
-            android:title="Group training" />
+            android:title="@string/groupTraining" />
 
         <item
             android:id="@+id/personalTraining"
             android:icon="@drawable/personal_training"
-            android:title="Personal training" />
+            android:title="@string/personalTrainingsActivity" />
         <item
             android:id="@+id/contacts"
             android:icon="@drawable/phone"
-            android:title="Contacts" />
+            android:title="@string/contactsActivity" />
+
         <item
             android:id="@+id/admin"
-            android:title="admin" />
+            android:title="@string/admin" />
 
     </group>
 </menu>

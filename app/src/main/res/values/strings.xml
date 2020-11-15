@@ -6,16 +6,21 @@
     <string name="adminActivity">Add training</string>
     <string name="contactsActivity">Contacts</string>
     <string name="historyActivity">History</string>
-    <string name="mainActivity">#AnastasiaAeroStudio</string>
+    <string name="mainActivity">#AeroStudioStockholm</string>
     <string name="messagesActivity">Messages</string>
     <string name="myPageActivity">My page</string>
-    <string name="personalTrainingsActivity">Personal trainings</string>
+    <string name="personalTrainingsActivity">Personal training</string>
     <string name="profileActivity">Profile</string>
     <string name="registerActivity">Register</string>
-    <string name="scheduleBookingActivity">#AnastasiaAeroStudio</string>
-    <string name="startActivity">#Aerostretching</string>
+    <string name="scheduleBookingActivity">#AeroStudioStockholm</string>
+    <string name="startActivity">#AeroStudioStockholm</string>
     <string name="trainerActivity">Trainer</string>
-    <string name="upcomingTrainingsActivity">Upcoming trainings</string>
+    <string name="upcomingTrainingsActivity">Booked trainings</string>
+
+    <!-- Menu -->
+    <string name="home">Home</string>
+    <string name="groupTraining">Group training</string>
+    <string name="admin">Admin</string>
 
     <!-- Admin page -->
     <string name="dateHint">Date</string>
@@ -82,7 +87,7 @@
     <!-- Register -->
     <string name="nameHint">First and last name</string>
     <string name="birthHint">Date of birth</string>
-    <string name="phoneHint">Phone</string>
+    <string name="phoneHint">Phone number</string>
     <string name="confirmPassword">Confirm password</string>
 
     <!-- Start activity -->

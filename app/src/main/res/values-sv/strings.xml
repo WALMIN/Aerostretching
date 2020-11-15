@@ -3,36 +3,41 @@
     <string name="app_name">Aerostretching</string>
 
     <!-- Titles -->
-    <string name="adminActivity">Add training</string>
-    <string name="contactsActivity">Contacts</string>
-    <string name="historyActivity">History</string>
-    <string name="mainActivity">#AnastasiaAeroStudio</string>
-    <string name="messagesActivity">Messages</string>
-    <string name="myPageActivity">My page</string>
-    <string name="personalTrainingsActivity">Personal trainings</string>
-    <string name="profileActivity">Profile</string>
-    <string name="registerActivity">Register</string>
-    <string name="scheduleBookingActivity">#AnastasiaAeroStudio</string>
-    <string name="startActivity">#Aerostretching</string>
-    <string name="trainerActivity">Trainer</string>
-    <string name="upcomingTrainingsActivity">Upcoming trainings</string>
+    <string name="adminActivity">Lägg till pass</string>
+    <string name="contactsActivity">Kontakt</string>
+    <string name="historyActivity">Historik</string>
+    <string name="mainActivity">#AeroStudioStockholm</string>
+    <string name="messagesActivity">Meddelande</string>
+    <string name="myPageActivity">Min sida</string>
+    <string name="personalTrainingsActivity">Personligt träningspass</string>
+    <string name="profileActivity">Profil</string>
+    <string name="registerActivity">Registrera</string>
+    <string name="scheduleBookingActivity">#AeroStudioStockholm</string>
+    <string name="startActivity">#AeroStudioStockholm</string>
+    <string name="trainerActivity">Tränare</string>
+    <string name="upcomingTrainingsActivity">Bokade pass</string>
+
+    <!-- Menu -->
+    <string name="home">Hem</string>
+    <string name="groupTraining">Gruppass</string>
+    <string name="admin">Admin</string>
 
     <!-- Admin page -->
-    <string name="dateHint">Date</string>
-    <string name="timeHint">Time</string>
-    <string name="lengthHint">Length</string>
-    <string name="spotsHint">Spots</string>
-    <string name="save">Save</string>
+    <string name="dateHint">Datum</string>
+    <string name="timeHint">Tid</string>
+    <string name="lengthHint">Längd</string>
+    <string name="spotsHint">Platser</string>
+    <string name="save">Spara</string>
 
-    <string name="title">Title:</string>
+    <string name="title">Titel:</string>
     <string-array name="titles">
         <item>Aeroyoga</item>
         <item>Aerostretching</item>
-        <item>Kids Aero</item>
+        <item>Barn Aero</item>
         <item>Suspension</item>
     </string-array>
 
-    <string name="place">Place:</string>
+    <string name="place">Plats:</string>
     <string-array name="places">
         <item>Odenplan</item>
         <item>Bromma</item>
@@ -57,10 +62,10 @@
 
     <!-- Main activity -->
     <string name="emailHint">Email</string>
-    <string name="passwordHint">Password</string>
-    <string name="login">Login</string>
-    <string name="or">or</string>
-    <string name="register">Register</string>
+    <string name="passwordHint">Lösenord</string>
+    <string name="login">Logga in</string>
+    <string name="or">eller</string>
+    <string name="register">Registrera</string>
 
     <!-- Personal activity -->
     <string name="trainingApply">Ansök om individuellt träningspass</string>
@@ -70,21 +75,21 @@
     <string name="noTrainingText">Du måste skriva något</string>
 
     <!-- Register -->
-    <string name="nameHint">First and last name</string>
+    <string name="nameHint">För- och efternamn</string>
     <string name="birthHint">Date of birth</string>
-    <string name="phoneHint">Phone</string>
-    <string name="confirmPassword">Confirm password</string>
+    <string name="phoneHint">Telefon nummer</string>
+    <string name="confirmPassword">Upprepa lösenord</string>
 
     <!-- Start activity -->
-    <string name="upcoming">Upcoming</string>
-    <string name="seeMore">See more</string>
+    <string name="upcoming">Kommande</string>
+    <string name="seeMore">Se mer</string>
 
     <!-- Trainer activity -->
     <string name="trainerDescription">Grundare av studion för aero yoga, stretching, komplex träning. Omfattar universell utbildning som syftar till att förbättra hälsan. Lyssnar på sina elever och hjälper dem att uppnå sina mål.</string>
 
     <!-- Register -->
-    <string name="enterAllFields">Please enter all fields correctly</string>
-    <string name="registrationSuccessful">Registration successful</string>
-    <string name="userNotCreated">User not created</string>
+    <string name="enterAllFields">Var snäll och fyll i alla fält korrekt</string>
+    <string name="registrationSuccessful">Registering lyckades</string>
+    <string name="userNotCreated">Användare skapdes inte</string>
 
 </resources>
