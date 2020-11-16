@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.properties.Delegates
 
 class AdminActivity : AppCompatActivity() {
     lateinit var drawerLayoutAdmin: DrawerLayout
@@ -28,6 +29,10 @@ class AdminActivity : AppCompatActivity() {
     lateinit var spinnerTitles : Spinner
     lateinit var spinnerPlaces : Spinner
     lateinit var spinnerTrainer : Spinner
+    lateinit var seek_bar : SeekBar
+    lateinit var seek_barLength : SeekBar
+    var i by Delegates.notNull<Int>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,9 +48,11 @@ class AdminActivity : AppCompatActivity() {
 
         textDate = findViewById(R.id.editTextdate)
         timeadmin = findViewById(R.id.editTexttime)
-        lengthadmin = findViewById(R.id.editTextlenght)
+        lengthadmin = findViewById(R.id.editTextlength)
 
-            spotsadmin = findViewById(R.id.editTextspots)
+            spotsadmin = findViewById(R.id.editTextSpots)
+        seek_bar = findViewById(R.id.seekBar)
+        seek_barLength = findViewById(R.id.seekBarlength)
 
         buttonSave = findViewById(R.id.buttonSave)
 
@@ -75,6 +82,51 @@ class AdminActivity : AppCompatActivity() {
             TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
         }
 
+        // Set a SeekBar change listener
+
+
+        seek_bar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+
+            override fun onProgressChanged(seekBar: SeekBar, i: Int, b: Boolean) {
+                // Display the current progress of SeekBar
+                val i = i
+                spotsadmin.setText("Spots:  $i")
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // Do something
+                Toast.makeText(applicationContext,"start tracking",Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                // Do something
+                Toast.makeText(applicationContext,"stop tracking",Toast.LENGTH_SHORT).show()
+            }
+        } )
+        /*
+        seek_barLength.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+
+            override fun onProgressChanged(seekBarLenght: SeekBar, n: Int, b: Boolean) {
+                // Display the current progress of SeekBar
+                val n : String = n.toString()
+
+
+                lengthadmin.setText("Length: $n min")
+            }
+
+            override fun onStartTrackingTouch(seekBarLenght: SeekBar) {
+                // Do something
+                Toast.makeText(applicationContext,"start tracking",Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onStopTrackingTouch(seekBarLenght: SeekBar) {
+                // Do something
+                Toast.makeText(applicationContext,"stop tracking",Toast.LENGTH_SHORT).show()
+            }
+        } )
+
+         */
+
 
         buttonSave.setOnClickListener {
 
@@ -95,9 +147,9 @@ class AdminActivity : AppCompatActivity() {
 
         val trainingItem = TrainingItem(
             textDate.text.toString(),
-            timeadmin.text.toString(), lengthadmin.text.toString(),
+            timeadmin.text.toString(), lengthadmin.toString() ,
             spinnerTitles.selectedItem.toString(), spinnerPlaces.selectedItem.toString(),
-            spinnerTrainer.selectedItem.toString(), spotsadmin.text.toString())
+            spinnerTrainer.selectedItem.toString(), i.toString())
 
         val user = auth.currentUser
         if (user == null)

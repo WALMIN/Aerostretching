@@ -16,6 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
@@ -28,11 +29,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="vertical">
 
                         <TextView
@@ -46,31 +49,14 @@
                             android:id="@+id/spinnerTitles"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:entries="@array/titles" />
+                            android:entries="@array/titles"
+                            android:gravity="center" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/place" />
-
-                        <Spinner
-                            android:id="@+id/spinnerPlaces"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/places" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="vertical">
 
                         <TextView
@@ -78,27 +64,37 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:gravity="center"
                             android:text="@string/trainer" />
 
                         <Spinner
                             android:id="@+id/spinnerTrainer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:entries="@array/trainer" />
+                            android:entries="@array/trainer"
+                            android:gravity="center" />
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <EditText
-                    android:id="@+id/editTextdate"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:ems="10"
-                    android:hint="@string/dateHint"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/place" />
+
+                    <Spinner
+                        android:id="@+id/spinnerPlaces"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/places" />
+                </LinearLayout>
 
                 <EditText
                     android:id="@+id/editTexttime"
@@ -112,26 +108,63 @@
                     app:layout_constraintTop_toBottomOf="parent" />
 
                 <EditText
-                    android:id="@+id/editTextlenght"
+                    android:id="@+id/editTextdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
                     android:ems="10"
-                    android:hint="@string/lengthHint"
+                    android:hint="@string/dateHint"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="parent" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
                 <EditText
-                    android:id="@+id/editTextspots"
+                    android:id="@+id/editTextlength"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="32dp"
                     android:ems="10"
-                    android:hint="@string/spotsHint"
+                    android:text="@string/lengthHint"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="parent" />
+
+                    <SeekBar
+                        android:id="@+id/seekBarlength"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:max="120"
+                        android:min="5" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/editTextSpots"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"
+                        android:text="Spots: "
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+                    <SeekBar
+                        android:id="@+id/seekBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:max="20"
+                        android:min="1" />
+                </LinearLayout>
 
 
                 <Button
