@@ -91,4 +91,12 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        GetData.trainings()
+        GetData.profile()
+
+    }
+
 }

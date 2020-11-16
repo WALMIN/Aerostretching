@@ -3,12 +3,12 @@ package se.aerostretching.booking
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,9 +19,9 @@ import kotlin.properties.Delegates
 class AdminActivity : AppCompatActivity() {
     lateinit var drawerLayoutAdmin: DrawerLayout
 
-    lateinit var textDate : EditText
-    lateinit var lengthadmin : EditText
-    lateinit var buttonSave : Button
+    lateinit var textDate: EditText
+    lateinit var lengthadmin: EditText
+    lateinit var buttonSave: Button
 
     lateinit var spotsadmin: EditText
     lateinit var timeadmin: EditText
@@ -33,10 +33,10 @@ class AdminActivity : AppCompatActivity() {
     lateinit var seek_barLength : SeekBar
     var i by Delegates.notNull<Int>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
+        customActionBar()
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -44,7 +44,6 @@ class AdminActivity : AppCompatActivity() {
         spinnerTitles = findViewById(R.id.spinnerTitles)
         spinnerPlaces = findViewById(R.id.spinnerPlaces)
         spinnerTrainer = findViewById(R.id.spinnerTrainer)
-
 
         textDate = findViewById(R.id.editTextdate)
         timeadmin = findViewById(R.id.editTexttime)
@@ -58,28 +57,30 @@ class AdminActivity : AppCompatActivity() {
 
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH) +1
+        val month = c.get(Calendar.MONTH) + 1
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        textDate.setOnClickListener {
+        textDate.setOnFocusChangeListener { view, focused ->
+            if(focused){
+                val dialog = DatePickerDialog(this, { view, year, month, dayOfMonth ->
+                    // Display Selected date in TextView
+                    textDate.setText("$month$dayOfMonth$year")
 
-            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                // Display Selected date in TextView
-                textDate.setText("" + month + "" + dayOfMonth + "" + year)
-            }, year, month, day)
-            dpd.show()
+                    textDate.clearFocus()
+                    Tools.hideKeyboard(this, textDate)
 
-        }
+                }, year, month, day)
 
-        timeadmin.setOnClickListener {
-            val cal = Calendar.getInstance()
+                dialog.setOnCancelListener {
+                    textDate.clearFocus()
+                    Tools.hideKeyboard(this, textDate)
 
-            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-                cal.set(Calendar.HOUR_OF_DAY, hour)
-                cal.set(Calendar.MINUTE, minute)
-                timeadmin.setText(SimpleDateFormat("HH:mm").format(cal.time))
+                }
+                dialog.show()
+
             }
-            TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
+
+
         }
 
         // Set a SeekBar change listener
@@ -127,42 +128,71 @@ class AdminActivity : AppCompatActivity() {
 
          */
 
+                val dialog = TimePickerDialog(this, { timePicker, hour, minute ->
+                    cal.set(Calendar.HOUR_OF_DAY, hour)
+                    cal.set(Calendar.MINUTE, minute)
+                    timeadmin.setText(SimpleDateFormat("HH:mm").format(cal.time))
 
-        buttonSave.setOnClickListener {
+                    timeadmin.clearFocus()
+                    Tools.hideKeyboard(this, timeadmin)
 
-            createTraining()
+                }, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true)
+
+                dialog.setOnCancelListener {
+                    textDate.clearFocus()
+                    Tools.hideKeyboard(this, textDate)
+
+                }
+                dialog.show()
+
+            }
+
         }
 
+        buttonSave.setOnClickListener {
+            createTraining(it as Button)
+        }
 
-        customActionBar()
     }
 
     fun goToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+
     }
 
-
-    fun createTraining() {
-
+    fun createTraining(view: Button) {
         val trainingItem = TrainingItem(
             textDate.text.toString(),
             timeadmin.text.toString(), lengthadmin.toString() ,
             spinnerTitles.selectedItem.toString(), spinnerPlaces.selectedItem.toString(),
             spinnerTrainer.selectedItem.toString(), i.toString())
 
-        val user = auth.currentUser
-        if (user == null)
-            return
+        if (Tools.checkAdmin(this)) {
+            if (textDate.text.isEmpty() || timeadmin.text.isEmpty() || timeadmin.text.isEmpty() || lengthadmin.text.isEmpty() || spotsadmin.text.isEmpty()) {
+                Toast.makeText(this, getString(R.string.trainingEmpty), Toast.LENGTH_LONG).show()
+
+            } else {
+                db.collection("trainings").add(trainingItem)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, getString(R.string.trainingAdded), Toast.LENGTH_LONG).show()
+                            Log.d("!!!", "Add: ${task.exception}")
+
+                            view.isEnabled = false
+
+                        } else {
+                            Toast.makeText(this, getString(R.string.trainingError), Toast.LENGTH_LONG).show()
+                            Log.d("!!!", "Error: ${task.exception}")
+
+                        }
 
 
+                    }
 
-        db.collection("trainings").add(trainingItem)
-                .addOnCompleteListener { task ->
-                    Log.d("!!!", "Add: ${task.exception}")
+            }
 
-                }
-
+        }
 
     }
 
@@ -187,6 +217,17 @@ class AdminActivity : AppCompatActivity() {
             goToMainActivity()
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        if (!Tools.checkAdmin(this)) {
+            startActivity(Intent(this, MainActivity::class.java))
+
+        }
+
+    }
+
 }
 
 
