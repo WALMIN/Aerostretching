@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 
-class UpcomingTrainingsActivity : AppCompatActivity(), MyTrainingsListAdapter.OnTrainingItemClickListener {
+class UpcomingTrainingsActivity : AppCompatActivity(),
+    MyTrainingsListAdapter.OnTrainingItemClickListener {
     lateinit var db: FirebaseFirestore
 
     lateinit var myTrainingListView: RecyclerView
@@ -29,8 +30,8 @@ class UpcomingTrainingsActivity : AppCompatActivity(), MyTrainingsListAdapter.On
         db = FirebaseFirestore.getInstance()
         myTrainingListView = findViewById(R.id.myTrainingList)
         GetDataMyTrainings.myTrainingListAdapter = MyTrainingsListAdapter(
-                GetDataMyTrainings.myTrainingList,
-                this
+            GetDataMyTrainings.myTrainingList,
+            this
         )
         myTrainingListView.layoutManager = LinearLayoutManager(this)
         myTrainingListView.adapter = GetDataMyTrainings.myTrainingListAdapter
@@ -60,6 +61,7 @@ class UpcomingTrainingsActivity : AppCompatActivity(), MyTrainingsListAdapter.On
 
     override fun onTrainingItemClick(item: TrainingItem, position: Int) {
         // TO DO: delete function
+
 
         GetDataMyTrainings.myTrainings()
         finish()

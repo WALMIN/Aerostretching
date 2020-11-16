@@ -67,6 +67,14 @@
     <string name="trainingDescription">Description…</string>
     <string name="minutes">&#160;min</string>
 
+    <string name="bookTitle">Boka</string>
+    <string name="bookMsg">Vill du boka?</string>
+
+    <string name="removeBookingTitle">Avboka</string>
+    <string name="removeBookingMsg">Är du verkligen säker på att du vill avboka?</string>
+
+    <string name="noSpots">Inga platser tillgängliga</string>
+
     <!-- Main activity -->
     <string name="emailHint">Email</string>
     <string name="passwordHint">Lösenord</string>
@@ -98,5 +106,9 @@
     <string name="enterAllFields">Var snäll och fyll i alla fält korrekt</string>
     <string name="registrationSuccessful">Registering lyckades</string>
     <string name="userNotCreated">Användare skapdes inte</string>
+
+    <!-- Buttons -->
+    <string name="unbook">Avbokak</string>
+    <string name="cancel">Stäng</string>
 
 </resources>

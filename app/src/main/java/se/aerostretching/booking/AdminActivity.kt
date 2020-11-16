@@ -128,27 +128,6 @@ class AdminActivity : AppCompatActivity() {
 
          */
 
-                val dialog = TimePickerDialog(this, { timePicker, hour, minute ->
-                    cal.set(Calendar.HOUR_OF_DAY, hour)
-                    cal.set(Calendar.MINUTE, minute)
-                    timeadmin.setText(SimpleDateFormat("HH:mm").format(cal.time))
-
-                    timeadmin.clearFocus()
-                    Tools.hideKeyboard(this, timeadmin)
-
-                }, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true)
-
-                dialog.setOnCancelListener {
-                    textDate.clearFocus()
-                    Tools.hideKeyboard(this, textDate)
-
-                }
-                dialog.show()
-
-            }
-
-        }
-
         buttonSave.setOnClickListener {
             createTraining(it as Button)
         }
@@ -163,10 +142,11 @@ class AdminActivity : AppCompatActivity() {
 
     fun createTraining(view: Button) {
         val trainingItem = TrainingItem(
+            "",
             textDate.text.toString(),
             timeadmin.text.toString(), lengthadmin.toString() ,
             spinnerTitles.selectedItem.toString(), spinnerPlaces.selectedItem.toString(),
-            spinnerTrainer.selectedItem.toString(), i.toString())
+            spinnerTrainer.selectedItem.toString(), i.toString(), "")
 
         if (Tools.checkAdmin(this)) {
             if (textDate.text.isEmpty() || timeadmin.text.isEmpty() || timeadmin.text.isEmpty() || lengthadmin.text.isEmpty() || spotsadmin.text.isEmpty()) {

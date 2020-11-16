@@ -9,6 +9,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener {
@@ -64,17 +65,25 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
     }
 
     override fun onTrainingItemClick(item: TrainingItem, position: Int) {
-        val bookIntent = Intent(this, BookTrainingActivity::class.java)
+        if (item.users.contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
+            Tools.removeBooking(this, item)
 
-        bookIntent.putExtra("date", item.date)
-        bookIntent.putExtra("time", item.time)
-        bookIntent.putExtra("length", item.length)
-        bookIntent.putExtra("title", item.title)
-        bookIntent.putExtra("place", item.place)
-        bookIntent.putExtra("trainer", item.trainer)
-        bookIntent.putExtra("spots", item.spots)
+        } else {
+            val bookIntent = Intent(this, BookTrainingActivity::class.java)
 
-        startActivity(bookIntent)
+            bookIntent.putExtra("id", item.id)
+            bookIntent.putExtra("date", item.date)
+            bookIntent.putExtra("time", item.time)
+            bookIntent.putExtra("length", item.length)
+            bookIntent.putExtra("title", item.title)
+            bookIntent.putExtra("place", item.place)
+            bookIntent.putExtra("trainer", item.trainer)
+            bookIntent.putExtra("spots", item.spots)
+            bookIntent.putExtra("users", item.users)
+
+            startActivity(bookIntent)
+
+        }
 
     }
 
