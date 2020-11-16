@@ -2,21 +2,24 @@ package se.aerostretching.booking
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class BookTrainingActivity : AppCompatActivity() {
 
-    lateinit var db : FirebaseFirestore
-    lateinit var auth : FirebaseAuth
+    lateinit var db: FirebaseFirestore
+    lateinit var auth: FirebaseAuth
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,41 +32,27 @@ class BookTrainingActivity : AppCompatActivity() {
         customActionBar()
         val buttonBook = findViewById<Button>(R.id.buttonBook)
         buttonBook.setOnClickListener {
-            val myTrainingItem = TrainingItem(
-                    intent.getStringExtra("date").toString(),
-                    intent.getStringExtra("time").toString(),
-                    intent.getStringExtra("length").toString(),
-                    intent.getStringExtra("title").toString(),
-                    intent.getStringExtra("place").toString(),
-                    intent.getStringExtra("trainer").toString(),
-                    intent.getStringExtra("spots").toString())
+            bookTraining()
 
-            val user = auth.currentUser
-            db.collection("users").document(user!!.uid).collection("myTrainings").add(myTrainingItem)
-                    .addOnCompleteListener { task ->
-                        Log.d("!!!", "Add: ${task.exception}")
-
-                    }
-            GetDataMyTrainings.myTrainings()
-            finish()
         }
         val btn_trainer = findViewById<ImageButton>(R.id.btn_trainer)
         btn_trainer.setOnClickListener {
             goToTrainerActivity()
         }
-        val nameView : TextView = findViewById<View>(R.id.textViewBookTrainingName) as TextView
+        val nameView: TextView = findViewById<View>(R.id.textViewBookTrainingName) as TextView
         nameView.text = intent.getStringExtra("title")
 
-        val timeView : TextView = findViewById<View>(R.id.textViewBookTime) as TextView
-        timeView.text = getString(R.string.trainingTime) + "${intent.getStringExtra("time")} (${intent.getStringExtra("length")})" + getString(R.string.minutes)
+        val timeView: TextView = findViewById<View>(R.id.textViewBookTime) as TextView
+        timeView.text = getString(R.string.trainingTime) +
+                "${intent.getStringExtra("time")} (${intent.getStringExtra("length")}${getString(R.string.minutes)})"
 
-        val placeView : TextView = findViewById<View>(R.id.textView) as TextView
+        val placeView: TextView = findViewById<View>(R.id.textView) as TextView
         placeView.text = intent.getStringExtra("place")
 
-        val trainerView : TextView = findViewById<View>(R.id.textViewBookTrainer) as TextView
+        val trainerView: TextView = findViewById<View>(R.id.textViewBookTrainer) as TextView
         trainerView.text = intent.getStringExtra("trainer")
 
-        val spotsView : TextView = findViewById<View>(R.id.textViewBookPlaces) as TextView
+        val spotsView: TextView = findViewById<View>(R.id.textViewBookPlaces) as TextView
         spotsView.text = getString(R.string.trainingSpots) + "${intent.getStringExtra("spots")}"
 
     }
@@ -73,7 +62,7 @@ class BookTrainingActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun customActionBar(){
+    fun customActionBar() {
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar)
@@ -97,8 +86,116 @@ class BookTrainingActivity : AppCompatActivity() {
         endBtn.visibility = View.VISIBLE
         endBtn.setImageResource(R.drawable.add_event)
         endBtn.setOnClickListener {
+            addToCalendar()
 
         }
+
+    }
+
+    fun addToCalendar() {
+        val startTime =
+            Tools.getMillisFromDate(intent.getStringExtra("date") + " " + intent.getStringExtra("time"))
+        val endTime =
+            Tools.getMillisFromDate(intent.getStringExtra("date") + " " + intent.getStringExtra("time"))
+
+        val insertCalendarIntent = Intent(Intent.ACTION_INSERT)
+            .setData(CalendarContract.Events.CONTENT_URI)
+            .putExtra(CalendarContract.Events.TITLE, intent.getStringExtra("title"))
+            .putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false)
+            .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime)
+            .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTime)
+            .putExtra(CalendarContract.Events.EVENT_LOCATION, intent.getStringExtra("place"))
+            .putExtra(CalendarContract.Events.DESCRIPTION, intent.getStringExtra("trainer"))
+            .putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE)
+            .putExtra(
+                CalendarContract.Events.AVAILABILITY,
+                CalendarContract.Events.AVAILABILITY_FREE
+            )
+
+        startActivity(insertCalendarIntent)
+
+    }
+
+    fun bookTraining() {
+        if (intent.getStringExtra("spots")!!.toInt() > 0) {
+            AlertDialog.Builder(this)
+                .setTitle(getString(R.string.bookTitle))
+                .setMessage(getString(R.string.bookMsg))
+                .setPositiveButton(getString(R.string.book)) { dialog, id ->
+                    val trainingItem = TrainingItem(
+                        intent.getStringExtra("id").toString(),
+                        intent.getStringExtra("date").toString(),
+                        intent.getStringExtra("time").toString(),
+                        intent.getStringExtra("length").toString(),
+                        intent.getStringExtra("title").toString(),
+                        intent.getStringExtra("place").toString(),
+                        intent.getStringExtra("trainer").toString(),
+                        intent.getStringExtra("spots").toString(),
+                        intent.getStringExtra("users").toString()
+                    )
+
+                    val user = auth.currentUser
+                    db.collection("users").document(user!!.uid).collection("myTrainings")
+                        .add(trainingItem)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                book()
+                                startActivity(Intent(this, ScheduleBookingActivity::class.java))
+
+                            }
+
+                        }
+
+                }
+                .setNegativeButton(getString(R.string.cancel)) { dialog, id ->
+                }
+                .show()
+
+        } else {
+            Toast.makeText(this, getString(R.string.noSpots), Toast.LENGTH_LONG).show()
+
+        }
+
+        /*
+            val myTrainingItem = TrainingItem(
+                intent.getStringExtra("id").toString(),
+                intent.getStringExtra("date").toString(),
+                intent.getStringExtra("time").toString(),
+                intent.getStringExtra("length").toString(),
+                intent.getStringExtra("title").toString(),
+                intent.getStringExtra("place").toString(),
+                intent.getStringExtra("trainer").toString(),
+                intent.getStringExtra("spots").toString()
+            )
+
+            val user = auth.currentUser
+            db.collection("users").document(user!!.uid).collection("myTrainings").add(myTrainingItem)
+                .addOnCompleteListener { task ->
+                    Log.d("!!!", "Add: ${task.exception}")
+
+                    updateSpots()
+
+                }
+            GetDataMyTrainings.myTrainings()
+            finish()
+
+        }
+         */
+
+    }
+
+    private fun book() {
+        Log.d("!!!", intent.getStringExtra("id").toString())
+
+        val trainingReference = FirebaseFirestore.getInstance().collection("trainings")
+            .document(intent.getStringExtra("id").toString())
+        trainingReference.update("spots", (intent.getStringExtra("spots")!!.toInt() - 1).toString())
+
+        trainingReference.update(
+            "users",
+            (intent.getStringExtra("users")
+                .toString() + "|" + (FirebaseAuth.getInstance().currentUser?.uid))
+        )
 
     }
 

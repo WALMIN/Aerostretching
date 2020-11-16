@@ -20,7 +20,13 @@ object GetData {
 
     fun trainings() {
         FirebaseFirestore.getInstance().collection("trainings").orderBy("date")
-            .whereGreaterThanOrEqualTo("date", SimpleDateFormat("MMddyyyy", Locale.getDefault()).format(Calendar.getInstance().time))
+            .whereGreaterThanOrEqualTo(
+                "date",
+                SimpleDateFormat(
+                    "MMddyyyy",
+                    Locale.getDefault()
+                ).format(Calendar.getInstance().time)
+            )
             .addSnapshotListener { snapshot, e ->
                 Log.d("!!!", "READ")
 
@@ -31,29 +37,33 @@ object GetData {
                 for (document in snapshot!!) {
                     trainingList.add(
                         TrainingItem(
+                            document.id,
                             document.getString("date").toString(),
                             document.getString("time").toString(),
                             document.getString("length").toString(),
                             document.getString("title").toString(),
                             document.getString("place").toString(),
                             document.getString("trainer").toString(),
-                            document.getString("spots").toString()
+                            document.getString("spots").toString(),
+                            document.getString("users").toString()
                         )
                     )
 
                 }
 
                 // Start trainings
-                for (i in 0..2) {
+                for (i in 0..3) {
                     trainingListStart.add(
                         TrainingItem(
+                            snapshot.documents[i].id,
                             snapshot.documents[i].getString("date").toString(),
                             snapshot.documents[i].getString("time").toString(),
                             snapshot.documents[i].getString("length").toString(),
                             snapshot.documents[i].getString("title").toString(),
                             snapshot.documents[i].getString("place").toString(),
                             snapshot.documents[i].getString("trainer").toString(),
-                            snapshot.documents[i].getString("spots").toString()
+                            snapshot.documents[i].getString("spots").toString(),
+                            snapshot.documents[i].getString("users").toString()
                         )
                     )
 
@@ -82,6 +92,7 @@ object GetData {
                 } else {
                     Log.w("!!!", "Error getting documents.", task.exception)
                 }
+
             }
 
     }

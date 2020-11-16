@@ -23,13 +23,15 @@ object GetDataMyTrainings {
 
                     myTrainingList.add(
                         TrainingItem(
+                            document.id,
                             document.getString("date").toString(),
                             document.getString("time").toString(),
                             document.getString("length").toString(),
                             document.getString("title").toString(),
                             document.getString("place").toString(),
                             document.getString("trainer").toString(),
-                            document.getString("spots").toString()
+                            document.getString("spots").toString(),
+                            document.getString("users").toString()
                         )
                     )
 
