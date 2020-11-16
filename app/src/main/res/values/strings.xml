@@ -2,6 +2,12 @@
 
     <string name="app_name">Aerostretching</string>
 
+    <string-array name="admins">
+        <item>x1P74OdEKAeA2v00mfkBVX3YxC43</item>
+        <item>4PAAQ6CHe8OyOGICtTXcuNKnHZA2</item>
+        <item>DCsXKwNC4vMPssJ5MgmxzYmlbEh2</item>
+    </string-array>
+
     <!-- Titles -->
     <string name="adminActivity">Add training</string>
     <string name="contactsActivity">Contacts</string>
@@ -22,12 +28,18 @@
     <string name="groupTraining">Group training</string>
     <string name="admin">Admin</string>
 
+    <string name="notAdmin">You don\'t have access to this page</string>
+
     <!-- Admin page -->
     <string name="dateHint">Date</string>
     <string name="timeHint">Time</string>
     <string name="lengthHint">Length</string>
     <string name="spotsHint">Spots</string>
     <string name="save">Save</string>
+
+    <string name="trainingEmpty">You need to fill in all the fields</string>
+    <string name="trainingAdded">Training successfully added</string>
+    <string name="trainingError">Error when adding training</string>
 
     <string name="title">Title:</string>
     <string-array name="titles">
@@ -42,7 +54,7 @@
         <item>Odenplan</item>
         <item>Bromma</item>
         <item>Solna</item>
-        <item>Malmo</item>
+        <item>Malmö</item>
     </string-array>
 
     <string name="trainer">Trainer:</string>
@@ -60,6 +72,7 @@
     <string name="book">Book</string>
     <string name="trainingTrainer" translatable="false">Anastasia Dobrova</string>
     <string name="trainingDescription">Description…</string>
+    <string name="minutes">&#160;min</string>
 
     <!-- Contacts activity -->
     <string name="phone" translatable="false">070–491 31 05</string>

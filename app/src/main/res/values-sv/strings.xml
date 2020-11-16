@@ -22,12 +22,18 @@
     <string name="groupTraining">Gruppass</string>
     <string name="admin">Admin</string>
 
+    <string name="notAdmin">Du har inte tillgång till den här sidan</string>
+
     <!-- Admin page -->
     <string name="dateHint">Datum</string>
     <string name="timeHint">Tid</string>
     <string name="lengthHint">Längd</string>
     <string name="spotsHint">Platser</string>
     <string name="save">Spara</string>
+
+    <string name="trainingEmpty">Du måste fylla i alla fält</string>
+    <string name="trainingAdded">Passet blev tillagt</string>
+    <string name="trainingError">Fel när det pass skulle läggas till</string>
 
     <string name="title">Titel:</string>
     <string-array name="titles">
@@ -42,7 +48,7 @@
         <item>Odenplan</item>
         <item>Bromma</item>
         <item>Solna</item>
-        <item>Malmo</item>
+        <item>Malmö</item>
     </string-array>
 
     <string name="trainer">Trainer:</string>
@@ -59,6 +65,7 @@
     <string name="trainingSpots">Available spots:&#160;</string>
     <string name="book">Book</string>
     <string name="trainingDescription">Description…</string>
+    <string name="minutes">&#160;min</string>
 
     <!-- Main activity -->
     <string name="emailHint">Email</string>

@@ -35,10 +35,9 @@ class TrainingListAdapter(
             val placeView = itemView.findViewById<TextView>(R.id.trainingPlace)
             val trainerView = itemView.findViewById<TextView>(R.id.trainingTrainer)
 
-            dateView.text =
-                "${item.date.substring(2, 4)}\n${Tools.getMonth(item.date.substring(0, 2))}"
+            dateView.text = "${item.date.substring(2, 4)}\n${Tools.getMonth(item.date.substring(0, 2))}"
             timeView.text = item.time
-            lengthView.text = item.length
+            lengthView.text = item.length + itemView.context.getString(R.string.minutes)
             titleView.text = item.title
             placeView.text = item.place
             trainerView.text = item.trainer
