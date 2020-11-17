@@ -28,11 +28,15 @@ class MyTrainingsListAdapter(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindItems(item: TrainingItem, onClick: OnTrainingItemClickListener) {
+            val dateView = itemView.findViewById<TextView>(R.id.trainingDate)
             val timeView = itemView.findViewById<TextView>(R.id.trainingTime)
             val lengthView = itemView.findViewById<TextView>(R.id.trainingLength)
             val titleView = itemView.findViewById<TextView>(R.id.trainingTitle)
             val placeView = itemView.findViewById<TextView>(R.id.trainingPlace)
             val trainerView = itemView.findViewById<TextView>(R.id.trainingTrainer)
+
+            dateView.text =
+                    "${item.date.substring(2, 4)}\n${Tools.getMonth(item.date.substring(0, 2))}"
 
             timeView.text = item.time
             lengthView.text = item.length
