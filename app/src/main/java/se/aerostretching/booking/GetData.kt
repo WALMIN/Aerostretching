@@ -13,9 +13,11 @@ object GetData {
     val trainingListStart = ArrayList<TrainingItem>()
     val trainingList = ArrayList<TrainingItem>()
 
+    var id = ""
     var name = ""
     var birth = ""
     var email = ""
+    var password = ""
     var phone = ""
 
     fun trainings() {
@@ -77,20 +79,20 @@ object GetData {
     fun profile() {
         FirebaseFirestore.getInstance().collection("users")
             .document(FirebaseAuth.getInstance().currentUser?.uid.toString()).collection("info")
-            .get()
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    for (document in task.result!!) {
+            .addSnapshotListener { snapshot, e ->
+                if(FirebaseAuth.getInstance().currentUser != null){
+                    for (document in snapshot!!) {
                         Log.d("!!!", document.id + " => " + document.data)
 
+                        id = document.id
                         name = document.getString("name").toString()
                         birth = document.getString("birth").toString()
                         email = document.getString("email").toString()
                         phone = document.getString("phone").toString()
+                        password = document.getString("password").toString()
 
                     }
-                } else {
-                    Log.w("!!!", "Error getting documents.", task.exception)
+
                 }
 
             }

@@ -235,39 +235,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:enabled="false"
+        <Button
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="15dp"
             android:layout_marginLeft="9dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginRight="20dp"
             android:text="@string/password"
-            android:textColor="#302F2F"
+            android:backgroundTint="@color/colorAccent"
             android:textSize="17sp"
             android:textStyle="bold"
+            android:onClick="changePassword"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toTopOf="parent" />
-
-
-        <ImageButton
-            android:id="@+id/imageButtonEye"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FFFFFF"
-            android:padding="0.1dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/eye"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-
-            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

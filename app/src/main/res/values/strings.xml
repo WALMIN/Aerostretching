@@ -102,8 +102,10 @@
     <string name="noTrainingText">You have to write something</string>
 
     <!-- Profile -->
-    <string name="birth" translatable="false">010623</string>
-    <string name="password" translatable="false">**********</string>
+    <string name="birth" translatable="false">000000</string>
+    <string name="password">Change password</string>
+
+    <string name="profileUpdated">Profile info updated</string>
 
     <!-- Register -->
     <string name="nameHint">First and last name</string>
