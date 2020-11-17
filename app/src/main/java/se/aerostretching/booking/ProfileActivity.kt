@@ -11,6 +11,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -21,6 +22,8 @@ class ProfileActivity : AppCompatActivity() {
     lateinit var editTextBirth: EditText
     lateinit var editTextEmail: EditText
     lateinit var editTextPhone: EditText
+    lateinit var endBtn:ImageButton
+    var editing = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +43,46 @@ class ProfileActivity : AppCompatActivity() {
         editTextPhone.setText(GetData.phone)
 
 
+
+
+
+
+
+
+
+
+
     }
+    fun saveData(){
+
+        val uid = auth.currentUser?.uid
+
+        val user = User(editTextEmail.text.toString(), editTextName.text.toString(),editTextPhone.text.toString(),
+                editTextBirth.text.toString())
+
+        db.collection("users").document(uid.toString()).collection("info").add(user)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d("!!!", "Success")
+                    } else {
+                        Log.d("!!!", "User not created ${task.exception}")
+                    }
+
+                }
+
+
+
+    }
+    fun changeAllEditText(enabled: Boolean){
+
+        editTextName.isEnabled = enabled
+        editTextBirth.isEnabled = enabled
+        editTextEmail.isEnabled = enabled
+        editTextPhone.isEnabled = enabled
+
+
+    }
+
 
 
     fun customActionBar() {
@@ -63,11 +105,22 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         // End button
-        val endBtn = view.findViewById<View>(R.id.endBtn) as ImageButton
+        endBtn = view.findViewById<View>(R.id.endBtn) as ImageButton
         endBtn.visibility = View.VISIBLE
         endBtn.setImageResource(R.drawable.edit)
         endBtn.setOnClickListener {
-            startActivity(Intent(this, ContactsActivity::class.java))
+          if(editing){
+              endBtn.setImageResource(R.drawable.edit)
+              editing = false
+              saveData()
+              changeAllEditText(false)
+          }else{
+              endBtn.setImageResource(R.drawable.save)
+              editing= true
+
+              changeAllEditText(true)
+          }
+
 
         }
 

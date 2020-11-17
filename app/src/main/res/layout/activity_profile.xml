@@ -42,6 +42,7 @@
 
 
         <EditText
+            android:enabled="false"
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,6 +90,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:enabled="false"
             android:id="@+id/dateOfBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -135,6 +137,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:enabled="false"
             android:id="@+id/mailAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -184,6 +187,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:enabled="false"
             android:id="@+id/phoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -232,6 +236,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:enabled="false"
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
