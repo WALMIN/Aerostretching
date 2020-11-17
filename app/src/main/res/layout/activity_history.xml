@@ -6,120 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".HistoryActivity">
 
-    <Button
-        android:id="@+id/button1month"
-        android:layout_width="83dp"
-        android:layout_height="44dp"
-        android:text="1 month"
-        android:textSize="10sp"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="60dp" />
-
-    <Button
-        android:id="@+id/button12months"
-        android:layout_width="83dp"
-        android:layout_height="44dp"
-        android:text="12 months"
-        android:textSize="10sp"
-        tools:layout_editor_absoluteX="312dp"
-        tools:layout_editor_absoluteY="60dp" />
-
-    <Button
-        android:id="@+id/button3months"
-        android:layout_width="83dp"
-        android:layout_height="44dp"
-        android:text="3 months"
-        android:textSize="10sp"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="60dp" />
-
-    <TextView
-        android:id="@+id/textViewHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="History"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="27dp" />
-
-    <Button
-        android:id="@+id/button6months"
-        android:layout_width="83dp"
-        android:layout_height="44dp"
-        android:text="6 months"
-        android:textSize="10sp"
-        tools:layout_editor_absoluteX="210dp"
-        tools:layout_editor_absoluteY="60dp" />
-
-    <TextView
-        android:id="@+id/textView34"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="5"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="118dp" />
-
-    <TextView
-        android:id="@+id/textView35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="total trainings"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="150dp" />
-
-    <TextView
-        android:id="@+id/textView37"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0.5"
-        tools:layout_editor_absoluteX="241dp"
-        tools:layout_editor_absoluteY="120dp" />
-
-    <TextView
-        android:id="@+id/textView41"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="trainings per week"
-        tools:layout_editor_absoluteX="241dp"
-        tools:layout_editor_absoluteY="152dp" />
-
-    <TextView
-        android:id="@+id/textView42"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="aerostretching"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="218dp" />
-
-    <TextView
-        android:id="@+id/textView43"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="low yoga"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="255dp" />
-
-    <TextView
-        android:id="@+id/textView44"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="suspension"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="356dp" />
-
-    <TextView
-        android:id="@+id/textView45"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="aerostretching"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="326dp" />
-
-    <TextView
-        android:id="@+id/textView46"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="aeroyoga"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="293dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/trainingList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/training_item"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package se.aerostretching.booking
 
+import android.content.Context
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -12,6 +13,7 @@ object GetData {
     lateinit var trainingListAdapter: TrainingListAdapter
     val trainingListStart = ArrayList<TrainingItem>()
     val trainingList = ArrayList<TrainingItem>()
+    val trainingListHistory = ArrayList<TrainingItem>()
 
     var name = ""
     var birth = ""
@@ -32,6 +34,7 @@ object GetData {
 
                 trainingList.clear()
                 trainingListStart.clear()
+                trainingListHistory.clear()
 
                 // All trainings
                 for (document in snapshot!!) {
@@ -94,6 +97,54 @@ object GetData {
                 }
 
             }
+
+    }
+
+    /*
+    fun myTrainings() {
+        FirebaseFirestore.getInstance().collection("users")
+            .document(FirebaseAuth.getInstance().currentUser?.uid.toString())
+            .collection("myTrainings").orderBy("date")
+            .addSnapshotListener { snapshot, e ->
+                Log.d("!!!", "READ")
+
+                myTrainingList.clear()
+     */
+
+    fun trainingsHistory() {
+        FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser?.uid.toString()).collection("myTrainings").orderBy("date")
+                .whereLessThanOrEqualTo(
+                        "date",
+                        SimpleDateFormat(
+                                "MMddyyyy",
+                                Locale.getDefault()
+                        ).format(Calendar.getInstance().time)
+                )
+                .addSnapshotListener { snapshot, e ->
+                    Log.d("!!!", "READ")
+
+
+
+                    for (document in snapshot!! ) {
+                        trainingListHistory.add(
+                                TrainingItem(
+                                        document.id,
+                                        document.getString("date").toString(),
+                                        document.getString("time").toString(),
+                                        document.getString("length").toString(),
+                                        document.getString("title").toString(),
+                                        document.getString("place").toString(),
+                                        document.getString("trainer").toString(),
+                                        document.getString("spots").toString(),
+                                        document.getString("users").toString()
+                                )
+                        )
+
+                    }
+
+                    trainingListAdapter.notifyDataSetChanged()
+
+                }
 
     }
 
