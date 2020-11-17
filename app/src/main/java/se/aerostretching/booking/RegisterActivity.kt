@@ -44,6 +44,7 @@ class RegisterActivity : AppCompatActivity() {
         register_btn = findViewById(R.id.buttonRegister)
         register_btn.setOnClickListener {
             createLogin()
+
         }
         customActionBar()
 
