@@ -33,8 +33,8 @@
     <!-- Admin page -->
     <string name="dateHint">Date</string>
     <string name="timeHint">Time</string>
-    <string name="lengthHint">Length</string>
-    <string name="spotsHint">Spots</string>
+    <string name="lengthHint">Length:</string>
+    <string name="spotsHint">Spots:</string>
     <string name="save">Save</string>
 
     <string name="trainingEmpty">You need to fill in all the fields</string>

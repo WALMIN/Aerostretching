@@ -55,10 +55,17 @@ class AdminActivity : AppCompatActivity() {
         val day = c.get(Calendar.DAY_OF_MONTH)
         textDate.setOnFocusChangeListener { view, focused ->
             if(focused){
-                val dialog = DatePickerDialog(this, { view, year, month, dayOfMonth ->
-                    // Display Selected date in TextView
-                    //var year = "20"+year
-                    textDate.setText("$month$dayOfMonth$year")
+                val dialog = DatePickerDialog(this, { view, year_, month_, day_ ->
+                    var year = year_.toString()
+                    var month = (month_ + 1).toString()
+                    if(month_ < 10){
+                        month = "0" + (month_ + 1).toString()
+                    }
+                    var day = "$day_"
+                    if(day_ < 10){
+                        day = "0$day_"
+                    }
+                    textDate.setText("$month$day$year")
                     textDate.clearFocus()
                     Tools.hideKeyboard(this, textDate)
                 }, year, month, day)

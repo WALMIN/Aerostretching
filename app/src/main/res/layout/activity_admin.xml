@@ -22,154 +22,204 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="8dp"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:weightSum="7">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="10sp"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:weightSum="100">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="50"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:text="@string/trainer"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/title" />
-
-                        <Spinner
-                            android:id="@+id/spinnerTitles"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/titles"
-                            android:gravity="center" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/trainer" />
-
-                        <Spinner
-                            android:id="@+id/spinnerTrainer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/trainer"
-                            android:gravity="center" />
-                    </LinearLayout>
-
+                    <Spinner
+                        android:id="@+id/spinnerTrainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="50"
+                        android:entries="@array/trainer"
+                        android:gravity="center" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="10sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="50"
+                        android:gravity="center"
+                        android:text="@string/title"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerTitles"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="50"
+                        android:entries="@array/titles"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="10sp"
+                    android:layout_weight="1"
+                    android:weightSum="100">
 
                     <TextView
                         android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/place" />
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="50"
+                        android:gravity="center"
+                        android:text="@string/place"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
 
                     <Spinner
                         android:id="@+id/spinnerPlaces"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
                         android:entries="@array/places" />
                 </LinearLayout>
-
-                <EditText
-                    android:id="@+id/editTexttime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:ems="10"
-                    android:hint="@string/timeHint"
-                    android:maxLines="1"
-                    android:inputType="datetime"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent" />
 
                 <EditText
                     android:id="@+id/editTextdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
+                    android:layout_weight="1"
                     android:ems="10"
                     android:hint="@string/dateHint"
                     android:inputType="number"
                     android:maxLines="1"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="parent" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
                 <EditText
-                    android:id="@+id/editTextlength"
+                    android:id="@+id/editTexttime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="32dp"
+                    android:layout_weight="1"
                     android:ems="10"
-                    android:text="@string/lengthHint"
-                    android:inputType="number"
+                    android:hint="@string/timeHint"
+                    android:inputType="datetime"
                     android:maxLines="1"
+                    android:textColor="#000000"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="parent" />
 
-                    <SeekBar
-                        android:id="@+id/seekBarlength"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:max="120"
-                        android:min="5" />
-                </LinearLayout>
-
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10sp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
 
-                    <EditText
-                        android:id="@+id/editTextSpots"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="20dp"
-                        android:text="Spots: "
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
-
-                    <SeekBar
-                        android:id="@+id/seekBar"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:max="20"
-                        android:min="1" />
+                        android:layout_weight="50"
+                        android:orientation="vertical"
+                        android:weightSum="100">
+
+                        <EditText
+                            android:id="@+id/editTextlength"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="50"
+                            android:ems="10"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:text="@string/lengthHint"
+                            android:textColor="#000000"
+                            android:textSize="20sp"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                        <SeekBar
+                            android:id="@+id/seekBarlength"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_margin="10sp"
+                            android:layout_weight="50"
+                            android:max="120"
+                            android:min="5" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="50"
+                        android:orientation="vertical"
+                        android:weightSum="100">
+
+                        <EditText
+                            android:id="@+id/editTextSpots"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="50"
+                            android:gravity="center"
+                            android:text="@string/spotsHint"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                            android:textColor="#000000"
+                            android:textSize="20sp" />
+
+                        <SeekBar
+                            android:id="@+id/seekBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_margin="10sp"
+                            android:layout_weight="50"
+                            android:max="20"
+                            android:min="1" />
+                    </LinearLayout>
                 </LinearLayout>
 
 
@@ -180,6 +230,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="32dp"
+                    android:layout_weight="1"
                     android:backgroundTint="@color/colorAccent"
                     android:hint="@string/save"
                     app:layout_constraintEnd_toEndOf="parent"

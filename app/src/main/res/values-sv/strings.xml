@@ -27,8 +27,8 @@
     <!-- Admin page -->
     <string name="dateHint">Datum</string>
     <string name="timeHint">Tid</string>
-    <string name="lengthHint">Längd</string>
-    <string name="spotsHint">Platser</string>
+    <string name="lengthHint">Längd:</string>
+    <string name="spotsHint">Platser:</string>
     <string name="save">Spara</string>
 
     <string name="trainingEmpty">Du måste fylla i alla fält</string>
