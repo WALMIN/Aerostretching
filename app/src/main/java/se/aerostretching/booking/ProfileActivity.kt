@@ -7,30 +7,26 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 
-
 class ProfileActivity : AppCompatActivity() {
-
 
     lateinit var editTextName: EditText
     lateinit var editTextBirth: EditText
     lateinit var editTextEmail: EditText
     lateinit var editTextPhone: EditText
-    lateinit var endBtn:ImageButton
+    lateinit var endBtn: ImageButton
     var editing = false
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         customActionBar()
-
 
         editTextName = findViewById(R.id.userName)
         editTextBirth = findViewById(R.id.dateOfBirth)
@@ -42,48 +38,55 @@ class ProfileActivity : AppCompatActivity() {
         editTextEmail.setText(GetData.email)
         editTextPhone.setText(GetData.phone)
 
-
-
-
-
-
-
-
-
-
-
     }
-    fun saveData(){
 
-        val uid = auth.currentUser?.uid
+    fun saveData() {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
 
-        val user = User(editTextEmail.text.toString(), editTextName.text.toString(),editTextPhone.text.toString(),
-                editTextBirth.text.toString())
+        // Update database info
+        val userReference = FirebaseFirestore.getInstance()
+            .collection("users").document(uid.toString()).collection("info").document(GetData.id)
 
-        db.collection("users").document(uid.toString()).collection("info").add(user)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d("!!!", "Success")
-                    } else {
-                        Log.d("!!!", "User not created ${task.exception}")
-                    }
+        userReference.update("name", editTextName.text.toString())
+        userReference.update("birth", editTextBirth.text.toString())
+        userReference.update("phone", editTextPhone.text.toString())
+        userReference.update("email", editTextEmail.text.toString())
+
+        // Update auth email
+        val credential = EmailAuthProvider.getCredential(GetData.email, GetData.password)
+        FirebaseAuth.getInstance().currentUser!!.reauthenticate(credential)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    FirebaseAuth.getInstance().currentUser!!.updateEmail(editTextEmail.text.toString())
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Log.d("!!!", "User email address updated.")
+                            }else{
+                                Log.d("!!!", "Email address not updated: ${task.exception}")
+
+                            }
+
+                        }
 
                 }
+                Log.d("!!!", "User re-authenticated.")
 
+        }
+
+    }
+
+    fun changePassword(view: View){
 
 
     }
-    fun changeAllEditText(enabled: Boolean){
 
+    fun changeAllEditText(enabled: Boolean) {
         editTextName.isEnabled = enabled
         editTextBirth.isEnabled = enabled
         editTextEmail.isEnabled = enabled
         editTextPhone.isEnabled = enabled
 
-
     }
-
-
 
     fun customActionBar() {
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
@@ -109,17 +112,20 @@ class ProfileActivity : AppCompatActivity() {
         endBtn.visibility = View.VISIBLE
         endBtn.setImageResource(R.drawable.edit)
         endBtn.setOnClickListener {
-          if(editing){
-              endBtn.setImageResource(R.drawable.edit)
-              editing = false
-              saveData()
-              changeAllEditText(false)
-          }else{
-              endBtn.setImageResource(R.drawable.save)
-              editing= true
+            if (editing) {
+                endBtn.setImageResource(R.drawable.edit)
+                editing = false
+                saveData()
+                changeAllEditText(false)
 
-              changeAllEditText(true)
-          }
+                Toast.makeText(this, getString(R.string.profileUpdated), Toast.LENGTH_LONG).show()
+
+            } else {
+                endBtn.setImageResource(R.drawable.save)
+                editing = true
+
+                changeAllEditText(true)
+            }
 
 
         }

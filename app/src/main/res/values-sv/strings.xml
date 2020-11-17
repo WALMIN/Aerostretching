@@ -102,6 +102,11 @@
     <!-- Trainer activity -->
     <string name="trainerDescription">Grundare av studion för aero yoga, stretching, komplex träning. Omfattar universell utbildning som syftar till att förbättra hälsan. Lyssnar på sina elever och hjälper dem att uppnå sina mål.</string>
 
+    <!-- Profile -->
+    <string name="password">Byt lösenord</string>
+
+    <string name="profileUpdated">Profil info uppdaterad</string>
+
     <!-- Register -->
     <string name="enterAllFields">Var snäll och fyll i alla fält korrekt</string>
     <string name="registrationSuccessful">Registering lyckades</string>
