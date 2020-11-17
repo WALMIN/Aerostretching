@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     tools:context=".RegisterActivity">
@@ -17,17 +17,22 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+
             android:orientation="vertical">
 
             <EditText
                 android:id="@+id/editTextRegisterName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/shape_rectangle_register"
+                android:padding="20dp"
                 android:ems="10"
                 android:hint="@string/nameHint"
                 android:inputType="textPersonName"
@@ -37,9 +42,11 @@
 
             <EditText
                 android:id="@+id/editTextRegisterBirth"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/shape_rectangle_register"
+                android:padding="20dp"
                 android:ems="10"
                 android:hint="@string/birthHint"
                 android:inputType="date"
@@ -49,9 +56,11 @@
 
             <EditText
                 android:id="@+id/editTextRegisterPhone"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/shape_rectangle_register"
+                android:padding="20dp"
                 android:ems="10"
                 android:hint="@string/phoneHint"
                 android:inputType="phone"
@@ -61,9 +70,11 @@
 
             <EditText
                 android:id="@+id/editTextRegisterEmail"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/shape_rectangle_register"
+                android:padding="20dp"
                 android:ems="10"
                 android:hint="@string/emailHint"
                 android:inputType="textEmailAddress"
@@ -73,9 +84,11 @@
 
             <EditText
                 android:id="@+id/editTextRegisterPassword"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/shape_rectangle_register"
+                android:padding="20dp"
                 android:ems="10"
                 android:hint="@string/passwordHint"
                 android:inputType="textPassword"
@@ -85,9 +98,11 @@
 
             <EditText
                 android:id="@+id/editTextRegisterPassword2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/shape_rectangle_register"
+                android:padding="20dp"
                 android:ems="10"
                 android:hint="@string/confirmPassword"
                 android:inputType="textPassword"
@@ -100,8 +115,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="20dp"
+                android:padding="20dp"
                 android:backgroundTint="@color/colorAccent"
                 android:text="@string/register"
                 app:layout_constraintEnd_toEndOf="parent"
