@@ -93,8 +93,26 @@ class ProfileActivity : AppCompatActivity() {
 
     }
 
-    fun changePassword(view: View){
+    fun changePassword(newPassword: String){
+        val credential = EmailAuthProvider.getCredential(GetData.email, GetData.password)
+        FirebaseAuth.getInstance().currentUser!!.reauthenticate(credential)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    FirebaseAuth.getInstance().currentUser!!.updatePassword(newPassword)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Log.d("!!!", "Password updated.")
+                            }else{
+                                Log.d("!!!", "Password not updated: ${task.exception}")
 
+                            }
+
+                        }
+
+                }
+                Log.d("!!!", "User re-authenticated.")
+
+            }
 
     }
 
