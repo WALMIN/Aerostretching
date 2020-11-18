@@ -15,6 +15,7 @@ object GetData {
     val trainingList = ArrayList<TrainingItem>()
     val trainingListHistory = ArrayList<TrainingItem>()
 
+
     var name = ""
     var birth = ""
     var email = ""
@@ -100,16 +101,6 @@ object GetData {
 
     }
 
-    /*
-    fun myTrainings() {
-        FirebaseFirestore.getInstance().collection("users")
-            .document(FirebaseAuth.getInstance().currentUser?.uid.toString())
-            .collection("myTrainings").orderBy("date")
-            .addSnapshotListener { snapshot, e ->
-                Log.d("!!!", "READ")
-
-                myTrainingList.clear()
-     */
 
     fun trainingsHistory() {
         FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser?.uid.toString()).collection("myTrainings").orderBy("date")

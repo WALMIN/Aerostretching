@@ -106,7 +106,7 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
         GetData.trainings()
         GetData.profile()
-        trainingsHistory()
+        GetData.trainingsHistory()
 
 
     }

@@ -15,7 +15,7 @@ class MyTrainingsListAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.mytraining_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.training_item, parent, false)
         return ViewHolder(view)
 
     }
