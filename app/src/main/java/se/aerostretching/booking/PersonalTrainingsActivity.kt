@@ -1,15 +1,16 @@
 package se.aerostretching.booking
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class PersonalTrainingsActivity : AppCompatActivity() {
 
@@ -17,11 +18,22 @@ class PersonalTrainingsActivity : AppCompatActivity() {
 
     lateinit var editTextApply: EditText
 
+    lateinit var button_apply: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personal_trainings)
         customActionBar()
-        initialize()
+
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+        editTextApply = findViewById(R.id.editTextApply)
+        button_apply = findViewById(R.id.buttonApplyPersonalTraining)
+
+        button_apply.setOnClickListener{
+            sendMessage()
+            goToStartActivity()
+        }
 
     }
 
@@ -48,26 +60,39 @@ class PersonalTrainingsActivity : AppCompatActivity() {
         }
 
     }
-
-    fun initialize() {
-        editTextApply = findViewById(R.id.editTextApply)
-
+    fun goToStartActivity() {
+        val intent = Intent(this, StartActivity::class.java)
+        startActivity(intent)
     }
 
-    fun applyPersonalTraining(view: View) {
-        if (editTextApply.text.toString().trim().isNotEmpty()) {
-            sendPersonalTraining()
-
-        } else {
-            Toast.makeText(this, getString(R.string.noTrainingText), Toast.LENGTH_LONG).show()
-
-        }
-
-    }
-
-    fun sendPersonalTraining() {
+    /*fun sendPersonalTraining() {
         Toast.makeText(this, "(send request)", Toast.LENGTH_LONG).show()
 
+    }*/
+
+    fun sendMessage(){
+        val uid = auth.currentUser?.uid
+        var text = editTextApply.text.toString()
+        val name = GetData.name
+        val name1 = GetData.name
+        val email= GetData.email
+        if (text.isEmpty())  {
+            Toast.makeText(this, getString(R.string.noTrainingText), Toast.LENGTH_LONG).show()
+        }
+
+       else{
+
+            val message = Message(text,name,email,System.currentTimeMillis()/1000)
+
+        db.collection("messages").document(uid.toString()).collection(name1).add(message)
+                .addOnSuccessListener{
+                    Log.d("!!!", "saved our message")
+                    Toast.makeText(this, "message sent", Toast.LENGTH_LONG).show()
+                }
+        }
     }
 
+
+
 }
+class Message(val text: String, val name: String, val email: String, val timeStamp:Long)

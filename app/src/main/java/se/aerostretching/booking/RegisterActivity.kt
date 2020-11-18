@@ -88,7 +88,7 @@ class RegisterActivity : AppCompatActivity() {
         val uid = auth.currentUser?.uid
 
         val user = User(r_email.text.toString(), r_name.text.toString(), r_phone.text.toString(),
-                r_birthDate.text.toString())
+                r_birthDate.text.toString(), r_password_1.toString())
 
         db.collection("users").document(uid.toString()).collection("info").add(user)
                 .addOnCompleteListener { task ->
@@ -123,4 +123,4 @@ class RegisterActivity : AppCompatActivity() {
 }
 
 
-class User(val email: String, val name: String, val phone: String, val birth: String)
+class User(val email: String, val name: String, val phone: String, val birth: String, val password: String)
