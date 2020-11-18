@@ -3,6 +3,9 @@ package se.aerostretching.booking
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 object GetDataMyTrainings {
 
@@ -12,7 +15,13 @@ object GetDataMyTrainings {
     fun myTrainings() {
         FirebaseFirestore.getInstance().collection("users")
             .document(FirebaseAuth.getInstance().currentUser?.uid.toString())
-            .collection("myTrainings").orderBy("date")
+            .collection("myTrainings").orderBy("date").whereGreaterThanOrEqualTo(
+                        "date",
+                        SimpleDateFormat(
+                                "MMddyyyy",
+                                Locale.getDefault()
+                        ).format(Calendar.getInstance().time)
+                )
             .addSnapshotListener { snapshot, e ->
                 Log.d("!!!", "READ")
 
