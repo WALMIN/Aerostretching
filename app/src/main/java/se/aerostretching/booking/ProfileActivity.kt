@@ -1,14 +1,13 @@
 package se.aerostretching.booking
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
@@ -21,7 +20,8 @@ class ProfileActivity : AppCompatActivity() {
     lateinit var editTextEmail: EditText
     lateinit var editTextPhone: EditText
     lateinit var endBtn: ImageButton
-    var editing = false
+             var editing = false
+    lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +32,31 @@ class ProfileActivity : AppCompatActivity() {
         editTextBirth = findViewById(R.id.dateOfBirth)
         editTextEmail = findViewById(R.id.mailAccount)
         editTextPhone = findViewById(R.id.phoneNumber)
+        button = findViewById<Button>(R.id.password)
 
         editTextName.setText(GetData.name)
         editTextBirth.setText(GetData.birth)
         editTextEmail.setText(GetData.email)
         editTextPhone.setText(GetData.phone)
 
+
+        button.setOnClickListener(){
+
+            openDialog()
+        }
+
     }
+
+     fun openDialog() {
+         val logindialog = AlertDialog.Builder(this)
+
+         val myView: View = layoutInflater.inflate(R.layout.layout_alert_dialog, null)
+
+         logindialog.setView(myView)
+         logindialog.show()
+
+     }
+
 
     fun saveData() {
         val uid = FirebaseAuth.getInstance().currentUser?.uid
