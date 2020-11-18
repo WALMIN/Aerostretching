@@ -12,8 +12,9 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
-import se.aerostretching.booking.GetData.trainingsHistory
+import com.google.firebase.storage.FirebaseStorage
 
 class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
@@ -66,6 +67,13 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
     }
 
     fun initialize() {
+        Glide.with(this)
+            .load(FirebaseStorage.getInstance().reference.child("start.jpg"))
+            .centerCrop()
+            .error(R.drawable.start_error)
+            .placeholder(R.drawable.start_loading)
+            .into(findViewById(R.id.startImage))
+
         trainingListView = findViewById(R.id.trainingList)
         GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingListStart, this)
         trainingListView.layoutManager = LinearLayoutManager(this)

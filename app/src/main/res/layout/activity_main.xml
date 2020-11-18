@@ -24,7 +24,7 @@
             android:maxHeight="256dp"
             android:minHeight="256dp"
             android:scaleType="fitXY"
-            android:src="@drawable/mainpic"
+            android:src="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -101,43 +101,62 @@
             android:layout_marginBottom="4dp"
             android:src="#000000" />
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btn_trainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:weightSum="100">
-            ">
+            android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="30"
-                app:srcCompat="@drawable/anastasiatrainer" />
+                android:id="@+id/trainerSmallImage"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:maxWidth="48dp"
+                android:maxHeight="48dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@null" />
 
             <TextView
                 android:id="@+id/textViewBookTrainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="30"
                 android:gravity="center"
                 android:text=""
                 android:textColor="#000000"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnImg"
+                app:layout_constraintStart_toEndOf="@id/trainerSmallImage"/>
 
             <ImageButton
-                android:id="@+id/btn_trainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="40"
-                android:backgroundTint="#FFFFFF"
+                android:id="@+id/btnImg"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@null"
+                android:gravity="center"
+                android:maxWidth="32dp"
+                android:maxHeight="32dp"
+                android:minWidth="32dp"
+                android:minHeight="32dp"
+                android:scaleType="fitXY"
                 android:tint="@color/colorAccent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/forward" />
-        </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
 

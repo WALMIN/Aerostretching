@@ -13,13 +13,12 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageViewStart"
+            android:id="@+id/startImage"
             android:layout_width="match_parent"
             android:layout_height="256dp"
             android:minHeight="256dp"
             android:maxHeight="256dp"
-            android:src="@drawable/mainpic"
-            android:scaleType="fitXY"
+            android:src="@null"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -28,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constrainedHeight="true"
-            app:layout_constraintTop_toBottomOf="@id/imageViewStart"
+            app:layout_constraintTop_toBottomOf="@id/startImage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">

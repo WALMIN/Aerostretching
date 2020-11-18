@@ -58,6 +58,12 @@
         <item>Sofia</item>
     </string-array>
 
+    <string-array name="trainerDescription">
+        <item>Grundare av studion för aero yoga, stretching, komplex träning. Omfattar universell utbildning som syftar till att förbättra hälsan. Lyssnar på sina elever och hjälper dem att uppnå sina mål.</item>
+        <item>(lägg in Anna text)</item>
+        <item>(lägg in Sofia text)</item>
+    </string-array>
+
     <!-- Book training activity -->
     <string name="trainingTitle">Aeroyoga</string>
     <string name="trainingTime">Start:&#160;</string>
@@ -98,9 +104,6 @@
     <!-- Start activity -->
     <string name="upcoming">Kommande</string>
     <string name="seeMore">Se mer</string>
-
-    <!-- Trainer activity -->
-    <string name="trainerDescription">Grundare av studion för aero yoga, stretching, komplex träning. Omfattar universell utbildning som syftar till att förbättra hälsan. Lyssnar på sina elever och hjälper dem att uppnå sina mål.</string>
 
     <!-- Profile -->
     <string name="password">Byt lösenord</string>
