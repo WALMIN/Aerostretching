@@ -46,7 +46,7 @@
     <string-array name="titles">
         <item>Aeroyoga</item>
         <item>Aerostretching</item>
-        <item>Kids Aero</item>
+        <item>Kids Aerostretching</item>
         <item>Suspension</item>
     </string-array>
 
@@ -123,6 +123,14 @@
     <!-- Start activity -->
     <string name="upcoming">Upcoming</string>
     <string name="seeMore">See more</string>
+
+    <!-- Trainer activity -->
+    <string-array name="trainingDescription">
+        <item>(this is Aeroyoga...)</item>
+        <item>Now imagine being able to do physical exercises in the air without touching the floor. Aerostretching has become more and more popular in recent years. You stretch your bodies muscles with the help of a silk hammock as a training tool. The purpose of aerostretching is to stretch all the muscles of the body, become supple, strengthen ligaments and increase the body\'s mobility. The hammock makes it possible for you to go in deeper stretching without getting a heavy load and in this way you can get gentle deep stretching. Leave your thoughts behind you and step into a world of agility with aerostretching. The technique results in a stretching of the whole body, where you work with your own weight with the help of a hammock.\nThis type of stretching prevents the formation of new muscle knots, loosens existing ones and relaxes muscles. As a result, your daily stress will decrease and sleep will improve. The negative stress is converted into positive stress. Remember, it does not matter who you are or what you do. Since man began to walk upright on two legs, everyone has more or less back pain at some point in life. Anastasia Studio guarantees that you will feel happier, fitter and healthier in your body after each workout.</item>
+        <item>(this is Kids Aero...)</item>
+        <item>(this is Suspension...)</item>
+    </string-array>
 
     <!-- Register -->
     <string name="enterAllFields">Please enter all fields correctly</string>

@@ -7,12 +7,12 @@
     tools:context=".BookTrainingActivity">
 
     <LinearLayout
+        android:id="@+id/infoLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:weightSum="13"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,11 +21,10 @@
             android:id="@+id/textViewBookTrainingName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="@string/trainingTitle"
             android:textAllCaps="true"
-            android:textColor="#000000"
+            android:textColor="@color/text"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -33,83 +32,72 @@
             android:id="@+id/textViewBookTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="@string/trainingTime"
-            android:textColor="#000000"
+            android:textColor="@color/text"
             android:textStyle="bold" />
 
-        <ImageView
-
-            android:id="@+id/imageView6"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:src="#000000" />
+            android:layout_height="@dimen/lineHeight"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/text" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="@string/trainingPlace"
-            android:textStyle="italic" />
+            android:textColor="@color/text" />
 
-        <ImageView
-
-            android:id="@+id/imageView12"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:src="#000000" />
+            android:layout_height="@dimen/lineHeight"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/text" />
 
         <TextView
             android:id="@+id/textViewBookPlaces"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="@string/trainingSpots"
+            android:textColor="@color/text"
             android:textStyle="bold" />
 
-        <ImageView
-
-            android:id="@+id/imageView7"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:src="#000000" />
+            android:layout_height="@dimen/lineHeight"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/text" />
 
         <Button
             android:id="@+id/buttonBook"
-            android:layout_width="160dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/colorAccent"
             android:text="@string/book" />
 
-        <ImageView
-
-            android:id="@+id/imageView8"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:src="#000000" />
+            android:layout_height="@dimen/lineHeight"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/text" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_trainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
+            android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
 
             <ImageView
                 android:id="@+id/trainerSmallImage"
@@ -130,16 +118,16 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text=""
-                android:textColor="#000000"
+                android:textColor="@color/text"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constrainedWidth="true"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/btnImg"
-                app:layout_constraintStart_toEndOf="@id/trainerSmallImage"/>
+                app:layout_constraintStart_toEndOf="@id/trainerSmallImage"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/btnImg"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -150,28 +138,35 @@
                 android:minWidth="32dp"
                 android:minHeight="32dp"
                 android:scaleType="fitXY"
-                android:tint="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/forward" />
+                app:srcCompat="@drawable/forward"
+                app:tint="@color/colorAccent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-
-            android:id="@+id/imageView9"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:src="#000000" />
+            android:layout_height="@dimen/lineHeight"
+            android:layout_marginTop="10dp"
+            android:background="@color/text" />
 
-        <TextView
-            android:id="@+id/textViewBookDescription"
-            android:layout_width="297dp"
-            android:layout_height="337dp"
-            android:text="@string/trainingDescription" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewBookDescription"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="0dp"
+        android:scrollbars="none"
+        android:text="@string/trainingDescription"
+        android:textColor="@color/text"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/infoLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
