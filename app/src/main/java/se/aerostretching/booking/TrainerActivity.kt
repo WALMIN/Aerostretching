@@ -47,8 +47,8 @@ class TrainerActivity : AppCompatActivity() {
         Glide.with(this)
             .load(FirebaseStorage.getInstance().reference.child("trainers/${intent.getStringExtra("trainer")?.toLowerCase()}.jpg"))
             .centerCrop()
-            .error(R.drawable.start_error)
-            .placeholder(R.drawable.start_loading)
+            .error(R.drawable.trainer_error)
+            .placeholder(R.drawable.trainer_loading)
             .into(findViewById(R.id.trainerImage))
 
         textViewTrainerName = findViewById(R.id.textViewTrainerName)

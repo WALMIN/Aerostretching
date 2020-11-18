@@ -39,7 +39,7 @@
     <string-array name="titles">
         <item>Aeroyoga</item>
         <item>Aerostretching</item>
-        <item>Barn Aero</item>
+        <item>Kids Aero</item>
         <item>Suspension</item>
     </string-array>
 
@@ -68,9 +68,9 @@
     <string name="trainingTitle">Aeroyoga</string>
     <string name="trainingTime">Start:&#160;</string>
     <string name="trainingPlace">Stockholm, Odenplan</string>
-    <string name="trainingSpots">Available spots:&#160;</string>
-    <string name="book">Book</string>
-    <string name="trainingDescription">Description…</string>
+    <string name="trainingSpots">Tillgängliga platser:&#160;</string>
+    <string name="book">Boka</string>
+    <string name="trainingDescription">Beskrivning…</string>
     <string name="minutes">&#160;min</string>
 
     <string name="bookTitle">Boka</string>
@@ -104,6 +104,14 @@
     <!-- Start activity -->
     <string name="upcoming">Kommande</string>
     <string name="seeMore">Se mer</string>
+
+    <!-- Trainer activity -->
+    <string-array name="trainingDescription">
+        <item>(det här är Aeroyoga...)</item>
+        <item>Тänk dig nu att kunna utöva fysiska övningar i luften utan att nudda golvet. Aerostretching har blivit mer och mer populär de senaste åren. Du stretchar ut kroppens muskler med hjälp av en silke hammock som tränings redskap. Aerostretchings syfte är att stretcha ut kroppens alla muskler, bli smidig, stärka ligament och öka kroppens rörlighet. Hammocken gör det möjligt för dig att gå i djupare stretchning utan att du får en tung belastning och på så sätt kan du få skonsam djup stretchning. Lämna dina tankar bakom dig och kliv i en värld av smidighet med aerostretching. Tekniken resulterar en stretching av hela kroppen, där du jobbar med din egen tyngdvikt med hjälp av en hammock.\nDenna typ av stretching förebygger bildning av nya muskelknutor, löser upp dom befintliga och muskler slappnar av. Som följd kommer din vardagsstress minska och sömn förbättras. Den negativa stressen omvandlas till positiv stress. Kom ihåg, det spelar ingen roll vem du är eller vad du gör. Sedan människan började gå upprätt på två ben har alla mer eller mindre ryggsmärtor någon gång i livet. Anastasia Studio garanterar att du kommer känna dig lyckligare, piggare och friskare i kroppen efter varje pass.</item>
+        <item>(det här är Kids Aero...)</item>
+        <item>(det här är Suspension...)</item>
+    </string-array>
 
     <!-- Profile -->
     <string name="password">Byt lösenord</string>

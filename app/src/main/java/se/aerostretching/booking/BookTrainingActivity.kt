@@ -4,9 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.provider.CalendarContract
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -21,9 +25,6 @@ class BookTrainingActivity : AppCompatActivity() {
     lateinit var db: FirebaseFirestore
     lateinit var auth: FirebaseAuth
 
-    // Views
-    lateinit var trainerSmallImageView: ImageView
-
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,46 +35,73 @@ class BookTrainingActivity : AppCompatActivity() {
 
     }
 
-    fun initialize(){
+    fun initialize() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        // Views
-        val buttonBook = findViewById<Button>(R.id.buttonBook)
+        // Title
+        val nameView: TextView = findViewById(R.id.textViewBookTrainingName)
+        nameView.text = intent.getStringExtra("title")
+
+        // Time and length
+        val timeView: TextView = findViewById(R.id.textViewBookTime)
+        timeView.text = getString(R.string.trainingTime) + "${intent.getStringExtra("time")} (${intent.getStringExtra("length")}${getString(R.string.minutes)})"
+
+        // Place
+        val placeView: TextView = findViewById(R.id.textView)
+        placeView.text = intent.getStringExtra("place")
+
+        // Spots
+        val spotsView: TextView = findViewById(R.id.textViewBookPlaces)
+        spotsView.text = getString(R.string.trainingSpots) + "${intent.getStringExtra("spots")}"
+
+        // Book btn
+        val buttonBook: Button = findViewById(R.id.buttonBook)
         buttonBook.setOnClickListener {
             bookTraining()
 
         }
+
+        // Trainer
+        Glide.with(this)
+            .load(FirebaseStorage.getInstance().reference.child("trainers/${intent.getStringExtra("trainer")?.toLowerCase()}_small.jpg"))
+            .centerCrop()
+            .circleCrop()
+            .error(R.drawable.error)
+            .placeholder(R.drawable.loading)
+            .into(findViewById(R.id.trainerSmallImage))
+
+        val trainerView: TextView = findViewById(R.id.textViewBookTrainer)
+        trainerView.text = intent.getStringExtra("trainer")
+
         val btnTrainer = findViewById<ConstraintLayout>(R.id.btn_trainer)
         btnTrainer.setOnClickListener {
             goToTrainerActivity()
 
         }
 
-        val nameView: TextView = findViewById<View>(R.id.textViewBookTrainingName) as TextView
-        nameView.text = intent.getStringExtra("title")
+        // Description
+        val textViewBookDescription: TextView = findViewById(R.id.textViewBookDescription)
+        textViewBookDescription.movementMethod = ScrollingMovementMethod.getInstance()
+        when {
+            intent.getStringExtra("title").equals(resources.getStringArray(R.array.titles)[0]) -> {
+                textViewBookDescription.text = resources.getStringArray(R.array.trainingDescription)[0]
 
-        val timeView: TextView = findViewById<View>(R.id.textViewBookTime) as TextView
-        timeView.text = getString(R.string.trainingTime) +
-                "${intent.getStringExtra("time")} (${intent.getStringExtra("length")}${getString(R.string.minutes)})"
+            }
+            intent.getStringExtra("title").equals(resources.getStringArray(R.array.titles)[1]) -> {
+                textViewBookDescription.text = resources.getStringArray(R.array.trainingDescription)[1]
 
-        val placeView: TextView = findViewById<View>(R.id.textView) as TextView
-        placeView.text = intent.getStringExtra("place")
+            }
+            intent.getStringExtra("title").equals(resources.getStringArray(R.array.titles)[2]) -> {
+                textViewBookDescription.text = resources.getStringArray(R.array.trainingDescription)[2]
 
-        val trainerView: TextView = findViewById<View>(R.id.textViewBookTrainer) as TextView
-        trainerView.text = intent.getStringExtra("trainer")
+            }
+            intent.getStringExtra("title").equals(resources.getStringArray(R.array.titles)[3]) -> {
+                textViewBookDescription.text = resources.getStringArray(R.array.trainingDescription)[3]
 
-        val spotsView: TextView = findViewById<View>(R.id.textViewBookPlaces) as TextView
-        spotsView.text = getString(R.string.trainingSpots) + "${intent.getStringExtra("spots")}"
+            }
 
-        trainerSmallImageView = findViewById(R.id.trainerSmallImage)
-        Glide.with(this)
-            .load(FirebaseStorage.getInstance().reference.child("trainers/${intent.getStringExtra("trainer")?.toLowerCase()}_small.jpg"))
-            .centerCrop()
-            .circleCrop()
-            .error(R.drawable.start_error)
-            .placeholder(R.drawable.start_loading)
-            .into(trainerSmallImageView)
+        }
 
     }
 
