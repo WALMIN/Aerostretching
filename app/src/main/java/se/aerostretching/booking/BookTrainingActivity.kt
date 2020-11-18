@@ -6,39 +6,50 @@ import android.os.Bundle
 import android.provider.CalendarContract
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 class BookTrainingActivity : AppCompatActivity() {
 
     lateinit var db: FirebaseFirestore
     lateinit var auth: FirebaseAuth
 
+    // Views
+    lateinit var trainerSmallImageView: ImageView
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_training)
 
+        customActionBar()
+        initialize()
+
+    }
+
+    fun initialize(){
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        customActionBar()
+        // Views
         val buttonBook = findViewById<Button>(R.id.buttonBook)
         buttonBook.setOnClickListener {
             bookTraining()
 
         }
-        val btn_trainer = findViewById<ImageButton>(R.id.btn_trainer)
-        btn_trainer.setOnClickListener {
+        val btnTrainer = findViewById<ConstraintLayout>(R.id.btn_trainer)
+        btnTrainer.setOnClickListener {
             goToTrainerActivity()
+
         }
+
         val nameView: TextView = findViewById<View>(R.id.textViewBookTrainingName) as TextView
         nameView.text = intent.getStringExtra("title")
 
@@ -55,11 +66,21 @@ class BookTrainingActivity : AppCompatActivity() {
         val spotsView: TextView = findViewById<View>(R.id.textViewBookPlaces) as TextView
         spotsView.text = getString(R.string.trainingSpots) + "${intent.getStringExtra("spots")}"
 
+        trainerSmallImageView = findViewById(R.id.trainerSmallImage)
+        Glide.with(this)
+            .load(FirebaseStorage.getInstance().reference.child("trainers/${intent.getStringExtra("trainer")?.toLowerCase()}_small.jpg"))
+            .centerCrop()
+            .circleCrop()
+            .error(R.drawable.start_error)
+            .placeholder(R.drawable.start_loading)
+            .into(trainerSmallImageView)
+
     }
 
     fun goToTrainerActivity() {
-        val intent = Intent(this, TrainerActivity::class.java)
-        startActivity(intent)
+        val trainerIntent = Intent(this, TrainerActivity::class.java)
+        trainerIntent.putExtra("trainer", intent.getStringExtra("trainer"))
+        startActivity(trainerIntent)
     }
 
     fun customActionBar() {
@@ -155,32 +176,6 @@ class BookTrainingActivity : AppCompatActivity() {
             Toast.makeText(this, getString(R.string.noSpots), Toast.LENGTH_LONG).show()
 
         }
-
-        /*
-            val myTrainingItem = TrainingItem(
-                intent.getStringExtra("id").toString(),
-                intent.getStringExtra("date").toString(),
-                intent.getStringExtra("time").toString(),
-                intent.getStringExtra("length").toString(),
-                intent.getStringExtra("title").toString(),
-                intent.getStringExtra("place").toString(),
-                intent.getStringExtra("trainer").toString(),
-                intent.getStringExtra("spots").toString()
-            )
-
-            val user = auth.currentUser
-            db.collection("users").document(user!!.uid).collection("myTrainings").add(myTrainingItem)
-                .addOnCompleteListener { task ->
-                    Log.d("!!!", "Add: ${task.exception}")
-
-                    updateSpots()
-
-                }
-            GetDataMyTrainings.myTrainings()
-            finish()
-
-        }
-         */
 
     }
 

@@ -64,6 +64,12 @@
         <item>Sofia</item>
     </string-array>
 
+    <string-array name="trainerDescription">
+        <item>Founder of the studio for aero yoga, stretching, complex training. Includes universal education aimed at improving health. Listens to their students and helps them achieve their goals.</item>
+        <item>(insert Anna text)</item>
+        <item>(insert Sofia text)</item>
+    </string-array>
+
     <!-- Book training activity -->
     <string name="trainingTitle">Aeroyoga</string>
     <string name="trainingTime">Start:&#160;</string>
@@ -116,9 +122,6 @@
     <!-- Start activity -->
     <string name="upcoming">Upcoming</string>
     <string name="seeMore">See more</string>
-
-    <!-- Trainer activity -->
-    <string name="trainerDescription">Founder of the studio for aero yoga, stretching, complex training. Includes universal education aimed at improving health. Listens to their students and helps them achieve their goals.</string>
 
     <!-- Register -->
     <string name="enterAllFields">Please enter all fields correctly</string>
