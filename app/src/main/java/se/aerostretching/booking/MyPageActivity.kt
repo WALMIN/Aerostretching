@@ -10,7 +10,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 class MyPageActivity : AppCompatActivity() {
 
