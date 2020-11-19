@@ -60,8 +60,8 @@
 
     <string-array name="trainerDescription">
         <item>Grundare av studion för aero yoga, stretching, komplex träning. Omfattar universell utbildning som syftar till att förbättra hälsan. Lyssnar på sina elever och hjälper dem att uppnå sina mål.</item>
-        <item>(lägg in Anna text)</item>
-        <item>(lägg in Sofia text)</item>
+        <item>Väldigt bra instruktör som lyssnar och hjälper om man inte kan. Märks verkligen att hon brinner för det hon gör och att hon vill att man ska må bra</item>
+        <item>Sofia är duktig på att instruera, man känner sig aldrig dömd om något känns svårt och hon är väldigt lugn och harmonisk</item>
     </string-array>
 
     <!-- Book training activity -->
@@ -107,10 +107,23 @@
 
     <!-- Trainer activity -->
     <string-array name="trainingDescription">
-        <item>(det här är Aeroyoga...)</item>
-        <item>Тänk dig nu att kunna utöva fysiska övningar i luften utan att nudda golvet. Aerostretching har blivit mer och mer populär de senaste åren. Du stretchar ut kroppens muskler med hjälp av en silke hammock som tränings redskap. Aerostretchings syfte är att stretcha ut kroppens alla muskler, bli smidig, stärka ligament och öka kroppens rörlighet. Hammocken gör det möjligt för dig att gå i djupare stretchning utan att du får en tung belastning och på så sätt kan du få skonsam djup stretchning. Lämna dina tankar bakom dig och kliv i en värld av smidighet med aerostretching. Tekniken resulterar en stretching av hela kroppen, där du jobbar med din egen tyngdvikt med hjälp av en hammock.\nDenna typ av stretching förebygger bildning av nya muskelknutor, löser upp dom befintliga och muskler slappnar av. Som följd kommer din vardagsstress minska och sömn förbättras. Den negativa stressen omvandlas till positiv stress. Kom ihåg, det spelar ingen roll vem du är eller vad du gör. Sedan människan började gå upprätt på två ben har alla mer eller mindre ryggsmärtor någon gång i livet. Anastasia Studio garanterar att du kommer känna dig lyckligare, piggare och friskare i kroppen efter varje pass.</item>
-        <item>(det här är Kids Aero...)</item>
-        <item>(det här är Suspension...)</item>
+        <item>
+            Aeroyoga eller aerial yoga har samma syfte som klassisk yogisk disciplin med ursprung i antika Indien, det handlar om andningsarbete, de kallar det pranayama, det här är en expansion av individuell energi till kosmisk energi. Dina andetag flyter med dina rörelser, din asana. Asanas påstås ge både andliga och fysiska fördelar.
+            \nGanska nyligen har man kunnat konstatera att den typ av träning reducerat stress och förhållanden som är relaterade till det, och specifikt lindrar vissa sjukdomar som diabetes och astma. Ur den indiska filosofins synvinkel styrs energi- och fysiologiska processer i kroppen genom att omfördela spänningar och kompressioner i kroppen. Det skulle förbinda sinnet och kroppen att bränna din samadhi, det hänvisar till utvecklingen av ett lysande sinne som är jämn i sin koncentration.Hängmattan dekomprimerar ryggraden, den tillför mer vätska tillbaka i backsheets och justerar ryggraden samtidigt. När vi går in i dessa inversioner har vi en skön stretchning och du känner positiv energi.
+            \nSläpp fram dina känslor. Aeroyoga är lättare på många sätt än klassisk yoga. Otroliga förändringar väntar din kropp och själ. Den negativa stressen omvandlas till positiv stress. Din värld kommer aldrig att bli densamma igen! 
+        </item>
+        <item>
+            Тänk dig nu att kunna utöva fysiska övningar i luften utan att nudda golvet. Aerostretching har blivit mer och mer populär de senaste åren.
+            Du stretchar ut kroppens muskler med hjälp av en silke hammock som tränings redskap. Aerostretchings syfte är att stretcha ut kroppens alla muskler, bli smidig, stärka ligament och öka kroppens rörlighet.
+            Hammocken gör det möjligt för dig att gå i djupare stretchning utan att du får en tung belastning och på så sätt kan du få skonsam djup stretchning.
+            Lämna dina tankar bakom dig och kliv i en värld av smidighet med aerostretching. Tekniken resulterar en stretching av hela kroppen, där du jobbar med din egen tyngdvikt med hjälp av en hammock.
+            \nDenna typ av stretching förebygger bildning av nya muskelknutor, löser upp dom befintliga och muskler slappnar av. Som följd kommer din vardagsstress minska och sömn förbättras.
+            Den negativa stressen omvandlas till positiv stress. Kom ihåg, det spelar ingen roll vem du är eller vad du gör. Sedan människan började gå upprätt på två ben har alla mer eller mindre ryggsmärtor någon gång i livet.
+            Anastasia Studio garanterar att du kommer känna dig lyckligare, piggare och friskare i kroppen efter varje pass.
+        </item>
+        <item>Graciös och elegant sport med hammocken.</item>
+        <item>Slingtäning en motstånd tränings form som stärker stabilitet i musklerna med hjälp av sin egen kroppsvikt. Slingträning går ut på fynktionella rörelser och dynamiska positioner som förbättrar din styrka, balans, flexibilitet och skarv stabilitet samtidigt. Slingträning är effektiv som hel kroppsträning och ger stark och fast core.
+        \nPassar alla personer oavsett träningsvana. Det är en ganska tillgänglig träningsform och får människor med olika tränings erfarenhet känna sig bekväm dessutom minimal risk för skada.</item>
     </string-array>
 
     <!-- Profile -->

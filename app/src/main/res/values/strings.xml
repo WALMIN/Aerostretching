@@ -67,8 +67,8 @@
 
     <string-array name="trainerDescription">
         <item>Founder of the studio for aero yoga, stretching, complex training. Includes universal education aimed at improving health. Listens to their students and helps them achieve their goals.</item>
-        <item>(insert Anna text)</item>
-        <item>(insert Sofia text)</item>
+        <item>Very good instructor who listens and helps if you can not. Really noticeable that she is passionate about what she does and that she wants you to feel good</item>
+        <item>Sofia is good at instructing, you never feel judged if something feels difficult and she is very calm and harmonious</item>
     </string-array>
 
     <!-- Book training activity -->
@@ -126,10 +126,21 @@
 
     <!-- Trainer activity -->
     <string-array name="trainingDescription">
-        <item>(this is Aeroyoga...)</item>
+        <item>Aero yoga or aerial yoga has the same purpose as classical yoga with origins in ancient India, but with using silk hammock. It is about breath work, they call it pranayama. Your breath flows with your movements, your asana, this is about taking postures in slow motion, here the main goal is to calm down, breath-working.
+These beautiful motions are very beneficial to your health. Thanks to the upside down position we stretch the spine without any impact on it. Keep patience and you will be impressed by the results. This triggers the process of formation of new neural connections, a lot of compressions and tensions in the body go away and muscles are relaxed.
+        </item>
         <item>Now imagine being able to do physical exercises in the air without touching the floor. Aerostretching has become more and more popular in recent years. You stretch your bodies muscles with the help of a silk hammock as a training tool. The purpose of aerostretching is to stretch all the muscles of the body, become supple, strengthen ligaments and increase the body\'s mobility. The hammock makes it possible for you to go in deeper stretching without getting a heavy load and in this way you can get gentle deep stretching. Leave your thoughts behind you and step into a world of agility with aerostretching. The technique results in a stretching of the whole body, where you work with your own weight with the help of a hammock.\nThis type of stretching prevents the formation of new muscle knots, loosens existing ones and relaxes muscles. As a result, your daily stress will decrease and sleep will improve. The negative stress is converted into positive stress. Remember, it does not matter who you are or what you do. Since man began to walk upright on two legs, everyone has more or less back pain at some point in life. Anastasia Studio guarantees that you will feel happier, fitter and healthier in your body after each workout.</item>
-        <item>(this is Kids Aero...)</item>
-        <item>(this is Suspension...)</item>
+        <item>New adventures, smooth and fun...
+\nSilk hammocks and soft floor for the most loveable.
+\nNothing can hurt me!
+\nRunning laughter, swinging laughter, soaring laughter,
+\nI can be your wing man!
+\nWe can fly and balance on the clouds.
+\nCatch the latest news 🤗😍🤩</item>
+        <item>Suspension training is a form of resistance training that includes bodyweight exercises. Suspension training uses functional movements and dynamic positions. These develop strength, balance, flexibility, and joint stability simultaneously. Suspension training is effective total-body workout, it helps to build a rock-solid core.
+Benefits people of all fitness levels. This is very low impact training method which allows people of all levels to train comfortably with less risk of injury.
+If body becomes strong and beautiful, then it is art.
+</item>
     </string-array>
 
     <!-- Register -->
