@@ -103,6 +103,7 @@ object Tools {
                 trainingReference.update("users", item.users.replace("|${FirebaseAuth.getInstance().currentUser?.uid}", ""))
 
                 GetData.trainings()
+                GetData.trainingListAdapter.notifyDataSetChanged()
 
             }
             .setNegativeButton(context.getString(R.string.cancel)) { dialog, id ->
