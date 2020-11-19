@@ -88,11 +88,11 @@ class AdminActivity : AppCompatActivity() {
             }
             override fun onStartTrackingTouch(seekBar: SeekBar) {
                 // Do something
-                Toast.makeText(applicationContext,"start tracking",Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"start tracking",Toast.LENGTH_SHORT)
             }
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 // Do something
-                Toast.makeText(applicationContext,"stop tracking",Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"stop tracking",Toast.LENGTH_SHORT)
             }
         } )
 
@@ -105,11 +105,11 @@ class AdminActivity : AppCompatActivity() {
             }
             override fun onStartTrackingTouch(seekBarLenght: SeekBar) {
                 // Do something
-                Toast.makeText(applicationContext,"start tracking",Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"",Toast.LENGTH_SHORT)
             }
             override fun onStopTrackingTouch(seekBarLenght: SeekBar) {
                 // Do something
-                Toast.makeText(applicationContext,"stop tracking",Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext,"",Toast.LENGTH_SHORT)
             }
         } )
 
@@ -133,6 +133,7 @@ class AdminActivity : AppCompatActivity() {
 
         buttonSave.setOnClickListener {
             createTraining(it as Button)
+            startActivity(Intent(this, AdminActivity::class.java))
         }
     }
 
