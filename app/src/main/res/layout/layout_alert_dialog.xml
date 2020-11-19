@@ -30,11 +30,24 @@
 
 
     <Button
+        android:id="@+id/Confirm_button"
         android:text="confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/RepeatPassword"
-        android:backgroundTint="@color/colorAccent"/>
+        android:backgroundTint="@color/colorAccent"
+        android:layout_marginLeft="160dp"/>
+
+    <Button
+        android:id="@+id/Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_toRightOf="@+id/Confirm_button"
+        android:layout_below="@+id/RepeatPassword"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentEnd="true"/>
 
 
 
