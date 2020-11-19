@@ -9,7 +9,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener {
@@ -58,14 +57,14 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
     fun initialize() {
         db = FirebaseFirestore.getInstance()
         trainingListView = findViewById(R.id.trainingList)
-        GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingList, this)
+        GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingList, this, false)
         trainingListView.layoutManager = LinearLayoutManager(this)
         trainingListView.adapter = GetData.trainingListAdapter
 
     }
 
     override fun onTrainingItemClick(item: TrainingItem, position: Int) {
-        if (item.users.contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
+        if (item.booked) {
             Tools.removeBooking(this, item)
 
         } else {

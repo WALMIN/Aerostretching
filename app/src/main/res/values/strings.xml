@@ -103,7 +103,7 @@
 
     <!-- Personal activity -->
     <string name="trainingApply">Apply for an individual training session</string>
-    <string name="trainingApplyHint">Write briefly what type of training you want, how many people you are and the estimated time.\n\nnWe will answer you as soon as possible!</string>
+    <string name="trainingApplyHint">Write briefly what type of training you want, how many people you are and the estimated time.\n\nWe will answer you as soon as possible!</string>
     <string name="sendTraining">Send</string>
 
     <string name="noTrainingText">You have to write something</string>

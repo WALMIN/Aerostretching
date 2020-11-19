@@ -150,7 +150,8 @@ class AdminActivity : AppCompatActivity() {
                 spinnerPlaces.selectedItem.toString(),
                 spinnerTrainer.selectedItem.toString(),
                 spots,
-                "")
+                "",
+                false)
         if (Tools.checkAdmin(this)) {
             if (textDate.text.isEmpty() || timeadmin.text.isEmpty() || timeadmin.text.isEmpty() || lengthadmin.text.isEmpty() || spotsadmin.text.isEmpty()) {
                 Toast.makeText(this, getString(R.string.trainingEmpty), Toast.LENGTH_LONG).show()

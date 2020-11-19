@@ -1,6 +1,5 @@
 package se.aerostretching.booking
 
-import android.content.Context
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -11,10 +10,10 @@ import kotlin.collections.ArrayList
 object GetData {
 
     lateinit var trainingListAdapter: TrainingListAdapter
-    val trainingListStart = ArrayList<TrainingItem>()
     val trainingList = ArrayList<TrainingItem>()
+    val trainingListStart = ArrayList<TrainingItem>()
+    val trainingListUpcoming = ArrayList<TrainingItem>()
     val trainingListHistory = ArrayList<TrainingItem>()
-
 
     var id = ""
     var name = ""
@@ -37,10 +36,17 @@ object GetData {
 
                 trainingList.clear()
                 trainingListStart.clear()
-                trainingListHistory.clear()
+                trainingListUpcoming.clear()
 
                 // All trainings
                 for (document in snapshot!!) {
+                    var booked = false
+
+                    if (document.getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
+                        booked = true
+
+                    }
+
                     trainingList.add(
                         TrainingItem(
                             document.id,
@@ -51,14 +57,41 @@ object GetData {
                             document.getString("place").toString(),
                             document.getString("trainer").toString(),
                             document.getString("spots").toString(),
-                            document.getString("users").toString()
+                            document.getString("users").toString(),
+                            booked
                         )
                     )
+
+                    // Upcoming
+                    if (document.getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
+                        trainingListUpcoming.add(
+                            TrainingItem(
+                                document.id,
+                                document.getString("date").toString(),
+                                document.getString("time").toString(),
+                                document.getString("length").toString(),
+                                document.getString("title").toString(),
+                                document.getString("place").toString(),
+                                document.getString("trainer").toString(),
+                                document.getString("spots").toString(),
+                                document.getString("users").toString(),
+                                true
+                            )
+                        )
+
+                    }
 
                 }
 
                 // Start trainings
                 for (i in 0..3) {
+                    var booked = false
+
+                    if (snapshot.documents[i].getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
+                        booked = true
+
+                    }
+
                     trainingListStart.add(
                         TrainingItem(
                             snapshot.documents[i].id,
@@ -69,11 +102,54 @@ object GetData {
                             snapshot.documents[i].getString("place").toString(),
                             snapshot.documents[i].getString("trainer").toString(),
                             snapshot.documents[i].getString("spots").toString(),
-                            snapshot.documents[i].getString("users").toString()
+                            snapshot.documents[i].getString("users").toString(),
+                            booked
                         )
                     )
 
                 }
+
+                trainingListAdapter.notifyDataSetChanged()
+
+            }
+
+        // History
+        FirebaseFirestore.getInstance().collection("trainings").orderBy("date")
+            .whereLessThan(
+                "date",
+                SimpleDateFormat(
+                    "MMddyyyy",
+                    Locale.getDefault()
+                ).format(Calendar.getInstance().time)
+            )
+            .addSnapshotListener { snapshot, e ->
+                Log.d("!!!", "READ")
+
+                trainingListHistory.clear()
+
+                for (document in snapshot!!) {
+
+                    // Upcoming
+                    if (document.getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
+                        trainingListHistory.add(
+                            TrainingItem(
+                                document.id,
+                                document.getString("date").toString(),
+                                document.getString("time").toString(),
+                                document.getString("length").toString(),
+                                document.getString("title").toString(),
+                                document.getString("place").toString(),
+                                document.getString("trainer").toString(),
+                                document.getString("spots").toString(),
+                                document.getString("users").toString(),
+                                true
+                            )
+                        )
+
+                    }
+
+                }
+
                 trainingListAdapter.notifyDataSetChanged()
 
             }
@@ -84,7 +160,7 @@ object GetData {
         FirebaseFirestore.getInstance().collection("users")
             .document(FirebaseAuth.getInstance().currentUser?.uid.toString()).collection("info")
             .addSnapshotListener { snapshot, e ->
-                if(FirebaseAuth.getInstance().currentUser != null){
+                if (FirebaseAuth.getInstance().currentUser != null) {
                     for (document in snapshot!!) {
                         Log.d("!!!", document.id + " => " + document.data)
 
@@ -100,44 +176,6 @@ object GetData {
                 }
 
             }
-
-    }
-
-
-    fun trainingsHistory() {
-        FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().currentUser?.uid.toString()).collection("myTrainings").orderBy("date")
-                .whereLessThanOrEqualTo(
-                        "date",
-                        SimpleDateFormat(
-                                "MMddyyyy",
-                                Locale.getDefault()
-                        ).format(Calendar.getInstance().time)
-                )
-                .addSnapshotListener { snapshot, e ->
-                    Log.d("!!!", "READ")
-
-
-
-                    for (document in snapshot!! ) {
-                        trainingListHistory.add(
-                                TrainingItem(
-                                        document.id,
-                                        document.getString("date").toString(),
-                                        document.getString("time").toString(),
-                                        document.getString("length").toString(),
-                                        document.getString("title").toString(),
-                                        document.getString("place").toString(),
-                                        document.getString("trainer").toString(),
-                                        document.getString("spots").toString(),
-                                        document.getString("users").toString()
-                                )
-                        )
-
-                    }
-
-                    trainingListAdapter.notifyDataSetChanged()
-
-                }
 
     }
 

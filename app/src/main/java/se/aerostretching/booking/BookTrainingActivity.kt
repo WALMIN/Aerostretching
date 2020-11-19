@@ -180,7 +180,8 @@ class BookTrainingActivity : AppCompatActivity() {
                         intent.getStringExtra("place").toString(),
                         intent.getStringExtra("trainer").toString(),
                         intent.getStringExtra("spots").toString(),
-                        intent.getStringExtra("users").toString()
+                        intent.getStringExtra("users").toString(),
+                        true
                     )
 
                     val user = auth.currentUser
