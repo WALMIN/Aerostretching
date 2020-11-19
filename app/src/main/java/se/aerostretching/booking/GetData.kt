@@ -14,6 +14,7 @@ object GetData {
     val trainingListStart = ArrayList<TrainingItem>()
     val trainingListUpcoming = ArrayList<TrainingItem>()
     val trainingListHistory = ArrayList<TrainingItem>()
+    val messageList = ArrayList<MessageItem>()
 
     var id = ""
     var name = ""
@@ -174,6 +175,31 @@ object GetData {
                     }
 
                 }
+
+            }
+
+    }
+
+    fun message() {
+        FirebaseFirestore.getInstance().collection("messages").orderBy("date")
+            .addSnapshotListener { snapshot, e ->
+                Log.d("!!!", "READ")
+
+                messageList.clear()
+
+
+                // All trainings
+                for (document in snapshot!!) {
+
+                    messageList.add(
+                        MessageItem(
+                            document.id,
+                            document.getString("date").toString(),
+                            document.getString("name").toString(),
+                            document.getString("text").toString(),
+                            document.getString("user").toString(),
+                        )
+                    ) }
 
             }
 
