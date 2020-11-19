@@ -81,6 +81,8 @@
 
     <string name="noSpots">Inga platser tillgängliga</string>
 
+    <string name="filter">Filter</string>
+
     <!-- Main activity -->
     <string name="emailHint">Email</string>
     <string name="passwordHint">Lösenord</string>
@@ -131,6 +133,11 @@
 
     <string name="profileUpdated">Profil info uppdaterad</string>
 
+    <string name="newPasswordHint">Nytt lösenord</string>
+    <string name="repeatPasswordHint">Repetera lösenord</string>
+    <string name="passwordUpdated">Lösenordet har ändrats</string>
+    <string name="passwordNotChanged">Lösenordet ändrades inte</string>
+
     <!-- Register -->
     <string name="enterAllFields">Var snäll och fyll i alla fält korrekt</string>
     <string name="registrationSuccessful">Registering lyckades</string>
@@ -139,5 +146,7 @@
     <!-- Buttons -->
     <string name="unbook">Avbokak</string>
     <string name="cancel">Stäng</string>
+    <string name="apply">Tillämpa</string>
+    <string name="confirm">Bekräfta</string>
 
 </resources>

@@ -62,20 +62,16 @@ class ProfileActivity : AppCompatActivity() {
         confirmbutton.setOnClickListener() {
             if (GetData.password.equals(oldpassword.text.toString()) && newPassword.text.toString().equals(repeatPassword.text.toString())) {
                 changePassword(newPassword.text.toString())
+                logindialog.dismiss()
 
             } else {
-
-                Toast.makeText(this, "Password did not match", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.passwordNotChanged), Toast.LENGTH_SHORT).show()
             }
-
 
         }
 
-
-
-
-
         logindialog.setView(myView)
+        logindialog.setTitle(R.string.password)
         logindialog.show()
         cancel.setOnClickListener() {
           logindialog.dismiss()
