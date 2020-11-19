@@ -10,6 +10,7 @@ import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
@@ -17,6 +18,7 @@ import java.util.*
 import kotlin.properties.Delegates
 
 class AdminActivity : AppCompatActivity() {
+    lateinit var messageListView: RecyclerView
     lateinit var drawerLayoutAdmin: DrawerLayout
     lateinit var textDate: EditText
     lateinit var lengthadmin: EditText
