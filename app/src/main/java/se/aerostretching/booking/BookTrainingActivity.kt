@@ -171,34 +171,11 @@ class BookTrainingActivity : AppCompatActivity() {
                 .setTitle(getString(R.string.bookTitle))
                 .setMessage(getString(R.string.bookMsg))
                 .setPositiveButton(getString(R.string.book)) { dialog, id ->
-                    val trainingItem = TrainingItem(
-                        intent.getStringExtra("id").toString(),
-                        intent.getStringExtra("date").toString(),
-                        intent.getStringExtra("time").toString(),
-                        intent.getStringExtra("length").toString(),
-                        intent.getStringExtra("title").toString(),
-                        intent.getStringExtra("place").toString(),
-                        intent.getStringExtra("trainer").toString(),
-                        intent.getStringExtra("spots").toString(),
-                        intent.getStringExtra("users").toString(),
-                        true
-                    )
-
-                    val user = auth.currentUser
-                    db.collection("users").document(user!!.uid).collection("myTrainings")
-                        .add(trainingItem)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                book()
-                                startActivity(Intent(this, ScheduleBookingActivity::class.java))
-
-                            }
-
-                        }
+                    book()
+                    startActivity(Intent(this, ScheduleBookingActivity::class.java))
 
                 }
-                .setNegativeButton(getString(R.string.cancel)) { dialog, id ->
-                }
+                .setNegativeButton(getString(R.string.cancel)) { dialog, id -> }
                 .show()
 
         } else {
@@ -211,15 +188,9 @@ class BookTrainingActivity : AppCompatActivity() {
     private fun book() {
         Log.d("!!!", intent.getStringExtra("id").toString())
 
-        val trainingReference = FirebaseFirestore.getInstance().collection("trainings")
-            .document(intent.getStringExtra("id").toString())
+        val trainingReference = FirebaseFirestore.getInstance().collection("trainings").document(intent.getStringExtra("id").toString())
         trainingReference.update("spots", (intent.getStringExtra("spots")!!.toInt() - 1).toString())
-
-        trainingReference.update(
-            "users",
-            (intent.getStringExtra("users")
-                .toString() + "|" + (FirebaseAuth.getInstance().currentUser?.uid))
-        )
+        trainingReference.update("users", (intent.getStringExtra("users").toString() + "|" + (FirebaseAuth.getInstance().currentUser?.uid)))
 
     }
 
