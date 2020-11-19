@@ -6,11 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 
 class TrainingListAdapter(
     var list: ArrayList<TrainingItem>,
-    var onClickListener: OnTrainingItemClickListener
+    var onClickListener: OnTrainingItemClickListener,
+    var history: Boolean = false
 ) : RecyclerView.Adapter<TrainingListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,7 +21,7 @@ class TrainingListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItems(list[position], onClickListener)
+        holder.bindItems(list[position], onClickListener, history)
 
     }
 
@@ -29,7 +29,7 @@ class TrainingListAdapter(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindItems(item: TrainingItem, onClick: OnTrainingItemClickListener) {
+        fun bindItems(item: TrainingItem, onClick: OnTrainingItemClickListener, history: Boolean) {
             val dateView = itemView.findViewById<TextView>(R.id.trainingDate)
             val timeView = itemView.findViewById<TextView>(R.id.trainingTime)
             val lengthView = itemView.findViewById<TextView>(R.id.trainingLength)
@@ -39,17 +39,27 @@ class TrainingListAdapter(
 
             val openBtn = itemView.findViewById<ImageView>(R.id.openBtn)
 
+            if (!history) {
+                openBtn.visibility = View.VISIBLE
+                if (item.booked) {
+                    openBtn.setImageResource(R.drawable.remove)
+
+                } else {
+                    openBtn.setImageResource(R.drawable.forward)
+
+                }
+
+            } else {
+                openBtn.visibility = View.GONE
+
+            }
+
             dateView.text = "${item.date.substring(2, 4)}\n${Tools.getMonth(item.date.substring(0, 2))}"
             timeView.text = item.time
             lengthView.text = item.length + itemView.context.getString(R.string.minutes)
             titleView.text = item.title
             placeView.text = item.place
             trainerView.text = item.trainer
-
-            if (item.users.contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
-                openBtn.setImageResource(R.drawable.remove)
-
-            }
 
             // OnClick
             itemView.setOnClickListener {

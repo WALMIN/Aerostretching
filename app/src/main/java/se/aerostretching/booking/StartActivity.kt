@@ -75,7 +75,7 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
             .into(findViewById(R.id.startImage))
 
         trainingListView = findViewById(R.id.trainingList)
-        GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingListStart, this)
+        GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingListStart, this, false)
         trainingListView.layoutManager = LinearLayoutManager(this)
         trainingListView.adapter = GetData.trainingListAdapter
 
@@ -114,8 +114,6 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
         GetData.trainings()
         GetData.profile()
-        GetData.trainingsHistory()
-
 
     }
 

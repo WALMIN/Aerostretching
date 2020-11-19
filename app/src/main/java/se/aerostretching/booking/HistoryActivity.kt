@@ -1,15 +1,14 @@
 package se.aerostretching.booking
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class HistoryActivity : AppCompatActivity(), OnTrainingItemClickListener {
@@ -29,32 +28,9 @@ class HistoryActivity : AppCompatActivity(), OnTrainingItemClickListener {
     fun initialize() {
         db = FirebaseFirestore.getInstance()
         trainingListView = findViewById(R.id.trainingList)
-        GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingListHistory, this)
+        GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingListHistory, this, true)
         trainingListView.layoutManager = LinearLayoutManager(this)
         trainingListView.adapter = GetData.trainingListAdapter
-
-    }
-
-    override fun onTrainingItemClick(item: TrainingItem, position: Int) {
-        if (item.users.contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
-            Tools.removeBooking(this, item)
-
-        } else {
-            val bookIntent = Intent(this, BookTrainingActivity::class.java)
-
-            bookIntent.putExtra("id", item.id)
-            bookIntent.putExtra("date", item.date)
-            bookIntent.putExtra("time", item.time)
-            bookIntent.putExtra("length", item.length)
-            bookIntent.putExtra("title", item.title)
-            bookIntent.putExtra("place", item.place)
-            bookIntent.putExtra("trainer", item.trainer)
-            bookIntent.putExtra("spots", item.spots)
-            bookIntent.putExtra("users", item.users)
-
-            startActivity(bookIntent)
-
-        }
 
     }
 
@@ -78,5 +54,7 @@ class HistoryActivity : AppCompatActivity(), OnTrainingItemClickListener {
         }
 
     }
+
+    override fun onTrainingItemClick(item: TrainingItem, position: Int) {}
 
 }
