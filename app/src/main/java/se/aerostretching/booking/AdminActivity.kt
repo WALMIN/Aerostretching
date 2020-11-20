@@ -10,6 +10,7 @@ import android.widget.*
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -18,7 +19,7 @@ import java.util.*
 import kotlin.properties.Delegates
 
 class AdminActivity : AppCompatActivity() {
-    lateinit var messageListView: RecyclerView
+
     lateinit var drawerLayoutAdmin: DrawerLayout
     lateinit var textDate: EditText
     lateinit var lengthadmin: EditText
@@ -38,6 +39,7 @@ class AdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
         customActionBar()
+
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         spinnerTitles = findViewById(R.id.spinnerTitles)
@@ -50,6 +52,7 @@ class AdminActivity : AppCompatActivity() {
         seek_bar = findViewById(R.id.seekBar)
         seek_barLength = findViewById(R.id.seekBarlength)
         buttonSave = findViewById(R.id.buttonSave)
+
 
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -138,6 +141,8 @@ class AdminActivity : AppCompatActivity() {
             startActivity(Intent(this, AdminActivity::class.java))
         }
     }
+
+
 
     fun goToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
