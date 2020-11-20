@@ -40,7 +40,6 @@ class ProfileActivity : AppCompatActivity() {
 
 
         button.setOnClickListener() {
-
             openDialog()
         }
 
