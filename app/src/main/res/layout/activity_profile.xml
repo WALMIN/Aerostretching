@@ -42,13 +42,13 @@
 
 
         <EditText
-            android:enabled="false"
             android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="15dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
+            android:enabled="false"
             android:text="@string/trainingTrainer"
             android:textColor="#302F2F"
             android:textSize="17sp"
@@ -90,13 +90,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:enabled="false"
             android:id="@+id/dateOfBirth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="15dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
+            android:enabled="false"
             android:text="@string/birth"
             android:textColor="#302F2F"
             android:textSize="17sp"
@@ -137,13 +137,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:enabled="false"
             android:id="@+id/mailAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="15dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
+            android:enabled="false"
             android:text="@string/email"
             android:textColor="#302F2F"
             android:textSize="17sp"
@@ -187,13 +187,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:enabled="false"
             android:id="@+id/phoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="15dp"
             android:layout_marginLeft="9dp"
             android:layout_marginRight="20dp"
+            android:enabled="false"
             android:text="@string/phone"
             android:textColor="#302F2F"
             android:textSize="17sp"
@@ -239,26 +239,17 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="15dp"
             android:layout_marginLeft="9dp"
+            android:layout_marginRight="20dp"
             android:backgroundTint="@color/colorAccent"
             android:text="@string/password"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/changePasButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
