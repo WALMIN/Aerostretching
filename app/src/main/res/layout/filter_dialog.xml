@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="24dp">
+
+            <!-- Training -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:textColor="@color/text"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/aeroyogaSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Aeroyoga"
+                android:textColor="@color/text" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/aerostretchingSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Aerostretching"
+                android:textColor="@color/text" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/kidsAerostretchingSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Kids Aerostretching"
+                android:textColor="@color/text" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/suspensionSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Suspension"
+                android:textColor="@color/text" />
+
+            <!-- Place -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/place"
+                android:textColor="@color/text"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/brommaSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Bromma"
+                android:textColor="@color/text" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/malmoSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Malmö"
+                android:textColor="@color/text" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/odenplanSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Odenplan"
+                android:textColor="@color/text" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/solnaSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Solna"
+                android:textColor="@color/text" />
+
+            <!-- Trainer -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/trainer"
+                android:textColor="@color/text"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/anastasiaSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Anastasia"
+                android:textColor="@color/text" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/annaSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Anna"
+                android:textColor="@color/text" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/sofiaSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Sofia"
+                android:textColor="@color/text" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/applyBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/apply"/>
+
+        <Button
+            android:id="@+id/closeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/cancel"/>
+
+    </LinearLayout>
+
+</LinearLayout>

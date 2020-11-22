@@ -16,6 +16,10 @@ object GetData {
     val trainingListHistory = ArrayList<TrainingItem>()
     val messageList = ArrayList<MessageItem>()
 
+    var titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
+    var placeFilter = "|Odenplan|Bromma|Solna|Malmö"
+    var trainerFilter = "|Anastasia|Anna|Sofia"
+
     var id = ""
     var name = ""
     var birth = ""
@@ -25,15 +29,9 @@ object GetData {
 
     fun trainings() {
         FirebaseFirestore.getInstance().collection("trainings").orderBy("date")
-            .whereGreaterThanOrEqualTo(
-                "date",
-                SimpleDateFormat(
-                    "MMddyyyy",
-                    Locale.getDefault()
-                ).format(Calendar.getInstance().time)
-            )
+            .whereGreaterThanOrEqualTo("date", SimpleDateFormat("MMddyyyy", Locale.getDefault()).format(Calendar.getInstance().time))
             .addSnapshotListener { snapshot, e ->
-                Log.d("!!!", "READ")
+                Log.d("!!!", "READ: Trainings")
 
                 trainingList.clear()
                 trainingListStart.clear()
@@ -48,20 +46,26 @@ object GetData {
 
                     }
 
-                    trainingList.add(
-                        TrainingItem(
-                            document.id,
-                            document.getString("date").toString(),
-                            document.getString("time").toString(),
-                            document.getString("length").toString(),
-                            document.getString("title").toString(),
-                            document.getString("place").toString(),
-                            document.getString("trainer").toString(),
-                            document.getString("spots").toString(),
-                            document.getString("users").toString(),
-                            booked
-                        )
-                    )
+                    if(titleFilter.contains("|" + document.getString("title").toString()) &&
+                        placeFilter.contains("|" + document.getString("place").toString()) &&
+                        trainerFilter.contains("|" + document.getString("trainer").toString()) &&
+                        !trainingList.equals(document.id)){
+                            trainingList.add(
+                                TrainingItem(
+                                    document.id,
+                                    document.getString("date").toString(),
+                                    document.getString("time").toString(),
+                                    document.getString("length").toString(),
+                                    document.getString("title").toString(),
+                                    document.getString("place").toString(),
+                                    document.getString("trainer").toString(),
+                                    document.getString("spots").toString(),
+                                    document.getString("users").toString(),
+                                    booked
+                                )
+                            )
+
+                    }
 
                     // Upcoming
                     if (document.getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
@@ -114,23 +118,18 @@ object GetData {
 
             }
 
-        // History
+    }
+
+    // History
+    fun history(){
         FirebaseFirestore.getInstance().collection("trainings").orderBy("date")
-            .whereLessThan(
-                "date",
-                SimpleDateFormat(
-                    "MMddyyyy",
-                    Locale.getDefault()
-                ).format(Calendar.getInstance().time)
-            )
+            .whereLessThan("date", SimpleDateFormat("MMddyyyy", Locale.getDefault()).format(Calendar.getInstance().time))
             .addSnapshotListener { snapshot, e ->
-                Log.d("!!!", "READ")
+                Log.d("!!!", "READ: History")
 
                 trainingListHistory.clear()
 
                 for (document in snapshot!!) {
-
-                    // Upcoming
                     if (document.getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
                         trainingListHistory.add(
                             TrainingItem(
@@ -163,7 +162,7 @@ object GetData {
             .addSnapshotListener { snapshot, e ->
                 if (FirebaseAuth.getInstance().currentUser != null) {
                     for (document in snapshot!!) {
-                        Log.d("!!!", document.id + " => " + document.data)
+                        Log.d("!!!", "READ: Profile")
 
                         id = document.id
                         name = document.getString("name").toString()
