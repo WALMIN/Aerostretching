@@ -10,6 +10,7 @@ import kotlin.collections.ArrayList
 object GetData {
 
     lateinit var trainingListAdapter: TrainingListAdapter
+
     val trainingList = ArrayList<TrainingItem>()
     val trainingListStart = ArrayList<TrainingItem>()
     val trainingListUpcoming = ArrayList<TrainingItem>()

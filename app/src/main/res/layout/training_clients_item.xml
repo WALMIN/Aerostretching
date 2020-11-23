@@ -21,18 +21,28 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp">
+            android:layout_margin="8dp">
 
             <LinearLayout
                 android:id="@+id/bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingBottom="4dp"
+                android:background="#ffffff"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/top">
 
+                <TextView
+                    android:id="@+id/textViewClientList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:gravity="start"
+                    android:textColor="@color/text"
+                    android:textStyle="normal" />
+
+                <!--
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/clientList"
                     android:layout_width="match_parent"
@@ -43,6 +53,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:listitem="@layout/client_item" />
+                    -->
+
             </LinearLayout>
 
             <LinearLayout
@@ -68,9 +80,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginBottom="2dp"
                     android:layout_weight="20"
                     android:background="#FFFFFF"
                     android:orientation="vertical">

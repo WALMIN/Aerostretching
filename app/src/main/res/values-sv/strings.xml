@@ -3,7 +3,7 @@
     <string name="app_name">Aerostretching</string>
 
     <!-- Titles -->
-    <string name="adminActivity">Lägg till pass</string>
+    <string name="adminActivity">Admin</string>
     <string name="contactsActivity">Kontakt</string>
     <string name="historyActivity">Historik</string>
     <string name="mainActivity">#AeroStudioStockholm</string>
@@ -29,7 +29,8 @@
     <string name="timeHint">Tid</string>
     <string name="lengthHint">Längd:</string>
     <string name="spotsHint">Platser:</string>
-    <string name="save">Spara</string>
+    <string name="addTraining">Lägg till pass</string>
+        <string name="addTrainingMsg">Är du verkligen säker på att du vill lägga till det här passet?</string>
 
     <string name="trainingEmpty">Du måste fylla i alla fält</string>
     <string name="trainingAdded">Passet blev tillagt</string>
@@ -63,6 +64,8 @@
         <item>Väldigt bra instruktör som lyssnar och hjälper om man inte kan. Märks verkligen att hon brinner för det hon gör och att hon vill att man ska må bra</item>
         <item>Sofia är duktig på att instruera, man känner sig aldrig dömd om något känns svårt och hon är väldigt lugn och harmonisk</item>
     </string-array>
+
+    <string name="trainingParticipants">Deltagare</string>
 
     <!-- Book training activity -->
     <string name="trainingTitle">Aeroyoga</string>

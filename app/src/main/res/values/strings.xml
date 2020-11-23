@@ -11,7 +11,7 @@
     </string-array>
 
     <!-- Titles -->
-    <string name="adminActivity">Add training</string>
+    <string name="adminActivity">Admin</string>
     <string name="contactsActivity">Contacts</string>
     <string name="historyActivity">History</string>
     <string name="mainActivity">#AeroStudioStockholm</string>
@@ -35,9 +35,10 @@
     <!-- Admin page -->
     <string name="dateHint">Date</string>
     <string name="timeHint">Time</string>
-    <string name="lengthHint">Length:</string>
-    <string name="spotsHint">Spots:</string>
-    <string name="save">Save</string>
+    <string name="lengthHint">Length:&#160;</string>
+    <string name="spotsHint">Spots:&#160;</string>
+    <string name="addTraining">Add training</string>
+        <string name="addTrainingMsg">Are you really sure you want to add this training?</string>
 
     <string name="trainingEmpty">You need to fill in all the fields</string>
     <string name="trainingAdded">Training successfully added</string>
@@ -71,6 +72,8 @@
         <item>Very good instructor who listens and helps if you can not. Really noticeable that she is passionate about what she does and that she wants you to feel good</item>
         <item>Sofia is good at instructing, you never feel judged if something feels difficult and she is very calm and harmonious</item>
     </string-array>
+
+    <string name="trainingParticipants">Participants</string>
 
     <!-- Book training activity -->
     <string name="trainingTitle">Aeroyoga</string>
