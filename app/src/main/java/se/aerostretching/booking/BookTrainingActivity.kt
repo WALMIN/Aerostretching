@@ -119,7 +119,8 @@ class BookTrainingActivity : AppCompatActivity() {
 
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
-        titleView.text = intent.getStringExtra("date")
+        val title = intent.getStringExtra("date")!!
+        titleView.text = Tools.getDate(title.substring(0, 2), title.substring(2, 4), title.substring(4, 8))
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton

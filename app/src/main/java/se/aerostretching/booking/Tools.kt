@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -73,6 +74,20 @@ object Tools {
 
     }
 
+    fun getDate(month: String, day: String, year: String): String{
+        val monthString = SimpleDateFormat("MMMM", Locale.getDefault())
+            .format(SimpleDateFormat("MM", Locale.getDefault()).parse(month))
+
+        val dayString = SimpleDateFormat("d", Locale.getDefault())
+            .format(SimpleDateFormat("dd", Locale.getDefault()).parse(day))
+
+        val yearString = SimpleDateFormat("yyyy", Locale.getDefault())
+            .format(SimpleDateFormat("yyyy", Locale.getDefault()).parse(year))
+
+        return "$dayString $monthString $yearString"
+
+    }
+
     fun hideKeyboard(activity: Activity, view: EditText) {
         val imm: InputMethodManager =
             activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -97,10 +112,17 @@ object Tools {
             .setTitle(context.getString(R.string.removeBookingTitle))
             .setMessage(context.getString(R.string.removeBookingMsg))
             .setPositiveButton(context.getString(R.string.unbook)) { dialog, id ->
-                val trainingReference = FirebaseFirestore.getInstance().collection("trainings").document(item.id)
+                val trainingReference = FirebaseFirestore.getInstance().collection("trainings").document(
+                    item.id
+                )
 
                 trainingReference.update("spots", (item.spots.toInt() + 1).toString())
-                trainingReference.update("users", item.users.replace("|${FirebaseAuth.getInstance().currentUser?.uid}", ""))
+                trainingReference.update(
+                    "users", item.users.replace(
+                        "|${FirebaseAuth.getInstance().currentUser?.uid}",
+                        ""
+                    )
+                )
 
                 GetData.trainings()
                 GetData.trainingListAdapter.notifyDataSetChanged()
