@@ -31,13 +31,12 @@ class ProfileActivity : AppCompatActivity() {
         editTextBirth = findViewById(R.id.dateOfBirth)
         editTextEmail = findViewById(R.id.mailAccount)
         editTextPhone = findViewById(R.id.phoneNumber)
-        button = findViewById<Button>(R.id.password)
+        button = findViewById(R.id.password)
 
         editTextName.setText(GetData.name)
         editTextBirth.setText(GetData.birth)
         editTextEmail.setText(GetData.email)
         editTextPhone.setText(GetData.phone)
-
 
         button.setOnClickListener() {
             openDialog()
@@ -46,10 +45,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     fun openDialog() {
-
-
         val logindialog = AlertDialog.Builder(this).create()
-
 
         val myView: View = layoutInflater.inflate(R.layout.layout_alert_dialog, null)
         val confirmbutton = myView.findViewById<Button>(R.id.Confirm_button)
@@ -59,7 +55,7 @@ class ProfileActivity : AppCompatActivity() {
         val cancel = myView.findViewById<Button>(R.id.Cancel)
 
         confirmbutton.setOnClickListener() {
-            if (GetData.password.equals(oldpassword.text.toString()) && newPassword.text.toString().equals(repeatPassword.text.toString())) {
+            if (GetData.password == oldpassword.text.toString() && newPassword.text.toString() == repeatPassword.text.toString()) {
                 changePassword(newPassword.text.toString())
                 logindialog.dismiss()
 
@@ -72,8 +68,9 @@ class ProfileActivity : AppCompatActivity() {
         logindialog.setView(myView)
         logindialog.setTitle(R.string.password)
         logindialog.show()
+
         cancel.setOnClickListener() {
-          logindialog.dismiss()
+            logindialog.dismiss()
 
         }
 
@@ -84,7 +81,7 @@ class ProfileActivity : AppCompatActivity() {
 
         // Update database info
         val userReference = FirebaseFirestore.getInstance()
-                .collection("users").document(uid.toString()).collection("info").document(GetData.id)
+            .collection("users").document(uid.toString()).collection("info").document(GetData.id)
 
         userReference.update("name", editTextName.text.toString())
         userReference.update("birth", editTextBirth.text.toString())
@@ -92,25 +89,24 @@ class ProfileActivity : AppCompatActivity() {
         userReference.update("email", editTextEmail.text.toString())
 
         // Update auth email
-        val credential = EmailAuthProvider.getCredential(GetData.email, GetData.password)
-        FirebaseAuth.getInstance().currentUser!!.reauthenticate(credential)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        FirebaseAuth.getInstance().currentUser!!.updateEmail(editTextEmail.text.toString())
-                                .addOnCompleteListener { task ->
-                                    if (task.isSuccessful) {
-                                        Log.d("!!!", "User email address updated.")
-                                    } else {
-                                        Log.d("!!!", "Email address not updated: ${task.exception}")
+        FirebaseAuth.getInstance().currentUser!!.reauthenticate(EmailAuthProvider.getCredential(GetData.email, GetData.password))
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    FirebaseAuth.getInstance().currentUser!!.updateEmail(editTextEmail.text.toString())
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Log.d("!!!", "User email address updated.")
+                            } else {
+                                Log.d("!!!", "Email address not updated: ${task.exception}")
 
-                                    }
+                            }
 
-                                }
-
-                    }
-                    Log.d("!!!", "User re-authenticated.")
+                        }
 
                 }
+                Log.d("!!!", "User re-authenticated.")
+
+            }
 
     }
 
@@ -129,15 +125,15 @@ class ProfileActivity : AppCompatActivity() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     FirebaseAuth.getInstance().currentUser!!.updatePassword(newPassword)
-                            .addOnCompleteListener { task ->
-                                if (task.isSuccessful) {
-                                    Log.d("!!!", "Password updated.")
-                                } else {
-                                    Log.d("!!!", "Password not updated: ${task.exception}")
-
-                                }
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Log.d("!!!", "Password updated.")
+                            } else {
+                                Log.d("!!!", "Password not updated: ${task.exception}")
 
                             }
+
+                        }
 
                 }
                 Log.d("!!!", "User re-authenticated.")
@@ -169,6 +165,7 @@ class ProfileActivity : AppCompatActivity() {
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.back)
         startBtn.setOnClickListener {
+            finish()
             startActivity(Intent(this, MyPageActivity::class.java))
 
         }
@@ -179,12 +176,18 @@ class ProfileActivity : AppCompatActivity() {
         endBtn.setImageResource(R.drawable.edit)
         endBtn.setOnClickListener {
             if (editing) {
-                endBtn.setImageResource(R.drawable.edit)
-                editing = false
-                saveData()
-                changeAllEditText(false)
+                if(editTextName.text.isEmpty() || editTextBirth.text.isEmpty() || editTextPhone.text.isEmpty() || editTextEmail.text.isEmpty()) {
+                    Toast.makeText(this, getString(R.string.enterAllFields), Toast.LENGTH_LONG).show()
 
-                Toast.makeText(this, getString(R.string.profileUpdated), Toast.LENGTH_LONG).show()
+                }else{
+                    endBtn.setImageResource(R.drawable.edit)
+                    editing = false
+                    saveData()
+                    changeAllEditText(false)
+
+                    Toast.makeText(this, getString(R.string.profileUpdated), Toast.LENGTH_LONG).show()
+
+                }
 
             } else {
                 endBtn.setImageResource(R.drawable.save)
@@ -193,9 +196,15 @@ class ProfileActivity : AppCompatActivity() {
                 changeAllEditText(true)
             }
 
-
         }
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        finish()
+        startActivity(Intent(this, MyPageActivity::class.java))
 
     }
 
