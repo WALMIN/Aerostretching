@@ -11,6 +11,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import se.aerostretching.booking.GetData.id
 
 class PersonalTrainingsActivity : AppCompatActivity() {
 
@@ -19,6 +20,7 @@ class PersonalTrainingsActivity : AppCompatActivity() {
     lateinit var editTextApply: EditText
 
     lateinit var button_apply: Button
+    val messageList = ArrayList<MessageItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,29 +72,46 @@ class PersonalTrainingsActivity : AppCompatActivity() {
 
     }*/
 
+
+
     fun sendMessage(){
-        val uid = auth.currentUser?.uid
         var text = editTextApply.text.toString()
         val name = GetData.name
-        val name1 = GetData.name
-        val email= GetData.email
-        if (text.isEmpty())  {
+        val email = GetData.email
+
+        if (text.isEmpty()) {
             Toast.makeText(this, getString(R.string.noTrainingText), Toast.LENGTH_LONG).show()
-        }
+        } else {
+            val message = MessageItem(System.currentTimeMillis() / 1000, name, text, email)
 
-       else{
-
-            val message = Message(text,name,email,System.currentTimeMillis()/1000)
-
-        db.collection("messages").document(uid.toString()).collection(name1).add(message)
+            db.collection("messagesFromClients").add(message)
                 .addOnSuccessListener{
                     Log.d("!!!", "saved our message")
                     Toast.makeText(this, "message sent", Toast.LENGTH_LONG).show()
                 }
+
         }
+
+        /*
+        FirebaseFirestore.getInstance().collection("messagesFromClients").orderBy("date")
+            .addSnapshotListener { snapshot, e ->
+                for (document in snapshot!!) {
+
+                }
+        }
+
+         */
+
     }
 
 
 
+
+
 }
-class Message(val text: String, val name: String, val email: String, val timeStamp:Long)
+//class Message(val text: String, val name: String, val email: String, val timeStamp:Long)
+data class MessageItem(
+    val date: Long,
+    val name: String,
+    val text: String,
+    val email: String)

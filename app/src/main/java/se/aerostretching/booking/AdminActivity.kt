@@ -34,11 +34,19 @@ class AdminActivity : AppCompatActivity() {
     var i by Delegates.notNull<Int>()
     lateinit var spots : String
     lateinit var length : String
+    lateinit var db: FirebaseFirestore
+
+    lateinit var messageListView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
         customActionBar()
+        initialize()
+    }
+
+
+        fun initialize() {
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
