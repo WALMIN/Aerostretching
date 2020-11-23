@@ -14,7 +14,7 @@ object GetData {
     val trainingListStart = ArrayList<TrainingItem>()
     val trainingListUpcoming = ArrayList<TrainingItem>()
     val trainingListHistory = ArrayList<TrainingItem>()
-    val messageList = ArrayList<MessageItem>()
+    //val messageList = ArrayList<MessageItem>()
 
     var titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
     var placeFilter = "|Odenplan|Bromma|Solna|Malmö"
@@ -179,8 +179,9 @@ object GetData {
 
     }
 
+    /*
     fun message() {
-        FirebaseFirestore.getInstance().collection("messages").orderBy("date")
+        FirebaseFirestore.getInstance().collection("messages").document(FirebaseAuth.getInstance().currentUser?.uid.toString()).collection("messagesFromClients").orderBy("date")
             .addSnapshotListener { snapshot, e ->
                 Log.d("!!!", "READ")
 
@@ -202,6 +203,8 @@ object GetData {
 
             }
 
-    }
 
+
+    }
+*/
 }
