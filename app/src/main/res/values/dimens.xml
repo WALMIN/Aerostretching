@@ -1,5 +1,6 @@
 <resources>
 
     <dimen name="lineHeight">1dp</dimen>
+    <dimen name="btnIcon">22dp</dimen>
 
 </resources>

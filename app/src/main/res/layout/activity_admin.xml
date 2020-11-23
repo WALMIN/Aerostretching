@@ -8,8 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".AdminActivity">
 
-
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -24,136 +23,98 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:weightSum="7">
-
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="10sp"
-                    android:layout_weight="1"
+                    android:layout_marginBottom="8dp"
                     android:gravity="center"
                     android:weightSum="100">
 
                     <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="50"
                         android:gravity="center"
                         android:text="@string/trainer"
-                        android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textColor="@color/text"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spinnerTrainer"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="50"
                         android:entries="@array/trainer"
                         android:gravity="center" />
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="10sp"
-                    android:layout_weight="1"
+                    android:layout_marginBottom="8dp"
                     android:gravity="center"
                     android:weightSum="100">
 
                     <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="50"
                         android:gravity="center"
                         android:text="@string/title"
-                        android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textColor="@color/text"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spinnerTitles"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="50"
                         android:entries="@array/titles"
                         android:gravity="center" />
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_margin="10sp"
-                    android:layout_weight="1"
+                    android:layout_marginBottom="8dp"
                     android:weightSum="100">
 
                     <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="50"
                         android:gravity="center"
                         android:text="@string/place"
-                        android:textColor="#000000"
-                        android:textSize="20sp" />
+                        android:textColor="@color/text"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                     <Spinner
                         android:id="@+id/spinnerPlaces"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="50"
                         android:entries="@array/places" />
+
                 </LinearLayout>
-
-                <EditText
-                    android:id="@+id/editTextdate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/dateHint"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent" />
-
-                <EditText
-                    android:id="@+id/editTexttime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="@string/timeHint"
-                    android:inputType="datetime"
-                    android:maxLines="1"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_margin="10sp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
                     android:weightSum="100">
 
                     <LinearLayout
@@ -161,33 +122,44 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="50"
-                        android:orientation="vertical"
-                        android:weightSum="100">
+                        android:orientation="vertical">
 
-                        <EditText
-                            android:id="@+id/editTextlength"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="@string/lengthHint"
+                                android:textColor="@color/text"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textViewLength"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/text"
+                                android:textSize="20sp" />
+
+                        </LinearLayout>
+
+                        <SeekBar
+                            android:id="@+id/lengthSeekBar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_weight="50"
-                            android:ems="10"
-                            android:gravity="center"
-                            android:inputType="number"
-                            android:maxLines="1"
-                            android:text="@string/lengthHint"
-                            android:textColor="#000000"
-                            android:textSize="20sp"
-                            app:layout_constraintEnd_toEndOf="parent" />
-
-                        <SeekBar
-                            android:id="@+id/seekBarlength"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
                             android:layout_margin="10sp"
-                            android:layout_weight="50"
                             android:max="120"
-                            android:min="5" />
+                            android:min="1" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -195,51 +167,104 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_weight="50"
-                        android:orientation="vertical"
-                        android:weightSum="100">
+                        android:orientation="vertical">
 
-                        <EditText
-                            android:id="@+id/editTextSpots"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="@string/spotsHint"
+                                android:textColor="@color/text"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textViewSpots"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/text"
+                                android:textSize="20sp" />
+
+                        </LinearLayout>
+
+                        <SeekBar
+                            android:id="@+id/spotsSeekBar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_weight="50"
-                            android:gravity="center"
-                            android:text="@string/spotsHint"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                            android:textColor="#000000"
-                            android:textSize="20sp" />
-
-                        <SeekBar
-                            android:id="@+id/seekBar"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
                             android:layout_margin="10sp"
-                            android:layout_weight="50"
                             android:max="20"
                             android:min="1" />
+
                     </LinearLayout>
                 </LinearLayout>
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/buttonSave"
-                    android:layout_width="match_parent"
+                    android:id="@+id/btnDate"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginBottom="32dp"
-                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
                     android:backgroundTint="@color/colorAccent"
-                    android:hint="@string/save"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent" />
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:drawableTint="#ffffff"
+                    app:drawableTopCompat="@drawable/btn_calendar" />
 
+                <Button
+                    android:id="@+id/btnTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:drawableTint="#ffffff"
+                    app:drawableTopCompat="@drawable/btn_time" />
 
             </LinearLayout>
 
+            <Button
+                android:id="@+id/btnAddTraining"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/addTraining"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lineHeight"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="6dp"
+                android:background="@color/text" />
 
             <TextView
                 android:id="@+id/textViewAdminMes"
@@ -247,34 +272,28 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Messages"
-                android:textColor="#000000"
+                android:text="@string/messagesActivity"
+                android:textColor="@color/text"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-
-            <androidx.core.widget.NestedScrollView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/messageList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fillViewport="true">
+                app:layout_constrainedHeight="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/message_item" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/messageList"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:layout_constrainedHeight="true"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:listitem="@layout/message_item" />
-                </LinearLayout>
-            </androidx.core.widget.NestedScrollView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lineHeight"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="6dp"
+                android:background="@color/text" />
 
             <TextView
                 android:id="@+id/textViewAdminTraining"
@@ -282,8 +301,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="Participants in training"
-                android:textColor="#000000"
+                android:text="@string/trainingParticipants"
+                android:textColor="@color/text"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -292,23 +311,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constrainedHeight="true"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:listitem="@layout/training_clients_item" />
 
-
-            </LinearLayout>
-    </ScrollView>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/menu" />
-
-
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>

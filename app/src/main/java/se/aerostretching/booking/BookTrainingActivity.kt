@@ -143,10 +143,8 @@ class BookTrainingActivity : AppCompatActivity() {
     }
 
     fun addToCalendar() {
-        val startTime =
-            Tools.getMillisFromDate(intent.getStringExtra("date") + " " + intent.getStringExtra("time"))
-        val endTime =
-            Tools.getMillisFromDate(intent.getStringExtra("date") + " " + intent.getStringExtra("time"))
+        val startTime = Tools.getMillisFromDate(intent.getStringExtra("date") + " " + intent.getStringExtra("time"))
+        val endTime = startTime + (intent.getStringExtra("length")!!.toInt() * 60000)
 
         val insertCalendarIntent = Intent(Intent.ACTION_INSERT)
             .setData(CalendarContract.Events.CONTENT_URI)
@@ -157,10 +155,7 @@ class BookTrainingActivity : AppCompatActivity() {
             .putExtra(CalendarContract.Events.EVENT_LOCATION, intent.getStringExtra("place"))
             .putExtra(CalendarContract.Events.DESCRIPTION, intent.getStringExtra("trainer"))
             .putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE)
-            .putExtra(
-                CalendarContract.Events.AVAILABILITY,
-                CalendarContract.Events.AVAILABILITY_FREE
-            )
+            .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_FREE)
 
         startActivity(insertCalendarIntent)
 
