@@ -132,9 +132,14 @@
     </string-array>
 
     <!-- Profile -->
+    <string name="changeEmail">Byt email</string>
     <string name="password">Byt lösenord</string>
 
     <string name="profileUpdated">Profil info uppdaterad</string>
+
+    <string name="newEmailHint">Ny email</string>
+    <string name="emailUpdated">Email har ändratsd</string>
+    <string name="emaildNotChanged">Email ändrades inte</string>
 
     <string name="newPasswordHint">Nytt lösenord</string>
     <string name="repeatPasswordHint">Repetera lösenord</string>
@@ -142,12 +147,15 @@
     <string name="passwordNotChanged">Lösenordet ändrades inte</string>
 
     <!-- Register -->
+    <string name="terms0">Jag godkänner <b>Allmänna Villkor</b></string>
+    <string name="terms1">och <b>Integritetspolicy</b></string>
+
     <string name="enterAllFields">Var snäll och fyll i alla fält korrekt</string>
     <string name="registrationSuccessful">Registering lyckades</string>
     <string name="userNotCreated">Användare skapdes inte</string>
 
     <!-- Buttons -->
-    <string name="unbook">Avbokak</string>
+    <string name="unbook">Avboka</string>
     <string name="cancel">Stäng</string>
     <string name="apply">Tillämpa</string>
     <string name="confirm">Bekräfta</string>

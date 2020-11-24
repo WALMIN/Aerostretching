@@ -115,10 +115,14 @@
     <string name="noTrainingText">You have to write something</string>
 
     <!-- Profile -->
-    <string name="birth" translatable="false">000000</string>
+    <string name="changeEmail">Change email</string>
     <string name="password">Change password</string>
 
     <string name="profileUpdated">Profile info updated</string>
+
+    <string name="newEmailHint">New email</string>
+    <string name="emailUpdated">Email successfully changed</string>
+    <string name="emaildNotChanged">Email did not change</string>
 
     <string name="newPasswordHint">New password</string>
     <string name="repeatPasswordHint">Repeat password</string>
@@ -155,6 +159,9 @@ If body becomes strong and beautiful, then it is art.
     </string-array>
 
     <!-- Register -->
+    <string name="terms0">I agree to the&#160;<b>Terms &amp; conditions</b></string>
+    <string name="terms1">and <b>Privacy Policy</b></string>
+
     <string name="enterAllFields">Please enter all fields correctly</string>
     <string name="registrationSuccessful">Registration successful</string>
     <string name="userNotCreated">User not created</string>

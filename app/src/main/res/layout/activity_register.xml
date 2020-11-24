@@ -1,216 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
     tools:context=".RegisterActivity">
 
-    <ScrollView
-        android:id="@+id/scrollView3"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/editTextRegisterName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp"
+            android:background="@drawable/shape_rectangle_register"
+            android:ems="10"
+            android:hint="@string/nameHint"
+            android:inputType="textPersonName"
+            android:padding="20dp" />
 
-            android:orientation="vertical">
+        <EditText
+            android:id="@+id/editTextRegisterBirth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_rectangle_register"
+            android:ems="10"
+            android:hint="@string/birthHint"
+            android:inputType="date"
+            android:padding="20dp" />
 
-            <EditText
-                android:id="@+id/editTextRegisterName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:background="@drawable/shape_rectangle_register"
-                android:padding="20dp"
-                android:ems="10"
-                android:hint="@string/nameHint"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/editTextRegisterPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_rectangle_register"
+            android:ems="10"
+            android:hint="@string/phoneHint"
+            android:inputType="phone"
+            android:padding="20dp" />
 
-            <EditText
-                android:id="@+id/editTextRegisterBirth"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/shape_rectangle_register"
-                android:padding="20dp"
-                android:ems="10"
-                android:hint="@string/birthHint"
-                android:inputType="date"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+        <EditText
+            android:id="@+id/editTextRegisterEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_rectangle_register"
+            android:ems="10"
+            android:hint="@string/emailHint"
+            android:inputType="textEmailAddress"
+            android:padding="20dp" />
 
+        <EditText
+            android:id="@+id/editTextRegisterPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_rectangle_register"
+            android:ems="10"
+            android:hint="@string/passwordHint"
+            android:inputType="textPassword"
+            android:padding="20dp" />
 
-            <EditText
-                android:id="@+id/editTextRegisterPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/shape_rectangle_register"
-                android:padding="20dp"
-                android:ems="10"
-                android:hint="@string/phoneHint"
-                android:inputType="phone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+        <EditText
+            android:id="@+id/editTextRegisterPassword2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_rectangle_register"
+            android:ems="10"
+            android:hint="@string/confirmPassword"
+            android:inputType="textPassword"
+            android:padding="20dp" />
 
-            <EditText
-                android:id="@+id/editTextRegisterEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/shape_rectangle_register"
-                android:padding="20dp"
-                android:ems="10"
-                android:hint="@string/emailHint"
-                android:inputType="textEmailAddress"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical">
 
-            <EditText
-                android:id="@+id/editTextRegisterPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/shape_rectangle_register"
-                android:padding="20dp"
-                android:ems="10"
-                android:hint="@string/passwordHint"
-                android:inputType="textPassword"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
-
-            <EditText
-                android:id="@+id/editTextRegisterPassword2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/shape_rectangle_register"
-                android:padding="20dp"
-                android:ems="10"
-                android:hint="@string/confirmPassword"
-                android:inputType="textPassword"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
+            <CheckBox
+                android:id="@+id/agreeBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical">
-                <CheckBox
-                    android:id="@+id/agreeBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    />
-             <LinearLayout
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:orientation="vertical">
-
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="I agree to the&#160;"
-                        android:textStyle="normal"
-                        android:textColor="@color/colorPrimaryDark"/>
-                    <TextView
-                        android:id="@+id/termsOfService"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Terms of service"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:onClick="termsOfServiceButton"/>
+                        android:onClick="termsOfServiceButton"
+                        android:text="@string/terms0"
+                        android:textColor="@color/colorPrimaryDark" />
+
                 </LinearLayout>
-                    <LinearLayout
 
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="normal"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:text="and&#160;"
-                            />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/privacyPolicy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="privacy policy"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorPrimaryDark"
                         android:onClick="privacyPolicyButton"
+                        android:text="@string/terms1"
+                        android:textColor="@color/colorPrimaryDark" />
 
-                        />
-
-                    </LinearLayout>
-
-
-
-
-
-
-
+                </LinearLayout>
             </LinearLayout>
-            </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                />
-
-            <Button
-                android:id="@+id/buttonRegister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
-                android:padding="20dp"
-                android:backgroundTint="@color/colorAccent"
-                android:text="@string/register"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent" />
-
         </LinearLayout>
-    </ScrollView>
 
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/colorAccent"
+            android:padding="20dp"
+            android:text="@string/register" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
