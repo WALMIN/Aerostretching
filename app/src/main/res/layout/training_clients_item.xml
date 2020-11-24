@@ -14,21 +14,21 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/colorAccent"
+        app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp">
+            android:layout_margin="4dp">
 
             <LinearLayout
                 android:id="@+id/bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="#ffffff"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/top">
@@ -70,8 +70,9 @@
                 <TextView
                     android:id="@+id/textViewDateAdminClient"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="80"
+                    android:background="@color/colorAccent"
                     android:gravity="center"
                     android:text="@string/trainingItemDate"
                     android:textColor="#FFFFFF"
@@ -79,18 +80,18 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginBottom="2dp"
                     android:layout_weight="20"
                     android:background="#FFFFFF"
-                    android:orientation="vertical">
+                    android:gravity="center">
 
                     <TextView
                         android:id="@+id/textViewTrainingAdminClient"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="right"
+                        android:gravity="center"
                         android:paddingEnd="8dp"
                         android:text="@string/trainingTitle"
                         android:textColor="#000000"
@@ -102,7 +103,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="right"
+                        android:gravity="center"
                         android:paddingEnd="8dp"
                         android:text="@string/trainingTrainer"
                         android:textColor="#000000"
@@ -114,7 +115,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="right"
+                        android:gravity="center"
                         android:paddingEnd="8dp"
                         android:text="@string/spotsHint"
                         android:textColor="#000000"
