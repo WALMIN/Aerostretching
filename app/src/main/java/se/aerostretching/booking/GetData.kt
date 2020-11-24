@@ -22,11 +22,9 @@ object GetData {
     var placeFilter = "|Odenplan|Bromma|Solna|Malmö"
     var trainerFilter = "|Anastasia|Anna|Sofia"
 
-    var id = ""
     var name = ""
     var birth = ""
     var email = ""
-    var password = ""
     var phone = ""
 
     fun trainings() {
@@ -161,26 +159,24 @@ object GetData {
 
     fun profile() {
         FirebaseFirestore.getInstance().collection("users")
-                .document(FirebaseAuth.getInstance().currentUser?.uid.toString()).get()
-                .addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        if (FirebaseAuth.getInstance().currentUser != null) {
-                            Log.d("!!!", "READ: Profile")
+            .document(FirebaseAuth.getInstance().currentUser?.uid.toString()).get()
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    if (FirebaseAuth.getInstance().currentUser != null) {
+                        Log.d("!!!", "READ: Profile")
 
-                            name = it.result?.get("name").toString()
-                            birth = it.result?.get("birth").toString()
-                            email = it.result?.get("email").toString()
-                            phone = it.result?.get("phone").toString()
-                            password = it.result?.get("password").toString()
-
-                        }
+                        name = it.result?.get("name").toString()
+                        birth = it.result?.get("birth").toString()
+                        email = it.result?.get("email").toString()
+                        phone = it.result?.get("phone").toString()
 
                     }
 
                 }
 
-    }
+            }
 
+    }
 
     fun message() {
         FirebaseFirestore.getInstance().collection("messagesFromClients").orderBy("date")

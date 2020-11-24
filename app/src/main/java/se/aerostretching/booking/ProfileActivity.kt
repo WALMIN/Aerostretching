@@ -16,11 +16,11 @@ class ProfileActivity : AppCompatActivity() {
 
     lateinit var editTextName: EditText
     lateinit var editTextBirth: EditText
-    lateinit var editTextEmail: EditText
     lateinit var editTextPhone: EditText
+
     lateinit var endBtn: ImageButton
+
     var editing = false
-    lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,74 +29,78 @@ class ProfileActivity : AppCompatActivity() {
 
         editTextName = findViewById(R.id.userName)
         editTextBirth = findViewById(R.id.dateOfBirth)
-        editTextEmail = findViewById(R.id.mailAccount)
         editTextPhone = findViewById(R.id.phoneNumber)
-        button = findViewById(R.id.password)
 
         editTextName.setText(GetData.name)
         editTextBirth.setText(GetData.birth)
-        editTextEmail.setText(GetData.email)
         editTextPhone.setText(GetData.phone)
-
-        button.setOnClickListener() {
-            openDialog()
-        }
-
-    }
-
-    fun openDialog() {
-        val logindialog = AlertDialog.Builder(this).create()
-
-        val myView: View = layoutInflater.inflate(R.layout.layout_alert_dialog, null)
-        val confirmbutton = myView.findViewById<Button>(R.id.Confirm_button)
-        val oldpassword = myView.findViewById<EditText>(R.id.OldPassword)
-        val newPassword = myView.findViewById<EditText>(R.id.NewPassword)
-        val repeatPassword = myView.findViewById<EditText>(R.id.RepeatPassword)
-        val cancel = myView.findViewById<Button>(R.id.Cancel)
-
-        confirmbutton.setOnClickListener() {
-            if (GetData.password == oldpassword.text.toString() && newPassword.text.toString() == repeatPassword.text.toString()) {
-                changePassword(newPassword.text.toString())
-                logindialog.dismiss()
-
-            } else {
-                Toast.makeText(this, getString(R.string.passwordNotChanged), Toast.LENGTH_SHORT).show()
-            }
-
-        }
-
-        logindialog.setView(myView)
-        logindialog.setTitle(R.string.password)
-        logindialog.show()
-
-        cancel.setOnClickListener() {
-            logindialog.dismiss()
-
-        }
 
     }
 
     fun saveData() {
-        val uid = FirebaseAuth.getInstance().currentUser?.uid
-
         // Update database info
         val userReference = FirebaseFirestore.getInstance()
-            .collection("users").document(uid.toString()).collection("info").document(GetData.id)
+            .collection("users").document(FirebaseAuth.getInstance().currentUser?.uid.toString())
 
         userReference.update("name", editTextName.text.toString())
         userReference.update("birth", editTextBirth.text.toString())
         userReference.update("phone", editTextPhone.text.toString())
-        userReference.update("email", editTextEmail.text.toString())
 
+    }
+
+    fun changeEmailBtn(view: View) {
+        val dialog = AlertDialog.Builder(this).create()
+
+        val dialogView: View = layoutInflater.inflate(R.layout.change_email_dialog, null)
+        val passwordView = dialogView.findViewById<EditText>(R.id.currentPassword)
+        val emailView = dialogView.findViewById<EditText>(R.id.newEmail)
+
+        val confirmBtn = dialogView.findViewById<Button>(R.id.confirmBtn)
+        val cancelBtn = dialogView.findViewById<Button>(R.id.cancelBtn)
+
+        confirmBtn.setOnClickListener() {
+            if (emailView.text.toString().isNotEmpty() && passwordView.text.toString().isNotEmpty()) {
+                changeEmail(emailView.text.toString(), passwordView.text.toString())
+                dialog.dismiss()
+
+            } else {
+                Toast.makeText(this, getString(R.string.emaildNotChanged), Toast.LENGTH_LONG).show()
+            }
+
+        }
+
+        dialog.setView(dialogView)
+        dialog.setTitle(R.string.changeEmail)
+        dialog.show()
+
+        cancelBtn.setOnClickListener() {
+            dialog.dismiss()
+
+        }
+
+    }
+
+    fun changeEmail(newEmail: String, password: String) {
         // Update auth email
-        FirebaseAuth.getInstance().currentUser!!.reauthenticate(EmailAuthProvider.getCredential(GetData.email, GetData.password))
+        val credential = EmailAuthProvider.getCredential(GetData.email, password)
+        FirebaseAuth.getInstance().currentUser!!.reauthenticate(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    FirebaseAuth.getInstance().currentUser!!.updateEmail(editTextEmail.text.toString())
+                    FirebaseAuth.getInstance().currentUser!!.updateEmail(newEmail)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
+                                GetData.profile()
+
+                                Toast.makeText(this, getString(R.string.emailUpdated), Toast.LENGTH_LONG).show()
                                 Log.d("!!!", "User email address updated.")
+
+                                val userReference =
+                                    FirebaseFirestore.getInstance().collection("users")
+                                        .document(FirebaseAuth.getInstance().currentUser?.uid.toString())
+                                userReference.update("email", newEmail)
+
                             } else {
+                                Toast.makeText(this, getString(R.string.emaildNotChanged), Toast.LENGTH_LONG).show()
                                 Log.d("!!!", "Email address not updated: ${task.exception}")
 
                             }
@@ -110,25 +114,53 @@ class ProfileActivity : AppCompatActivity() {
 
     }
 
-    fun changePassword(newPassword: String) {
-        val uid = FirebaseAuth.getInstance().currentUser?.uid
+    fun changePasswordBtn(view: View) {
+        val dialog = AlertDialog.Builder(this).create()
 
-        // Update database info
-        val userReference = FirebaseFirestore.getInstance()
-            .collection("users").document(uid.toString()).collection("info").document(GetData.id)
+        val dialogView: View = layoutInflater.inflate(R.layout.change_password_dialog, null)
+        val confirmBtn = dialogView.findViewById<Button>(R.id.Confirm_button)
+        val oldPasswordView = dialogView.findViewById<EditText>(R.id.OldPassword)
+        val newPasswordView = dialogView.findViewById<EditText>(R.id.NewPassword)
+        val repeatPasswordView = dialogView.findViewById<EditText>(R.id.RepeatPassword)
+        val cancelBtn = dialogView.findViewById<Button>(R.id.Cancel)
 
-        userReference.update("password", newPassword)
+        confirmBtn.setOnClickListener() {
+            if (oldPasswordView.text.isNotEmpty() && newPasswordView.text.toString() == repeatPasswordView.text.toString()) {
+                changePassword(newPasswordView.text.toString(), oldPasswordView.text.toString())
+                dialog.dismiss()
 
+            } else {
+                Toast.makeText(this, getString(R.string.passwordNotChanged), Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        }
+
+        dialog.setView(dialogView)
+        dialog.setTitle(R.string.password)
+        dialog.show()
+
+        cancelBtn.setOnClickListener() {
+            dialog.dismiss()
+
+        }
+
+    }
+
+    fun changePassword(newPassword: String, currentPassword: String) {
         // Update auth password
-        val credential = EmailAuthProvider.getCredential(GetData.email, GetData.password)
+        val credential = EmailAuthProvider.getCredential(GetData.email, currentPassword)
         FirebaseAuth.getInstance().currentUser!!.reauthenticate(credential)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     FirebaseAuth.getInstance().currentUser!!.updatePassword(newPassword)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
+                                Toast.makeText(this, getString(R.string.passwordUpdated), Toast.LENGTH_LONG).show()
                                 Log.d("!!!", "Password updated.")
+
                             } else {
+                                Toast.makeText(this, getString(R.string.passwordNotChanged), Toast.LENGTH_SHORT).show()
                                 Log.d("!!!", "Password not updated: ${task.exception}")
 
                             }
@@ -145,7 +177,6 @@ class ProfileActivity : AppCompatActivity() {
     fun changeAllEditText(enabled: Boolean) {
         editTextName.isEnabled = enabled
         editTextBirth.isEnabled = enabled
-        editTextEmail.isEnabled = enabled
         editTextPhone.isEnabled = enabled
 
     }
@@ -176,13 +207,14 @@ class ProfileActivity : AppCompatActivity() {
         endBtn.setImageResource(R.drawable.edit)
         endBtn.setOnClickListener {
             if (editing) {
-                if(editTextName.text.isEmpty() || editTextBirth.text.isEmpty() || editTextPhone.text.isEmpty() || editTextEmail.text.isEmpty()) {
+                if (editTextName.text.isEmpty() || editTextBirth.text.isEmpty() || editTextPhone.text.isEmpty()) {
                     Toast.makeText(this, getString(R.string.enterAllFields), Toast.LENGTH_LONG).show()
 
-                }else{
+                } else {
                     endBtn.setImageResource(R.drawable.edit)
                     editing = false
                     saveData()
+                    GetData.profile()
                     changeAllEditText(false)
 
                     Toast.makeText(this, getString(R.string.profileUpdated), Toast.LENGTH_LONG).show()
