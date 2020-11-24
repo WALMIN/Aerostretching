@@ -47,7 +47,7 @@ class RegisterActivity : AppCompatActivity() {
         register_btn = findViewById(R.id.buttonRegister)
         register_btn.setOnClickListener {
 
-            if (agreeBox.isEnabled) {
+            if (agreeBox.isChecked) {
                 createLogin()
 
             }else{
