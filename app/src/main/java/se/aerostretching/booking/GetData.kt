@@ -66,6 +66,7 @@ object GetData {
                                 )
                             )
 
+
                     }
 
                     // Upcoming
@@ -159,18 +160,19 @@ object GetData {
 
     fun profile() {
         FirebaseFirestore.getInstance().collection("users")
-            .document(FirebaseAuth.getInstance().currentUser?.uid.toString()).collection("info")
-            .addSnapshotListener { snapshot, e ->
-                if (FirebaseAuth.getInstance().currentUser != null) {
-                    for (document in snapshot!!) {
-                        Log.d("!!!", "READ: Profile")
+            .document(FirebaseAuth.getInstance().currentUser?.uid.toString()).get()
+            .addOnCompleteListener {
+                if(it.isSuccessful){
+                    if (FirebaseAuth.getInstance().currentUser != null) {
+                            Log.d("!!!", "READ: Profile")
 
-                        id = document.id
-                        name = document.getString("name").toString()
-                        birth = document.getString("birth").toString()
-                        email = document.getString("email").toString()
-                        phone = document.getString("phone").toString()
-                        password = document.getString("password").toString()
+                            name = it.result?.get("name").toString()
+                            birth = it.result?.get("birth").toString()
+                            email = it.result?.get("email").toString()
+                            phone = it.result?.get("phone").toString()
+                            password = it.result?.get("password").toString()
+
+                        }
 
                     }
 
@@ -208,4 +210,3 @@ object GetData {
 
     }
 */
-}

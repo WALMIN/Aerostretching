@@ -90,15 +90,15 @@ class RegisterActivity : AppCompatActivity() {
         val user = User(r_email.text.toString(), r_name.text.toString(), r_phone.text.toString(),
                 r_birthDate.text.toString(), r_password_1.text.toString())
 
-        db.collection("users").document(uid.toString()).collection("info").add(user)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d("!!!", "Success")
-                    } else {
-                        Log.d("!!!", "User not created ${task.exception}")
-                    }
-
+        db.collection("users").document(uid.toString()).set(user)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("!!!", "Success")
+                } else {
+                    Log.d("!!!", "User not created ${task.exception}")
                 }
+
+            }
 
     }
 
