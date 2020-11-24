@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.webkit.WebView
 import android.widget.*
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -21,6 +23,7 @@ lateinit var r_password_2: EditText
 
 lateinit var auth: FirebaseAuth
 lateinit var db: FirebaseFirestore
+lateinit var agreeBox:CheckBox
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -40,10 +43,16 @@ class RegisterActivity : AppCompatActivity() {
         r_phone = findViewById(R.id.editTextRegisterPhone)
         r_birthDate = findViewById(R.id.editTextRegisterBirth)
         r_password_2 = findViewById(R.id.editTextRegisterPassword2)
-
+        agreeBox = findViewById(R.id.agreeBox)
         register_btn = findViewById(R.id.buttonRegister)
         register_btn.setOnClickListener {
-            createLogin()
+
+            if (agreeBox.isEnabled) {
+                createLogin()
+
+            }else{
+                Toast.makeText(this, "You have not agreed to the terms", Toast.LENGTH_SHORT).show()
+            }
 
         }
         customActionBar()
@@ -53,6 +62,47 @@ class RegisterActivity : AppCompatActivity() {
     fun goToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+    }
+
+    fun termsOfServiceButton(view:View){
+
+
+        val termsOfServicee = AlertDialog.Builder(this).create()
+        val myView: View = layoutInflater.inflate(R.layout.webviewdialog, null)
+        val termsOfServiceView = myView.findViewById<WebView>(R.id.webView)
+        termsOfServiceView.loadUrl("file:///android_asset/terms.html")
+
+            termsOfServicee.setView(myView)
+
+
+
+        termsOfServicee.show()
+
+
+
+
+
+
+    }
+
+    fun privacyPolicyButton (view: View){
+
+
+        val privacyPolicy = AlertDialog.Builder(this).create()
+        val myView: View = layoutInflater.inflate(R.layout.webviewdialog,null)
+        val privacyPolicyView = myView.findViewById<WebView>(R.id.webView)
+         privacyPolicyView.loadUrl("file:///android_asset/privacy.html")
+
+
+            privacyPolicy.setView(myView)
+
+
+            privacyPolicy.show()
+
+
+
+
+
     }
 
     fun createLogin() {
