@@ -61,6 +61,10 @@ class MainActivity : AppCompatActivity() {
     fun goToStartActivity() {
         val intent = Intent(this, StartActivity::class.java)
         startActivity(intent)
+
+        GetData.trainings()
+        GetData.history()
+        GetData.profile()
     }
 
     fun loginUser() {

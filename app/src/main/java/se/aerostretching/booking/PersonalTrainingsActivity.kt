@@ -11,7 +11,6 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import se.aerostretching.booking.GetData.id
 
 class PersonalTrainingsActivity : AppCompatActivity() {
 

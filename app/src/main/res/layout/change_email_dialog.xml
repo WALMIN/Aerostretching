@@ -1,55 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingStart="22dp"
     android:paddingTop="5dp"
     android:paddingEnd="22dp">
 
     <EditText
-        android:id="@+id/OldPassword"
+        android:id="@+id/currentPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:hint="@string/passwordHint"
         android:inputType="textPassword" />
 
     <EditText
-
-        android:id="@+id/NewPassword"
+        android:id="@+id/newEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/OldPassword"
-        android:layout_alignParentStart="true"
-        android:hint="@string/newPasswordHint"
-        android:inputType="textPassword" />
-
-    <EditText
-        android:id="@+id/RepeatPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/NewPassword"
-        android:layout_alignParentStart="true"
-        android:hint="@string/repeatPasswordHint"
-        android:inputType="textPassword" />
+        android:hint="@string/newEmailHint"
+        android:inputType="textEmailAddress" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/RepeatPassword"
         android:gravity="end"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/Confirm_button"
+            android:id="@+id/confirmBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorAccent"
             android:text="@string/confirm" />
 
         <Button
-            android:id="@+id/Cancel"
+            android:id="@+id/cancelBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -58,4 +45,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
