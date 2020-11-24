@@ -84,31 +84,31 @@ class ProfileActivity : AppCompatActivity() {
         // Update auth email
         val credential = EmailAuthProvider.getCredential(GetData.email, password)
         FirebaseAuth.getInstance().currentUser!!.reauthenticate(credential)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    FirebaseAuth.getInstance().currentUser!!.updateEmail(newEmail)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                GetData.profile()
-
-                                Toast.makeText(this, getString(R.string.emailUpdated), Toast.LENGTH_LONG).show()
-                                Log.d("!!!", "User email address updated.")
-
-                                val userReference =
-                                    FirebaseFirestore.getInstance().collection("users")
-                                        .document(FirebaseAuth.getInstance().currentUser?.uid.toString())
-                                userReference.update("email", newEmail)
-
-                            } else {
-                                Toast.makeText(this, getString(R.string.emaildNotChanged), Toast.LENGTH_LONG).show()
-                                Log.d("!!!", "Email address not updated: ${task.exception}")
-
-                            }
-
-                        }
-
-                }
+            .addOnSuccessListener {
                 Log.d("!!!", "User re-authenticated.")
+
+                FirebaseAuth.getInstance().currentUser!!.updateEmail(newEmail)
+                    .addOnSuccessListener {
+                        GetData.profile()
+
+                        Toast.makeText(this, getString(R.string.emailUpdated), Toast.LENGTH_LONG).show()
+                        Log.d("!!!", "User email address updated.")
+
+                        val userReference = FirebaseFirestore.getInstance().collection("users")
+                                .document(FirebaseAuth.getInstance().currentUser?.uid.toString())
+                        userReference.update("email", newEmail)
+
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, getString(R.string.emaildNotChanged), Toast.LENGTH_LONG).show()
+                        Log.d("!!!", "Email address not updated: $it")
+
+
+                    }
+            }
+            .addOnFailureListener {
+                Log.d("!!!", "Error when trying to re-authenticate.")
+                Toast.makeText(this, getString(R.string.enterAllFields), Toast.LENGTH_LONG).show()
 
             }
 
@@ -151,24 +151,23 @@ class ProfileActivity : AppCompatActivity() {
         // Update auth password
         val credential = EmailAuthProvider.getCredential(GetData.email, currentPassword)
         FirebaseAuth.getInstance().currentUser!!.reauthenticate(credential)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    FirebaseAuth.getInstance().currentUser!!.updatePassword(newPassword)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                Toast.makeText(this, getString(R.string.passwordUpdated), Toast.LENGTH_LONG).show()
-                                Log.d("!!!", "Password updated.")
-
-                            } else {
-                                Toast.makeText(this, getString(R.string.passwordNotChanged), Toast.LENGTH_SHORT).show()
-                                Log.d("!!!", "Password not updated: ${task.exception}")
-
-                            }
-
-                        }
-
-                }
+            .addOnSuccessListener {
                 Log.d("!!!", "User re-authenticated.")
+                FirebaseAuth.getInstance().currentUser!!.updatePassword(newPassword)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, getString(R.string.passwordUpdated), Toast.LENGTH_LONG).show()
+                        Log.d("!!!", "Password updated.")
+
+                    }
+                    .addOnFailureListener{
+                        Toast.makeText(this, getString(R.string.passwordNotChanged), Toast.LENGTH_SHORT).show()
+                        Log.d("!!!", "Password not updated: $it")
+
+                    }
+                }
+            .addOnFailureListener{
+                Log.d("!!!", "Error when trying to re-authenticate.")
+                Toast.makeText(this, getString(R.string.enterAllFields), Toast.LENGTH_LONG).show()
 
             }
 
