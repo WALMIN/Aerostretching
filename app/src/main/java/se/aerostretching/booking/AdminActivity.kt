@@ -17,7 +17,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 
-class AdminActivity : AppCompatActivity() {
+class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
+
+    companion object{
+        lateinit var messageListAdapter: MessageListAdapter
+
+    }
 
     lateinit var db: FirebaseFirestore
 
@@ -35,7 +40,7 @@ class AdminActivity : AppCompatActivity() {
     lateinit var btnAddTraining: Button
 
     // Views messages
-    lateinit var messageListView: RecyclerView
+    lateinit var messageList: RecyclerView
 
     // Views client list
     lateinit var trainingClientList: RecyclerView
@@ -46,8 +51,8 @@ class AdminActivity : AppCompatActivity() {
         customActionBar()
 
         initialize()
-        initializeMessages()
         initializeTrainingClientList()
+        initializeMessageList()
 
     }
 
@@ -156,15 +161,18 @@ class AdminActivity : AppCompatActivity() {
 
     }
 
-    fun initializeMessages() {
-
-
-    }
 
     fun initializeTrainingClientList() {
         trainingClientList = findViewById(R.id.trainingClientList)
         trainingClientList.layoutManager = LinearLayoutManager(this)
         trainingClientList.adapter = TrainingClientListAdapter(GetData.trainingListStart)
+    }
+
+    fun initializeMessageList() {
+        messageList = findViewById(R.id.messageList)
+        messageList.layoutManager = LinearLayoutManager(this)
+        messageListAdapter = MessageListAdapter(GetData.messageList, this, false)
+        messageList.adapter = messageListAdapter
     }
 
     fun goToMainActivity() {
@@ -224,7 +232,14 @@ class AdminActivity : AppCompatActivity() {
         super.onStart()
         if (!Tools.checkAdmin(this)) {
             startActivity(Intent(this, MainActivity::class.java))
+        }else{
+            GetData.message()
+
         }
+
+    }
+
+    override fun onMessageItemClick(item: MessageItem, position: Int) {
 
     }
 

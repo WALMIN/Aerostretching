@@ -3,6 +3,7 @@ package se.aerostretching.booking
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import se.aerostretching.booking.GetData.messageList
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -15,7 +16,7 @@ object GetData {
     val trainingListStart = ArrayList<TrainingItem>()
     val trainingListUpcoming = ArrayList<TrainingItem>()
     val trainingListHistory = ArrayList<TrainingItem>()
-    //val messageList = ArrayList<MessageItem>()
+    val messageList = ArrayList<MessageItem>()
 
     var titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
     var placeFilter = "|Odenplan|Bromma|Solna|Malmö"
@@ -30,140 +31,140 @@ object GetData {
 
     fun trainings() {
         FirebaseFirestore.getInstance().collection("trainings").orderBy("date")
-            .whereGreaterThanOrEqualTo("date", SimpleDateFormat("MMddyyyy", Locale.getDefault()).format(Calendar.getInstance().time))
-            .addSnapshotListener { snapshot, e ->
-                Log.d("!!!", "READ: Trainings")
+                .whereGreaterThanOrEqualTo("date", SimpleDateFormat("MMddyyyy", Locale.getDefault()).format(Calendar.getInstance().time))
+                .addSnapshotListener { snapshot, e ->
+                    Log.d("!!!", "READ: Trainings")
 
-                trainingList.clear()
-                trainingListStart.clear()
-                trainingListUpcoming.clear()
+                    trainingList.clear()
+                    trainingListStart.clear()
+                    trainingListUpcoming.clear()
 
-                // All trainings
-                for (document in snapshot!!) {
-                    var booked = false
+                    // All trainings
+                    for (document in snapshot!!) {
+                        var booked = false
 
-                    if (document.getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
-                        booked = true
+                        if (document.getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
+                            booked = true
 
-                    }
+                        }
 
-                    if(titleFilter.contains("|" + document.getString("title").toString()) &&
-                        placeFilter.contains("|" + document.getString("place").toString()) &&
-                        trainerFilter.contains("|" + document.getString("trainer").toString()) &&
-                        !trainingList.equals(document.id)){
+                        if (titleFilter.contains("|" + document.getString("title").toString()) &&
+                                placeFilter.contains("|" + document.getString("place").toString()) &&
+                                trainerFilter.contains("|" + document.getString("trainer").toString()) &&
+                                !trainingList.equals(document.id)) {
                             trainingList.add(
+                                    TrainingItem(
+                                            document.id,
+                                            document.getString("date").toString(),
+                                            document.getString("time").toString(),
+                                            document.getString("length").toString(),
+                                            document.getString("title").toString(),
+                                            document.getString("place").toString(),
+                                            document.getString("trainer").toString(),
+                                            document.getString("spots").toString(),
+                                            document.getString("users").toString(),
+                                            booked
+                                    )
+                            )
+
+
+                        }
+
+                        // Upcoming
+                        if (document.getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
+                            trainingListUpcoming.add(
+                                    TrainingItem(
+                                            document.id,
+                                            document.getString("date").toString(),
+                                            document.getString("time").toString(),
+                                            document.getString("length").toString(),
+                                            document.getString("title").toString(),
+                                            document.getString("place").toString(),
+                                            document.getString("trainer").toString(),
+                                            document.getString("spots").toString(),
+                                            document.getString("users").toString(),
+                                            true
+                                    )
+                            )
+
+                        }
+
+                    }
+
+                    // Start trainings
+                    for (i in 0..3) {
+                        var booked = false
+
+                        if (snapshot.documents[i].getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
+                            booked = true
+
+                        }
+
+                        trainingListStart.add(
                                 TrainingItem(
-                                    document.id,
-                                    document.getString("date").toString(),
-                                    document.getString("time").toString(),
-                                    document.getString("length").toString(),
-                                    document.getString("title").toString(),
-                                    document.getString("place").toString(),
-                                    document.getString("trainer").toString(),
-                                    document.getString("spots").toString(),
-                                    document.getString("users").toString(),
-                                    booked
+                                        snapshot.documents[i].id,
+                                        snapshot.documents[i].getString("date").toString(),
+                                        snapshot.documents[i].getString("time").toString(),
+                                        snapshot.documents[i].getString("length").toString(),
+                                        snapshot.documents[i].getString("title").toString(),
+                                        snapshot.documents[i].getString("place").toString(),
+                                        snapshot.documents[i].getString("trainer").toString(),
+                                        snapshot.documents[i].getString("spots").toString(),
+                                        snapshot.documents[i].getString("users").toString(),
+                                        booked
                                 )
-                            )
-
-
-                    }
-
-                    // Upcoming
-                    if (document.getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
-                        trainingListUpcoming.add(
-                            TrainingItem(
-                                document.id,
-                                document.getString("date").toString(),
-                                document.getString("time").toString(),
-                                document.getString("length").toString(),
-                                document.getString("title").toString(),
-                                document.getString("place").toString(),
-                                document.getString("trainer").toString(),
-                                document.getString("spots").toString(),
-                                document.getString("users").toString(),
-                                true
-                            )
                         )
 
                     }
 
-                }
-
-                // Start trainings
-                for (i in 0..3) {
-                    var booked = false
-
-                    if (snapshot.documents[i].getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
-                        booked = true
-
-                    }
-
-                    trainingListStart.add(
-                        TrainingItem(
-                            snapshot.documents[i].id,
-                            snapshot.documents[i].getString("date").toString(),
-                            snapshot.documents[i].getString("time").toString(),
-                            snapshot.documents[i].getString("length").toString(),
-                            snapshot.documents[i].getString("title").toString(),
-                            snapshot.documents[i].getString("place").toString(),
-                            snapshot.documents[i].getString("trainer").toString(),
-                            snapshot.documents[i].getString("spots").toString(),
-                            snapshot.documents[i].getString("users").toString(),
-                            booked
-                        )
-                    )
+                    trainingListAdapter.notifyDataSetChanged()
 
                 }
-
-                trainingListAdapter.notifyDataSetChanged()
-
-            }
 
     }
 
     // History
-    fun history(){
+    fun history() {
         FirebaseFirestore.getInstance().collection("trainings").orderBy("date")
-            .whereLessThan("date", SimpleDateFormat("MMddyyyy", Locale.getDefault()).format(Calendar.getInstance().time))
-            .addSnapshotListener { snapshot, e ->
-                Log.d("!!!", "READ: History")
+                .whereLessThan("date", SimpleDateFormat("MMddyyyy", Locale.getDefault()).format(Calendar.getInstance().time))
+                .addSnapshotListener { snapshot, e ->
+                    Log.d("!!!", "READ: History")
 
-                trainingListHistory.clear()
+                    trainingListHistory.clear()
 
-                for (document in snapshot!!) {
-                    if (document.getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
-                        trainingListHistory.add(
-                            TrainingItem(
-                                document.id,
-                                document.getString("date").toString(),
-                                document.getString("time").toString(),
-                                document.getString("length").toString(),
-                                document.getString("title").toString(),
-                                document.getString("place").toString(),
-                                document.getString("trainer").toString(),
-                                document.getString("spots").toString(),
-                                document.getString("users").toString(),
-                                true
+                    for (document in snapshot!!) {
+                        if (document.getString("users").toString().contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
+                            trainingListHistory.add(
+                                    TrainingItem(
+                                            document.id,
+                                            document.getString("date").toString(),
+                                            document.getString("time").toString(),
+                                            document.getString("length").toString(),
+                                            document.getString("title").toString(),
+                                            document.getString("place").toString(),
+                                            document.getString("trainer").toString(),
+                                            document.getString("spots").toString(),
+                                            document.getString("users").toString(),
+                                            true
+                                    )
                             )
-                        )
+
+                        }
 
                     }
 
+                    trainingListAdapter.notifyDataSetChanged()
+
                 }
-
-                trainingListAdapter.notifyDataSetChanged()
-
-            }
 
     }
 
     fun profile() {
         FirebaseFirestore.getInstance().collection("users")
-            .document(FirebaseAuth.getInstance().currentUser?.uid.toString()).get()
-            .addOnCompleteListener {
-                if(it.isSuccessful){
-                    if (FirebaseAuth.getInstance().currentUser != null) {
+                .document(FirebaseAuth.getInstance().currentUser?.uid.toString()).get()
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        if (FirebaseAuth.getInstance().currentUser != null) {
                             Log.d("!!!", "READ: Profile")
 
                             name = it.result?.get("name").toString()
@@ -178,35 +179,35 @@ object GetData {
 
                 }
 
-            }
-
     }
 
-    /*
+
     fun message() {
-        FirebaseFirestore.getInstance().collection("messages").document(FirebaseAuth.getInstance().currentUser?.uid.toString()).collection("messagesFromClients").orderBy("date")
-            .addSnapshotListener { snapshot, e ->
-                Log.d("!!!", "READ")
+        FirebaseFirestore.getInstance().collection("messagesFromClients").orderBy("date")
+                .addSnapshotListener { snapshot, e ->
+                    Log.d("!!!", "READ")
 
-                messageList.clear()
+                    messageList.clear()
 
 
-                // All trainings
-                for (document in snapshot!!) {
+                    // All trainings
+                    for (document in snapshot!!) {
 
-                    messageList.add(
-                        MessageItem(
-                            document.id,
-                            document.getString("date").toString(),
-                            document.getString("name").toString(),
-                            document.getString("text").toString(),
-                            document.getString("user").toString(),
+                        messageList.add(
+                                MessageItem(
+                                        document.getString("date").toString(),
+                                        document.getString("name").toString(),
+                                        document.getString("text").toString(),
+                                        document.getString("email").toString(),
+                                        false,
+                                )
                         )
-                    ) }
+                    }
 
-            }
+                    AdminActivity.messageListAdapter.notifyDataSetChanged()
 
+                }
 
 
     }
-*/
+}

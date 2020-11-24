@@ -82,7 +82,7 @@ class PersonalTrainingsActivity : AppCompatActivity() {
         if (text.isEmpty()) {
             Toast.makeText(this, getString(R.string.noTrainingText), Toast.LENGTH_LONG).show()
         } else {
-            val message = MessageItem(System.currentTimeMillis() / 1000, name, text, email)
+            val message = MessageItem((System.currentTimeMillis() / 1000).toString(), name, text, email, false)
 
             db.collection("messagesFromClients").add(message)
                 .addOnSuccessListener{
@@ -92,26 +92,16 @@ class PersonalTrainingsActivity : AppCompatActivity() {
 
         }
 
-        /*
-        FirebaseFirestore.getInstance().collection("messagesFromClients").orderBy("date")
-            .addSnapshotListener { snapshot, e ->
-                for (document in snapshot!!) {
 
-                }
-        }
-
-         */
 
     }
 
 
-
-
-
 }
-//class Message(val text: String, val name: String, val email: String, val timeStamp:Long)
+
 data class MessageItem(
-    val date: Long,
+    val date: String,
     val name: String,
     val text: String,
-    val email: String)
+    val email: String,
+    val read : Boolean)
