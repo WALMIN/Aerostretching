@@ -111,7 +111,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
                 if (day_ < 10) {
                     day = "0$day_"
                 }
-                btnDate.text = "$month$day$year"
+                btnDate.text = "$year$month$day"
 
             }, year, month, day)
             dialog.setOnCancelListener {
