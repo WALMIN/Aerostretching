@@ -1,5 +1,6 @@
 package se.aerostretching.booking
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -37,7 +38,7 @@ class TrainerActivity : AppCompatActivity() {
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.back)
         startBtn.setOnClickListener {
-            finish()
+            goToPreviousActivity()
         }
 
     }
@@ -69,6 +70,17 @@ class TrainerActivity : AppCompatActivity() {
             }
 
         }
+
+    }
+
+    fun goToPreviousActivity(){
+        finish()
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        goToPreviousActivity()
 
     }
 

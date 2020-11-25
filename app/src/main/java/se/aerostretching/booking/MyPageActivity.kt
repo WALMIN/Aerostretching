@@ -27,26 +27,26 @@ class MyPageActivity : AppCompatActivity() {
     }
 
     fun profileBtn(view: View){
-        finish()
         startActivity(Intent(this, ProfileActivity::class.java))
+        finish()
 
     }
 
     fun bookedBtn(view: View){
-        finish()
         startActivity(Intent(this, UpcomingTrainingsActivity::class.java))
+        finish()
 
     }
 
     fun historyBtn(view: View){
-        finish()
         startActivity(Intent(this, HistoryActivity::class.java))
+        finish()
 
     }
 
     fun messagesBtn(view: View){
-        finish()
         startActivity(Intent(this, MessagesActivity::class.java))
+        finish()
 
     }
 
@@ -79,8 +79,21 @@ class MyPageActivity : AppCompatActivity() {
         endBtn.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
 
         }
+
+    }
+
+    fun goToPreviousActivity(){
+        startActivity(Intent(this, StartActivity::class.java))
+        finish()
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        goToPreviousActivity()
 
     }
 

@@ -195,8 +195,7 @@ class ProfileActivity : AppCompatActivity() {
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.back)
         startBtn.setOnClickListener {
-            finish()
-            startActivity(Intent(this, MyPageActivity::class.java))
+            goToPreviousActivity()
 
         }
 
@@ -231,11 +230,15 @@ class ProfileActivity : AppCompatActivity() {
 
     }
 
+    fun goToPreviousActivity(){
+        startActivity(Intent(this, MyPageActivity::class.java))
+        finish()
+
+    }
+
     override fun onBackPressed() {
         super.onBackPressed()
-
-        finish()
-        startActivity(Intent(this, MyPageActivity::class.java))
+        goToPreviousActivity()
 
     }
 

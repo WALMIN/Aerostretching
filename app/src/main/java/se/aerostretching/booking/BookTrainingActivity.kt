@@ -136,20 +136,14 @@ class BookTrainingActivity : AppCompatActivity() {
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
         val title = intent.getStringExtra("date")!!
-        titleView.text = Tools.getDate(
-            title.substring(0, 2), title.substring(2, 4), title.substring(
-                4,
-                8
-            )
-        )
+        titleView.text = Tools.getDate(title.substring(0, 4), title.substring(4, 6), title.substring(6, 8))
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.back)
         startBtn.setOnClickListener {
-            finish()
-            goToScheduleBooking()
+            goToPreviousActivity()
 
         }
 
@@ -165,11 +159,7 @@ class BookTrainingActivity : AppCompatActivity() {
     }
 
     fun addToCalendar() {
-        val startTime = Tools.getMillisFromDate(
-            intent.getStringExtra("date") + " " + intent.getStringExtra(
-                "time"
-            )
-        )
+        val startTime = Tools.getMillisFromDate(intent.getStringExtra("date") + " " + intent.getStringExtra("time"))
         val endTime = startTime + (intent.getStringExtra("length")!!.toInt() * 60000)
 
         val insertCalendarIntent = Intent(Intent.ACTION_INSERT)
@@ -181,10 +171,7 @@ class BookTrainingActivity : AppCompatActivity() {
             .putExtra(CalendarContract.Events.EVENT_LOCATION, intent.getStringExtra("place"))
             .putExtra(CalendarContract.Events.DESCRIPTION, intent.getStringExtra("trainer"))
             .putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE)
-            .putExtra(
-                CalendarContract.Events.AVAILABILITY,
-                CalendarContract.Events.AVAILABILITY_FREE
-            )
+            .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_FREE)
 
         startActivity(insertCalendarIntent)
 
@@ -197,7 +184,6 @@ class BookTrainingActivity : AppCompatActivity() {
                 .setMessage(getString(R.string.bookMsg))
                 .setPositiveButton(getString(R.string.book)) { dialog, id ->
                     book()
-                    goToScheduleBooking()
 
                 }
                 .setNegativeButton(getString(R.string.cancel)) { dialog, id -> }
@@ -219,6 +205,7 @@ class BookTrainingActivity : AppCompatActivity() {
         trainingReference.update("participants." + FirebaseAuth.getInstance().currentUser?.uid.toString(), FieldValue.arrayUnion(GetData.name))
             .addOnSuccessListener {
                 Toast.makeText(this, getString(R.string.successfulBooking), Toast.LENGTH_LONG).show()
+                goToPreviousActivity()
 
             }
             .addOnFailureListener{
@@ -228,15 +215,15 @@ class BookTrainingActivity : AppCompatActivity() {
 
     }
 
-    fun goToScheduleBooking(){
-        finish()
+    fun goToPreviousActivity(){
         startActivity(Intent(this, ScheduleBookingActivity::class.java))
+        finish()
 
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        goToScheduleBooking()
+        goToPreviousActivity()
 
     }
 

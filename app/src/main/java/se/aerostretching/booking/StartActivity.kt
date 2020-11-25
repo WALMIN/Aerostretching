@@ -81,8 +81,8 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
     }
 
     fun buttonAllTrainings(view: View) {
-        finish()
         startActivity(Intent(this, ScheduleBookingActivity::class.java))
+        finish()
 
     }
 
@@ -102,8 +102,8 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
             bookIntent.putExtra("trainer", item.trainer)
             bookIntent.putExtra("spots", item.spots)
 
-            finish()
             startActivity(bookIntent)
+            finish()
 
         }
 
