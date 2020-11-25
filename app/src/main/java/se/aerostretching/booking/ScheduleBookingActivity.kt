@@ -6,13 +6,16 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.google.firebase.firestore.FirebaseFirestore
+
 
 class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
@@ -20,7 +23,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
 
     lateinit var trainingListView: RecyclerView
 
-    //
+    // Filter
     var aeroyoga: Boolean = true
     var aerostretching: Boolean = true
     var kidsAerostretching: Boolean = true
@@ -80,6 +83,18 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
         GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingList, this, false)
         trainingListView.layoutManager = LinearLayoutManager(this)
         trainingListView.adapter = GetData.trainingListAdapter
+
+        GetData.trainingListAdapter.registerAdapterDataObserver(object : AdapterDataObserver() {
+            override fun onChanged() {
+                super.onChanged()
+                if (GetData.trainingListAdapter.itemCount == 0) {
+                    Toast.makeText(this@ScheduleBookingActivity, getString(R.string.trainingsEmpty), Toast.LENGTH_LONG).show()
+
+                }
+
+            }
+
+        })
 
     }
 
@@ -175,8 +190,14 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
             anna = annaSwitch.isChecked
             sofia = sofiaSwitch.isChecked
 
-            GetData.trainings()
-            dialog.dismiss()
+            if(GetData.titleFilter.isNotEmpty() && GetData.placeFilter.isNotEmpty() && GetData.trainerFilter.isNotEmpty()){
+                GetData.trainings()
+                dialog.dismiss()
+
+            }else{
+                Toast.makeText(this, getString(R.string.filterEmpty), Toast.LENGTH_LONG).show()
+
+            }
 
         }
 
@@ -214,6 +235,19 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
     fun goToPreviousActivity(){
         startActivity(Intent(this, StartActivity::class.java))
         finish()
+
+    }
+
+    override fun onPause() {
+        if (GetData.trainingListAdapter.itemCount == 0) {
+            GetData.titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
+            GetData.placeFilter = "|Odenplan|Bromma|Solna|Malmö"
+            GetData.trainerFilter = "|Anastasia|Anna|Sofia"
+
+            GetData.trainings()
+
+        }
+        super.onPause()
 
     }
 
