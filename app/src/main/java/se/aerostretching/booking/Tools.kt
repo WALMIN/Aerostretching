@@ -11,8 +11,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -74,7 +74,7 @@ object Tools {
 
     }
 
-    fun getDate(month: String, day: String, year: String): String{
+    fun getDate(month: String, day: String, year: String): String {
         val monthString = SimpleDateFormat("MMMM", Locale.getDefault())
             .format(SimpleDateFormat("MM", Locale.getDefault()).parse(month))
 
@@ -112,16 +112,13 @@ object Tools {
             .setTitle(context.getString(R.string.removeBookingTitle))
             .setMessage(context.getString(R.string.removeBookingMsg))
             .setPositiveButton(context.getString(R.string.unbook)) { dialog, id ->
-                val trainingReference = FirebaseFirestore.getInstance().collection("trainings").document(
-                    item.id
-                )
+                val trainingReference =
+                    FirebaseFirestore.getInstance().collection("trainings").document(item.id)
 
                 trainingReference.update("spots", (item.spots.toInt() + 1).toString())
                 trainingReference.update(
-                    "users", item.users.replace(
-                        "|${FirebaseAuth.getInstance().currentUser?.uid}",
-                        ""
-                    )
+                    "participants." + FirebaseAuth.getInstance().currentUser?.uid.toString(),
+                    FieldValue.delete()
                 )
 
                 GetData.trainings()

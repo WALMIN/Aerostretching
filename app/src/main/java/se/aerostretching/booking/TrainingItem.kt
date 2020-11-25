@@ -9,6 +9,6 @@ data class TrainingItem(
     val place: String,
     val trainer: String,
     val spots: String,
-    val users: String,
+    val participants: List<String>,
     val booked: Boolean
 )

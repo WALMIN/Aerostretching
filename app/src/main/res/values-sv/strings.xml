@@ -86,6 +86,9 @@
 
     <string name="filter">Filter</string>
 
+    <string name="successfulBooking">Bokningen lyckades</string>
+    <string name="failedToBook">Fel vid bokning, försök igen</string>
+
     <!-- Main activity -->
     <string name="emailHint">Email</string>
     <string name="passwordHint">Lösenord</string>

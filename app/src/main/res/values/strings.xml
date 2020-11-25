@@ -95,6 +95,9 @@
 
     <string name="filter">Filter</string>
 
+    <string name="successfulBooking">Booking successful</string>
+    <string name="failedToBook">Error when booking, try again</string>
+
     <!-- Contacts activity -->
     <string name="phone" translatable="false">070–491 31 05</string>
     <string name="email" translatable="false">info@aerostretching.se</string>

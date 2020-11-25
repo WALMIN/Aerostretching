@@ -17,7 +17,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 
 class BookTrainingActivity : AppCompatActivity() {
@@ -45,7 +47,11 @@ class BookTrainingActivity : AppCompatActivity() {
 
         // Time and length
         val timeView: TextView = findViewById(R.id.textViewBookTime)
-        timeView.text = getString(R.string.trainingTime) + "${intent.getStringExtra("time")} (${intent.getStringExtra("length")}${getString(R.string.minutes)})"
+        timeView.text = getString(R.string.trainingTime) + "${intent.getStringExtra("time")} (${
+            intent.getStringExtra(
+                "length"
+            )
+        }${getString(R.string.minutes)})"
 
         // Place
         val placeView: TextView = findViewById(R.id.textView)
@@ -64,7 +70,13 @@ class BookTrainingActivity : AppCompatActivity() {
 
         // Trainer
         Glide.with(this)
-            .load(FirebaseStorage.getInstance().reference.child("trainers/${intent.getStringExtra("trainer")?.toLowerCase()}_small.jpg"))
+            .load(
+                FirebaseStorage.getInstance().reference.child(
+                    "trainers/${
+                        intent.getStringExtra("trainer")?.toLowerCase()
+                    }_small.jpg"
+                )
+            )
             .centerCrop()
             .circleCrop()
             .error(R.drawable.error)
@@ -85,19 +97,23 @@ class BookTrainingActivity : AppCompatActivity() {
         textViewBookDescription.movementMethod = ScrollingMovementMethod.getInstance()
         when {
             intent.getStringExtra("title").equals(resources.getStringArray(R.array.titles)[0]) -> {
-                textViewBookDescription.text = resources.getStringArray(R.array.trainingDescription)[0]
+                textViewBookDescription.text =
+                    resources.getStringArray(R.array.trainingDescription)[0]
 
             }
             intent.getStringExtra("title").equals(resources.getStringArray(R.array.titles)[1]) -> {
-                textViewBookDescription.text = resources.getStringArray(R.array.trainingDescription)[1]
+                textViewBookDescription.text =
+                    resources.getStringArray(R.array.trainingDescription)[1]
 
             }
             intent.getStringExtra("title").equals(resources.getStringArray(R.array.titles)[2]) -> {
-                textViewBookDescription.text = resources.getStringArray(R.array.trainingDescription)[2]
+                textViewBookDescription.text =
+                    resources.getStringArray(R.array.trainingDescription)[2]
 
             }
             intent.getStringExtra("title").equals(resources.getStringArray(R.array.titles)[3]) -> {
-                textViewBookDescription.text = resources.getStringArray(R.array.trainingDescription)[3]
+                textViewBookDescription.text =
+                    resources.getStringArray(R.array.trainingDescription)[3]
 
             }
 
@@ -120,14 +136,20 @@ class BookTrainingActivity : AppCompatActivity() {
         // Title
         val titleView = view.findViewById<View>(R.id.title) as TextView
         val title = intent.getStringExtra("date")!!
-        titleView.text = Tools.getDate(title.substring(0, 2), title.substring(2, 4), title.substring(4, 8))
+        titleView.text = Tools.getDate(
+            title.substring(0, 2), title.substring(2, 4), title.substring(
+                4,
+                8
+            )
+        )
 
         // Start button
         val startBtn = view.findViewById<View>(R.id.startBtn) as ImageButton
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.back)
         startBtn.setOnClickListener {
-            startActivity(Intent(this, ScheduleBookingActivity::class.java))
+            finish()
+            goToScheduleBooking()
 
         }
 
@@ -143,7 +165,11 @@ class BookTrainingActivity : AppCompatActivity() {
     }
 
     fun addToCalendar() {
-        val startTime = Tools.getMillisFromDate(intent.getStringExtra("date") + " " + intent.getStringExtra("time"))
+        val startTime = Tools.getMillisFromDate(
+            intent.getStringExtra("date") + " " + intent.getStringExtra(
+                "time"
+            )
+        )
         val endTime = startTime + (intent.getStringExtra("length")!!.toInt() * 60000)
 
         val insertCalendarIntent = Intent(Intent.ACTION_INSERT)
@@ -155,7 +181,10 @@ class BookTrainingActivity : AppCompatActivity() {
             .putExtra(CalendarContract.Events.EVENT_LOCATION, intent.getStringExtra("place"))
             .putExtra(CalendarContract.Events.DESCRIPTION, intent.getStringExtra("trainer"))
             .putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE)
-            .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_FREE)
+            .putExtra(
+                CalendarContract.Events.AVAILABILITY,
+                CalendarContract.Events.AVAILABILITY_FREE
+            )
 
         startActivity(insertCalendarIntent)
 
@@ -168,7 +197,7 @@ class BookTrainingActivity : AppCompatActivity() {
                 .setMessage(getString(R.string.bookMsg))
                 .setPositiveButton(getString(R.string.book)) { dialog, id ->
                     book()
-                    startActivity(Intent(this, ScheduleBookingActivity::class.java))
+                    goToScheduleBooking()
 
                 }
                 .setNegativeButton(getString(R.string.cancel)) { dialog, id -> }
@@ -185,8 +214,29 @@ class BookTrainingActivity : AppCompatActivity() {
         Log.d("!!!", intent.getStringExtra("id").toString())
 
         val trainingReference = FirebaseFirestore.getInstance().collection("trainings").document(intent.getStringExtra("id").toString())
+
         trainingReference.update("spots", (intent.getStringExtra("spots")!!.toInt() - 1).toString())
-        trainingReference.update("users", (intent.getStringExtra("users").toString() + "|" + (FirebaseAuth.getInstance().currentUser?.uid)))
+        trainingReference.update("participants." + FirebaseAuth.getInstance().currentUser?.uid.toString(), FieldValue.arrayUnion(GetData.name))
+            .addOnSuccessListener {
+                Toast.makeText(this, getString(R.string.successfulBooking), Toast.LENGTH_LONG).show()
+
+            }
+            .addOnFailureListener{
+                Toast.makeText(this, getString(R.string.failedToBook), Toast.LENGTH_LONG).show()
+
+            }
+
+    }
+
+    fun goToScheduleBooking(){
+        finish()
+        startActivity(Intent(this, ScheduleBookingActivity::class.java))
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        goToScheduleBooking()
 
     }
 
