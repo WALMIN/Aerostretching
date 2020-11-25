@@ -34,7 +34,7 @@ class TrainingClientListAdapter(var list: ArrayList<TrainingItem>) : RecyclerVie
             titleView.text = item.title
             trainerView.text = item.trainer
             spotsView.text = "${itemView.resources.getString(R.string.spotsHint)} ${item.spots}"
-            dateView.text = "${item.date.substring(2, 4)}\n${Tools.getMonth(item.date.substring(0, 2))}"
+            dateView.text = "${item.date.substring(6, 8)}\n${Tools.getMonth(item.date.substring(4, 6))}"
 
             clientView.text = item.participants[0].replace(",", "")
                 .replace("{", "").replace("}", "")

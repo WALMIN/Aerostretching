@@ -161,11 +161,10 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
 
     }
 
-
     fun initializeTrainingClientList() {
         trainingClientList = findViewById(R.id.trainingClientList)
         trainingClientList.layoutManager = LinearLayoutManager(this)
-        trainingClientList.adapter = TrainingClientListAdapter(GetData.trainingListStart)
+        trainingClientList.adapter = TrainingClientListAdapter(GetData.trainingList)
     }
 
     fun initializeMessageList() {
