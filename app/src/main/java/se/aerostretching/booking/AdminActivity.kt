@@ -190,7 +190,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
             spinnerPlaces.selectedItem.toString(),
             spinnerTrainer.selectedItem.toString(),
             textViewSpots.text.toString(),
-            "", false
+            listOf(""),false
         )
 
         if (Tools.checkAdmin(this)) {
@@ -206,7 +206,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
                             .addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
                                     Toast.makeText(this, getString(R.string.trainingAdded), Toast.LENGTH_LONG).show()
-                                    Log.d("!!!", "ADDED: ${task.exception}")
+                                    Log.d("!!!", "ADDED: $task")
                                     view.isEnabled = false
 
                                     startActivity(Intent(this, AdminActivity::class.java))

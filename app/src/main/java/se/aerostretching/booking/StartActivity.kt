@@ -13,7 +13,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 
 class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
@@ -82,12 +81,13 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
     }
 
     fun buttonAllTrainings(view: View) {
+        finish()
         startActivity(Intent(this, ScheduleBookingActivity::class.java))
 
     }
 
     override fun onTrainingItemClick(item: TrainingItem, position: Int) {
-        if (item.users.contains("|" + FirebaseAuth.getInstance().currentUser?.uid)) {
+        if (item.booked) {
             Tools.removeBooking(this, item)
 
         } else {
@@ -101,8 +101,8 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
             bookIntent.putExtra("place", item.place)
             bookIntent.putExtra("trainer", item.trainer)
             bookIntent.putExtra("spots", item.spots)
-            bookIntent.putExtra("users", item.users)
 
+            finish()
             startActivity(bookIntent)
 
         }

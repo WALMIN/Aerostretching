@@ -2,7 +2,6 @@ package se.aerostretching.booking
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -59,7 +58,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.back)
         startBtn.setOnClickListener {
-            startActivity(Intent(this, StartActivity::class.java))
+            goToStart()
 
         }
 
@@ -84,49 +83,58 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
 
     }
 
-    fun filterDialog(){
+    fun filterDialog() {
         val dialog = AlertDialog.Builder(this).setTitle(R.string.filter).create()
         val view: View = layoutInflater.inflate(R.layout.filter_dialog, null)
 
         // Title
         val aeroyogaSwitch: SwitchCompat = view.findViewById(R.id.aeroyogaSwitch)
-            aeroyogaSwitch.isChecked = aeroyoga
+        aeroyogaSwitch.isChecked = aeroyoga
         val aerostretchingSwitch: SwitchCompat = view.findViewById(R.id.aerostretchingSwitch)
-            aerostretchingSwitch.isChecked = aerostretching
-        val kidsAerostretchingSwitch: SwitchCompat = view.findViewById(R.id.kidsAerostretchingSwitch)
-            kidsAerostretchingSwitch.isChecked = kidsAerostretching
+        aerostretchingSwitch.isChecked = aerostretching
+        val kidsAerostretchingSwitch: SwitchCompat =
+            view.findViewById(R.id.kidsAerostretchingSwitch)
+        kidsAerostretchingSwitch.isChecked = kidsAerostretching
         val suspensionSwitch: SwitchCompat = view.findViewById(R.id.suspensionSwitch)
-            suspensionSwitch.isChecked = suspension
+        suspensionSwitch.isChecked = suspension
 
         // Place
         val odenplanSwitch: SwitchCompat = view.findViewById(R.id.odenplanSwitch)
-            odenplanSwitch.isChecked = odenplan
+        odenplanSwitch.isChecked = odenplan
         val brommaSwitch: SwitchCompat = view.findViewById(R.id.brommaSwitch)
-            brommaSwitch.isChecked = bromma
+        brommaSwitch.isChecked = bromma
         val solnaSwitch: SwitchCompat = view.findViewById(R.id.solnaSwitch)
-            solnaSwitch.isChecked = solna
+        solnaSwitch.isChecked = solna
         val malmoSwitch: SwitchCompat = view.findViewById(R.id.malmoSwitch)
-            malmoSwitch.isChecked = malmo
+        malmoSwitch.isChecked = malmo
 
         // Place
         val anastasiaSwitch: SwitchCompat = view.findViewById(R.id.anastasiaSwitch)
-            anastasiaSwitch.isChecked = anastasia
+        anastasiaSwitch.isChecked = anastasia
         val annaSwitch: SwitchCompat = view.findViewById(R.id.annaSwitch)
-            annaSwitch.isChecked = anna
+        annaSwitch.isChecked = anna
         val sofiaSwitch: SwitchCompat = view.findViewById(R.id.sofiaSwitch)
-            sofiaSwitch.isChecked = sofia
+        sofiaSwitch.isChecked = sofia
 
         val applyBtn: Button = view.findViewById(R.id.applyBtn)
-        applyBtn.setOnClickListener{
-            GetData.titleFilter =  ""
-            GetData.placeFilter =  ""
-            GetData.trainerFilter =  ""
+        applyBtn.setOnClickListener {
+            GetData.titleFilter = ""
+            GetData.placeFilter = ""
+            GetData.trainerFilter = ""
 
             // Title
-            if(aeroyogaSwitch.isChecked){ GetData.titleFilter = "${GetData.titleFilter}|Aeroyoga" }
-            if(aerostretchingSwitch.isChecked){ GetData.titleFilter = "${GetData.titleFilter}|Aerostretching" }
-            if(kidsAerostretchingSwitch.isChecked){ GetData.titleFilter = "${GetData.titleFilter}|Kids Aerostretching" }
-            if(suspensionSwitch.isChecked){ GetData.titleFilter = "${GetData.titleFilter}|Suspension" }
+            if (aeroyogaSwitch.isChecked) {
+                GetData.titleFilter = "${GetData.titleFilter}|Aeroyoga"
+            }
+            if (aerostretchingSwitch.isChecked) {
+                GetData.titleFilter = "${GetData.titleFilter}|Aerostretching"
+            }
+            if (kidsAerostretchingSwitch.isChecked) {
+                GetData.titleFilter = "${GetData.titleFilter}|Kids Aerostretching"
+            }
+            if (suspensionSwitch.isChecked) {
+                GetData.titleFilter = "${GetData.titleFilter}|Suspension"
+            }
 
             aeroyoga = aeroyogaSwitch.isChecked
             aerostretching = aerostretchingSwitch.isChecked
@@ -134,10 +142,18 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
             suspension = suspensionSwitch.isChecked
 
             // Place
-            if(odenplanSwitch.isChecked){ GetData.placeFilter = "${GetData.placeFilter}|Odenplan" }
-            if(brommaSwitch.isChecked){ GetData.placeFilter = "${GetData.placeFilter}|Bromma" }
-            if(solnaSwitch.isChecked){ GetData.placeFilter = "${GetData.placeFilter}|Solna" }
-            if(malmoSwitch.isChecked){ GetData.placeFilter = "${GetData.placeFilter}|Malmö" }
+            if (odenplanSwitch.isChecked) {
+                GetData.placeFilter = "${GetData.placeFilter}|Odenplan"
+            }
+            if (brommaSwitch.isChecked) {
+                GetData.placeFilter = "${GetData.placeFilter}|Bromma"
+            }
+            if (solnaSwitch.isChecked) {
+                GetData.placeFilter = "${GetData.placeFilter}|Solna"
+            }
+            if (malmoSwitch.isChecked) {
+                GetData.placeFilter = "${GetData.placeFilter}|Malmö"
+            }
 
             odenplan = odenplanSwitch.isChecked
             bromma = brommaSwitch.isChecked
@@ -145,9 +161,15 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
             malmo = malmoSwitch.isChecked
 
             // Trainer
-            if(anastasiaSwitch.isChecked){ GetData.trainerFilter = "${GetData.trainerFilter}|Anastasia" }
-            if(annaSwitch.isChecked){ GetData.trainerFilter = "${GetData.trainerFilter}|Anna" }
-            if(sofiaSwitch.isChecked){ GetData.trainerFilter = "${GetData.trainerFilter}|Sofia" }
+            if (anastasiaSwitch.isChecked) {
+                GetData.trainerFilter = "${GetData.trainerFilter}|Anastasia"
+            }
+            if (annaSwitch.isChecked) {
+                GetData.trainerFilter = "${GetData.trainerFilter}|Anna"
+            }
+            if (sofiaSwitch.isChecked) {
+                GetData.trainerFilter = "${GetData.trainerFilter}|Sofia"
+            }
 
             anastasia = anastasiaSwitch.isChecked
             anna = annaSwitch.isChecked
@@ -181,11 +203,23 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
             bookIntent.putExtra("place", item.place)
             bookIntent.putExtra("trainer", item.trainer)
             bookIntent.putExtra("spots", item.spots)
-            bookIntent.putExtra("users", item.users)
 
+            finish()
             startActivity(bookIntent)
 
         }
+
+    }
+
+    fun goToStart() {
+        finish()
+        startActivity(Intent(this, StartActivity::class.java))
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        goToStart()
 
     }
 
