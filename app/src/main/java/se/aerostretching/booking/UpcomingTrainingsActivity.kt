@@ -25,7 +25,6 @@ class UpcomingTrainingsActivity : AppCompatActivity(), OnTrainingItemClickListen
     }
 
     fun initialize() {
-
         db = FirebaseFirestore.getInstance()
         myTrainingListView = findViewById(R.id.myTrainingList)
         GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingListUpcoming, this)
@@ -49,7 +48,7 @@ class UpcomingTrainingsActivity : AppCompatActivity(), OnTrainingItemClickListen
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.back)
         startBtn.setOnClickListener {
-            startActivity(Intent(this, MyPageActivity::class.java))
+            goToPreviousActivity()
 
         }
 
@@ -57,6 +56,18 @@ class UpcomingTrainingsActivity : AppCompatActivity(), OnTrainingItemClickListen
 
     override fun onTrainingItemClick(item: TrainingItem, position: Int) {
         Tools.removeBooking(this, item)
+
+    }
+
+    fun goToPreviousActivity(){
+        startActivity(Intent(this, MyPageActivity::class.java))
+        finish()
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        goToPreviousActivity()
 
     }
 

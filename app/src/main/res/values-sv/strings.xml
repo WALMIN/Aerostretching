@@ -103,6 +103,9 @@
 
     <string name="noTrainingText">Du måste skriva något</string>
 
+    <string name="messageSent">Meddelandet skickades</string>
+    <string name="messageNotSent">Fel när meddelande skulle skickas, försök igen</string>
+
     <!-- Register -->
     <string name="nameHint">För- och efternamn</string>
     <string name="birthHint">Date of birth</string>

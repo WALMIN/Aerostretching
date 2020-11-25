@@ -122,7 +122,7 @@ object GetData {
     // History
     fun history() {
         FirebaseFirestore.getInstance().collection("trainings").orderBy("date")
-            .whereLessThan("date", SimpleDateFormat("MMddyyyy", Locale.getDefault()).format(Calendar.getInstance().time))
+            .whereLessThan("date", SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time))
             .addSnapshotListener { snapshot, e ->
                 Log.d("!!!", "READ: History")
 

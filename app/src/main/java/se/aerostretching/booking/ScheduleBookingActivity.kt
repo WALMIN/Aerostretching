@@ -58,7 +58,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.back)
         startBtn.setOnClickListener {
-            goToStart()
+            goToPreviousActivity()
 
         }
 
@@ -204,22 +204,22 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
             bookIntent.putExtra("trainer", item.trainer)
             bookIntent.putExtra("spots", item.spots)
 
-            finish()
             startActivity(bookIntent)
+            finish()
 
         }
 
     }
 
-    fun goToStart() {
-        finish()
+    fun goToPreviousActivity(){
         startActivity(Intent(this, StartActivity::class.java))
+        finish()
 
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        goToStart()
+        goToPreviousActivity()
 
     }
 

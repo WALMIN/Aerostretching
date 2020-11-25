@@ -99,4 +99,16 @@ class ContactsActivity : AppCompatActivity() {
 
     }
 
+    fun goToPreviousActivity(){
+        startActivity(Intent(this, StartActivity::class.java))
+        finish()
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        goToPreviousActivity()
+
+    }
+
 }

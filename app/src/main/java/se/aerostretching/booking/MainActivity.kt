@@ -47,20 +47,17 @@ class MainActivity : AppCompatActivity() {
             goToRegisterActivity()
         }
 
-        if (auth.currentUser != null) {
-            Log.d("!!!", "Current user: ${auth.currentUser?.email}")
-        }
-
     }
 
     fun goToRegisterActivity() {
-        val intent = Intent(this, RegisterActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(this, RegisterActivity::class.java))
+        finish()
+
     }
 
     fun goToStartActivity() {
-        val intent = Intent(this, StartActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(this, StartActivity::class.java))
+        finish()
 
         GetData.trainings()
         GetData.history()
@@ -77,10 +74,11 @@ class MainActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Log.d("!!!", "Login success ${auth.currentUser?.email}")
+                    Log.d("!!!", "LOGIN: ${auth.currentUser?.email}")
                     goToStartActivity()
+
                 } else {
-                    Log.d("!!!", "USer not loged in ${task.exception}")
+                    Log.d("!!!", "User not logged in ${task.exception}")
                 }
 
             }
@@ -101,7 +99,8 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        if (FirebaseAuth.getInstance().currentUser != null) {
+        if (auth.currentUser != null) {
+            Log.d("!!!", "USER: ${auth.currentUser?.email}")
             goToStartActivity()
 
         }

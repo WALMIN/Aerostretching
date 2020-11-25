@@ -117,6 +117,9 @@
 
     <string name="noTrainingText">You have to write something</string>
 
+    <string name="messageSent">Message successfully sent</string>
+    <string name="messageNotSent">Error sending message, try again</string>
+
     <!-- Profile -->
     <string name="changeEmail">Change email</string>
     <string name="password">Change password</string>

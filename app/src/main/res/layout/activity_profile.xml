@@ -153,7 +153,7 @@
                     android:layout_marginEnd="20dp"
                     android:enabled="false"
                     android:hint="@string/phoneHint"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:text="@string/phone"
                     android:textColor="#302F2F"
                     android:textSize="17sp"

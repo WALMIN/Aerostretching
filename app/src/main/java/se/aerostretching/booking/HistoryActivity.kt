@@ -49,12 +49,24 @@ class HistoryActivity : AppCompatActivity(), OnTrainingItemClickListener {
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.back)
         startBtn.setOnClickListener {
-            startActivity(Intent(this, MyPageActivity::class.java))
+            goToPreviousActivity()
 
         }
 
     }
 
     override fun onTrainingItemClick(item: TrainingItem, position: Int) {}
+
+    fun goToPreviousActivity(){
+        startActivity(Intent(this, MyPageActivity::class.java))
+        finish()
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        goToPreviousActivity()
+
+    }
 
 }

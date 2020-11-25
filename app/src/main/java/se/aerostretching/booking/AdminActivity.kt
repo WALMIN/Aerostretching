@@ -71,13 +71,12 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
         startBtn.visibility = View.VISIBLE
         startBtn.setImageResource(R.drawable.back)
         startBtn.setOnClickListener {
-            goToMainActivity()
+            goToPreviousActivity()
         }
 
     }
 
     fun initialize() {
-        auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
         spinnerTitles = findViewById(R.id.spinnerTitles)
@@ -174,11 +173,6 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
         messageList.adapter = messageListAdapter
     }
 
-    fun goToMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-    }
-
     fun createTraining(view: Button) {
         val trainingItem = TrainingItem(
             "",
@@ -231,6 +225,8 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
         super.onStart()
         if (!Tools.checkAdmin(this)) {
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
+
         }else{
             GetData.message()
 
@@ -239,6 +235,18 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
     }
 
     override fun onMessageItemClick(item: MessageItem, position: Int) {
+
+    }
+
+    fun goToPreviousActivity(){
+        startActivity(Intent(this, StartActivity::class.java))
+        finish()
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        goToPreviousActivity()
 
     }
 

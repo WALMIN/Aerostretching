@@ -1,12 +1,12 @@
 package se.aerostretching.booking
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -19,21 +19,18 @@ class PersonalTrainingsActivity : AppCompatActivity() {
     lateinit var editTextApply: EditText
 
     lateinit var button_apply: Button
-    val messageList = ArrayList<MessageItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_personal_trainings)
         customActionBar()
 
-        auth = FirebaseAuth.getInstance()
-        db = FirebaseFirestore.getInstance()
         editTextApply = findViewById(R.id.editTextApply)
         button_apply = findViewById(R.id.buttonApplyPersonalTraining)
 
-        button_apply.setOnClickListener{
+        button_apply.setOnClickListener {
             sendMessage()
-            goToStartActivity()
+
         }
 
     }
@@ -61,46 +58,54 @@ class PersonalTrainingsActivity : AppCompatActivity() {
         }
 
     }
+
     fun goToStartActivity() {
-        val intent = Intent(this, StartActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(this, StartActivity::class.java))
     }
 
-    /*fun sendPersonalTraining() {
-        Toast.makeText(this, "(send request)", Toast.LENGTH_LONG).show()
-
-    }*/
-
-
-
-    fun sendMessage(){
+    fun sendMessage() {
         var text = editTextApply.text.toString()
         val name = GetData.name
         val email = GetData.email
 
         if (text.isEmpty()) {
             Toast.makeText(this, getString(R.string.noTrainingText), Toast.LENGTH_LONG).show()
-        } else {
-            val message = MessageItem((System.currentTimeMillis() / 1000).toString(), name, text, email, false)
 
-            db.collection("messagesFromClients").add(message)
-                .addOnSuccessListener{
-                    Log.d("!!!", "saved our message")
-                    Toast.makeText(this, "message sent", Toast.LENGTH_LONG).show()
+        } else {
+            val message = MessageItem(
+                (System.currentTimeMillis() / 1000).toString(),
+                name,
+                text,
+                email,
+                false
+            )
+
+            FirebaseFirestore.getInstance().collection("messagesFromClients").add(message)
+                .addOnSuccessListener {
+                    Log.d("!!!", "Saved our message")
+                    goToStartActivity()
+                    Toast.makeText(this, getString(R.string.messageSent), Toast.LENGTH_LONG).show()
+
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, getString(R.string.messageNotSent), Toast.LENGTH_LONG).show()
+
                 }
 
         }
 
+    }
 
+    fun goToPreviousActivity(){
+        startActivity(Intent(this, StartActivity::class.java))
+        finish()
 
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        goToPreviousActivity()
+
+    }
 
 }
-
-data class MessageItem(
-    val date: String,
-    val name: String,
-    val text: String,
-    val email: String,
-    val read : Boolean)
