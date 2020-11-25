@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -23,30 +24,29 @@ class MyPageActivity : AppCompatActivity() {
         val nameView = findViewById<TextView>(R.id.textViewPageUserName)
         nameView.text = GetData.name
 
-        val imageButton1 = findViewById<ImageButton>(R.id.btn_Profile)
-        val imageButton2 = findViewById<ImageButton>(R.id.imageButtonTrainings)
-        val imageButton3 = findViewById<ImageButton>(R.id.imageButtonHistory)
-        val imageButton4 = findViewById<ImageButton>(R.id.imageButtonMessages)
+    }
 
-        imageButton1.setOnClickListener {
-            val intent = Intent(this, ProfileActivity::class.java)
-            startActivity(intent)
-        }
+    fun profileBtn(view: View){
+        finish()
+        startActivity(Intent(this, ProfileActivity::class.java))
 
-        imageButton2.setOnClickListener {
-            val intent2 = Intent(this, UpcomingTrainingsActivity::class.java)
-            startActivity(intent2)
-        }
+    }
 
-        imageButton3.setOnClickListener {
-            val intent3 = Intent(this, HistoryActivity::class.java)
-            startActivity(intent3)
-        }
+    fun bookedBtn(view: View){
+        finish()
+        startActivity(Intent(this, UpcomingTrainingsActivity::class.java))
 
-        imageButton4.setOnClickListener {
-            val intent4 = Intent(this, MessagesActivity::class.java)
-            startActivity(intent4)
-        }
+    }
+
+    fun historyBtn(view: View){
+        finish()
+        startActivity(Intent(this, HistoryActivity::class.java))
+
+    }
+
+    fun messagesBtn(view: View){
+        finish()
+        startActivity(Intent(this, MessagesActivity::class.java))
 
     }
 
