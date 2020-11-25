@@ -28,13 +28,7 @@ object GetData {
 
     fun trainings() {
         FirebaseFirestore.getInstance().collection("trainings").orderBy("date")
-            .whereGreaterThanOrEqualTo(
-                "date",
-                SimpleDateFormat(
-                    "MMddyyyy",
-                    Locale.getDefault()
-                ).format(Calendar.getInstance().time)
-            )
+            .whereGreaterThanOrEqualTo("date", SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time))
             .addSnapshotListener { snapshot, e ->
                 Log.d("!!!", "READ: Trainings")
 
@@ -46,9 +40,7 @@ object GetData {
                 for (document in snapshot!!) {
                     var booked = false
 
-                    if (document.get("participants").toString()
-                            .contains(FirebaseAuth.getInstance().currentUser?.uid.toString())
-                    ) {
+                    if (document.get("participants").toString().contains(FirebaseAuth.getInstance().currentUser?.uid.toString())) {
                         booked = true
 
                     }
@@ -76,9 +68,7 @@ object GetData {
                     }
 
                     // Upcoming
-                    if (document.get("participants").toString()
-                            .contains(FirebaseAuth.getInstance().currentUser?.uid.toString())
-                    ) {
+                    if (document.get("participants").toString().contains(FirebaseAuth.getInstance().currentUser?.uid.toString())) {
                         trainingListUpcoming.add(
                             TrainingItem(
                                 document.id,
@@ -102,9 +92,7 @@ object GetData {
                 for (i in 0..3) {
                     var booked = false
 
-                    if (snapshot.documents[i].get("participants").toString()
-                            .contains(FirebaseAuth.getInstance().currentUser?.uid.toString())
-                    ) {
+                    if (snapshot.documents[i].get("participants").toString().contains(FirebaseAuth.getInstance().currentUser?.uid.toString())) {
                         booked = true
 
                     }
@@ -134,20 +122,14 @@ object GetData {
     // History
     fun history() {
         FirebaseFirestore.getInstance().collection("trainings").orderBy("date")
-            .whereLessThan(
-                "date", SimpleDateFormat("MMddyyyy", Locale.getDefault()).format(
-                    Calendar.getInstance().time
-                )
-            )
+            .whereLessThan("date", SimpleDateFormat("MMddyyyy", Locale.getDefault()).format(Calendar.getInstance().time))
             .addSnapshotListener { snapshot, e ->
                 Log.d("!!!", "READ: History")
 
                 trainingListHistory.clear()
 
                 for (document in snapshot!!) {
-                    if (document.get("participants").toString()
-                            .contains(FirebaseAuth.getInstance().currentUser?.uid.toString())
-                    ) {
+                    if (document.get("participants").toString().contains(FirebaseAuth.getInstance().currentUser?.uid.toString())) {
                         trainingListHistory.add(
                             TrainingItem(
                                 document.id,

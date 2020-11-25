@@ -54,7 +54,7 @@ class TrainingListAdapter(
 
             }
 
-            dateView.text = "${item.date.substring(2, 4)}\n${Tools.getMonth(item.date.substring(0, 2))}"
+            dateView.text = "${item.date.substring(6, 8)}\n${Tools.getMonth(item.date.substring(4, 6))}"
             timeView.text = item.time
             lengthView.text = item.length + itemView.context.getString(R.string.minutes)
             titleView.text = item.title
