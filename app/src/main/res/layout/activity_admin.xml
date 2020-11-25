@@ -280,6 +280,10 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="400dp">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/messageList"
                 android:layout_width="match_parent"
@@ -290,6 +294,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:listitem="@layout/message_item" />
+
+            </androidx.core.widget.NestedScrollView>
 
             <View
                 android:layout_width="match_parent"
@@ -309,16 +315,22 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/trainingClientList"
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constrainedHeight="true"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/training_clients_item" />
+                android:layout_height="400dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/trainingClientList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constrainedHeight="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/training_clients_item" />
+
+            </androidx.core.widget.NestedScrollView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
