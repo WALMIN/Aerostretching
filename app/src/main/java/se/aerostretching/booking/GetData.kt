@@ -3,6 +3,7 @@ package se.aerostretching.booking
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -177,7 +178,7 @@ object GetData {
     }
 
     fun message() {
-        FirebaseFirestore.getInstance().collection("messagesFromClients").orderBy("date")
+        FirebaseFirestore.getInstance().collection("messagesFromClients").orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, e ->
                 Log.d("!!!", "READ")
 

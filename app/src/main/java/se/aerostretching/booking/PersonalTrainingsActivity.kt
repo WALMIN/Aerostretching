@@ -59,10 +59,6 @@ class PersonalTrainingsActivity : AppCompatActivity() {
 
     }
 
-    fun goToStartActivity() {
-        startActivity(Intent(this, StartActivity::class.java))
-    }
-
     fun sendMessage() {
         var text = editTextApply.text.toString()
         val name = GetData.name
@@ -83,8 +79,8 @@ class PersonalTrainingsActivity : AppCompatActivity() {
             FirebaseFirestore.getInstance().collection("messagesFromClients").add(message)
                 .addOnSuccessListener {
                     Log.d("!!!", "Saved our message")
-                    goToStartActivity()
                     Toast.makeText(this, getString(R.string.messageSent), Toast.LENGTH_LONG).show()
+                    goToPreviousActivity()
 
                 }
                 .addOnFailureListener {
