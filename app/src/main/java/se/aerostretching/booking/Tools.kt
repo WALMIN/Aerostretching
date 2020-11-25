@@ -4,8 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.ParseException
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.drawerlayout.widget.DrawerLayout
@@ -94,11 +92,15 @@ object Tools {
 
     }
 
-    fun hideKeyboard(activity: Activity, view: EditText) {
-        val imm: InputMethodManager =
-            activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    fun millisToDate(timestamp: Long): String {
+        val calendar = Calendar.getInstance()
+        val tz = TimeZone.getDefault()
+        calendar.add(Calendar.MILLISECOND, tz.getOffset(calendar.timeInMillis))
+        val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
 
+        val currenTimeZone = Date(timestamp * 1000)
+
+        return sdf.format(currenTimeZone)
     }
 
     fun getMillisFromDate(dateFormat: String?): Long {
@@ -123,8 +125,8 @@ object Tools {
 
                 trainingReference.update("spots", (item.spots.toInt() + 1).toString())
                 trainingReference.update(
-                    "participants." + FirebaseAuth.getInstance().currentUser?.uid.toString(),
-                    FieldValue.delete()
+                        "participants." + FirebaseAuth.getInstance().currentUser?.uid.toString(),
+                        FieldValue.delete()
                 )
 
                 GetData.trainings()

@@ -52,7 +52,7 @@ class MessageListAdapter(
 
             }
 
-            dateView.text = System.currentTimeMillis().toString()
+            dateView.text = Tools.millisToDate(item.date.toLong())
             nameView.text = item.name
             messageView.text = item.text
 

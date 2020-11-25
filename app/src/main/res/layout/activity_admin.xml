@@ -157,6 +157,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="10sp"
+                            android:indeterminate="false"
                             android:max="120"
                             android:min="1" />
 
