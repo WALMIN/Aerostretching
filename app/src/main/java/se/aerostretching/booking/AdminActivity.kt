@@ -143,7 +143,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
             override fun onStopTrackingTouch(seekBar: SeekBar) {}
 
         })
-
+          lengthSeekBar.incrementProgressBy(5)
         lengthSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBarLenght: SeekBar, number: Int, b: Boolean) {
                 textViewLength.text = number.toString()
