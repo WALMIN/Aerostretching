@@ -40,6 +40,8 @@
     <string name="addTraining">Add training</string>
         <string name="addTrainingMsg">Are you really sure you want to add this training?</string>
 
+    <string name="answerClient">Answer to %1$s</string>
+
     <string name="trainingEmpty">You need to fill in all the fields</string>
     <string name="trainingAdded">Training successfully added</string>
     <string name="trainingError">Error when adding training</string>
@@ -110,6 +112,11 @@
     <string name="or">or</string>
     <string name="register">Register</string>
 
+    <!-- Messages -->
+    <string name="writeMessage">Write message…</string>
+    <string name="pressToAnswer">Press an item to answer</string>
+    <string name="reply">Reply</string>
+
     <!-- Personal activity -->
     <string name="trainingApply">Apply for an individual training session</string>
     <string name="trainingApplyHint">Write briefly what type of training you want, how many people you are and the estimated time.\n\nWe will answer you as soon as possible!</string>
@@ -155,7 +162,7 @@
 These beautiful motions are very beneficial to your health. Thanks to the upside down position we stretch the spine without any impact on it. Keep patience and you will be impressed by the results. This triggers the process of formation of new neural connections, a lot of compressions and tensions in the body go away and muscles are relaxed.
         </item>
         <item>Now imagine being able to do physical exercises in the air without touching the floor. Aerostretching has become more and more popular in recent years. You stretch your bodies muscles with the help of a silk hammock as a training tool. The purpose of aerostretching is to stretch all the muscles of the body, become supple, strengthen ligaments and increase the body\'s mobility. The hammock makes it possible for you to go in deeper stretching without getting a heavy load and in this way you can get gentle deep stretching. Leave your thoughts behind you and step into a world of agility with aerostretching. The technique results in a stretching of the whole body, where you work with your own weight with the help of a hammock.\nThis type of stretching prevents the formation of new muscle knots, loosens existing ones and relaxes muscles. As a result, your daily stress will decrease and sleep will improve. The negative stress is converted into positive stress. Remember, it does not matter who you are or what you do. Since man began to walk upright on two legs, everyone has more or less back pain at some point in life. Anastasia Studio guarantees that you will feel happier, fitter and healthier in your body after each workout.</item>
-        <item>New adventures, smooth and fun...
+        <item>New adventures, smooth and fun…
 \nSilk hammocks and soft floor for the most loveable.
 \nNothing can hurt me!
 \nRunning laughter, swinging laughter, soaring laughter,

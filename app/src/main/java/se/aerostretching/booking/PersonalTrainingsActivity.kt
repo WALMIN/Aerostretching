@@ -69,6 +69,7 @@ class PersonalTrainingsActivity : AppCompatActivity() {
 
         } else {
             val message = MessageItem(
+                FirebaseAuth.getInstance().currentUser!!.uid,
                 (System.currentTimeMillis() / 1000).toString(),
                 name,
                 text,
@@ -78,7 +79,6 @@ class PersonalTrainingsActivity : AppCompatActivity() {
 
             FirebaseFirestore.getInstance().collection("messagesFromClients").add(message)
                 .addOnSuccessListener {
-                    Log.d("!!!", "Saved our message")
                     Toast.makeText(this, getString(R.string.messageSent), Toast.LENGTH_LONG).show()
                     goToPreviousActivity()
 
