@@ -84,12 +84,6 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
     fun initialize() {
         db = FirebaseFirestore.getInstance()
 
-        if(GetData.dateFilter != SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()){
-            GetData.dateFilter = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()
-            GetData.trainings()
-
-        }
-
         val startDate = Calendar.getInstance()
         startDate.add(Calendar.DAY_OF_MONTH, 0)
 
@@ -121,11 +115,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
             override fun onChanged() {
                 super.onChanged()
                 if (GetData.trainingListAdapter.itemCount == 0) {
-                    Toast.makeText(
-                        this@ScheduleBookingActivity,
-                        getString(R.string.trainingsEmpty),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(this@ScheduleBookingActivity, getString(R.string.trainingsEmpty), Toast.LENGTH_LONG).show()
 
                 }
 
@@ -269,25 +259,22 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
 
     }
 
-    fun goToPreviousActivity(){
-        startActivity(Intent(this, StartActivity::class.java))
-        finish()
+    override fun onStart() {
+        super.onStart()
+
+        GetData.dateFilter = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()
+
+        GetData.titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
+        GetData.placeFilter = "|Odenplan|Bromma|Solna|Malmö"
+        GetData.trainerFilter = "|Anastasia|Anna|Sofia"
+
+        GetData.trainings()
 
     }
 
-    override fun onPause() {
-        super.onPause()
-
-        if (GetData.trainingListAdapter.itemCount == 0) {
-            GetData.dateFilter = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()
-
-            GetData.titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
-            GetData.placeFilter = "|Odenplan|Bromma|Solna|Malmö"
-            GetData.trainerFilter = "|Anastasia|Anna|Sofia"
-
-            GetData.trainings()
-
-        }
+    fun goToPreviousActivity(){
+        startActivity(Intent(this, StartActivity::class.java))
+        finish()
 
     }
 
