@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 class ClientMessageListAdapter(
         var list: ArrayList<MessageItem>,
         var onClickListener: OnClientMessageItemClickListener,
+        var onLongClickListener: OnClientMessageItemClickListener,
         var read: Boolean = false
 ) : RecyclerView.Adapter<ClientMessageListAdapter.ViewHolder>() {
 
@@ -20,7 +21,7 @@ class ClientMessageListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItems(list[position], onClickListener, read)
+        holder.bindItems(list[position], onClickListener, onLongClickListener, read)
 
     }
 
@@ -28,7 +29,7 @@ class ClientMessageListAdapter(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindItems(item: MessageItem, onClick: OnClientMessageItemClickListener, read: Boolean) {
+        fun bindItems(item: MessageItem, onClick: OnClientMessageItemClickListener, onLongClick: OnClientMessageItemClickListener, read: Boolean) {
             val dateView = itemView.findViewById<TextView>(R.id.messageDate)
             val messageView = itemView.findViewById<TextView>(R.id.messageText)
 
@@ -41,6 +42,13 @@ class ClientMessageListAdapter(
 
             }
 
+            // OnLongClick
+            itemView.setOnLongClickListener {
+                onLongClick.onClientMessageItemLongClick(item, adapterPosition)
+
+                return@setOnLongClickListener true
+            }
+
         }
 
     }
@@ -50,5 +58,6 @@ class ClientMessageListAdapter(
 interface OnClientMessageItemClickListener {
 
     fun onClientMessageItemClick(item: MessageItem, position: Int)
+    fun onClientMessageItemLongClick(item: MessageItem, position: Int)
 
 }

@@ -114,8 +114,11 @@
 
     <!-- Messages -->
     <string name="writeMessage">Write message…</string>
-    <string name="pressToAnswer">Press an item to answer</string>
+    <string name="pressToAnswer">Click an item to answer &amp; long press to delete</string>
     <string name="reply">Reply</string>
+
+    <string name="deleteMessageTitle">Delete</string>
+    <string name="deleteMessageMsg">Are you really sure you want to delete the message?</string>
 
     <!-- Personal activity -->
     <string name="trainingApply">Apply for an individual training session</string>
@@ -189,6 +192,7 @@ If body becomes strong and beautiful, then it is art.
     <string name="trainingItemLength" translatable="false">55 min</string>
 
     <!-- Buttons -->
+    <string name="delete">Delete</string>
     <string name="unbook">Unbook</string>
     <string name="cancel">Cancel</string>
     <string name="apply">Apply</string>

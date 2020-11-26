@@ -100,8 +100,11 @@
 
     <!-- Messages -->
     <string name="writeMessage">Skriv meddelande…</string>
-    <string name="pressToAnswer">Tryck på ett objekt för att svara</string>
+    <string name="pressToAnswer">Klicka på ett objekt för att svara &amp; lång tryck för att radera</string>
     <string name="reply">Svara</string>
+
+    <string name="deleteMessageTitle">Radera</string>
+    <string name="deleteMessageMsg">Är du verkligen säker på att du vill radera meddelandet?</string>
 
     <!-- Personal activity -->
     <string name="trainingApply">Ansök om individuellt träningspass</string>
@@ -172,6 +175,7 @@
     <string name="userNotCreated">Användare skapdes inte</string>
 
     <!-- Buttons -->
+    <string name="delete">Radera</string>
     <string name="unbook">Avboka</string>
     <string name="cancel">Stäng</string>
     <string name="apply">Tillämpa</string>
