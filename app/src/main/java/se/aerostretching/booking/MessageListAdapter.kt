@@ -69,6 +69,8 @@ class MessageListAdapter(
 }
 
 interface OnMessageItemClickListener {
+
     fun onMessageItemClick(item: MessageItem, position: Int)
+
 
 }

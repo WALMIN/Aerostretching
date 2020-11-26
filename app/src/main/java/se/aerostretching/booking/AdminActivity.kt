@@ -2,6 +2,7 @@ package se.aerostretching.booking
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,10 +15,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import se.aerostretching.booking.GetData.message
+import se.aerostretching.booking.GetData.name
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
+
+    lateinit var auth: FirebaseAuth
 
     companion object{
         lateinit var messageListAdapter: MessageListAdapter
@@ -235,19 +240,27 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
     }
 
     override fun onMessageItemClick(item: MessageItem, position: Int) {
-
+        val client = item.name
+        val builder = AlertDialog.Builder(this)
+        val inflater = layoutInflater
+        builder.setTitle("Answer to $client")
+        val dialogLayout = inflater.inflate(R.layout.alert_dialog_answer_message, null)
+        val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
+        builder.setView(dialogLayout)
+        builder.setPositiveButton("Send") { dialogInterface: DialogInterface, i: Int ->
+            Log.d("!!!", "Message sent")
+        }
+        builder.show()
     }
 
     fun goToPreviousActivity(){
         startActivity(Intent(this, StartActivity::class.java))
         finish()
-
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
         goToPreviousActivity()
-
     }
 
 }
