@@ -2,7 +2,6 @@ package se.aerostretching.booking
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,10 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
-import se.aerostretching.booking.GetData.message
-import se.aerostretching.booking.GetData.name
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -175,7 +171,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
     fun initializeMessageList() {
         messageList = findViewById(R.id.messageList)
         messageList.layoutManager = LinearLayoutManager(this)
-        messageListAdapter = MessageListAdapter(GetData.messageList, this, false)
+        messageListAdapter = MessageListAdapter(GetData.messageFromClientsList, this, false)
         messageList.adapter = messageListAdapter
     }
 
@@ -209,6 +205,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
                                     view.isEnabled = false
 
                                     startActivity(Intent(this, AdminActivity::class.java))
+                                    finish()
 
                                 } else {
                                     Toast.makeText(this, getString(R.string.trainingError), Toast.LENGTH_LONG).show()
@@ -234,53 +231,53 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
             finish()
 
         }else{
-            GetData.message()
+            GetData.messageFromClients()
 
         }
 
     }
 
     override fun onMessageItemClick(item: MessageItem, position: Int) {
-        val client = item.name
-        val email = item.email
-        val builder = AlertDialog.Builder(this)
-        val inflater = layoutInflater
-        builder.setTitle("Answer to $client")
-        val dialogLayout = inflater.inflate(R.layout.alert_dialog_answer_message, null)
-        val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
-        builder.setView(dialogLayout)
-        builder.setPositiveButton("Send") { dialogInterface: DialogInterface, i: Int ->
-            Log.d("!!!", "Message sent $editText")
-            Toast.makeText(this, getString(R.string.messageSent), Toast.LENGTH_LONG).show()
+        val dialogLayout = layoutInflater.inflate(R.layout.alert_dialog_answer_message, null)
+        val editText = dialogLayout.findViewById<EditText>(R.id.editTextMsg)
 
-            val messageToClient = MessageItem (
-                    (System.currentTimeMillis() / 1000).toString(),
-                    client,
-                    editText.text.toString(),
-                    email,
-                    false
-            )
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.answerClient, item.name))
+            .setView(dialogLayout)
+            .setPositiveButton(getString(R.string.sendTraining)) { dialog, i ->
+                if(editText.text.toString().isNotEmpty()){
+                    val messageToClient = MessageItem(
+                        item.user,
+                        (System.currentTimeMillis() / 1000).toString(),
+                        item.name,
+                        editText.text.toString(),
+                        item.email,
+                        false
+                    )
 
+                    db.collection("messagesToClients").add(messageToClient)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Log.d("!!!", "ADDED: $messageToClient")
 
-            db.collection("messagesToClients").add(messageToClient)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
+                                Toast.makeText(this, getString(R.string.messageSent), Toast.LENGTH_LONG).show()
+                                dialog.dismiss()
 
-                            Log.d("!!!", "ADDED: $messageToClient")
+                            } else {
+                                Log.d("!!!", "ERROR: ${task.exception}")
+                                Toast.makeText(this, getString(R.string.messageNotSent), Toast.LENGTH_LONG).show()
 
-
-                            startActivity(Intent(this, AdminActivity::class.java))
-
-                        } else {
-
-                            Log.d("!!!", "ERROR: ${task.exception}")
+                            }
 
                         }
 
-                    }
+                }else{
+                    Toast.makeText(this, getString(R.string.noTrainingText), Toast.LENGTH_LONG).show()
 
-        }
-        builder.show()
+                }
+
+            }
+            .show()
     }
 
     fun goToPreviousActivity(){

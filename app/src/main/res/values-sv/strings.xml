@@ -32,6 +32,8 @@
     <string name="addTraining">Lägg till pass</string>
         <string name="addTrainingMsg">Är du verkligen säker på att du vill lägga till det här passet?</string>
 
+    <string name="answerClient">Svara %1$s</string>
+
     <string name="trainingEmpty">Du måste fylla i alla fält</string>
     <string name="trainingAdded">Passet blev tillagt</string>
     <string name="trainingError">Fel när det pass skulle läggas till</string>
@@ -95,6 +97,11 @@
     <string name="login">Logga in</string>
     <string name="or">eller</string>
     <string name="register">Registrera</string>
+
+    <!-- Messages -->
+    <string name="writeMessage">Skriv meddelande…</string>
+    <string name="pressToAnswer">Tryck på ett objekt för att svara</string>
+    <string name="reply">Svara</string>
 
     <!-- Personal activity -->
     <string name="trainingApply">Ansök om individuellt träningspass</string>

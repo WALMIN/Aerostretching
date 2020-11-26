@@ -2,12 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingStart="22dp"
+    android:paddingEnd="22dp">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editTextMsg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter the text here"/>
+        android:inputType="textMultiLine"
+        android:hint="@string/writeMessage" />
 
 </LinearLayout>

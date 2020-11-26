@@ -4,4 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MessagesActivity"/>
+    tools:context=".MessagesActivity">
+
+    <TextView
+        android:id="@+id/pressToAnswerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingBottom="2dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:textColor="@color/text"
+        android:text="@string/pressToAnswer" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messageList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintTop_toBottomOf="@id/pressToAnswerView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/client_message_item"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

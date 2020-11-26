@@ -16,7 +16,8 @@ object GetData {
     val trainingListStart = ArrayList<TrainingItem>()
     val trainingListUpcoming = ArrayList<TrainingItem>()
     val trainingListHistory = ArrayList<TrainingItem>()
-    val messageList = ArrayList<MessageItem>()
+    val messageToClientsList = ArrayList<MessageItem>()
+    val messageFromClientsList = ArrayList<MessageItem>()
 
     var titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
     var placeFilter = "|Odenplan|Bromma|Solna|Malmö"
@@ -177,18 +178,17 @@ object GetData {
 
     }
 
-    fun message() {
+    fun messageFromClients() {
         FirebaseFirestore.getInstance().collection("messagesFromClients").orderBy("date", Query.Direction.DESCENDING)
             .addSnapshotListener { snapshot, e ->
-                Log.d("!!!", "READ")
+                Log.d("!!!", "READ: Message from clients")
 
-                messageList.clear()
+                messageFromClientsList.clear()
 
-                // All trainings
                 for (document in snapshot!!) {
-
-                    messageList.add(
+                    messageFromClientsList.add(
                         MessageItem(
+                            document.getString("user").toString(),
                             document.getString("date").toString(),
                             document.getString("name").toString(),
                             document.getString("text").toString(),
@@ -202,4 +202,33 @@ object GetData {
             }
 
     }
+
+    fun messageToClients() {
+        FirebaseFirestore.getInstance().collection("messagesToClients").orderBy("date", Query.Direction.DESCENDING)
+            .addSnapshotListener { snapshot, e ->
+                Log.d("!!!", "READ: Message to clients")
+
+                messageToClientsList.clear()
+
+                for (document in snapshot!!) {
+                    if (document.get("user").toString() == FirebaseAuth.getInstance().currentUser?.uid.toString()) {
+                        messageToClientsList.add(
+                            MessageItem(
+                                document.getString("user").toString(),
+                                document.getString("date").toString(),
+                                document.getString("name").toString(),
+                                document.getString("text").toString(),
+                                document.getString("email").toString(),
+                                false,
+                            )
+                        )
+                    }
+
+                }
+                MessagesActivity.messageListAdapter.notifyDataSetChanged()
+
+            }
+
+    }
+
 }
