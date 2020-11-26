@@ -121,7 +121,7 @@
 
     <!-- Schedule booking -->
     <string name="filterEmpty">Du måste välja minst 1 titel, plats &amp; tränare</string>
-    <string name="trainingsEmpty">Inga pass att visa, justera filtret</string>
+    <string name="trainingsEmpty">Inga pass att visa, justera datum eller filtrera</string>
 
     <!-- Start activity -->
     <string name="upcoming">Kommande</string>

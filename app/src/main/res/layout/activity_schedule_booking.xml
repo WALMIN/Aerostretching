@@ -6,15 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".ScheduleBookingActivity">
 
+    <devs.mulham.horizontalcalendar.HorizontalCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:selectedDateBackground="@color/colorAccent"
+        app:selectorColor="@color/colorAccent"
+        app:textColorNormal="@color/text"
+        app:textColorSelected="#ffffff" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/trainingList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constrainedHeight="true"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/training_item"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        tools:listitem="@layout/training_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

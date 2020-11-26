@@ -2,6 +2,8 @@ package se.aerostretching.booking
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.format.DateFormat
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -15,7 +17,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.google.firebase.firestore.FirebaseFirestore
-
+import devs.mulham.horizontalcalendar.HorizontalCalendar
+import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
@@ -79,6 +84,34 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
     fun initialize() {
         db = FirebaseFirestore.getInstance()
 
+        if(GetData.dateFilter != SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()){
+            GetData.dateFilter = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()
+            GetData.trainings()
+
+        }
+
+        val startDate = Calendar.getInstance()
+        startDate.add(Calendar.DAY_OF_MONTH, 0)
+
+        val endDate = Calendar.getInstance()
+        endDate.add(Calendar.MONTH, 1)
+
+        val horizontalCalendar = HorizontalCalendar.Builder(this, R.id.calendarView)
+            .range(startDate, endDate)
+            .datesNumberOnScreen(7)
+            .build()
+
+        horizontalCalendar.calendarListener = object : HorizontalCalendarListener() {
+            override fun onDateSelected(date: Calendar?, position: Int) {
+                Log.d("!!!", "DATE: " + DateFormat.format("yyyyMMdd", date))
+
+                GetData.dateFilter = DateFormat.format("yyyyMMdd", date).toString()
+                GetData.trainings()
+
+            }
+
+        }
+
         trainingListView = findViewById(R.id.trainingList)
         GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingList, this, false)
         trainingListView.layoutManager = LinearLayoutManager(this)
@@ -88,7 +121,11 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
             override fun onChanged() {
                 super.onChanged()
                 if (GetData.trainingListAdapter.itemCount == 0) {
-                    Toast.makeText(this@ScheduleBookingActivity, getString(R.string.trainingsEmpty), Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        this@ScheduleBookingActivity,
+                        getString(R.string.trainingsEmpty),
+                        Toast.LENGTH_LONG
+                    ).show()
 
                 }
 
@@ -239,7 +276,11 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
     }
 
     override fun onPause() {
+        super.onPause()
+
         if (GetData.trainingListAdapter.itemCount == 0) {
+            GetData.dateFilter = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()
+
             GetData.titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
             GetData.placeFilter = "|Odenplan|Bromma|Solna|Malmö"
             GetData.trainerFilter = "|Anastasia|Anna|Sofia"
@@ -247,7 +288,6 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
             GetData.trainings()
 
         }
-        super.onPause()
 
     }
 

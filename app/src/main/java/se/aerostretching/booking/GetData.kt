@@ -19,6 +19,8 @@ object GetData {
     val messageToClientsList = ArrayList<MessageItem>()
     val messageFromClientsList = ArrayList<MessageItem>()
 
+    var dateFilter = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()
+
     var titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
     var placeFilter = "|Odenplan|Bromma|Solna|Malmö"
     var trainerFilter = "|Anastasia|Anna|Sofia"
@@ -47,11 +49,11 @@ object GetData {
 
                     }
 
-                    if (titleFilter.contains("|" + document.getString("title").toString()) &&
+                    if (dateFilter == document.getString("date").toString() &&
+                        titleFilter.contains("|" + document.getString("title").toString()) &&
                         placeFilter.contains("|" + document.getString("place").toString()) &&
                         trainerFilter.contains("|" + document.getString("trainer").toString()) &&
-                        !trainingList.equals(document.id)
-                    ) {
+                        !trainingList.equals(document.id)) {
 
                         trainingList.add(
                             TrainingItem(
@@ -115,6 +117,11 @@ object GetData {
                     )
 
                 }
+
+                trainingList.sortBy { it.time }
+                trainingListUpcoming.sortBy { it.time }
+                trainingListStart.sortBy { it.time }
+
                 trainingListAdapter.notifyDataSetChanged()
 
             }
@@ -150,6 +157,8 @@ object GetData {
                     }
 
                 }
+
+                trainingListHistory.sortBy { it.time }
 
                 trainingListAdapter.notifyDataSetChanged()
 
@@ -188,6 +197,7 @@ object GetData {
                 for (document in snapshot!!) {
                     messageFromClientsList.add(
                         MessageItem(
+                            document.id,
                             document.getString("user").toString(),
                             document.getString("date").toString(),
                             document.getString("name").toString(),
@@ -214,6 +224,7 @@ object GetData {
                     if (document.get("user").toString() == FirebaseAuth.getInstance().currentUser?.uid.toString()) {
                         messageToClientsList.add(
                             MessageItem(
+                                document.id,
                                 document.getString("user").toString(),
                                 document.getString("date").toString(),
                                 document.getString("name").toString(),

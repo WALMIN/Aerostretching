@@ -150,7 +150,7 @@
 
     <!-- Schedule booking -->
     <string name="filterEmpty">You need to select at least 1 title, place &amp; trainer</string>
-    <string name="trainingsEmpty">No trainings to show, adjust the filter</string>
+    <string name="trainingsEmpty">No trainings to show, adjust the date or filter</string>
 
     <!-- Start activity -->
     <string name="upcoming">Upcoming</string>
@@ -176,7 +176,7 @@ If body becomes strong and beautiful, then it is art.
     </string-array>
 
     <!-- Register -->
-    <string name="terms0">I agree to the&#160;<b>Terms &amp; conditions</b></string>
+    <string name="terms0">I agree to the&#160;<b>Terms &amp; Conditions</b></string>
     <string name="terms1">and <b>Privacy Policy</b></string>
 
     <string name="enterAllFields">Please enter all fields correctly</string>
