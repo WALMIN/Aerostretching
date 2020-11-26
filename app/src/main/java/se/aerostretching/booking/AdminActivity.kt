@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import se.aerostretching.booking.GetData.message
 import se.aerostretching.booking.GetData.name
@@ -241,6 +242,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
 
     override fun onMessageItemClick(item: MessageItem, position: Int) {
         val client = item.name
+        val email = item.email
         val builder = AlertDialog.Builder(this)
         val inflater = layoutInflater
         builder.setTitle("Answer to $client")
@@ -248,7 +250,35 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
         val editText  = dialogLayout.findViewById<EditText>(R.id.editText)
         builder.setView(dialogLayout)
         builder.setPositiveButton("Send") { dialogInterface: DialogInterface, i: Int ->
-            Log.d("!!!", "Message sent")
+            Log.d("!!!", "Message sent $editText")
+            Toast.makeText(this, getString(R.string.messageSent), Toast.LENGTH_LONG).show()
+
+            val messageToClient = MessageItem (
+                    (System.currentTimeMillis() / 1000).toString(),
+                    client,
+                    editText.text.toString(),
+                    email,
+                    false
+            )
+
+
+            db.collection("messagesToClients").add(messageToClient)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+
+                            Log.d("!!!", "ADDED: $messageToClient")
+
+
+                            startActivity(Intent(this, AdminActivity::class.java))
+
+                        } else {
+
+                            Log.d("!!!", "ERROR: ${task.exception}")
+
+                        }
+
+                    }
+
         }
         builder.show()
     }
@@ -262,5 +292,6 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
         super.onBackPressed()
         goToPreviousActivity()
     }
+
 
 }
