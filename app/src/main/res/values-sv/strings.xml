@@ -112,6 +112,10 @@
     <string name="phoneHint">Telefon nummer</string>
     <string name="confirmPassword">Upprepa lösenord</string>
 
+    <!-- Schedule booking -->
+    <string name="filterEmpty">Du måste välja minst 1 titel, plats &amp; tränare</string>
+    <string name="trainingsEmpty">Inga pass att visa, justera filtret</string>
+
     <!-- Start activity -->
     <string name="upcoming">Kommande</string>
     <string name="seeMore">Se mer</string>

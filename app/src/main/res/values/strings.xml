@@ -141,6 +141,10 @@
     <string name="phoneHint">Phone number</string>
     <string name="confirmPassword">Confirm password</string>
 
+    <!-- Schedule booking -->
+    <string name="filterEmpty">You need to select at least 1 title, place &amp; trainer</string>
+    <string name="trainingsEmpty">No trainings to show, adjust the filter</string>
+
     <!-- Start activity -->
     <string name="upcoming">Upcoming</string>
     <string name="seeMore">See more</string>
