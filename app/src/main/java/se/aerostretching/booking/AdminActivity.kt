@@ -137,6 +137,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
             override fun onProgressChanged(seekBar: SeekBar, number: Int, b: Boolean) {
                 textViewSpots.text = number.toString()
 
+
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
@@ -146,7 +147,11 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
           lengthSeekBar.incrementProgressBy(5)
         lengthSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBarLenght: SeekBar, number: Int, b: Boolean) {
-                textViewLength.text = number.toString()
+                var progress = number
+                progress /= 5
+                progress *= 5
+                textViewLength.text = progress.toString()
+
 
             }
 
