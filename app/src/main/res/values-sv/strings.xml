@@ -21,7 +21,7 @@
     <string name="home">Hem</string>
     <string name="groupTraining">Gruppass</string>
     <string name="admin">Admin</string>
-    <string name="language">Språk: Engelska</string>
+    <string name="language">Change language to English</string>
 
     <string name="notAdmin">Du har inte tillgång till den här sidan</string>
 
@@ -100,7 +100,7 @@
     <string name="register">Registrera</string>
 
     <!-- Messages -->
-    <string name="writeMessage">Skriv meddelande…</string>
+    <string name="writeMessage">Skriv ett meddelande…</string>
     <string name="pressToAnswer">Klicka på ett objekt för att svara &amp; lång tryck för att radera</string>
     <string name="reply">Svara</string>
 
@@ -119,7 +119,7 @@
 
     <!-- Register -->
     <string name="nameHint">För- och efternamn</string>
-    <string name="birthHint">Date of birth</string>
+    <string name="birthHint">Födelsedag</string>
     <string name="phoneHint">Telefon nummer</string>
     <string name="confirmPassword">Upprepa lösenord</string>
 

@@ -29,7 +29,7 @@
     <string name="home">Home</string>
     <string name="groupTraining">Group training</string>
     <string name="admin">Admin</string>
-    <string name="language">Language: Swedish</string>
+    <string name="language">Byt språk till Svenska</string>
 
     <string name="notAdmin">You don\'t have access to this page</string>
 
@@ -114,7 +114,7 @@
     <string name="register">Register</string>
 
     <!-- Messages -->
-    <string name="writeMessage">Write message…</string>
+    <string name="writeMessage">Write a message…</string>
     <string name="pressToAnswer">Click an item to answer &amp; long press to delete</string>
     <string name="reply">Reply</string>
 

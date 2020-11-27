@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MessagesActivity : AppCompatActivity(), OnClientMessageItemClickListener {
@@ -60,6 +61,15 @@ class MessagesActivity : AppCompatActivity(), OnClientMessageItemClickListener {
 
         }
 
+        // End button
+        val endBtn = view.findViewById<View>(R.id.endBtn) as ImageButton
+        endBtn.visibility = View.VISIBLE
+        endBtn.setImageResource(R.drawable.send)
+        endBtn.setOnClickListener {
+            sendMessageDialog(getString(R.string.sendTraining))
+
+        }
+
     }
 
     fun goToPreviousActivity() {
@@ -75,17 +85,38 @@ class MessagesActivity : AppCompatActivity(), OnClientMessageItemClickListener {
     }
 
     override fun onClientMessageItemClick(item: MessageItem, position: Int) {
+        sendMessageDialog(getString(R.string.reply))
+
+    }
+
+    override fun onClientMessageItemLongClick(item: MessageItem, position: Int) {
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.deleteMessageTitle))
+            .setMessage(getString(R.string.deleteMessageMsg))
+            .setPositiveButton(getString(R.string.delete)) { dialog, id ->
+                FirebaseFirestore.getInstance().collection("messagesToClients")
+                    .document(item.id).delete()
+                    .addOnSuccessListener { Log.d("!!!", "SUCCESS: Message deleted") }
+                    .addOnFailureListener { e -> Log.d("!!!", "ERROR: $e") }
+
+            }
+            .setNegativeButton(getString(R.string.cancel)) { dialog, id -> }
+            .show()
+
+    }
+
+    fun sendMessageDialog(title: String){
         val dialogLayout = layoutInflater.inflate(R.layout.alert_dialog_answer_message, null)
         val editText = dialogLayout.findViewById<EditText>(R.id.editTextMsg)
 
         AlertDialog.Builder(this)
-            .setTitle(R.string.reply)
+            .setTitle(title)
             .setView(dialogLayout)
             .setPositiveButton(getString(R.string.sendTraining)) { dialog, i ->
                 if(editText.text.toString().isNotEmpty()) {
                     val messageToClient = MessageItem(
                         "",
-                        item.user,
+                        FirebaseAuth.getInstance().currentUser!!.uid,
                         (System.currentTimeMillis() / 1000).toString(),
                         GetData.name,
                         editText.text.toString(),
@@ -116,22 +147,6 @@ class MessagesActivity : AppCompatActivity(), OnClientMessageItemClickListener {
                 }
 
             }
-            .show()
-
-    }
-
-    override fun onClientMessageItemLongClick(item: MessageItem, position: Int) {
-        AlertDialog.Builder(this)
-            .setTitle(getString(R.string.deleteMessageTitle))
-            .setMessage(getString(R.string.deleteMessageMsg))
-            .setPositiveButton(getString(R.string.delete)) { dialog, id ->
-                FirebaseFirestore.getInstance().collection("messagesToClients")
-                    .document(item.id).delete()
-                    .addOnSuccessListener { Log.d("!!!", "SUCCESS: Message deleted") }
-                    .addOnFailureListener { e -> Log.d("!!!", "ERROR: $e") }
-
-            }
-            .setNegativeButton(getString(R.string.cancel)) { dialog, id -> }
             .show()
 
     }
