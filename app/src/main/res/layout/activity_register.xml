@@ -32,7 +32,6 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/shape_rectangle_register"
             android:ems="10"
-            android:maxLength="6"
             android:hint="@string/birthHint"
             android:inputType="date"
             android:padding="20dp" />
