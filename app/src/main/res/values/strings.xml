@@ -148,6 +148,7 @@
     <string name="repeatPasswordHint">Repeat password</string>
     <string name="passwordUpdated">Password successfully changed</string>
     <string name="passwordNotChanged">Password did not change</string>
+    <string name="passwordNoMatch">Password does not match</string>
 
     <!-- Register -->
     <string name="nameHint">First and last name</string>
