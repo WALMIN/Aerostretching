@@ -144,14 +144,14 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
             override fun onStopTrackingTouch(seekBar: SeekBar) {}
 
         })
-          lengthSeekBar.incrementProgressBy(5)
+
+        lengthSeekBar.incrementProgressBy(5)
         lengthSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBarLenght: SeekBar, number: Int, b: Boolean) {
                 var progress = number
                 progress /= 5
                 progress *= 5
                 textViewLength.text = progress.toString()
-
 
             }
 
@@ -176,7 +176,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
     fun initializeMessageList() {
         messageList = findViewById(R.id.messageList)
         messageList.layoutManager = LinearLayoutManager(this)
-        messageListAdapter = MessageListAdapter(GetData.messageFromClientsList, this, false)
+        messageListAdapter = MessageListAdapter(GetData.messageFromClientsList, this, this, false)
         messageList.adapter = messageListAdapter
     }
 
@@ -252,6 +252,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
             .setPositiveButton(getString(R.string.sendTraining)) { dialog, i ->
                 if(editText.text.toString().isNotEmpty()){
                     val messageToClient = MessageItem(
+                        "",
                         item.user,
                         (System.currentTimeMillis() / 1000).toString(),
                         item.name,
@@ -283,6 +284,23 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
 
             }
             .show()
+
+    }
+
+    override fun onMessageItemLongClick(item: MessageItem, position: Int) {
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.deleteMessageTitle))
+            .setMessage(getString(R.string.deleteMessageMsg))
+            .setPositiveButton(getString(R.string.delete)) { dialog, id ->
+                FirebaseFirestore.getInstance().collection("messagesFromClients")
+                    .document(item.id).delete()
+                    .addOnSuccessListener { Log.d("!!!", "SUCCESS: Message deleted") }
+                    .addOnFailureListener { e -> Log.d("!!!", "ERROR: $e") }
+
+            }
+            .setNegativeButton(getString(R.string.cancel)) { dialog, id -> }
+            .show()
+
     }
 
     fun goToPreviousActivity(){

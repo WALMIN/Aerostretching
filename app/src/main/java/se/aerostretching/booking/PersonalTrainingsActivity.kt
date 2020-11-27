@@ -69,6 +69,7 @@ class PersonalTrainingsActivity : AppCompatActivity() {
 
         } else {
             val message = MessageItem(
+                "",
                 FirebaseAuth.getInstance().currentUser!!.uid,
                 (System.currentTimeMillis() / 1000).toString(),
                 name,

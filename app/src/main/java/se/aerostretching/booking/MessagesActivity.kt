@@ -35,7 +35,7 @@ class MessagesActivity : AppCompatActivity(), OnClientMessageItemClickListener {
 
     fun initialize() {
         messageListView = findViewById(R.id.messageList)
-        messageListAdapter = ClientMessageListAdapter(GetData.messageToClientsList, this, false)
+        messageListAdapter = ClientMessageListAdapter(GetData.messageToClientsList, this,  this,false)
         messageListView.layoutManager = LinearLayoutManager(this)
         messageListView.adapter = messageListAdapter
 
@@ -84,6 +84,7 @@ class MessagesActivity : AppCompatActivity(), OnClientMessageItemClickListener {
             .setPositiveButton(getString(R.string.sendTraining)) { dialog, i ->
                 if(editText.text.toString().isNotEmpty()) {
                     val messageToClient = MessageItem(
+                        "",
                         item.user,
                         (System.currentTimeMillis() / 1000).toString(),
                         GetData.name,
@@ -115,6 +116,22 @@ class MessagesActivity : AppCompatActivity(), OnClientMessageItemClickListener {
                 }
 
             }
+            .show()
+
+    }
+
+    override fun onClientMessageItemLongClick(item: MessageItem, position: Int) {
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.deleteMessageTitle))
+            .setMessage(getString(R.string.deleteMessageMsg))
+            .setPositiveButton(getString(R.string.delete)) { dialog, id ->
+                FirebaseFirestore.getInstance().collection("messagesToClients")
+                    .document(item.id).delete()
+                    .addOnSuccessListener { Log.d("!!!", "SUCCESS: Message deleted") }
+                    .addOnFailureListener { e -> Log.d("!!!", "ERROR: $e") }
+
+            }
+            .setNegativeButton(getString(R.string.cancel)) { dialog, id -> }
             .show()
 
     }

@@ -2,6 +2,8 @@ package se.aerostretching.booking
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.format.DateFormat
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
@@ -15,7 +17,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.google.firebase.firestore.FirebaseFirestore
-
+import devs.mulham.horizontalcalendar.HorizontalCalendar
+import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
@@ -78,6 +83,28 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
 
     fun initialize() {
         db = FirebaseFirestore.getInstance()
+
+        val startDate = Calendar.getInstance()
+        startDate.add(Calendar.DAY_OF_MONTH, 0)
+
+        val endDate = Calendar.getInstance()
+        endDate.add(Calendar.MONTH, 1)
+
+        val horizontalCalendar = HorizontalCalendar.Builder(this, R.id.calendarView)
+            .range(startDate, endDate)
+            .datesNumberOnScreen(7)
+            .build()
+
+        horizontalCalendar.calendarListener = object : HorizontalCalendarListener() {
+            override fun onDateSelected(date: Calendar?, position: Int) {
+                Log.d("!!!", "DATE: " + DateFormat.format("yyyyMMdd", date))
+
+                GetData.dateFilter = DateFormat.format("yyyyMMdd", date).toString()
+                GetData.trainings()
+
+            }
+
+        }
 
         trainingListView = findViewById(R.id.trainingList)
         GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingList, this, false)
@@ -232,22 +259,22 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
 
     }
 
-    fun goToPreviousActivity(){
-        startActivity(Intent(this, StartActivity::class.java))
-        finish()
+    override fun onStart() {
+        super.onStart()
+
+        GetData.dateFilter = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()
+
+        GetData.titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
+        GetData.placeFilter = "|Odenplan|Bromma|Solna|Malmö"
+        GetData.trainerFilter = "|Anastasia|Anna|Sofia"
+
+        GetData.trainings()
 
     }
 
-    override fun onPause() {
-        if (GetData.trainingListAdapter.itemCount == 0) {
-            GetData.titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
-            GetData.placeFilter = "|Odenplan|Bromma|Solna|Malmö"
-            GetData.trainerFilter = "|Anastasia|Anna|Sofia"
-
-            GetData.trainings()
-
-        }
-        super.onPause()
+    fun goToPreviousActivity(){
+        startActivity(Intent(this, StartActivity::class.java))
+        finish()
 
     }
 

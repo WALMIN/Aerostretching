@@ -114,8 +114,11 @@
 
     <!-- Messages -->
     <string name="writeMessage">Write message…</string>
-    <string name="pressToAnswer">Press an item to answer</string>
+    <string name="pressToAnswer">Click an item to answer &amp; long press to delete</string>
     <string name="reply">Reply</string>
+
+    <string name="deleteMessageTitle">Delete</string>
+    <string name="deleteMessageMsg">Are you really sure you want to delete the message?</string>
 
     <!-- Personal activity -->
     <string name="trainingApply">Apply for an individual training session</string>
@@ -150,7 +153,7 @@
 
     <!-- Schedule booking -->
     <string name="filterEmpty">You need to select at least 1 title, place &amp; trainer</string>
-    <string name="trainingsEmpty">No trainings to show, adjust the filter</string>
+    <string name="trainingsEmpty">No trainings to show, adjust the date or filter</string>
 
     <!-- Start activity -->
     <string name="upcoming">Upcoming</string>
@@ -176,7 +179,7 @@ If body becomes strong and beautiful, then it is art.
     </string-array>
 
     <!-- Register -->
-    <string name="terms0">I agree to the&#160;<b>Terms &amp; conditions</b></string>
+    <string name="terms0">I agree to the&#160;<b>Terms &amp; Conditions</b></string>
     <string name="terms1">and <b>Privacy Policy</b></string>
 
     <string name="enterAllFields">Please enter all fields correctly</string>
@@ -189,6 +192,7 @@ If body becomes strong and beautiful, then it is art.
     <string name="trainingItemLength" translatable="false">55 min</string>
 
     <!-- Buttons -->
+    <string name="delete">Delete</string>
     <string name="unbook">Unbook</string>
     <string name="cancel">Cancel</string>
     <string name="apply">Apply</string>
