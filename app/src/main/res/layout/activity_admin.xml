@@ -279,10 +279,16 @@
                 android:textColor="@color/text"
                 android:textSize="24sp"
                 android:textStyle="bold" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lineHeight"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:background="@color/text" />
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="400dp">
+                android:layout_height="300dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/messageList"
@@ -314,6 +320,13 @@
                 android:textColor="@color/text"
                 android:textSize="24sp"
                 android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/lineHeight"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:background="@color/text" />
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"

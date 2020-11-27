@@ -30,11 +30,13 @@ class TrainingClientListAdapter(var list: ArrayList<TrainingItem>) : RecyclerVie
             val spotsView = itemView.findViewById<TextView>(R.id.textViewAdminSpots)
             val dateView = itemView.findViewById<TextView>(R.id.textViewDateAdminClient)
             val clientView = itemView.findViewById<TextView>(R.id.textViewClientList)
+            val placeView = itemView.findViewById<TextView>(R.id.textViewAdminPlace)
 
             titleView.text = item.title
             trainerView.text = item.trainer
             spotsView.text = "${itemView.resources.getString(R.string.spotsHint)} ${item.spots}"
             dateView.text = "${item.date.substring(6, 8)}\n${Tools.getMonth(item.date.substring(4, 6))}"
+            placeView.text = item.place
 
             clientView.text = item.participants[0].replace(",", "\n")
                 .replace("{", "").replace("}", "")
