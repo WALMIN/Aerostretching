@@ -147,9 +147,7 @@ object GetData {
                     it.date
                 }
 
-
                 trainingList.sortBy { it.time }
-
 
                 for(i in 0..trainingListUpcoming.size){
                     trainingListUpcoming.sortBy {
@@ -172,7 +170,6 @@ object GetData {
                 trainingListStart.sortBy {
                     it.date
                 }
-
 
                 trainingListAdapter.notifyDataSetChanged()
 
@@ -210,7 +207,17 @@ object GetData {
 
                 }
 
-                trainingListHistory.sortBy { it.time }
+                // Sort
+                for(i in 0..trainingListHistory.size){
+                    trainingListHistory.sortBy {
+                        it.time
+                    }
+
+                }
+
+                trainingListHistory.sortBy {
+                    it.date
+                }
 
                 trainingListAdapter.notifyDataSetChanged()
 
