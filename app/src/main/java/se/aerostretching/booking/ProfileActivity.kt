@@ -130,7 +130,7 @@ class ProfileActivity : AppCompatActivity() {
                 dialog.dismiss()
 
             } else {
-                Toast.makeText(this, getString(R.string.passwordNotChanged), Toast.LENGTH_SHORT)
+                Toast.makeText(this, getString(R.string.passwordNoMatch), Toast.LENGTH_SHORT)
                     .show()
             }
 

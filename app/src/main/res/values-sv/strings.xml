@@ -119,7 +119,7 @@
 
     <!-- Register -->
     <string name="nameHint">För- och efternamn</string>
-    <string name="birthHint">Födelsedag</string>
+    <string name="birthHint">Födelsedatum</string>
     <string name="phoneHint">Telefon nummer</string>
     <string name="confirmPassword">Upprepa lösenord</string>
 
@@ -168,6 +168,7 @@
     <string name="repeatPasswordHint">Repetera lösenord</string>
     <string name="passwordUpdated">Lösenordet har ändrats</string>
     <string name="passwordNotChanged">Lösenordet ändrades inte</string>
+    <string name="passwordNoMatch">Lösenordet matchar inte</string>
 
     <!-- Register -->
     <string name="terms0">Jag godkänner <b>Allmänna Villkor</b></string>
