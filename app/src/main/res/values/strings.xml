@@ -116,6 +116,10 @@
     <string name="or">or</string>
     <string name="register">Register</string>
 
+    <string name="forgotPassword">Forgot password?</string>
+    <string name="resetPasswordSent">Password reset email sent</string>
+    <string name="errorSending">Error sending, try again</string>
+
     <!-- Messages -->
     <string name="writeMessage">Write a message…</string>
     <string name="pressToAnswer">Click an item to answer &amp; long press to delete</string>

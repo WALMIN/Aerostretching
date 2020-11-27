@@ -87,6 +87,18 @@
             android:hapticFeedbackEnabled="false"
             android:padding="10dp"
             android:text="@string/register" />
+
+        <TextView
+            android:id="@+id/forgotPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:onClick="forgotPasswordBtn"
+            android:text="@string/forgotPassword"
+            android:textColor="@color/text"/>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

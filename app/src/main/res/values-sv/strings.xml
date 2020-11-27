@@ -99,6 +99,10 @@
     <string name="or">eller</string>
     <string name="register">Registrera</string>
 
+    <string name="forgotPassword">Glömt ditt lösenord?</string>
+    <string name="resetPasswordSent">Lösenordsåterställning mail skickades</string>
+    <string name="errorSending">Fel när det skulle skickas, försök igen</string>
+
     <!-- Messages -->
     <string name="writeMessage">Skriv ett meddelande…</string>
     <string name="pressToAnswer">Klicka på ett objekt för att svara &amp; lång tryck för att radera</string>
