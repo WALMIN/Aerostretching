@@ -135,9 +135,32 @@ object GetData {
 
                 }
 
-                trainingListAdmin.sortBy { it.time }
+                // Sort
+                for(i in 0..trainingListAdmin.size){
+                    trainingListAdmin.sortBy {
+                        it.time
+                    }
+
+                }
+
+                trainingListAdmin.sortBy {
+                    it.date
+                }
+
+
                 trainingList.sortBy { it.time }
-                trainingListUpcoming.sortBy { it.time }
+
+
+                for(i in 0..trainingListUpcoming.size){
+                    trainingListUpcoming.sortBy {
+                        it.time
+                    }
+
+                }
+
+                trainingListUpcoming.sortBy {
+                    it.date
+                }
 
                 for(i in 0..trainingListStart.size){
                     trainingListStart.sortBy {
