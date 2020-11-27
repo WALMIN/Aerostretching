@@ -23,7 +23,6 @@ class MessagesActivity : AppCompatActivity(), OnClientMessageItemClickListener {
 
     }
 
-
     lateinit var messageListView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
