@@ -12,6 +12,7 @@ object GetData {
 
     lateinit var trainingListAdapter: TrainingListAdapter
 
+    val trainingListAdmin = ArrayList<TrainingItem>()
     val trainingList = ArrayList<TrainingItem>()
     val trainingListStart = ArrayList<TrainingItem>()
     val trainingListUpcoming = ArrayList<TrainingItem>()
@@ -36,14 +37,30 @@ object GetData {
             .addSnapshotListener { snapshot, e ->
                 Log.d("!!!", "READ: Trainings")
 
+                trainingListAdmin.clear()
                 trainingList.clear()
                 trainingListStart.clear()
                 trainingListUpcoming.clear()
 
-                // All trainings
                 for (document in snapshot!!) {
-                    var booked = false
+                    // Admin
+                    trainingListAdmin.add(
+                        TrainingItem(
+                            document.id,
+                            document.getString("date").toString(),
+                            document.getString("time").toString(),
+                            document.getString("length").toString(),
+                            document.getString("title").toString(),
+                            document.getString("place").toString(),
+                            document.getString("trainer").toString(),
+                            document.getString("spots").toString(),
+                            listOf(document.get("participants").toString()),
+                            false
+                        )
+                    )
 
+                    // All trainings
+                    var booked = false
                     if (document.get("participants").toString().contains(FirebaseAuth.getInstance().currentUser?.uid.toString())) {
                         booked = true
 
@@ -93,7 +110,7 @@ object GetData {
                 }
 
                 // Start trainings
-                for (i in 0..3) {
+                for (i in 0..4) {
                     var booked = false
 
                     if (snapshot.documents[i].get("participants").toString().contains(FirebaseAuth.getInstance().currentUser?.uid.toString())) {
@@ -118,9 +135,21 @@ object GetData {
 
                 }
 
+                trainingListAdmin.sortBy { it.time }
                 trainingList.sortBy { it.time }
                 trainingListUpcoming.sortBy { it.time }
-                trainingListStart.sortBy { it.time }
+
+                for(i in 0..trainingListStart.size){
+                    trainingListStart.sortBy {
+                        it.time
+                    }
+
+                }
+
+                trainingListStart.sortBy {
+                    it.date
+                }
+
 
                 trainingListAdapter.notifyDataSetChanged()
 

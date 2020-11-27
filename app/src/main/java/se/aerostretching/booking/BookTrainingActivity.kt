@@ -197,8 +197,6 @@ class BookTrainingActivity : AppCompatActivity() {
     }
 
     private fun book() {
-        Log.d("!!!", intent.getStringExtra("id").toString())
-
         val trainingReference = FirebaseFirestore.getInstance().collection("trainings").document(intent.getStringExtra("id").toString())
 
         trainingReference.update("spots", (intent.getStringExtra("spots")!!.toInt() - 1).toString())

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.storage.FirebaseStorage
+import java.text.SimpleDateFormat
+import java.util.*
 
 class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
@@ -104,6 +107,22 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
             startActivity(bookIntent)
             finish()
+
+        }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        if(GetData.dateFilter != SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()){
+            GetData.dateFilter = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()
+
+            GetData.titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
+            GetData.placeFilter = "|Odenplan|Bromma|Solna|Malmö"
+            GetData.trainerFilter = "|Anastasia|Anna|Sofia"
+
+            GetData.trainings()
 
         }
 

@@ -170,7 +170,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
     fun initializeTrainingClientList() {
         trainingClientList = findViewById(R.id.trainingClientList)
         trainingClientList.layoutManager = LinearLayoutManager(this)
-        trainingClientList.adapter = TrainingClientListAdapter(GetData.trainingList)
+        trainingClientList.adapter = TrainingClientListAdapter(GetData.trainingListAdmin)
     }
 
     fun initializeMessageList() {
@@ -236,6 +236,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
             finish()
 
         }else{
+            GetData.trainings()
             GetData.messageFromClients()
 
         }
@@ -306,6 +307,7 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
     fun goToPreviousActivity(){
         startActivity(Intent(this, StartActivity::class.java))
         finish()
+
     }
 
     override fun onBackPressed() {
