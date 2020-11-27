@@ -30,5 +30,10 @@
             android:icon="@drawable/admin"
             android:title="@string/admin" />
 
+        <item
+            android:id="@+id/language"
+            android:icon="@drawable/language"
+            android:title="@string/language" />
+
     </group>
 </menu>
