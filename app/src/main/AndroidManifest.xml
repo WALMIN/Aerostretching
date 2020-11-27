@@ -22,18 +22,14 @@
         <activity android:name=".ContactsActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".MessagesActivity" />
-        <activity
-            android:name=".MyPageActivity"
-            android:noHistory="true" />
+        <activity android:name=".MyPageActivity" />
         <activity android:name=".PersonalTrainingsActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ScheduleBookingActivity" />
         <activity android:name=".StartActivity" />
         <activity android:name=".TrainerActivity" />
-        <activity
-            android:name=".UpcomingTrainingsActivity"
-            android:noHistory="true" />
+        <activity android:name=".UpcomingTrainingsActivity" />
 
     </application>
 </manifest>

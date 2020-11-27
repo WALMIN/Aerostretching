@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.google.firebase.firestore.FirebaseFirestore
 import devs.mulham.horizontalcalendar.HorizontalCalendar
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener
-import java.text.SimpleDateFormat
 import java.util.*
 
 class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener {
@@ -115,7 +114,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
             override fun onChanged() {
                 super.onChanged()
                 if (GetData.trainingListAdapter.itemCount == 0) {
-                    Toast.makeText(this@ScheduleBookingActivity, getString(R.string.trainingsEmpty), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ScheduleBookingActivity, getString(R.string.trainingsEmpty), Toast.LENGTH_SHORT).show()
 
                 }
 

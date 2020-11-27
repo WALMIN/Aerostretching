@@ -1,6 +1,8 @@
 package se.aerostretching.booking
 
 import android.app.Activity
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.net.ParseException
@@ -13,6 +15,8 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.system.exitProcess
+
 
 object Tools {
 
@@ -49,6 +53,17 @@ object Tools {
                         activity.finish()
 
                     }
+
+                }
+                R.id.language -> {
+                    if (LocaleHelper.getLanguage(activity) == "en") {
+                        LocaleHelper.setLocale(activity, "sv")
+
+                    } else {
+                        LocaleHelper.setLocale(activity, "en")
+
+                    }
+                    restartApp(activity)
 
                 }
 
@@ -105,7 +120,7 @@ object Tools {
 
     fun getMillisFromDate(dateFormat: String?): Long {
         var date = Date()
-        val formatter = SimpleDateFormat("MMddyyyy HH:mm")
+        val formatter = SimpleDateFormat("MMddyyyy HH:mm", Locale.getDefault())
         try {
             date = formatter.parse(dateFormat)
         } catch (e: ParseException) {
@@ -125,8 +140,8 @@ object Tools {
 
                 trainingReference.update("spots", (item.spots.toInt() + 1).toString())
                 trainingReference.update(
-                        "participants." + FirebaseAuth.getInstance().currentUser?.uid.toString(),
-                        FieldValue.delete()
+                    "participants." + FirebaseAuth.getInstance().currentUser?.uid.toString(),
+                    FieldValue.delete()
                 )
 
                 GetData.trainings()
@@ -136,6 +151,15 @@ object Tools {
             .setNegativeButton(context.getString(R.string.cancel)) { dialog, id ->
             }
             .show()
+
+    }
+
+    fun restartApp(activity: Activity){
+        Toast.makeText(activity, activity.resources.getString(R.string.applyingLanguage), Toast.LENGTH_SHORT).show()
+
+        activity.startActivity(Intent(activity, MainActivity::class.java))
+        activity.finishAffinity()
+        activity.finish()
 
     }
 

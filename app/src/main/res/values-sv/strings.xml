@@ -21,6 +21,7 @@
     <string name="home">Hem</string>
     <string name="groupTraining">Gruppass</string>
     <string name="admin">Admin</string>
+    <string name="language">Språk: Engelska</string>
 
     <string name="notAdmin">Du har inte tillgång till den här sidan</string>
 
@@ -54,7 +55,7 @@
         <item>Malmö</item>
     </string-array>
 
-    <string name="trainer">Trainer:</string>
+    <string name="trainer">Tränare:</string>
     <string-array name="trainer">
         <item>Anastasia</item>
         <item>Anna</item>
@@ -175,6 +176,9 @@
     <string name="enterAllFields">Var snäll och fyll i alla fält korrekt</string>
     <string name="registrationSuccessful">Registering lyckades</string>
     <string name="userNotCreated">Användare skapdes inte</string>
+
+    <!-- Other -->
+    <string name="applyingLanguage">Applying language…</string>
 
     <!-- Buttons -->
     <string name="delete">Radera</string>

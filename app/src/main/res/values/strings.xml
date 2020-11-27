@@ -29,6 +29,7 @@
     <string name="home">Home</string>
     <string name="groupTraining">Group training</string>
     <string name="admin">Admin</string>
+    <string name="language">Language: Swedish</string>
 
     <string name="notAdmin">You don\'t have access to this page</string>
 
@@ -189,6 +190,7 @@ If body becomes strong and beautiful, then it is art.
     <string name="userNotCreated">User not created</string>
 
     <!-- Other -->
+    <string name="applyingLanguage">Tillämpar språk…</string>
     <string name="trainingItemDate" translatable="false">15\nOct</string>
     <string name="trainingItemTime" translatable="false">13:00</string>
     <string name="trainingItemLength" translatable="false">55 min</string>
