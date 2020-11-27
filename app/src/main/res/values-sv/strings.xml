@@ -127,8 +127,10 @@
     <string name="trainingsEmpty">Inga pass att visa, justera datum eller filtrera</string>
 
     <!-- Start activity -->
-    <string name="upcoming">Kommande</string>
-    <string name="seeMore">Se mer</string>
+    <string name="today">Träningar som du snart kan gå på:</string>
+    <string name="seeAll">Se allt</string>
+
+    <string name="noTraningsToday">Inga pass idag</string>
 
     <!-- Trainer activity -->
     <string-array name="trainingDescription">

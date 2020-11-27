@@ -85,10 +85,10 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
         db = FirebaseFirestore.getInstance()
 
         val startDate = Calendar.getInstance()
-        startDate.add(Calendar.DAY_OF_MONTH, 0)
+        startDate.add(Calendar.DAY_OF_MONTH, -1)
 
         val endDate = Calendar.getInstance()
-        endDate.add(Calendar.MONTH, 1)
+        endDate.add(Calendar.MONTH, 3)
 
         val horizontalCalendar = HorizontalCalendar.Builder(this, R.id.calendarView)
             .range(startDate, endDate)
@@ -256,19 +256,6 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
             finish()
 
         }
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        GetData.dateFilter = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()
-
-        GetData.titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
-        GetData.placeFilter = "|Odenplan|Bromma|Solna|Malmö"
-        GetData.trainerFilter = "|Anastasia|Anna|Sofia"
-
-        GetData.trainings()
 
     }
 

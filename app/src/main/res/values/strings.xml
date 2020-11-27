@@ -156,8 +156,10 @@
     <string name="trainingsEmpty">No trainings to show, adjust the date or filter</string>
 
     <!-- Start activity -->
-    <string name="upcoming">Upcoming</string>
-    <string name="seeMore">See more</string>
+    <string name="today">Trainings which you can join soon:</string>
+    <string name="seeAll">See all</string>
+
+    <string name="noTraningsToday">No trainings today</string>
 
     <!-- Trainer activity -->
     <string-array name="trainingDescription">
