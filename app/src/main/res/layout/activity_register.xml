@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:paddingBottom="10dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
@@ -20,7 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_rectangle_register"
-            android:ems="10"
             android:hint="@string/nameHint"
             android:inputType="textPersonName"
             android:padding="20dp" />
@@ -31,7 +30,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/shape_rectangle_register"
-            android:ems="10"
             android:hint="@string/birthHint"
             android:inputType="date"
             android:padding="20dp" />
@@ -42,7 +40,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/shape_rectangle_register"
-            android:ems="10"
             android:hint="@string/phoneHint"
             android:inputType="phone"
             android:padding="20dp" />
@@ -53,7 +50,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/shape_rectangle_register"
-            android:ems="10"
             android:hint="@string/emailHint"
             android:inputType="textEmailAddress"
             android:padding="20dp" />
@@ -64,7 +60,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/shape_rectangle_register"
-            android:ems="10"
             android:hint="@string/passwordHint"
             android:inputType="textPassword"
             android:padding="20dp" />
@@ -75,7 +70,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/shape_rectangle_register"
-            android:ems="10"
             android:hint="@string/confirmPassword"
             android:inputType="textPassword"
             android:padding="20dp" />
