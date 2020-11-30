@@ -128,6 +128,11 @@
     <string name="deleteMessageTitle">Delete</string>
     <string name="deleteMessageMsg">Are you really sure you want to delete the message?</string>
 
+    <!-- My page -->
+    <string name="licenses">Licenses</string>
+    <string name="terms">Terms &amp; Conditions</string>
+    <string name="privacyPolicy">Privacy policy</string>
+
     <!-- Personal activity -->
     <string name="trainingApply">Apply for an individual training session</string>
     <string name="trainingApplyHint">Write briefly what type of training you want, how many people you are and the estimated time.\n\nWe will answer you as soon as possible!</string>
@@ -209,5 +214,6 @@ If body becomes strong and beautiful, then it is art.
     <string name="cancel">Cancel</string>
     <string name="apply">Apply</string>
     <string name="confirm">Confirm</string>
+    <string name="close">Close</string>
 
 </resources>

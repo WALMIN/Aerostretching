@@ -57,7 +57,7 @@ class RegisterActivity : AppCompatActivity() {
 
     fun termsOfServiceButton(view: View) {
         val termsOfServicee = AlertDialog.Builder(this).create()
-        val myView: View = layoutInflater.inflate(R.layout.webviewdialog, null)
+        val myView: View = layoutInflater.inflate(R.layout.web_dialog, null)
         val termsOfServiceView = myView.findViewById<WebView>(R.id.webView)
         termsOfServiceView.loadUrl("file:///android_asset/terms.html")
 
@@ -68,7 +68,7 @@ class RegisterActivity : AppCompatActivity() {
 
     fun privacyPolicyButton(view: View) {
         val privacyPolicy = AlertDialog.Builder(this).create()
-        val myView: View = layoutInflater.inflate(R.layout.webviewdialog, null)
+        val myView: View = layoutInflater.inflate(R.layout.web_dialog, null)
         val privacyPolicyView = myView.findViewById<WebView>(R.id.webView)
         privacyPolicyView.loadUrl("file:///android_asset/privacy.html")
 

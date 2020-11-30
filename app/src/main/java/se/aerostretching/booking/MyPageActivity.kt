@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebView
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -47,6 +49,42 @@ class MyPageActivity : AppCompatActivity() {
     fun messagesBtn(view: View){
         startActivity(Intent(this, MessagesActivity::class.java))
         finish()
+
+    }
+
+    fun licensesBtn(view: View){
+        val dialog = AlertDialog.Builder(this)
+        val layout: View = layoutInflater.inflate(R.layout.web_dialog, null)
+        val webView = layout.findViewById<WebView>(R.id.webView)
+        webView.loadUrl("file:///android_asset/licenses.html")
+
+        dialog.setPositiveButton(resources.getString(R.string.close), null)
+        dialog.setView(layout)
+        dialog.show()
+
+    }
+
+    fun termsBtn(view: View){
+        val dialog = AlertDialog.Builder(this)
+        val layout: View = layoutInflater.inflate(R.layout.web_dialog, null)
+        val webView = layout.findViewById<WebView>(R.id.webView)
+        webView.loadUrl("file:///android_asset/terms.html")
+
+        dialog.setPositiveButton(resources.getString(R.string.close), null)
+        dialog.setView(layout)
+        dialog.show()
+
+    }
+
+    fun privacyPolicyBtn(view: View){
+        val dialog = AlertDialog.Builder(this)
+        val layout: View = layoutInflater.inflate(R.layout.web_dialog, null)
+        val webView = layout.findViewById<WebView>(R.id.webView)
+        webView.loadUrl("file:///android_asset/privacy.html")
+
+        dialog.setPositiveButton(resources.getString(R.string.close), null)
+        dialog.setView(layout)
+        dialog.show()
 
     }
 
