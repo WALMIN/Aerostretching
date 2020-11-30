@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -22,6 +21,7 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
 
     lateinit var drawerLayout: DrawerLayout
 
+    lateinit var noTrainingsBtn: TextView
     lateinit var trainingListView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,10 +76,40 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
             .placeholder(R.drawable.start_loading)
             .into(findViewById(R.id.startImage))
 
+        noTrainingsBtn = findViewById(R.id.noTrainingsBtn)
+        noTrainingsBtn.setOnClickListener {
+            startActivity(Intent(this, PersonalTrainingsActivity::class.java))
+            finish()
+        }
+
         trainingListView = findViewById(R.id.trainingList)
         GetData.trainingListAdapter = TrainingListAdapter(GetData.trainingListStart, this, false)
         trainingListView.layoutManager = LinearLayoutManager(this)
         trainingListView.adapter = GetData.trainingListAdapter
+
+        noTrainingsBtn.visibility = (if ( GetData.trainingListAdapter.itemCount == 0) View.VISIBLE else View.GONE)
+        GetData.trainingListAdapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
+            override fun onChanged() {
+                super.onChanged()
+                checkEmpty()
+            }
+
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                super.onItemRangeInserted(positionStart, itemCount)
+                checkEmpty()
+            }
+
+            override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
+                super.onItemRangeRemoved(positionStart, itemCount)
+                checkEmpty()
+            }
+
+            fun checkEmpty() {
+                noTrainingsBtn.visibility = (if ( GetData.trainingListAdapter.itemCount == 0) View.VISIBLE else View.GONE)
+
+            }
+
+        })
 
     }
 

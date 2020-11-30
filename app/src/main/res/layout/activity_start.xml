@@ -63,16 +63,37 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/trainingList"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             app:layout_constrainedHeight="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titleLayout"
-            tools:listitem="@layout/training_item" />
+            app:layout_constraintTop_toBottomOf="@id/titleLayout">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/trainingList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/training_item" />
+
+            <TextView
+                android:id="@+id/noTrainingsBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="36dp"
+                android:gravity="center"
+                android:text="@string/noTrainings"
+                android:textAllCaps="false"
+                android:textColor="@color/text"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:visibility="gone" />
+
+        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

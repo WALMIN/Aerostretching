@@ -168,7 +168,7 @@
     <string name="today">Trainings which you can join soon:</string>
     <string name="seeAll">See all</string>
 
-    <string name="noTraningsToday">No trainings today</string>
+    <string name="noTrainings">No upcoming trainings to book.\n\n<b>Message us</b> to book personal trainings.</string>
 
     <!-- Trainer activity -->
     <string-array name="trainingDescription">

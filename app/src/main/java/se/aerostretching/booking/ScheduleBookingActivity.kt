@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.google.firebase.firestore.FirebaseFirestore
 import devs.mulham.horizontalcalendar.HorizontalCalendar
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener
+import java.text.SimpleDateFormat
 import java.util.*
 
 class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener {
@@ -92,6 +93,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
         val horizontalCalendar = HorizontalCalendar.Builder(this, R.id.calendarView)
             .range(startDate, endDate)
             .datesNumberOnScreen(7)
+            .defaultSelectedDate(Calendar.getInstance())
             .build()
 
         horizontalCalendar.calendarListener = object : HorizontalCalendarListener() {
@@ -110,12 +112,29 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
         trainingListView.layoutManager = LinearLayoutManager(this)
         trainingListView.adapter = GetData.trainingListAdapter
 
+        if(GetData.trainingListAdapter.itemCount == 0){
+            Toast.makeText(this@ScheduleBookingActivity, getString(R.string.trainingsEmpty), Toast.LENGTH_SHORT).show()
+        }
+
         GetData.trainingListAdapter.registerAdapterDataObserver(object : AdapterDataObserver() {
             override fun onChanged() {
                 super.onChanged()
+                checkEmpty()
+            }
+
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                super.onItemRangeInserted(positionStart, itemCount)
+                checkEmpty()
+            }
+
+            override fun onItemRangeRemoved(positionStart: Int, itemCount: Int) {
+                super.onItemRangeRemoved(positionStart, itemCount)
+                checkEmpty()
+            }
+
+            fun checkEmpty() {
                 if (GetData.trainingListAdapter.itemCount == 0) {
                     Toast.makeText(this@ScheduleBookingActivity, getString(R.string.trainingsEmpty), Toast.LENGTH_SHORT).show()
-
                 }
 
             }
@@ -253,6 +272,22 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
 
             startActivity(bookIntent)
             finish()
+
+        }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        if(GetData.dateFilter != SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()){
+            GetData.dateFilter = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(Calendar.getInstance().time).toString()
+
+            GetData.titleFilter = "|Aeroyoga|Aerostretching|Kids Aerostretching|Suspension"
+            GetData.placeFilter = "|Odenplan|Bromma|Solna|Malmö"
+            GetData.trainerFilter = "|Anastasia|Anna|Sofia"
+
+            GetData.trainings()
 
         }
 

@@ -109,29 +109,31 @@ object GetData {
 
                 }
 
-                // Start trainings
-                for (i in 0..4) {
-                    var booked = false
+                if(snapshot.size() > 2){
+                    for (i in 0..2) {
+                        var booked = false
 
-                    if (snapshot.documents[i].get("participants").toString().contains(FirebaseAuth.getInstance().currentUser?.uid.toString())) {
-                        booked = true
+                        if (snapshot.documents[i].get("participants").toString().contains(FirebaseAuth.getInstance().currentUser?.uid.toString())) {
+                            booked = true
+
+                        }
+
+                        trainingListStart.add(
+                            TrainingItem(
+                                snapshot.documents[i].id,
+                                snapshot.documents[i].getString("date").toString(),
+                                snapshot.documents[i].getString("time").toString(),
+                                snapshot.documents[i].getString("length").toString(),
+                                snapshot.documents[i].getString("title").toString(),
+                                snapshot.documents[i].getString("place").toString(),
+                                snapshot.documents[i].getString("trainer").toString(),
+                                snapshot.documents[i].getString("spots").toString(),
+                                listOf(snapshot.documents[i].get("participants").toString()),
+                                booked
+                            )
+                        )
 
                     }
-
-                    trainingListStart.add(
-                        TrainingItem(
-                            snapshot.documents[i].id,
-                            snapshot.documents[i].getString("date").toString(),
-                            snapshot.documents[i].getString("time").toString(),
-                            snapshot.documents[i].getString("length").toString(),
-                            snapshot.documents[i].getString("title").toString(),
-                            snapshot.documents[i].getString("place").toString(),
-                            snapshot.documents[i].getString("trainer").toString(),
-                            snapshot.documents[i].getString("spots").toString(),
-                            listOf(snapshot.documents[i].get("participants").toString()),
-                            booked
-                        )
-                    )
 
                 }
 
