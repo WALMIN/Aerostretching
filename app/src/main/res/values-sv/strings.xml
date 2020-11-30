@@ -135,7 +135,7 @@
     <string name="today">Träningar som du snart kan gå på:</string>
     <string name="seeAll">Se allt</string>
 
-    <string name="noTraningsToday">Inga pass idag</string>
+    <string name="noTrainings">Inga kommande pass att boka.\n\n<b>Meddela oss</b>för att boka personlig träning.</string>
 
     <!-- Trainer activity -->
     <string-array name="trainingDescription">

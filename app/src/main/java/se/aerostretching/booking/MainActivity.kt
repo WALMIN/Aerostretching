@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 Toast.makeText(this, getString(R.string.resetPasswordSent), Toast.LENGTH_SHORT).show()
-                                Log.d("!!!", "Email sent")
+                                Log.d("!!!", "PASSWORD: Reset sent")
                                 dialog.dismiss()
                             }else{
                                 Toast.makeText(this, getString(R.string.errorSending), Toast.LENGTH_SHORT).show()
