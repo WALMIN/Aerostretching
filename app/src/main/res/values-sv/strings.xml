@@ -191,5 +191,6 @@
     <string name="cancel">Stäng</string>
     <string name="apply">Tillämpa</string>
     <string name="confirm">Bekräfta</string>
+    <string name="close">Stäng</string>
 
 </resources>
