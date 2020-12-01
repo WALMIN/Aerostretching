@@ -64,23 +64,11 @@ class MyPageActivity : AppCompatActivity() {
 
     }
 
-    fun termsBtn(view: View){
-        val dialog = AlertDialog.Builder(this)
-        val layout: View = layoutInflater.inflate(R.layout.web_dialog, null)
-        val webView = layout.findViewById<WebView>(R.id.webView)
-        webView.loadUrl("file:///android_asset/terms.html")
-
-        dialog.setPositiveButton(resources.getString(R.string.close), null)
-        dialog.setView(layout)
-        dialog.show()
-
-    }
-
     fun privacyPolicyBtn(view: View){
         val dialog = AlertDialog.Builder(this)
         val layout: View = layoutInflater.inflate(R.layout.web_dialog, null)
         val webView = layout.findViewById<WebView>(R.id.webView)
-        webView.loadUrl("file:///android_asset/privacy.html")
+        webView.loadUrl("file:///android_asset/privacy_${LocaleHelper.getLanguage(this)}.html")
 
         dialog.setPositiveButton(resources.getString(R.string.close), null)
         dialog.setView(layout)
