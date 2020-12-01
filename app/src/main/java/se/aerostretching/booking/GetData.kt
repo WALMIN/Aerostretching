@@ -110,7 +110,7 @@ object GetData {
                 }
 
                 if(snapshot.size() > 2){
-                    for (i in 0..2) {
+                    for (i in 0..4) {
                         var booked = false
 
                         if (snapshot.documents[i].get("participants").toString().contains(FirebaseAuth.getInstance().currentUser?.uid.toString())) {
