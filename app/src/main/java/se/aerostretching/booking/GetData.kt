@@ -179,7 +179,10 @@ object GetData {
                     trainingListAdapter.notifyDataSetChanged()
 
                 }else{
-                    Toast.makeText(context, context.getString(R.string.errorRetrieving), Toast.LENGTH_SHORT).show()
+                    if(FirebaseAuth.getInstance().currentUser != null){
+                        Toast.makeText(context, context.getString(R.string.errorRetrieving), Toast.LENGTH_SHORT).show()
+
+                    }
 
                 }
 
@@ -233,7 +236,10 @@ object GetData {
                     trainingListAdapter.notifyDataSetChanged()
 
                 }else{
-                    Toast.makeText(context, context.getString(R.string.errorRetrieving), Toast.LENGTH_SHORT).show()
+                    if(FirebaseAuth.getInstance().currentUser != null){
+                        Toast.makeText(context, context.getString(R.string.errorRetrieving), Toast.LENGTH_SHORT).show()
+
+                    }
 
                 }
 
@@ -257,7 +263,10 @@ object GetData {
 
             }
             .addOnFailureListener {
-                Toast.makeText(context, context.getString(R.string.errorRetrieving), Toast.LENGTH_SHORT).show()
+                if(FirebaseAuth.getInstance().currentUser != null){
+                    Toast.makeText(context, context.getString(R.string.errorRetrieving), Toast.LENGTH_SHORT).show()
+
+                }
 
             }
 
@@ -287,7 +296,10 @@ object GetData {
                     AdminActivity.messageListAdapter.notifyDataSetChanged()
 
                 }else{
-                    Toast.makeText(context, context.getString(R.string.errorRetrieving), Toast.LENGTH_SHORT).show()
+                    if(FirebaseAuth.getInstance().currentUser != null){
+                        Toast.makeText(context, context.getString(R.string.errorRetrieving), Toast.LENGTH_SHORT).show()
+
+                    }
 
                 }
 
@@ -304,7 +316,7 @@ object GetData {
                     messageToClientsList.clear()
 
                     for (document in snapshot) {
-                        if (document.get("user").toString() == "184jf") {
+                        if (document.get("user").toString() == FirebaseAuth.getInstance().currentUser?.uid) {
                             messageToClientsList.add(
                                 MessageItem(
                                     document.id,
@@ -322,7 +334,10 @@ object GetData {
                     MessagesActivity.messageListAdapter.notifyDataSetChanged()
 
                 }else{
-                    Toast.makeText(context, context.getString(R.string.errorRetrieving), Toast.LENGTH_SHORT).show()
+                    if(FirebaseAuth.getInstance().currentUser != null){
+                        Toast.makeText(context, context.getString(R.string.errorRetrieving), Toast.LENGTH_SHORT).show()
+
+                    }
 
                 }
 
