@@ -304,7 +304,7 @@ object GetData {
                     messageToClientsList.clear()
 
                     for (document in snapshot) {
-                        if (document.get("user").toString() == "184jf") {
+                        if (document.get("user").toString() == FirebaseAuth.getInstance().currentUser?.uid.toString()) {
                             messageToClientsList.add(
                                 MessageItem(
                                     document.id,
