@@ -187,6 +187,7 @@
 
     <!-- Other -->
     <string name="applyingLanguage">Applying language…</string>
+    <string name="errorRetrieving">Fel vid hämtning av data, försök igen senare</string>
 
     <!-- Buttons -->
     <string name="delete">Radera</string>

@@ -152,7 +152,7 @@ class StartActivity : AppCompatActivity(), OnTrainingItemClickListener {
             GetData.placeFilter = "|Odenplan|Bromma|Solna|Malmö"
             GetData.trainerFilter = "|Anastasia|Anna|Sofia"
 
-            GetData.trainings()
+            GetData.trainings(this)
 
         }
 

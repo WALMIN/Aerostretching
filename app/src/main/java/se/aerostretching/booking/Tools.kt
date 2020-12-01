@@ -144,7 +144,7 @@ object Tools {
                     FieldValue.delete()
                 )
 
-                GetData.trainings()
+                GetData.trainings(context)
                 GetData.trainingListAdapter.notifyDataSetChanged()
 
             }

@@ -202,6 +202,7 @@ If body becomes strong and beautiful, then it is art.
 
     <!-- Other -->
     <string name="applyingLanguage">Tillämpar språk…</string>
+    <string name="errorRetrieving">Error retrieving data, try again later</string>
     <string name="trainingItemDate" translatable="false">15\nOct</string>
     <string name="trainingItemTime" translatable="false">13:00</string>
     <string name="trainingItemLength" translatable="false">55 min</string>

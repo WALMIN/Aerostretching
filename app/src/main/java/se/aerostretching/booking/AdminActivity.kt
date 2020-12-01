@@ -236,8 +236,8 @@ class AdminActivity : AppCompatActivity(), OnMessageItemClickListener{
             finish()
 
         }else{
-            GetData.trainings()
-            GetData.messageFromClients()
+            GetData.trainings(this)
+            GetData.messageFromClients(this)
 
         }
 

@@ -64,9 +64,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, StartActivity::class.java))
         finish()
 
-        GetData.trainings()
-        GetData.history()
-        GetData.profile()
+        GetData.trainings(this)
+        GetData.history(this)
+        GetData.profile(this)
     }
 
     fun loginUser() {
