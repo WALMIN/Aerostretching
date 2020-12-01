@@ -142,4 +142,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(onAttach(base))
+    }
+
 }
