@@ -120,7 +120,7 @@ object Tools {
 
     fun getMillisFromDate(dateFormat: String?): Long {
         var date = Date()
-        val formatter = SimpleDateFormat("MMddyyyy HH:mm", Locale.getDefault())
+        val formatter = SimpleDateFormat("yyyyMMdd HH:mm", Locale.getDefault())
         try {
             date = formatter.parse(dateFormat)
         } catch (e: ParseException) {
