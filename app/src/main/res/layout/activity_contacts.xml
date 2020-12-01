@@ -94,7 +94,8 @@
                 android:maxHeight="32dp"
                 android:minWidth="32dp"
                 android:minHeight="32dp"
-                android:src="@drawable/place" />
+                android:src="@drawable/place"
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/textViewContactsPlace"
@@ -102,7 +103,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/address"
                 android:textColor="@color/text"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
@@ -114,7 +116,8 @@
             android:maxWidth="320dp"
             android:maxHeight="256dp"
             android:minWidth="320dp"
-            android:minHeight="256dp" />
+            android:minHeight="256dp"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
