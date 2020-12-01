@@ -35,7 +35,7 @@ class MessageListAdapter(
             val messageView = itemView.findViewById<TextView>(R.id.messageText)
 
             dateView.text = Tools.millisToDate(item.date.toLong())
-            nameView.text = item.name
+            nameView.text = item.email
             messageView.text = item.text
 
             // OnClick
