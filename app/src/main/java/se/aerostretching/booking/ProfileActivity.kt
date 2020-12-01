@@ -89,7 +89,7 @@ class ProfileActivity : AppCompatActivity() {
 
                 FirebaseAuth.getInstance().currentUser!!.updateEmail(newEmail)
                     .addOnSuccessListener {
-                        GetData.profile()
+                        GetData.profile(this)
 
                         Toast.makeText(this, getString(R.string.emailUpdated), Toast.LENGTH_LONG).show()
                         Log.d("!!!", "User email address updated.")
@@ -212,7 +212,7 @@ class ProfileActivity : AppCompatActivity() {
                     endBtn.setImageResource(R.drawable.edit)
                     editing = false
                     saveData()
-                    GetData.profile()
+                    GetData.profile(this)
                     changeAllEditText(false)
 
                     Toast.makeText(this, getString(R.string.profileUpdated), Toast.LENGTH_LONG).show()

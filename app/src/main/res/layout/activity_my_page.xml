@@ -198,7 +198,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:orientation="horizontal"
-            android:weightSum="9"
+            android:weightSum="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -206,7 +206,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:onClick="licensesBtn"
                 android:text="@string/licenses"
@@ -215,16 +215,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:gravity="center"
-                android:onClick="termsBtn"
-                android:text="@string/terms"
-                android:textColor="@color/text" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:onClick="privacyPolicyBtn"
                 android:text="@string/privacyPolicy"

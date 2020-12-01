@@ -101,7 +101,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
                 Log.d("!!!", "DATE: " + DateFormat.format("yyyyMMdd", date))
 
                 GetData.dateFilter = DateFormat.format("yyyyMMdd", date).toString()
-                GetData.trainings()
+                GetData.trainings(this@ScheduleBookingActivity)
 
             }
 
@@ -236,7 +236,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
             sofia = sofiaSwitch.isChecked
 
             if(GetData.titleFilter.isNotEmpty() && GetData.placeFilter.isNotEmpty() && GetData.trainerFilter.isNotEmpty()){
-                GetData.trainings()
+                GetData.trainings(this)
                 dialog.dismiss()
 
             }else{
@@ -287,7 +287,7 @@ class ScheduleBookingActivity : AppCompatActivity(), OnTrainingItemClickListener
             GetData.placeFilter = "|Odenplan|Bromma|Solna|Malmö"
             GetData.trainerFilter = "|Anastasia|Anna|Sofia"
 
-            GetData.trainings()
+            GetData.trainings(this)
 
         }
 

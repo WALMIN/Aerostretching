@@ -111,6 +111,10 @@
     <string name="deleteMessageTitle">Radera</string>
     <string name="deleteMessageMsg">Är du verkligen säker på att du vill radera meddelandet?</string>
 
+    <!-- My page -->
+    <string name="licenses">Licenser</string>
+    <string name="privacyPolicy">Integritetspolicy</string>
+
     <!-- Personal activity -->
     <string name="trainingApply">Ansök om individuellt träningspass</string>
     <string name="trainingApplyHint">Skriv kort vilken typ av träning du vill ha, hur många personer ni är och beräknad tid.\n\nVi svarar dig så snart som möjligt!</string>
@@ -175,8 +179,7 @@
     <string name="passwordNoMatch">Lösenordet matchar inte</string>
 
     <!-- Register -->
-    <string name="terms0">Jag godkänner <b>Allmänna Villkor</b></string>
-    <string name="terms1">och <b>Integritetspolicy</b></string>
+    <string name="registerAgree">Jag godkänner <b>Integritetspolicyn</b>.</string>
 
     <string name="enterAllFields">Var snäll och fyll i alla fält korrekt</string>
     <string name="registrationSuccessful">Registering lyckades</string>
@@ -184,6 +187,7 @@
 
     <!-- Other -->
     <string name="applyingLanguage">Applying language…</string>
+    <string name="errorRetrieving">Fel vid hämtning av data, försök igen senare</string>
 
     <!-- Buttons -->
     <string name="delete">Radera</string>

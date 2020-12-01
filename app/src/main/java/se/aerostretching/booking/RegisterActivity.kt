@@ -55,25 +55,15 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-    fun termsOfServiceButton(view: View) {
-        val termsOfServicee = AlertDialog.Builder(this).create()
-        val myView: View = layoutInflater.inflate(R.layout.web_dialog, null)
-        val termsOfServiceView = myView.findViewById<WebView>(R.id.webView)
-        termsOfServiceView.loadUrl("file:///android_asset/terms.html")
+    fun agreeButton(view: View) {
+        val dialog = AlertDialog.Builder(this)
+        val layout: View = layoutInflater.inflate(R.layout.web_dialog, null)
+        val webView = layout.findViewById<WebView>(R.id.webView)
+        webView.loadUrl("file:///android_asset/privacy_${LocaleHelper.getLanguage(this)}.html")
 
-        termsOfServicee.setView(myView)
-        termsOfServicee.show()
-
-    }
-
-    fun privacyPolicyButton(view: View) {
-        val privacyPolicy = AlertDialog.Builder(this).create()
-        val myView: View = layoutInflater.inflate(R.layout.web_dialog, null)
-        val privacyPolicyView = myView.findViewById<WebView>(R.id.webView)
-        privacyPolicyView.loadUrl("file:///android_asset/privacy.html")
-
-        privacyPolicy.setView(myView)
-        privacyPolicy.show()
+        dialog.setPositiveButton(resources.getString(R.string.close), null)
+        dialog.setView(layout)
+        dialog.show()
 
     }
 

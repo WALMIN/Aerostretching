@@ -152,7 +152,7 @@ class MessagesActivity : AppCompatActivity(), OnClientMessageItemClickListener {
 
     override fun onStart() {
         super.onStart()
-        GetData.messageToClients()
+        GetData.messageToClients(this)
 
     }
 
