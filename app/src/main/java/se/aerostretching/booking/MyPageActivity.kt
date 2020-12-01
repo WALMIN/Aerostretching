@@ -56,7 +56,7 @@ class MyPageActivity : AppCompatActivity() {
         val dialog = AlertDialog.Builder(this)
         val layout: View = layoutInflater.inflate(R.layout.web_dialog, null)
         val webView = layout.findViewById<WebView>(R.id.webView)
-        webView.loadUrl("file:///android_asset/licenses.html")
+        webView.loadUrl("file:///android_asset/licenses_${LocaleHelper.getLanguage(this)}.html")
 
         dialog.setPositiveButton(resources.getString(R.string.close), null)
         dialog.setView(layout)
